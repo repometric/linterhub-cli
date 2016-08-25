@@ -18,7 +18,14 @@
         {
             return new[]
             {
-                new Record { Name = "default", Linter = typeof(ILinter), Args = typeof(ILinterArgs), Result = typeof(ILinterResult), Model = typeof(ILinterModel) }
+                new Record
+                {
+                    Name = "default",
+                    Linter = typeof(ILinter),
+                    Args = typeof(ILinterArgs),
+                    Result = typeof(ILinterResult),
+                    Model = typeof(ILinterModel)
+                }
             };
         }
     }
