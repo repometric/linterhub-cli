@@ -21,25 +21,28 @@ namespace Metrics.Integrations.Linters.Phpmd
             LinterFileModel lfm = new LinterFileModel();
             foreach (var file in res.FilesList)
             {
-                LinterFileModel.File lf = new LinterFileModel.File();
-                lf.Path = file.FileName;
+                LinterFileModel.File lf = new LinterFileModel.File
+                {
+                    Path = file.FileName
+                };
                 foreach (var error in file.ViolationsList)
                 {
                     LinterError le = new LinterError();
-                    LinterFileModel.Interval li = new LinterFileModel.Interval();
-                    li.Start = error.BeginLine;
-                    li.End = error.EndLine;
-                    le.Row = li;
+                    le.Row = new LinterFileModel.Interval 
+                    { 
+                        Start = error.BeginLine, 
+                        End = error.EndLine 
+                    };
                     le.Message = error.Description;
-                    LinterFileModel.Rule lr = new LinterFileModel.Rule();
-                    lr.Name = error.Rule;
-                    lr.Namespace = error.RuleSet;
-                    le.Rule = lr;
-                    var loc = new LinterError.Location();
-                    loc.Class = error.Class;
-                    loc.Method = error.Method;
-                    loc.Package = error.Package;
-                    le.ErrorLocation = loc;
+                    le.Rule = new LinterFileModel.Rule(){
+                        Name = error.Rule,
+                        Namespace = error.RuleSet
+                    };
+                    le.ErrorLocation = new LinterError.Location{
+                        Class = error.Class,
+                        Method = error.Method,
+                        Package = error.Package
+                    };
                     lf.Errors.Add(le);
                 }
                 lfm.Files.Add(lf);

@@ -30,10 +30,12 @@ namespace Metrics.Integrations.Linters.Phpmd
         [XmlText]
         public string Description
         {
-            get{
+            get
+            {
                 return descr_;
             }
-            set{
+            set
+            {
                 descr_ = value.Trim();
             }
         }
