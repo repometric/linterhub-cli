@@ -1,0 +1,6 @@
+{
+    "ReportType" : "xml",
+    "ToolPath" : "phpmd",
+    "TestPath" : "C:\\test",
+    "Rulesets" : "rulesets/codesize.xml"
+}

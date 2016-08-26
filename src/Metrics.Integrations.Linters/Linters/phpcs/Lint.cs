@@ -20,7 +20,7 @@ namespace Metrics.Integrations.Linters.Phpcs
                 lf.Path = kvp.Key;
                 foreach (var error in kvp.Value.Messages)
                 {
-                    LinterFileModel.Error le = new LinterFileModel.Error();
+                    LinterError le = new LinterError();
                     le.Message = error.Message;
                     var lr = new LinterFileModel.Rule();
                     lr.Name = error.Source;
@@ -31,13 +31,19 @@ namespace Metrics.Integrations.Linters.Phpcs
                     li.End = error.Column;
                     le.Column = li;
                     if(error.Type == "ERROR")
-                        le.Type = LinterFileModel.ErrorType.Error;
-                    else le.Type = LinterFileModel.ErrorType.Warning;
+                        le.Type = LinterError.ErrorType.Error;
+                    else le.Type = LinterError.ErrorType.Warning;
                     lf.Errors.Add(le);
                 }
                 lfm.Files.Add(lf);
             }
             return lfm;
+        }
+
+        public class LinterError : LinterFileModel.Error
+        {
+            public ErrorType Type;
+            public enum ErrorType { Warning, Error };
         }
     }
 }

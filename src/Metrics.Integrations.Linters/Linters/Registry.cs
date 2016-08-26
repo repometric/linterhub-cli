@@ -23,7 +23,14 @@
                     Linter = typeof(Phpcs.Lint),
                     Args = typeof(Phpcs.LintArgs),
                     Result = typeof(Phpcs.LintResult),
-                    Model = typeof(Phpcs.LintResult)
+                    Model = typeof(LinterFileModel)
+                },
+                new Record {
+                    Name = "phpmd",
+                    Linter = typeof(Phpmd.Lint),
+                    Args = typeof(Phpmd.LintArgs),
+                    Result = typeof(Phpmd.LintResult),
+                    Model = typeof(Phpmd.LintResult)
                 }
             };
         }
