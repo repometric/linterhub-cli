@@ -31,7 +31,7 @@ namespace Metrics.Integrations.Linters.Phpcs
                     li.Start = error.Column;
                     li.End = error.Column;
                     le.Column = li;
-                    if(error.Type == "ERROR")
+                    if(error.Type == LinterError.ERROR)
                         le.Type = LinterError.ErrorType.Error;
                     else le.Type = LinterError.ErrorType.Warning;
                     lf.Errors.Add(le);
@@ -44,6 +44,7 @@ namespace Metrics.Integrations.Linters.Phpcs
         public class LinterError : LinterFileModel.Error
         {
             public ErrorType Type;
+            public const string ERROR = "ERROR";
             public enum ErrorType { Warning, Error };
         }
     }
