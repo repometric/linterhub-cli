@@ -28,7 +28,8 @@ namespace Metrics.Integrations.Linters.Phpmd
         public int Priority { get; set; }
         private string descr_;
         [XmlText]
-        public string Description {
+        public string Description
+        {
             get{
                 return descr_;
             }

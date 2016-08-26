@@ -11,7 +11,8 @@ namespace Metrics.Integrations.Linters.Phpcs
             return stream.DeserializeAsJson<LintResult>();
         }
 
-        public override ILinterModel Map(ILinterResult result) {
+        public override ILinterModel Map(ILinterResult result)
+        {
             var res = (LintResult)result;
             LinterFileModel lfm = new LinterFileModel();
             foreach (KeyValuePair<string, Phpcs.File> kvp in res.Files)

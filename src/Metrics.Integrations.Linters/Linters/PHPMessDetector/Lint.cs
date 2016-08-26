@@ -15,7 +15,8 @@ namespace Metrics.Integrations.Linters.Phpmd
             return (LintResult)deserializer.Deserialize(stream);
         }
 
-        public override ILinterModel Map(ILinterResult result) {
+        public override ILinterModel Map(ILinterResult result)
+        {
             var res = (LintResult)result;
             LinterFileModel lfm = new LinterFileModel();
             foreach (var file in res.FilesList)
@@ -49,7 +50,8 @@ namespace Metrics.Integrations.Linters.Phpmd
         public class LinterError : LinterFileModel.Error
         {
             public Location ErrorLocation;
-            public class Location{
+            public class Location
+            {
                 public string Class;
                 public string Method;
                 public string Package;
