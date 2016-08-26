@@ -6,7 +6,7 @@ namespace Metrics.Integrations.Linters.Phpmd
     using System.Xml.Serialization;
 
     [XmlRoot(ElementName="pmd")]
-    public class LintResult : ILinterResult, ILinterModel
+    public class LintResult : ILinterResult
     {
         [XmlElement("file")]
         public List<File> FilesList = new List<File>(); 
