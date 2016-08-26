@@ -1,4 +1,4 @@
-﻿namespace Metrics.Intergations.Linters
+﻿namespace Metrics.Integrations.Linters
 {
     using System.Collections.Generic;
 

@@ -1,4 +1,4 @@
-﻿namespace Metrics.Intergations
+﻿namespace Metrics.Integrations
 {
     using System;
     using System.IO;
