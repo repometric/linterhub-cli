@@ -10,7 +10,7 @@ namespace Metrics.Integrations.Linters.Phpcs
         public string Source { get; set; }
         [JsonProperty("severity")]
         public int Severity { get; set; }
-        [JsonProperty("type")] 
+        [JsonProperty("type")]
         public string Type { get; set; }
         [JsonProperty("line")]
         public int Line { get; set; } 

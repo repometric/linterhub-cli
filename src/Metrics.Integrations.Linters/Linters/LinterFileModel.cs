@@ -22,13 +22,16 @@
             }
         }
 
+        public enum ErrorType { Warning, Error };
+
         public class Error
         {
             public string Message { get; set; }
             public Rule Rule { get; set; }
             public int Line { get; set; }
-            public Interval Collum { get; set; }
+            public Interval Column { get; set; }
             public Interval Row { get; set; }
+            public ErrorType Type { get; set; }
         }
 
         public class Rule

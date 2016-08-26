@@ -3,7 +3,7 @@ namespace Metrics.Integrations.Linters.Phpcs
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class LintResult : ILinterResult, ILinterModel
+    public class LintResult : ILinterResult
     {
         [JsonProperty("totals")]
         public Totals Total { get; set; }
