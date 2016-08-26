@@ -18,13 +18,12 @@
         {
             return new[]
             {
-                new Record
-                {
-                    Name = "default",
-                    Linter = typeof(ILinter),
-                    Args = typeof(ILinterArgs),
-                    Result = typeof(ILinterResult),
-                    Model = typeof(ILinterModel)
+                new Record {
+                    Name = "phpcs",
+                    Linter = typeof(Metrics.Integrations.Linters.Phpcs.Lint),
+                    Args = typeof(Metrics.Integrations.Linters.Phpcs.LintArgs),
+                    Result = typeof(Metrics.Integrations.Linters.Phpcs.LintResult),
+                    Model = typeof(Metrics.Integrations.Linters.Phpcs.LintResult)
                 }
             };
         }

@@ -56,8 +56,8 @@
 
         private static IDictionary<ArgAttribute, object> GetProperties<T>(T configuration)
         {
-            return typeof(T)
-                .GetTypeInfo()
+            return configuration
+                .GetType()
                 .GetProperties()
                 .Select(x => new { Arg = x.GetCustomAttribute<ArgAttribute>(), Value = x.GetValue(configuration) })
                 .Where(x => x.Arg != null)
