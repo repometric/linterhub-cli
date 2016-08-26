@@ -50,8 +50,8 @@
             const string template = "{0}{1}{2}";
             return string.Format(template, 
                 arg.Key.Name,
-                arg.Key.AddValue ? arg.Key.ValueSeparator : null,
-                arg.Key.AddValue ? arg.Value : null);
+                arg.Key.Add ? arg.Key.Separator : null,
+                arg.Key.Add ? arg.Value : null);
         }
 
         private static IDictionary<ArgAttribute, object> GetProperties<T>(T configuration)

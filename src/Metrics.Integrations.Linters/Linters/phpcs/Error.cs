@@ -1,9 +1,7 @@
-using System;
-using Metrics.Integrations.Linters;
-using Newtonsoft.Json;
-
 namespace Metrics.Integrations.Linters.Phpcs
 {
+    using Newtonsoft.Json;
+
     public class Error
     {
         [JsonProperty("message")]

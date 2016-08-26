@@ -1,10 +1,8 @@
-using System;
-using System.Collections.Generic;
-using Metrics.Integrations.Linters;
-using Newtonsoft.Json;
-
 namespace Metrics.Integrations.Linters.Phpcs
 {
+    using System.Collections.Generic;
+    using Newtonsoft.Json;
+
     public class LintResult : ILinterResult, ILinterModel
     {
         [JsonProperty("totals")]

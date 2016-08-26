@@ -67,7 +67,6 @@ namespace Metrics.Integrations.Linters.Phpcs
         /// </summary>
         [Arg("--bootstrap", separator: "=", order: 1)]
         public string Bootstrap { get; set; } 
- 
 
         /// <summary>
         /// Tool path
