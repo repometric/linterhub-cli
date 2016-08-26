@@ -20,10 +20,10 @@
             {
                 new Record {
                     Name = "phpcs",
-                    Linter = typeof(Metrics.Integrations.Linters.Phpcs.Lint),
-                    Args = typeof(Metrics.Integrations.Linters.Phpcs.LintArgs),
-                    Result = typeof(Metrics.Integrations.Linters.Phpcs.LintResult),
-                    Model = typeof(Metrics.Integrations.Linters.Phpcs.LintResult)
+                    Linter = typeof(Phpcs.Lint),
+                    Args = typeof(Phpcs.LintArgs),
+                    Result = typeof(Phpcs.LintResult),
+                    Model = typeof(Phpcs.LintResult)
                 }
             };
         }
