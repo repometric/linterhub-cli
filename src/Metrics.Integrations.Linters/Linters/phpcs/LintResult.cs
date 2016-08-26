@@ -5,6 +5,9 @@ namespace Metrics.Integrations.Linters.Phpcs
 
     public class LintResult : ILinterResult
     {
+        /// <summary>
+        /// Information about all task
+        /// </summary>
         [JsonProperty("totals")]
         public Totals Total { get; set; }
         [JsonProperty("files")]
