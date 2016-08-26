@@ -22,7 +22,7 @@
             var argBuilder = new ArgBuilder();
             var cmd = argBuilder.Build(args);
             var wrapper = new CmdWrapper();
-            var run = wrapper.RunExecutable("cmd.exe", cmd);
+            var run = wrapper.RunExecutable(@"C:\WINDOWS\system32\cmd.exe", "/C " + cmd);
             // TODO: Read stream from stdout.
             using (var stream = new MemoryStream(Encoding.UTF8.GetBytes(run.Output.ToString())))
             {

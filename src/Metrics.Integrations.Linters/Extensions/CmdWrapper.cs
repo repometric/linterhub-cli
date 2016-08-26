@@ -60,7 +60,6 @@
                 runResults.RunException = e;
                 runResults.ExitCode = -1;
             }
-
             return runResults;
         }
 
