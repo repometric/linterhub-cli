@@ -19,5 +19,11 @@ namespace Metrics.Integrations.Linters.Phpmetrics
         /// </summary>
         [Arg("--report-json", separator: "=", order: 1)]
         public string OutputFile { get; set; }
+
+        [Arg("--extensions", separator: "=", order: 1)]
+        public string Extensions { get; set; }
+
+        [Arg("--excluded-dirs ", separator: "=", order: 1)]
+        public string ExcludedDirectories { get; set; }
     }
 }
