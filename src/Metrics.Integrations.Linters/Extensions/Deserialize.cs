@@ -2,7 +2,9 @@
 {
     using System.IO;
     using Newtonsoft.Json;
-
+    using System.Xml;
+    using System.Xml.Serialization;
+    
     public static class Deserialize
     {
         public static T DeserializeAsJson<T>(this Stream self)
@@ -13,6 +15,12 @@
             {
                 return serializer.Deserialize<T>(jsonTextReader);
             }
+        }
+
+        public static T DeserializeAsXml<T>(this Stream self)
+        {
+            var deserializer = new XmlSerializer(typeof(T));
+            return (T)deserializer.Deserialize(self);
         }
     }
 }
