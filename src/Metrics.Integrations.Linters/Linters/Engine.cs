@@ -4,6 +4,7 @@
     using System.IO;
     using System.Linq;
     using System.Text;
+    using System.Reflection;
     using Extensions;
     using Newtonsoft.Json;
 
@@ -24,7 +25,17 @@
             var wrapper = new CmdWrapper();
             var run = wrapper.RunExecutable(@"C:\WINDOWS\system32\cmd.exe", "/C " + cmd);
             // TODO: Read stream from stdout.
-            using (var stream = new MemoryStream(Encoding.UTF8.GetBytes(run.Output.ToString())))
+            var Output = "";
+            var propertyInfo = args.GetType().GetProperty("OutputFile");
+            if(propertyInfo != null)
+            {
+                Output = File.ReadAllText((string)propertyInfo.GetValue(args, null));
+                File.Delete((string)propertyInfo.GetValue(args, null));
+            }
+            else
+                Output = run.Output.ToString();
+
+            using (var stream = new MemoryStream(Encoding.UTF8.GetBytes(Output)))
             {
                 var result = linter.Parse(stream, args);
                 var map = linter.Map(result);

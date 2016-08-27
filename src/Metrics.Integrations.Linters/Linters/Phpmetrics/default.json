@@ -1,0 +1,5 @@
+{
+    "ToolPath" : "phpmetrics",
+    "TestPath" : "C:\\test.php",
+    "OutputFile" : "myreport.json"
+}
