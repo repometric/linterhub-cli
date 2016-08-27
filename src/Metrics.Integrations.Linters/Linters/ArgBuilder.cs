@@ -26,6 +26,12 @@
 
         public string Build<T>(T configuration)
         {
+            var provider = configuration as IArgProvider;
+            if (provider != null)
+            {
+                return provider.Build();
+            }
+
             var properties = GetProperties(configuration);
             var values = properties.Where(x => IsInclude(x.Value));
             
