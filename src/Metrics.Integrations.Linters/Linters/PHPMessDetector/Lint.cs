@@ -4,15 +4,13 @@ namespace Metrics.Integrations.Linters.Phpmd
     using Extensions;
     using System.Collections.Generic;
     using System.Text;
-    using System.Xml;
-    using System.Xml.Serialization;
     using System.IO;
+
     public class Lint : Linter
     {
         public override ILinterResult Parse(Stream stream)
         {
-            XmlSerializer deserializer = new XmlSerializer(typeof(LintResult));
-            return (LintResult)deserializer.Deserialize(stream);
+            return stream.DeserializeAsXml<LintResult>();
         }
 
         public override ILinterModel Map(ILinterResult result)
@@ -25,23 +23,26 @@ namespace Metrics.Integrations.Linters.Phpmd
                 {
                     Path = file.FileName
                 };
+                //file.ViolataionsList.Select(x => new LinterError { ... })
                 foreach (var error in file.ViolationsList)
                 {
-                    LinterError le = new LinterError();
-                    le.Row = new LinterFileModel.Interval 
-                    { 
-                        Start = error.BeginLine, 
-                        End = error.EndLine 
-                    };
-                    le.Message = error.Description;
-                    le.Rule = new LinterFileModel.Rule(){
-                        Name = error.Rule,
-                        Namespace = error.RuleSet
-                    };
-                    le.ErrorLocation = new LinterError.Location{
-                        Class = error.Class,
-                        Method = error.Method,
-                        Package = error.Package
+                    LinterError le = new LinterError
+                    {
+                        Row = new LinterFileModel.Interval 
+                        { 
+                            Start = error.BeginLine, 
+                            End = error.EndLine 
+                        },
+                        Message = error.Description.Trim(),
+                        Rule = new LinterFileModel.Rule(){
+                            Name = error.Rule,
+                            Namespace = error.RuleSet
+                        },
+                        ErrorLocation = new LinterError.Location{
+                            Class = error.Class,
+                            Method = error.Method,
+                            Package = error.Package
+                        }
                     };
                     lf.Errors.Add(le);
                 }

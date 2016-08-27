@@ -26,18 +26,7 @@ namespace Metrics.Integrations.Linters.Phpmd
         public string Method { get; set; }
         [XmlAttribute("priority")]
         public int Priority { get; set; }
-        private string descr_;
         [XmlText]
-        public string Description
-        {
-            get
-            {
-                return descr_;
-            }
-            set
-            {
-                descr_ = value.Trim();
-            }
-        }
+        public string Description { get; set; }
     }
 }

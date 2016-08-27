@@ -17,23 +17,26 @@ namespace Metrics.Integrations.Linters.Phpcs
             LinterFileModel lfm = new LinterFileModel();
             foreach (KeyValuePair<string, Phpcs.File> kvp in res.Files)
             {
-                LinterFileModel.File lf = new LinterFileModel.File();
-                lf.Path = kvp.Key;
+                LinterFileModel.File lf = new LinterFileModel.File
+                {
+                    Path = kvp.Key
+                };
                 foreach (var error in kvp.Value.Messages)
                 {
-                    LinterError le = new LinterError();
-                    le.Message = error.Message;
-                    var lr = new LinterFileModel.Rule();
-                    lr.Name = error.Source;
-                    le.Rule = lr;
-                    le.Line = error.Line;
-                    var li = new LinterFileModel.Interval();
-                    li.Start = error.Column;
-                    li.End = error.Column;
-                    le.Column = li;
-                    if(error.Type == LinterError.ERROR)
-                        le.Type = LinterError.ErrorType.Error;
-                    else le.Type = LinterError.ErrorType.Warning;
+                    LinterError le = new LinterError
+                    {
+                        Message = error.Message,
+                        Rule = new LinterFileModel.Rule
+                        {
+                            Name = error.Source
+                        },
+                        Line = error.Line,
+                        Column = new LinterFileModel.Interval{
+                            Start = error.Column,
+                            End = error.Column
+                        },
+                        Type = error.Type == LinterError.ERROR ? LinterError.ErrorType.Error : LinterError.ErrorType.Warning
+                    };
                     lf.Errors.Add(le);
                 }
                 lfm.Files.Add(lf);
