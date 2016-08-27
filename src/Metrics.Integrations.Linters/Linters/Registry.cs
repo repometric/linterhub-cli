@@ -18,19 +18,29 @@
         {
             return new[]
             {
-                new Record {
+                new Record
+                {
                     Name = "phpcs",
                     Linter = typeof(Phpcs.Lint),
                     Args = typeof(Phpcs.LintArgs),
                     Result = typeof(Phpcs.LintResult),
                     Model = typeof(LinterFileModel)
                 },
-                new Record {
+                new Record
+                {
                     Name = "phpmd",
                     Linter = typeof(Phpmd.Lint),
                     Args = typeof(Phpmd.LintArgs),
                     Result = typeof(Phpmd.LintResult),
-                    Model = typeof(Phpmd.LintResult)
+                    Model = typeof(LinterFileModel)
+                },
+                new Record
+                {
+                    Name = "phpmetrics",
+                    Linter = typeof(Phpmetrics.Lint),
+                    Args = typeof(Phpmetrics.LintArgs),
+                    Result = typeof(Phpmetrics.LintResult),
+                    Model = typeof(Phpmetrics.LintResult)
                 }
             };
         }
