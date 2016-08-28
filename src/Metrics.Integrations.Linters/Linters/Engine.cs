@@ -24,18 +24,22 @@
             var cmd = argBuilder.Build(args);
             var wrapper = new CmdWrapper();
             var run = wrapper.RunExecutable(@"C:\WINDOWS\system32\cmd.exe", "/C " + cmd);
-            // TODO: Read stream from stdout.
-            var Output = "";
+            
+            // TODO: Introduce interface or read and delete file from cmd
+            var output = "";
             var propertyInfo = args.GetType().GetProperty("OutputFile");
-            if(propertyInfo != null)
+            if (propertyInfo != null)
             {
-                Output = File.ReadAllText((string)propertyInfo.GetValue(args, null));
-                File.Delete((string)propertyInfo.GetValue(args, null));
+                output = File.ReadAllText((string) propertyInfo.GetValue(args, null));
+                File.Delete((string) propertyInfo.GetValue(args, null));
             }
             else
-                Output = run.Output.ToString();
+            {
+                output = run.Output.ToString();
+            }
 
-            using (var stream = new MemoryStream(Encoding.UTF8.GetBytes(Output)))
+            // TODO: Read stream from stdout.
+            using (var stream = new MemoryStream(Encoding.UTF8.GetBytes(output)))
             {
                 var result = linter.Parse(stream, args);
                 var map = linter.Map(result);

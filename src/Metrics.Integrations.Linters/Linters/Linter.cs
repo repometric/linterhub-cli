@@ -11,6 +11,10 @@
             return Parse(stream);
         }
 
-        public abstract ILinterModel Map(ILinterResult result);
+        public virtual ILinterModel Map(ILinterResult result)
+        {
+            var map = result as ILinterModel;
+            return map;
+        }
     }
 }
