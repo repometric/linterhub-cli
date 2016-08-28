@@ -1,4 +1,4 @@
-﻿namespace Metrics.Integrations
+﻿namespace Metrics.Integrations.Linters
 {
     using System;
     using System.IO;
