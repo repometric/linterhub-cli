@@ -3,9 +3,9 @@
     using System;
     using System.Collections.Generic;
 
-    internal static class Registry
+    public static class Registry
     {
-        internal class Record
+        public class Record
         {
             public string Name { get; set; }
             public Type Linter { get; set; }
@@ -14,7 +14,7 @@
             public Type Model { get; set; }
         }
 
-        internal static IEnumerable<Record> Get()
+        public static IEnumerable<Record> Get()
         {
             return new[]
             {
