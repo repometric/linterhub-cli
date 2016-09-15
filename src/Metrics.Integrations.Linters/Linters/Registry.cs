@@ -57,6 +57,14 @@
                     Args = typeof(Phpcpd.LintArgs),
                     Result = typeof(Phpcpd.LintResult),
                     Model = typeof(Phpcpd.LintResult)
+                },
+                new Record
+                {
+                    Name = "phpassumptions",
+                    Linter = typeof(PhpAssumptions.Lint),
+                    Args = typeof(PhpAssumptions.LintArgs),
+                    Result = typeof(PhpAssumptions.LintResult),
+                    Model = typeof(PhpAssumptions.LintResult)
                 }
             };
         }
