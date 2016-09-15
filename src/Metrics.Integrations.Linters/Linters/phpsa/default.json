@@ -1,0 +1,6 @@
+{
+  "OutputFile" : "C:\\xampp\\htdocs\\andrey\\file.json",
+  "ToolPath" : "C:\\xampp\\htdocs\\andrey\\vendor\\bin\\phpsa",
+  "TestPath": "C:\\test",
+  "Command": "check"
+}

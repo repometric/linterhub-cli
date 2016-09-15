@@ -41,6 +41,14 @@
                     Args = typeof(Phpmetrics.LintArgs),
                     Result = typeof(Phpmetrics.LintResult),
                     Model = typeof(Phpmetrics.LintResult)
+                },
+                new Record
+                {
+                    Name = "phpsa",
+                    Linter = typeof(Phpsa.Lint),
+                    Args = typeof(Phpsa.LintArgs),
+                    Result = typeof(Phpsa.LintResult),
+                    Model = typeof(Phpsa.LintResult)
                 }
             };
         }
