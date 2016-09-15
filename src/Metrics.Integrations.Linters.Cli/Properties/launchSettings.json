@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Metrics.Integrations.Linters.Cli": {
+      "commandName": "Project",
+      "commandLineArgs": "phpcpd C:\\Users\\xsofa\\Documents\\Integrations.Linters\\src\\Metrics.Integrations.Linters\\Linters\\phpcpd\\default.json"
+    }
+  }
+}

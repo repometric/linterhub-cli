@@ -1,22 +1,19 @@
-namespace Metrics.Integrations.Linters.Phpmetrics
+namespace Metrics.Integrations.Linters.Phpcpd
 {
     using Extensions;
-    using System.Collections.Generic;
     using System.IO;
 
     public class Lint : Linter
     {
         public override ILinterResult Parse(Stream stream)
         {
-            return new LintResult
-            {
-                FilesList = stream.DeserializeAsJson<List<File>>()
-            };
+            return stream.DeserializeAsXml<LintResult>();
         }
 
         public override ILinterModel Map(ILinterResult result)
         {
             return (ILinterModel)result;
         }
+
     }
 }
