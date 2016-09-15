@@ -1,0 +1,5 @@
+{
+  "OutputFile": "C:\\xampp\\htdocs\\phpcpd\\file.json",
+  "ToolPath": "C:\\xampp\\htdocs\\phpcpd\\vendor\\bin\\phpcpd",
+  "TestPath": "C:\\xampp\\htdocs\\DCMS-master"
+}

@@ -49,6 +49,14 @@
                     Args = typeof(Phpsa.LintArgs),
                     Result = typeof(Phpsa.LintResult),
                     Model = typeof(Phpsa.LintResult)
+                },
+                new Record
+                {
+                    Name = "phpcpd",
+                    Linter = typeof(Phpcpd.Lint),
+                    Args = typeof(Phpcpd.LintArgs),
+                    Result = typeof(Phpcpd.LintResult),
+                    Model = typeof(Phpcpd.LintResult)
                 }
             };
         }
