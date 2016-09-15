@@ -29,7 +29,40 @@ namespace Metrics.Integrations.Linters.Phpcf
 
         public override ILinterModel Map(ILinterResult result)
         {
-            return (ILinterModel)result;
+            var res = (LintResult)result;
+            LinterFileModel lfm = new LinterFileModel();
+
+            foreach (Warning e in res.WarningsList)
+            {
+                LinterFileModel.File lf;
+                if (!lfm.Files.Exists(x => x.Path == e.FilePath))
+                    lf = new LinterFileModel.File
+                    {
+                        Path = e.FilePath
+                    };
+                else
+                {
+                    lf = lfm.Files.Find(x => x.Path == e.FilePath);
+                    lfm.Files.Remove(lf);
+                }
+
+                lf.Errors.Add(new LinterError
+                {
+                    Message = e.Description,
+                    Line = System.Int32.Parse(e.Line),
+                    PhpVersion = e.PhpVersion,
+                    Advice = e.Advice
+                });
+                lfm.Files.Add(lf);
+            }
+
+            return lfm;
+        }
+
+        public class LinterError : LinterFileModel.Error
+        {
+            public string PhpVersion;
+            public string Advice;
         }
 
     }
