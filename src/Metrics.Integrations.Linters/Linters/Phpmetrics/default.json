@@ -1,5 +1,5 @@
 {
-  "ToolPath": "C:\\xampp\\htdocs\\phpmetrics\\vendor\\bin\\phpmetrics",
+  "ToolPath": "phpmetrics",
   "TestPath": "C:\\xampp\\htdocs\\DCMS-master",
-  "OutputFile": "c:\\xampp\\htdocs\\phpmetrics\\myreport.json"
+  "OutputFile": "myreport.json"
 }

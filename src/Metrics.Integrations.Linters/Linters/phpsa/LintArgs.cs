@@ -5,8 +5,15 @@ namespace Metrics.Integrations.Linters.Phpsa
         /// <summary>
         /// Report file
         /// </summary>
-        [Arg("--report-json", separator: "=", order: int.MaxValue)]
+        [Arg("--report-json", separator: "=", order: 1)]
         public string OutputFile { get; set; }
+
+        /// <summary>
+        /// Increase the verbosity of messages: 1 for normal output,
+        /// 2 for more verbose output and 3 for debug
+        /// </summary>
+        //[Arg("--verbose", separator: "=", order: 1)]
+        //public int Verbose { get; set; }
 
         /// <summary>
         /// Tool path
@@ -23,7 +30,7 @@ namespace Metrics.Integrations.Linters.Phpsa
         /// <summary>
         /// Tested project path
         /// </summary>
-        [Arg("", order: 0)]
+        [Arg("", order: int.MaxValue)]
         public string TestPath { get; set; }
     }
 }
