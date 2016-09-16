@@ -16,43 +16,47 @@ namespace Metrics.Integrations.Linters.htmlhint
 
         public override ILinterModel Map(ILinterResult result)
         {
-            return (ILinterModel)result;
-            /*var res = (LintResult)result;
+            var res = (LintResult)result;
             LinterFileModel lfm = new LinterFileModel();
-            foreach (KeyValuePair<string, Phpcs.File> kvp in res.Files)
+            foreach(File f in res.FilesList)
             {
                 LinterFileModel.File lf = new LinterFileModel.File
                 {
-                    Path = kvp.Key
+                    Path = f.FilePath
                 };
-                foreach (var error in kvp.Value.Messages)
-                {
-                    LinterError le = new LinterError
+                foreach(Error e in f.Messages)
+                    lf.Errors.Add(new LinterError
                     {
-                        Message = error.Message,
+                        Column = new LinterFileModel.Interval
+                        {
+                            Start = e.Column,
+                            End = e.Column
+                        },
+                        Line = e.Line,
+                        Message = e.Message,
+                        Evidence = e.Evidence,
+                        Type = e.Type,
+                        Raw = e.Raw,
                         Rule = new LinterFileModel.Rule
                         {
-                            Name = error.Source
-                        },
-                        Line = error.Line,
-                        Column = new LinterFileModel.Interval{
-                            Start = error.Column,
-                            End = error.Column
-                        },
-                        Type = error.Type == LinterError.ERROR ? LinterError.ErrorType.Error : LinterError.ErrorType.Warning
-                    };
-                    lf.Errors.Add(le);
-                }
+                            Name = e.Rule.Description,
+                            Id = e.Rule.Id
+                        }
+                    });
                 lfm.Files.Add(lf);
             }
-            return lfm;*/
+            return lfm;
         }
 
-        /*public class LinterError : LinterFileModel.Error
+
+        /// <summary>
+        /// For documentation look at Error class
+        /// </summary>
+        public class LinterError : LinterFileModel.Error
         {
-            public ErrorType Type;
-            public const string ERROR = "ERROR";
-            public enum ErrorType { Warning, Error };
-        }*/
+            public string Type;
+            public string Evidence;
+            public string Raw;
+        }
     }
 }

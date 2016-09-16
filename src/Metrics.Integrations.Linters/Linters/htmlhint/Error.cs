@@ -26,6 +26,6 @@ namespace Metrics.Integrations.Linters.htmlhint
         public int Line { get; set; }
 
         [JsonProperty("rule")]
-        public Rule Rule { get; set; } 
+        public LRule Rule { get; set; } 
     }
 }

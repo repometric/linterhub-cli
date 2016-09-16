@@ -2,7 +2,7 @@ namespace Metrics.Integrations.Linters.htmlhint
 {
     using Newtonsoft.Json;
 
-    public class Rule
+    public class LRule
     {
         [JsonProperty("id")]
         public string Id { get; set; }
