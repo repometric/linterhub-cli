@@ -89,6 +89,14 @@
                     Args = typeof(phpcheckstyle.LintArgs),
                     Result = typeof(phpcheckstyle.LintResult),
                     Model = typeof(phpcheckstyle.LintResult)
+                },
+                new Record
+                {
+                    Name = "coffeelint",
+                    Linter = typeof(coffeelint.Lint),
+                    Args = typeof(coffeelint.LintArgs),
+                    Result = typeof(coffeelint.LintResult),
+                    Model = typeof(coffeelint.LintResult)
                 }
             };
         }
