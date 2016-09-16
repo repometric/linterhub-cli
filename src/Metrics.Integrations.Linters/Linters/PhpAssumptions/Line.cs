@@ -10,6 +10,10 @@ namespace Metrics.Integrations.Linters.PhpAssumptions
         /// </summary>
         [XmlAttribute("message")]
         public string Message { get; set; }
+
+        /// <summary>
+        ///  Number of this Line in a file
+        /// </summary>
         [XmlAttribute("number")]
         public string LineNumber { get; set; }
     }

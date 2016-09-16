@@ -7,6 +7,9 @@ namespace Metrics.Integrations.Linters.htmlhint
         [JsonProperty("message")]
         public string Message { get; set; }
 
+        /// <summary>
+        /// Changed code
+        /// </summary>
         [JsonProperty("evidence")]
         public string Evidence { get; set; }
 
@@ -16,6 +19,9 @@ namespace Metrics.Integrations.Linters.htmlhint
         [JsonProperty("type")]
         public string Type { get; set; }
 
+        /// <summary>
+        /// Wrong code
+        /// </summary>
         [JsonProperty("raw")]
         public string Raw { get; set; }
 

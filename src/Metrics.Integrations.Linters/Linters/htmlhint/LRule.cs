@@ -6,6 +6,10 @@ namespace Metrics.Integrations.Linters.htmlhint
     {
         [JsonProperty("id")]
         public string Id { get; set; }
+
+        /// <summary>
+        /// Rule description
+        /// </summary>
         [JsonProperty("description")]
         public string Description { get; set; }
 

@@ -62,6 +62,10 @@ namespace Metrics.Integrations.Linters.Phpcf
         public class LinterError : LinterFileModel.Error
         {
             public string PhpVersion;
+
+            /// <summary>
+            ///  Advice how to improve code
+            /// </summary>
             public string Advice;
         }
 

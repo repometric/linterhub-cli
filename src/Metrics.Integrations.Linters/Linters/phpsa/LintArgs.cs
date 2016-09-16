@@ -9,11 +9,11 @@ namespace Metrics.Integrations.Linters.Phpsa
         public string OutputFile { get; set; }
 
         /// <summary>
-        /// Increase the verbosity of messages: 1 for normal output,
-        /// 2 for more verbose output and 3 for debug
+        /// Increase the verbosity of messages: -v for normal output,
+        /// -vv for more verbose output and -vvv for debug
         /// </summary>
-        //[Arg("--verbose", separator: "=", order: 1)]
-        //public int Verbose { get; set; }
+        [Arg("", separator: "", order: 1)]
+        public string Verbose { get; set; }
 
         /// <summary>
         /// Tool path
