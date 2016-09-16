@@ -1,0 +1,6 @@
+{
+  "OutputDir": "c:\\xampp\\htdocs\\_phpcheckstyle\\report\\",
+  "ToolPath": "php C:\\xampp\\htdocs\\_phpcheckstyle\\run.php",
+  "TestPath": "C:\\xampp\\htdocs\\DCMS-master",
+  "ReportFormat":  "xml"
+}

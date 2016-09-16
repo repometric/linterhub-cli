@@ -81,6 +81,14 @@
                     Args = typeof(htmlhint.LintArgs),
                     Result = typeof(htmlhint.LintResult),
                     Model = typeof(htmlhint.LintResult)
+                },
+                new Record
+                {
+                    Name = "phpcheckstyle",
+                    Linter = typeof(phpcheckstyle.Lint),
+                    Args = typeof(phpcheckstyle.LintArgs),
+                    Result = typeof(phpcheckstyle.LintResult),
+                    Model = typeof(phpcheckstyle.LintResult)
                 }
             };
         }

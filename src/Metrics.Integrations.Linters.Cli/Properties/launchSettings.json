@@ -2,7 +2,7 @@
   "profiles": {
     "Metrics.Integrations.Linters.Cli": {
       "commandName": "Project",
-      "commandLineArgs": "htmlhint C:\\Users\\xsofa\\Documents\\Integrations.Linters\\src\\Metrics.Integrations.Linters\\Linters\\htmlhint\\default.json"
+      "commandLineArgs": "phpcheckstyle C:\\Users\\xsofa\\Documents\\Integrations.Linters\\src\\Metrics.Integrations.Linters\\Linters\\phpcheckstyle\\default.json"
     }
   }
 }
