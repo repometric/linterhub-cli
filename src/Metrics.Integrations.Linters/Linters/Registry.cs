@@ -73,6 +73,14 @@
                     Args = typeof(Phpcf.LintArgs),
                     Result = typeof(Phpcf.LintResult),
                     Model = typeof(Phpcf.LintResult)
+                },
+                new Record
+                {
+                    Name = "htmlhint",
+                    Linter = typeof(htmlhint.Lint),
+                    Args = typeof(htmlhint.LintArgs),
+                    Result = typeof(htmlhint.LintResult),
+                    Model = typeof(htmlhint.LintResult)
                 }
             };
         }
