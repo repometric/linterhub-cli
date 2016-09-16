@@ -18,13 +18,13 @@ namespace Metrics.Integrations.Linters.htmlhint
         {
             var res = (LintResult)result;
             LinterFileModel lfm = new LinterFileModel();
-            foreach(File f in res.FilesList)
+            res.FilesList.ForEach(f =>
             {
                 LinterFileModel.File lf = new LinterFileModel.File
                 {
                     Path = f.FilePath
                 };
-                foreach(Error e in f.Messages)
+                f.Messages.ForEach(e => 
                     lf.Errors.Add(new LinterError
                     {
                         Column = new LinterFileModel.Interval
@@ -42,9 +42,10 @@ namespace Metrics.Integrations.Linters.htmlhint
                             Name = e.Rule.Description,
                             Id = e.Rule.Id
                         }
-                    });
+                    })
+                );
                 lfm.Files.Add(lf);
-            }
+            });
             return lfm;
         }
 
