@@ -2,6 +2,8 @@ namespace Metrics.Integrations.Linters.PhpAssumptions
 {
     using Extensions;
     using System.IO;
+    using System;
+    using System.Linq;
 
     public class Lint : Linter
     {
@@ -12,7 +14,20 @@ namespace Metrics.Integrations.Linters.PhpAssumptions
 
         public override ILinterModel Map(ILinterResult result)
         {
-            return (ILinterModel)result;
+            LinterFileModel lfm = new LinterFileModel();
+            var res = (LintResult)result;
+            res.FilesList.ForEach(x => {
+                lfm.Files.Add(new LinterFileModel.File
+                {
+                    Path = x.FilePath,
+                    Errors = x.LinesList.Select(z => new LinterFileModel.Error()
+                    {
+                        Message = z.Message,
+                        Line = Int32.Parse(z.LineNumber)
+                    }).ToList()
+                });
+            });
+            return lfm;
         }
 
     }

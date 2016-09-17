@@ -16,6 +16,24 @@ namespace Metrics.Integrations.Linters.coffeelint
         public string ReportType { get; set; }
 
         /// <summary>
+        ///  Specify a custom configuration file.
+        /// </summary>
+        [Arg("--file", order: 0)]
+        public string ConfigFile { get; set; }
+
+        /// <summary>
+        ///  Specify a custom rule or directory of rules.
+        /// </summary>
+        [Arg("--rules", order: 0)]
+        public string CustomRules { get; set; }
+
+        /// <summary>
+        ///  Specify an additional file extension, separated by comma.
+        /// </summary>
+        [Arg("--ext", order: 0)]
+        public string Extensions { get; set; }
+
+        /// <summary>
         /// Tested project path
         /// </summary>
         [Arg("", separator: "", order: int.MaxValue)]

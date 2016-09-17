@@ -5,7 +5,7 @@ namespace Metrics.Integrations.Linters.PhpAssumptions
     using System.Xml.Serialization;
 
     [XmlRoot(ElementName="phpa")]
-    public class LintResult : ILinterResult, ILinterModel
+    public class LintResult : ILinterResult
     {
         /// <summary>
         ///  The percentage of "bad" code
