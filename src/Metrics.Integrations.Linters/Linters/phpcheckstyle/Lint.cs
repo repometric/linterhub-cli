@@ -23,7 +23,7 @@ namespace Metrics.Integrations.Linters.phpcheckstyle
                 };
                 foreach (Error e in f.ErrorsList)
                 {
-                    LinterError le = new LinterError
+                    LinterFileModel.Error le = new LinterFileModel.Error
                     {
                         Severity = e.Severity,
                         Message = e.Message,
@@ -42,7 +42,7 @@ namespace Metrics.Integrations.Linters.phpcheckstyle
                             End = Int32.Parse(e.Column)
                         }
                     };
-                    LinterError le_ = (LinterError)lf.Errors.Find(x => 
+                    var le_ = (LinterFileModel.Error)lf.Errors.Find(x => 
                         x.Message == le.Message && 
                         x.Rule == le.Rule &&
                         (x.Row.Start == le.Row.Start + 1) || (x.Row.End == le.Row.End - 1) 
@@ -59,11 +59,6 @@ namespace Metrics.Integrations.Linters.phpcheckstyle
                 lfm.Files.Add(lf);
             }
             return lfm;
-        }
-
-        public class LinterError : LinterFileModel.Error
-        {
-            public string Severity;
         }
 
     }
