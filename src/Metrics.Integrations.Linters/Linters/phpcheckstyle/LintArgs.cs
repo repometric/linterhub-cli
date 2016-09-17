@@ -1,5 +1,7 @@
 namespace Metrics.Integrations.Linters.phpcheckstyle
 {
+    using System.Collections.Generic;
+
     public class LintArgs : ILinterArgs
     {
         /// <summary>
@@ -31,7 +33,7 @@ namespace Metrics.Integrations.Linters.phpcheckstyle
         ///  A directory or file that needs to be excluded (can be repeated for multiple exclusions).
         /// </summary>
         [Arg("--exclude", order: int.MaxValue)]
-        public string Exclude { get; set; }
+        public List<string> Exclude { get; set; }
 
         /// <summary>
         /// Tested project path
