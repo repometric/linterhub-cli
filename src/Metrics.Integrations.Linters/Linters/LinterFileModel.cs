@@ -27,6 +27,7 @@
             public string Message { get; set; }
             public Rule Rule { get; set; }
             public string Severity { get; set; }
+            public string Evidence { get; set; }
             public int Line { get; set; }
             public Interval Column { get; set; }
             public Interval Row { get; set; }

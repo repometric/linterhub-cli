@@ -38,7 +38,7 @@
 
             var properties = GetProperties(configuration);
             var values = properties.Where(x => IsInclude(x.Value));
-            return string.Join(" ", properties.Select(BuildArgument));
+            return string.Join(" ", values.Select(BuildArgument));
         }
 
         private bool IsInclude(object value)

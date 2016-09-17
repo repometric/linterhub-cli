@@ -44,7 +44,8 @@ namespace Metrics.Integrations.Linters.csslint
                             Name = z.LRule.Name,
                             Browser = z.LRule.Browsers,
                             GithubLink = z.LRule.GithubUrl
-                        }
+                        },
+                        Evidence = z.Evidence
                     }).ToList()
                 });
             });

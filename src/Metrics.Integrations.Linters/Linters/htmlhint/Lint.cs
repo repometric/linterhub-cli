@@ -56,7 +56,6 @@ namespace Metrics.Integrations.Linters.htmlhint
         public class LinterError : LinterFileModel.Error
         {
             public string Type;
-            public string Evidence;
             public string Raw;
         }
     }
