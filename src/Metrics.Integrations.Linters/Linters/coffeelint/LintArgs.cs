@@ -9,7 +9,7 @@ namespace Metrics.Integrations.Linters.coffeelint
         public string ToolPath { get; set; }
 
         /// <summary>
-        ///  built in reporter (default, csv, jslint, checkstyle, raw),
+        ///  Built in reporter (default, csv, jslint, checkstyle, raw),
         ///  or module, or path to reporter file.
         /// </summary>
         [Arg("--reporter", order: 0)]

@@ -2,7 +2,6 @@ namespace Metrics.Integrations.Linters.PhpAssumptions
 {
     using Extensions;
     using System.IO;
-    using System;
     using System.Linq;
 
     public class Lint : Linter
@@ -23,7 +22,7 @@ namespace Metrics.Integrations.Linters.PhpAssumptions
                     Errors = x.LinesList.Select(z => new LinterFileModel.Error()
                     {
                         Message = z.Message,
-                        Line = Int32.Parse(z.LineNumber)
+                        Line = System.Int32.Parse(z.LineNumber)
                     }).ToList()
                 });
             });

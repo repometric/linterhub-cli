@@ -27,6 +27,6 @@ namespace Metrics.Integrations.Linters.PhpAssumptions
 
         [XmlArray("files")]
         [XmlArrayItem("file")]
-        public List<File> FilesList = new List<File>(); 
+        public List<File> FilesList; 
     }
 }

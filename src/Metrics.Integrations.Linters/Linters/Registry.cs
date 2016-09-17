@@ -97,6 +97,14 @@
                     Args = typeof(coffeelint.LintArgs),
                     Result = typeof(coffeelint.LintResult),
                     Model = typeof(coffeelint.LintResult)
+                },
+                new Record
+                {
+                    Name = "csslint",
+                    Linter = typeof(csslint.Lint),
+                    Args = typeof(csslint.LintArgs),
+                    Result = typeof(csslint.LintResult),
+                    Model = typeof(csslint.LintResult)
                 }
             };
         }

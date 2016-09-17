@@ -2,7 +2,6 @@
 {
     using System;
     using System.IO;
-    using Linters;
     using Newtonsoft.Json;
 
     internal class Program
