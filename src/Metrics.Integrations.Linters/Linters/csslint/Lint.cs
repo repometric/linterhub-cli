@@ -23,7 +23,7 @@ namespace Metrics.Integrations.Linters.csslint
                 lfm.Files.Add(new LinterFileModel.File
                 {
                     Path = x.FilePath,
-                    Errors = x.MessagesList.Select(z => new LinterFileModel.Error()
+                    Errors = x.MessagesList.Select(z => new LinterFileModel.Error
                     {
                         Message = z.ErrorMessage,
                         Column = new LinterFileModel.Interval
