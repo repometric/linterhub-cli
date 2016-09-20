@@ -9,9 +9,11 @@ namespace Metrics.Integrations.Linters.coffeelint
     {
         public override ILinterResult Parse(Stream stream)
         {
+            var csv = new CsvReader(new StreamReader(stream));
+            csv.Configuration.RegisterClassMap<WarningMap>();
             return new LintResult
             {
-                Records = new CsvReader(new StreamReader(stream)).GetRecords<Warning>().ToList()
+                Records = csv.GetRecords<Warning>().ToList()
             };
         }
 
@@ -20,27 +22,26 @@ namespace Metrics.Integrations.Linters.coffeelint
             LinterFileModel lfm = new LinterFileModel();
             var res = (LintResult)result;
             res.Records.ForEach(x => {
-                if (!lfm.Files.Exists(f => f.Path == x.path))
+                if (!lfm.Files.Exists(f => f.Path == x.Path))
                     lfm.Files.Add(new LinterFileModel.File
                     {
-                        Path = x.path
+                        Path = x.Path
                     });
 
-                lfm.Files.Find(f => f.Path == x.path).Errors.Add(new LinterFileModel.Error
+                lfm.Files.Find(f => f.Path == x.Path).Errors.Add(new LinterFileModel.Error
                 {
                     Row = new LinterFileModel.Interval
                     {
-                        Start = Int32.Parse(x.lineNumber),
-                        End = Math.Max(Int32.Parse(x.lineNumber), x.lineNumberEnd != "" ? Int32.Parse(x.lineNumberEnd) : 0)
+                        Start = Int32.Parse(x.StartLine),
+                        End = Math.Max(Int32.Parse(x.StartLine), x.EndLine != string.Empty ? Int32.Parse(x.EndLine) : 0)
                     },
-                    Message = x.message,
-                    Severity = x.level,
-                    Line = Int32.Parse(x.lineNumber)
+                    Message = x.Message,
+                    Severity = x.Severity,
+                    Line = Int32.Parse(x.StartLine)
                 });
 
             });
             return lfm;
         }
-
     }
 }

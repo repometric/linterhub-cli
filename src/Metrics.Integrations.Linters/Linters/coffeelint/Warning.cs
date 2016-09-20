@@ -2,10 +2,10 @@ namespace Metrics.Integrations.Linters.coffeelint
 {
     public class Warning
     {
-        public string path { get; set; }
-        public string lineNumber { get; set; }
-        public string lineNumberEnd { get; set; }
-        public string level { get; set; }
-        public string message { get; set; }
+        public string Path { get; set; }
+        public string StartLine { get; set; }
+        public string EndLine { get; set; }
+        public string Severity { get; set; }
+        public string Message { get; set; }
     }
 }

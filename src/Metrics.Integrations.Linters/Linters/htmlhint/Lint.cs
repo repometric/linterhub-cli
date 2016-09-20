@@ -3,6 +3,7 @@ namespace Metrics.Integrations.Linters.htmlhint
     using System.IO;
     using Extensions;
     using System.Collections.Generic;
+    using System.Linq;
 
     public class Lint : Linter
     {
@@ -16,16 +17,12 @@ namespace Metrics.Integrations.Linters.htmlhint
 
         public override ILinterModel Map(ILinterResult result)
         {
-            var res = (LintResult)result;
-            LinterFileModel lfm = new LinterFileModel();
-            res.FilesList.ForEach(f =>
+            return new LinterFileModel
             {
-                LinterFileModel.File lf = new LinterFileModel.File
+                Files = ((LintResult)result).FilesList.Select(f => new LinterFileModel.File
                 {
-                    Path = f.FilePath
-                };
-                f.Messages.ForEach(e => 
-                    lf.Errors.Add(new LinterError
+                    Path = f.FilePath,
+                    Errors = f.Messages.Select(e => new LinterError
                     {
                         Column = new LinterFileModel.Interval
                         {
@@ -42,11 +39,9 @@ namespace Metrics.Integrations.Linters.htmlhint
                             Name = e.Rule.Description,
                             Id = e.Rule.Id
                         }
-                    })
-                );
-                lfm.Files.Add(lf);
-            });
-            return lfm;
+                    }).Cast<LinterFileModel.Error>().ToList()
+                }).ToList()
+            };
         }
 
 
