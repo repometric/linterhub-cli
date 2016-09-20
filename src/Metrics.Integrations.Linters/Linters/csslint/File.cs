@@ -6,9 +6,9 @@ namespace Metrics.Integrations.Linters.csslint
     public class File
     {
         [JsonProperty("filename")]
-        public string FilePath;
+        public string FilePath { get; set; }
 
         [JsonProperty("messages")]
-        public List<Message> MessagesList;
+        public List<Message> MessagesList { get; set; }
     }
 }

@@ -5,9 +5,9 @@ namespace Metrics.Integrations.Linters.jshint
     using System.Xml.Serialization;
 
     [XmlRoot(ElementName="checkstyle")]
-    public class LintResult : ILinterResult, ILinterModel
+    public class LintResult : ILinterResult
     {
         [XmlElement("file")]
-        public List<File> FilesList = new List<File>(); 
+        public List<File> FilesList { get; set; }
     }
 }

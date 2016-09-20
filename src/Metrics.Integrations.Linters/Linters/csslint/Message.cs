@@ -8,30 +8,30 @@ namespace Metrics.Integrations.Linters.csslint
         ///  Error, Warning etc
         /// </summary>
         [JsonProperty("type")]
-        public string Severity;
+        public string Severity { get; set; }
 
         [JsonProperty("line")]
-        public int Line;
+        public int Line { get; set; }
 
         [JsonProperty("col")]
-        public int Column;
+        public int Column { get; set; }
 
         /// <summary>
         ///  Wrong code
         /// </summary>
         [JsonProperty("evidence")]
-        public string Evidence;
+        public string Evidence { get; set; }
 
         /// <summary>
         ///  Description of problem
         /// </summary>
         [JsonProperty("message")]
-        public string ErrorMessage;
+        public string ErrorMessage { get; set; }
 
         /// <summary>
         ///  Rule details
         /// </summary>
         [JsonProperty("rule")]
-        public Rule LRule;
+        public Rule LRule { get; set; }
     }
 }

@@ -1,6 +1,5 @@
 namespace Metrics.Integrations.Linters.Phpcf
 {
-
     public class Warning
     {
         /// <summary>

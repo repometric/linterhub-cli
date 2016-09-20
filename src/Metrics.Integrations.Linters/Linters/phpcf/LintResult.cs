@@ -4,8 +4,8 @@ namespace Metrics.Integrations.Linters.Phpcf
     using System.Xml.Serialization;
 
     [XmlRoot(ElementName="pmd-cpd")]
-    public class LintResult : ILinterResult, ILinterModel
+    public class LintResult : ILinterResult
     {
-        public List<Warning> WarningsList = new List<Warning>(); 
+        public List<Warning> WarningsList { get; set; }
     }
 }

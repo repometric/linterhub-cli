@@ -10,6 +10,6 @@ namespace Metrics.Integrations.Linters.jshint
         public string FilePath { get; set; }
 
         [XmlElement("error")]
-        public List<Error> ErrorsList = new List<Error>();
+        public List<Error> ErrorsList { get; set; }
     }
 }

@@ -21,6 +21,6 @@ namespace Metrics.Integrations.Linters.jshint
         /// Warning, error ...
         /// </summary>
         [XmlAttribute("severity")]
-        public string Severity;
+        public string Severity { get; set; }
     }
 }

@@ -54,16 +54,5 @@ namespace Metrics.Integrations.Linters.Phpcf
 
             return lfm;
         }
-
-        public class LinterError : LinterFileModel.Error
-        {
-            public string PhpVersion;
-
-            /// <summary>
-            ///  Advice how to improve code
-            /// </summary>
-            public string Advice;
-        }
-
     }
 }
