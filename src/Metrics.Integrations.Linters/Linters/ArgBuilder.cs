@@ -12,14 +12,14 @@
         protected bool BoolDefault { get; }
         protected object ObjectDefault { get; }
         protected string StringDefault { get; }
-        protected List<string> StringListDefault { get; }
+        protected IEnumerable<string> StringListDefault { get; }
 
         public ArgBuilder(
             int intDefault = default(int),
             bool boolDefault = default(bool),
             string stringDefault = default(string),
             object objectDefault = default(object),
-            List<string> stringListDefault = default(List<string>))
+            IEnumerable<string> stringListDefault = default(IEnumerable<string>))
         {
             IntDefault = intDefault;
             BoolDefault = boolDefault;
@@ -49,7 +49,7 @@
                 .Case<bool>(v => isInclude = v != BoolDefault)
                 .Case<string>(v => isInclude = !string.IsNullOrEmpty(v) && v != StringDefault)
                 .Case<object>(v => isInclude = v != ObjectDefault)
-                .Case<List<string>>(v => isInclude = v != StringListDefault && v.Count != 0)
+                .Case<IEnumerable<string>>(v => isInclude = v != StringListDefault && v.Count() != 0)
                 .Default(v => isInclude = false);
 
             return isInclude;
@@ -58,12 +58,12 @@
         private static string BuildArgument(KeyValuePair<ArgAttribute, object> arg)
         {
             // check if value is List<string>
-            if (arg.Value != null && arg.Value is IList)
+            if (arg.Value != null && arg.Value is IEnumerable<string>)
             {
-                var l = (List<string>)arg.Value;
+                var l = (IEnumerable<string>)arg.Value;
                 string res = "";
-                l.ForEach(x => {
-                    res += " " + BuildArgument(new KeyValuePair<ArgAttribute, object>(arg.Key, x));
+                l.ToList<string>().ForEach(x => {
+                    res += string.Join(" ", BuildArgument(new KeyValuePair<ArgAttribute, object>(arg.Key, x)), " ");
                 });
                 return res;
             }

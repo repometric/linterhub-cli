@@ -13,10 +13,9 @@ namespace Metrics.Integrations.Linters.PhpAssumptions
 
         public override ILinterModel Map(ILinterResult result)
         {
-            LinterFileModel lfm = new LinterFileModel();
-            var res = (LintResult)result;
-            res.FilesList.ForEach(x => {
-                lfm.Files.Add(new LinterFileModel.File
+            return new LinterFileModel
+            {
+                Files = ((LintResult)result).FilesList.Select<File, LinterFileModel.File>(x => new LinterFileModel.File
                 {
                     Path = x.FilePath,
                     Errors = x.LinesList.Select(z => new LinterFileModel.Error()
@@ -24,9 +23,8 @@ namespace Metrics.Integrations.Linters.PhpAssumptions
                         Message = z.Message,
                         Line = System.Int32.Parse(z.LineNumber)
                     }).ToList()
-                });
-            });
-            return lfm;
+                }).ToList()
+            };
         }
 
     }
