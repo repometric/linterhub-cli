@@ -60,12 +60,8 @@
             // check if value is List<string>
             if (arg.Value != null && arg.Value is IEnumerable<string>)
             {
-                var l = (IEnumerable<string>)arg.Value;
-                string res = "";
-                l.ToList<string>().ForEach(x => {
-                    res += string.Join(" ", BuildArgument(new KeyValuePair<ArgAttribute, object>(arg.Key, x)), " ");
-                });
-                return res;
+                var r = ((IEnumerable<string>)arg.Value).Select<string, KeyValuePair<ArgAttribute, object>>(z => new KeyValuePair<ArgAttribute, object>(arg.Key, z));
+                return string.Join(" ", r.Select(BuildArgument));
             }
             const string template = "{0}{1}{2}";
             return string.Format(template, 
