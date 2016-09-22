@@ -21,29 +21,26 @@ namespace Metrics.Integrations.Linters.coffeelint
 
         public override ILinterModel Map(ILinterResult result)
         {
-            LinterFileModel lfm = new LinterFileModel();
-            var res = (LintResult)result;
-            res.Records.ForEach(x => {
-                if (!lfm.Files.Exists(f => f.Path == x.Path))
-                    lfm.Files.Add(new LinterFileModel.File
-                    {
-                        Path = x.Path
-                    });
-
-                lfm.Files.Find(f => f.Path == x.Path).Errors.Add(new LinterFileModel.Error
-                {
-                    Row = new LinterFileModel.Interval
-                    {
-                        Start = Int32.Parse(x.StartLine),
-                        End = Math.Max(Int32.Parse(x.StartLine), x.EndLine != string.Empty ? Int32.Parse(x.EndLine) : 0)
-                    },
-                    Message = x.Message,
-                    Severity = x.Severity,
-                    Line = Int32.Parse(x.StartLine)
-                });
-
-            });
-            return lfm;
+            return new LinterFileModel
+            {
+                Files = (from Warning in ((LintResult)result).Records
+                         group Warning by Warning.Path into g
+                         select new LinterFileModel.File
+                         {
+                             Path = g.FirstOrDefault().Path,
+                             Errors = g.Select(x => new LinterFileModel.Error
+                             {
+                                 Row = new LinterFileModel.Interval
+                                 {
+                                     Start = Int32.Parse(x.StartLine),
+                                     End = Math.Max(Int32.Parse(x.StartLine), x.EndLine != string.Empty ? Int32.Parse(x.EndLine) : 0)
+                                 },
+                                 Message = x.Message,
+                                 Severity = x.Severity,
+                                 Line = Int32.Parse(x.StartLine)
+                             }).ToList()
+                         }).ToList()
+            };
         }
     }
 }
