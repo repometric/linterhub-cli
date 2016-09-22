@@ -2,7 +2,7 @@ namespace Metrics.Integrations.Linters.phpcheckstyle
 {
     using Extensions;
     using System.IO;
-    using System;
+    using System.Linq;
 
     public class Lint : Linter
     {
@@ -13,17 +13,12 @@ namespace Metrics.Integrations.Linters.phpcheckstyle
 
         public override ILinterModel Map(ILinterResult result)
         {
-            var res = (LintResult)result;
-            LinterFileModel lfm = new LinterFileModel();
-            foreach(File f in res.FilesList)
+            return new LinterFileModel
             {
-                LinterFileModel.File lf = new LinterFileModel.File
+                Files = ((LintResult)result).FilesList.Select(z => new LinterFileModel.File
                 {
-                    Path = f.FilePath
-                };
-                foreach (Error e in f.ErrorsList)
-                {
-                    LinterFileModel.Error le = new LinterFileModel.Error
+                    Path = z.FilePath,
+                    Errors = z.ErrorsList.Select(e => new LinterFileModel.Error
                     {
                         Severity = e.Severity,
                         Message = e.Message,
@@ -33,33 +28,17 @@ namespace Metrics.Integrations.Linters.phpcheckstyle
                         },
                         Row = new LinterFileModel.Interval
                         {
-                            Start = Int32.Parse(e.Line),
-                            End = Int32.Parse(e.Line)
+                            Start = int.Parse(e.Line),
+                            End = int.Parse(e.Line)
                         },
                         Column = new LinterFileModel.Interval
                         {
-                            Start = Int32.Parse(e.Column),
-                            End = Int32.Parse(e.Column)
+                            Start = int.Parse(e.Column),
+                            End = int.Parse(e.Column)
                         }
-                    };
-                    var le_ = (LinterFileModel.Error)lf.Errors.Find(x => 
-                        x.Message == le.Message && 
-                        x.Rule == le.Rule &&
-                        (x.Row.Start == le.Row.Start + 1) || (x.Row.End == le.Row.End - 1) 
-                    );
-                    if (le_ != null)
-                    {
-                        lf.Errors.Remove(le_);
-                        le_.Row.Start = Math.Min(le.Row.Start, le_.Row.Start);
-                        le_.Row.End = Math.Max(le.Row.End, le_.Row.End);
-                        lf.Errors.Add(le_);
-                    }
-                    else lf.Errors.Add(le);
-                }
-                lfm.Files.Add(lf);
-            }
-            return lfm;
+                    }).ToList()
+                }).ToList()
+            };
         }
-
     }
 }
