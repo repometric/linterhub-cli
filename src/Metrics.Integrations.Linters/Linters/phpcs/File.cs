@@ -6,9 +6,9 @@ namespace Metrics.Integrations.Linters.Phpcs
     public class File
     {
         [JsonProperty("errors")]
-        public int Errors;
+        public int Errors { get; set; }
         [JsonProperty("warnings")]
-        public int Warnings;
+        public int Warnings { get; set; }
         [JsonProperty("messages")]
         public List<Error> Messages { get; set; }
     }

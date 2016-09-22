@@ -10,7 +10,7 @@ namespace Metrics.Integrations.Linters.Phpcpd
         /// Contains List of Files where this duplication was found
         /// </summary>
         [XmlElement("file")]
-        public List<File> FilesList = new List<File>();
+        public List<File> FilesList { get; set; }
 
         /// <summary>
         /// Number of lines
@@ -25,6 +25,6 @@ namespace Metrics.Integrations.Linters.Phpcpd
         /// Duplicated code fragment
         /// </summary>
         [XmlElement("codefragment")]
-        public string Codefragment;
+        public string Codefragment { get; set; }
     }
 }

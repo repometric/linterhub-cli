@@ -9,12 +9,14 @@ namespace Metrics.Integrations.Linters.coffeelint
     {
         public override ILinterResult Parse(Stream stream)
         {
-            var csv = new CsvReader(new StreamReader(stream));
-            csv.Configuration.RegisterClassMap<WarningMap>();
-            return new LintResult
+            using (var csv = new CsvReader(new StreamReader(stream)))
             {
-                Records = csv.GetRecords<Warning>().ToList()
-            };
+                csv.Configuration.RegisterClassMap<WarningMap>();
+                return new LintResult
+                {
+                    Records = csv.GetRecords<Warning>().ToList()
+                };
+            }
         }
 
         public override ILinterModel Map(ILinterResult result)

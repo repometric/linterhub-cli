@@ -23,11 +23,16 @@ namespace Metrics.Integrations.Linters.phpcheckstyle
         [Arg("", order: int.MinValue)]
         public string ToolPath { get; set; }
 
+        public enum Format
+        {
+            html, text, xml, xml_console, html_console
+        }
+
         /// <summary>
         ///  Output format (html/text/xml/xml_console/console/html_console). Defaults to 'html'.
         /// </summary>
         [Arg("--format", order: int.MaxValue)]
-        public string ReportFormat { get; set; }
+        public Format ReportFormat { get; set; }
 
         /// <summary>
         ///  A directory or file that needs to be excluded (can be repeated for multiple exclusions).

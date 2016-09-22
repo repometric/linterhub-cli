@@ -8,6 +8,6 @@ namespace Metrics.Integrations.Linters.Phpcpd
     public class LintResult : ILinterResult, ILinterModel
     {
         [XmlElement("duplication")]
-        public List<Duplication> DuplicationsList = new List<Duplication>(); 
+        public List<Duplication> DuplicationsList { get; set; }
     }
 }
