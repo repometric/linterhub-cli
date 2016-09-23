@@ -18,39 +18,21 @@ namespace Metrics.Integrations.Linters.Phpsa
 
         public override ILinterModel Map(ILinterResult result)
         {
-            var res = (LintResult)result;
-            LinterFileModel lfm = new LinterFileModel();
-               
-            foreach(Error e in res.ErrorsList)
+            return new LinterFileModel
             {
-                LinterFileModel.File lf;
-                if (!lfm.Files.Exists(x => x.Path == e.File))
-                    lf= new LinterFileModel.File
-                    {
-                        Path = e.File
-                    };
-                else
-                {
-                    lf = lfm.Files.Find(x => x.Path == e.File);
-                    lfm.Files.Remove(lf);
-                }
-
-                lf.Errors.Add(new LinterError
-                {
-                    Message = e.Message,
-                    Line = e.Line,
-                    Type = e.Type
-                });
-                lfm.Files.Add(lf);
-            }
-
-            return lfm;
+                Files = (from Error in ((LintResult)result).ErrorsList
+                         group Error by Error.File into g
+                         select new LinterFileModel.File
+                         {
+                             Path = g.FirstOrDefault().File,
+                             Errors = g.Select(e => new LinterError
+                             {
+                                 Message = e.Message,
+                                 Line = e.Line,
+                                 Type = e.Type
+                             }).Cast<LinterFileModel.Error>().ToList()
+                         }).ToList()
+            };
         }
-
-        public class LinterError : LinterFileModel.Error
-        {
-            public string Type;
-        }
-
     }
 }

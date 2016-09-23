@@ -2,7 +2,7 @@
   "profiles": {
     "Metrics.Integrations.Linters.Cli": {
       "commandName": "Project",
-      "commandLineArgs": "coffeelint C:\\Users\\xsofa\\Documents\\Integrations.Linters\\src\\Metrics.Integrations.Linters\\Linters\\coffeelint\\default.json"
+      "commandLineArgs": "phpsa C:\\Users\\xsofa\\Documents\\Integrations.Linters\\src\\Metrics.Integrations.Linters\\Linters\\phpsa\\default.json"
     }
   }
 }
