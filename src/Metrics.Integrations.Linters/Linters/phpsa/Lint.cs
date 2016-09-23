@@ -25,12 +25,12 @@ namespace Metrics.Integrations.Linters.Phpsa
                          select new LinterFileModel.File
                          {
                              Path = g.FirstOrDefault().File,
-                             Errors = g.Select(e => new LinterError
+                             Errors = g.Select(e => new LinterFileModel.Error
                              {
                                  Message = e.Message,
                                  Line = e.Line,
-                                 Type = e.Type
-                             }).Cast<LinterFileModel.Error>().ToList()
+                                 Severity = e.Type
+                             }).ToList()
                          }).ToList()
             };
         }

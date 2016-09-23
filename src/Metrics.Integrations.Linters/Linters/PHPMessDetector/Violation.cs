@@ -18,7 +18,7 @@ namespace Metrics.Integrations.Linters.Phpmd
 
         [XmlAttribute("ruleset")]
         /// <summary>
-        /// Ruleset that throw Violation
+        /// Ruleset that throws Violation
         /// </summary>
         public string RuleSet { get; set; }
 

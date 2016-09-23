@@ -12,6 +12,5 @@ namespace Metrics.Integrations.Linters.coffeelint
             Map(m => m.StartLine).Name("lineNumber");
             Map(m => m.Severity).Name("level");
         }
-
     }
 }

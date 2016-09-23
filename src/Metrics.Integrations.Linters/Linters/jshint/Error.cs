@@ -11,6 +11,9 @@ namespace Metrics.Integrations.Linters.jshint
         [XmlAttribute("column")]
         public string Column { get; set; }
 
+        /// <summary>
+        ///  Small description of the error
+        /// </summary>
         [XmlAttribute("message")]
         public string Message { get; set; }
 

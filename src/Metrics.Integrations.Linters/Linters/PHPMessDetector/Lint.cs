@@ -1,9 +1,7 @@
 namespace Metrics.Integrations.Linters.Phpmd
 {
-    using System;
+    using System.Linq;
     using Extensions;
-    using System.Collections.Generic;
-    using System.Text;
     using System.IO;
 
     public class Lint : Linter
@@ -15,55 +13,33 @@ namespace Metrics.Integrations.Linters.Phpmd
 
         public override ILinterModel Map(ILinterResult result)
         {
-            var res = (LintResult)result;
-            LinterFileModel lfm = new LinterFileModel();
-            foreach (var file in res.FilesList)
+            return new LinterFileModel
             {
-                LinterFileModel.File lf = new LinterFileModel.File
+                Files = ((LintResult)result).FilesList.Select(file => new LinterFileModel.File
                 {
-                    Path = file.FileName
-                };
-                //file.ViolataionsList.Select(x => new LinterError { ... })
-                foreach (var error in file.ViolationsList)
-                {
-                    LinterError le = new LinterError
+                    Path = file.FileName,
+                    Errors = file.ViolationsList.Select(error => new LinterError
                     {
-                        Row = new LinterFileModel.Interval 
-                        { 
-                            Start = error.BeginLine, 
-                            End = error.EndLine 
+                        Row = new LinterFileModel.Interval
+                        {
+                            Start = error.BeginLine,
+                            End = error.EndLine
                         },
                         Message = error.Description.Trim(),
-                        Rule = new LinterFileModel.Rule(){
+                        Rule = new LinterFileModel.Rule()
+                        {
                             Name = error.Rule,
                             Namespace = error.RuleSet
                         },
-                        ErrorLocation = new LinterError.Location{
+                        ErrorLocation = new LinterError.Location
+                        {
                             Class = error.Class,
                             Method = error.Method,
                             Package = error.Package
                         }
-                    };
-                    lf.Errors.Add(le);
-                }
-                lfm.Files.Add(lf);
-            }
-            return lfm;
-        }
-
-        public class LinterError : LinterFileModel.Error
-        {
-            public Location ErrorLocation;
-
-            /// <summary>
-            /// It contains hierarchical information for the convenience of finding errors
-            /// </summary>
-            public class Location
-            {
-                public string Class;
-                public string Method;
-                public string Package;
-            }
+                    }).Cast<LinterFileModel.Error>().ToList()
+                }).ToList()
+            };
         }
     }
 }

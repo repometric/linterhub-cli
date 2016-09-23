@@ -29,6 +29,9 @@ namespace Metrics.Integrations.Linters.csslint
         public string GithubUrl { get; set; }
 
         [JsonProperty("browsers")]
+        /// <summary>
+        ///  Choose whick rules to use (by browser)
+        /// </summary>
         public string Browsers = null;
     }
 }

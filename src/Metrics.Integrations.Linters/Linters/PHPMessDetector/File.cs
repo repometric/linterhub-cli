@@ -7,7 +7,7 @@ namespace Metrics.Integrations.Linters.Phpmd
     public class File
     {
         [XmlElement("violation")]
-        public List<Violation> ViolationsList = new List<Violation>(); 
+        public List<Violation> ViolationsList { get; set; }
         [XmlAttribute("name")]
         public string FileName { get; set; }
     }

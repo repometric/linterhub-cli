@@ -18,6 +18,9 @@ namespace Metrics.Integrations.Linters.Phpcpd
         [XmlAttribute("lines")]
         public string Lines { get; set; }
 
+        /// <summary>
+        /// Number of tokens
+        /// </summary>
         [XmlAttribute("tokens")]
         public string Tokens { get; set; }
 
