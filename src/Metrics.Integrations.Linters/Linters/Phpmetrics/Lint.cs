@@ -3,6 +3,7 @@ namespace Metrics.Integrations.Linters.Phpmetrics
     using Extensions;
     using System.Collections.Generic;
     using System.IO;
+    using System.Linq;
 
     public class Lint : Linter
     {
@@ -16,7 +17,10 @@ namespace Metrics.Integrations.Linters.Phpmetrics
 
         public override ILinterModel Map(ILinterResult result)
         {
-            return (ILinterModel)result;
+            return new LinterFileModel
+            {
+                Files = ((LintResult)result).FilesList.Cast<LinterFileModel.File>().ToList()
+            };
         }
     }
 }
