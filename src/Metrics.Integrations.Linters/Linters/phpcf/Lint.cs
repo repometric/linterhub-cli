@@ -25,34 +25,22 @@ namespace Metrics.Integrations.Linters.Phpcf
 
         public override ILinterModel Map(ILinterResult result)
         {
-            var res = (LintResult)result;
-            LinterFileModel lfm = new LinterFileModel();
-
-            foreach (Warning e in res.WarningsList)
+            return new LinterFileModel
             {
-                LinterFileModel.File lf;
-                if (!lfm.Files.Exists(x => x.Path == e.FilePath))
-                    lf = new LinterFileModel.File
-                    {
-                        Path = e.FilePath
-                    };
-                else
-                {
-                    lf = lfm.Files.Find(x => x.Path == e.FilePath);
-                    lfm.Files.Remove(lf);
-                }
-
-                lf.Errors.Add(new LinterError
-                {
-                    Message = e.Description,
-                    Line = System.Int32.Parse(e.Line),
-                    PhpVersion = e.PhpVersion,
-                    Advice = e.Advice
-                });
-                lfm.Files.Add(lf);
-            }
-
-            return lfm;
+                Files = (from Warning in ((LintResult)result).WarningsList
+                         group Warning by Warning.FilePath into g
+                         select new LinterFileModel.File
+                         {
+                             Path = g.FirstOrDefault().FilePath,
+                             Errors = g.Select(e => new LinterError
+                             {
+                                 Message = e.Description,
+                                 Line = int.Parse(e.Line),
+                                 PhpVersion = e.PhpVersion,
+                                 Advice = e.Advice
+                             }).Cast<LinterFileModel.Error>().ToList()
+                         }).ToList()
+            };
         }
     }
 }
