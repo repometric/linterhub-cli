@@ -1,59 +1,67 @@
 namespace Metrics.Integrations.Linters.Phpmetrics
 {
     using System;
-    using System.Collections.Generic;
     using System.Globalization;
     using Newtonsoft.Json;
 
-    public class File
+    public class File : LinterFileModel.File
     {
         [JsonProperty("filename")]
-        public string Filename;
+        public string Filename {
+            get
+            {
+                return Path;
+            }
+            set
+            {
+                Path = value;
+            }
+        }
 
         [JsonProperty("name")]
-        public string Name;
+        public string Name { get; set; }
 
         [JsonProperty("loc")]
         /// <summary>
         /// Number of lines of code
         /// </summary>
-        public int LinesNumber;
+        public int LinesNumber { get; set; }
 
         [JsonProperty("logicalLoc")]
         /// <summary>
         /// Number of logical lines of code
         /// </summary>
-        public int LogicalLinesNumber;
+        public int LogicalLinesNumber { get; set; }
 
         [JsonProperty("volume")]
         /// <summary>
         /// Halstead volume
         /// </summary>
-        public double Volume;
+        public double Volume { get; set; }
 
         [JsonProperty("length")]
         /// <summary>
         /// Halstead length
         /// </summary>
-        public int Length;
+        public int Length { get; set; }
 
         [JsonProperty("vocabulary")]
         /// <summary>
         /// Halstead vocabulary
         /// </summary>
-        public int Vocabulary;
+        public int Vocabulary { get; set; }
 
         [JsonProperty("effort")]
         /// <summary>
         /// Halstead effort
         /// </summary>
-        public double Effort;
+        public double Effort { get; set; }
 
         [JsonProperty("difficulty")]
         /// <summary>
         /// Halstead difficulty (average)
         /// </summary>
-        public string sDifficulty;
+        public string sDifficulty { get; set; }
         public double Difficulty
         {
             set
@@ -67,19 +75,19 @@ namespace Metrics.Integrations.Linters.Phpmetrics
         }
 
         [JsonProperty("time")]
-        public int Time;
+        public int Time { get; set; }
 
         [JsonProperty("bugs")]
         /// <summary>
         /// Estimated number of bugs (average by file)
         /// </summary>
-        public double Bugs;
+        public double Bugs { get; set; }
 
         [JsonProperty("intelligentContent")]
         public double IntelligentContent;
 
         [JsonProperty("maintainabilityIndexWithoutComment")]
-        public string sMaintainabilityIndexWithoutComment;
+        public string sMaintainabilityIndexWithoutComment { get; set; }
         public double MaintainabilityIndexWithoutComment
         {
             set
@@ -93,7 +101,7 @@ namespace Metrics.Integrations.Linters.Phpmetrics
         }
 
         [JsonProperty("maintainabilityIndex")]
-        public string sMaintainabilityIndex;
+        public string sMaintainabilityIndex { get; set; }
         /// <summary>
         /// Maintainability Index (mi < 65: low ; 65 < mi < 85: correct; 85 < mi: good)
         /// </summary>
@@ -110,102 +118,102 @@ namespace Metrics.Integrations.Linters.Phpmetrics
         }
 
         [JsonProperty("commentWeight")]
-        public double CommentWeight;
+        public double CommentWeight { get; set; }
 
         [JsonProperty("instability")]
-        public double Instability;
+        public double Instability { get; set; }
 
         [JsonProperty("afferentCoupling")]
-        public double AfferentCoupling;
+        public double AfferentCoupling { get; set; }
 
         [JsonProperty("efferentCoupling")]
-        public double EfferentCoupling;
+        public double EfferentCoupling { get; set; }
 
         [JsonProperty("noc")]
-        public int NumberOfClasses;
+        public int NumberOfClasses { get; set; }
 
         [JsonProperty("noca")]
         /// <summary>
         /// Number of abstract classes and interfaces
         /// </summary>
-        public int NumberOfAbstractClasses;
+        public int NumberOfAbstractClasses { get; set; }
 
         [JsonProperty("nocc")]
         /// <summary>
         /// Number of concrete classes and interfaces
         /// </summary>
-        public int NumberOfConcreteClasses;
+        public int NumberOfConcreteClasses { get; set; }
 
         [JsonProperty("noc-anon")]
         /// <summary>
         /// ?? I'm not sure
         /// </summary>
-        public int NumberOfAnonymousClasses;
+        public int NumberOfAnonymousClasses { get; set; }
 
         [JsonProperty("noi")]
-        public int NumberOfInterfaces;
+        public int NumberOfInterfaces { get; set; }
 
         [JsonProperty("nom")]
-        public int NumberOfMethods;
+        public int NumberOfMethods { get; set; }
 
         [JsonProperty("cyclomaticComplexity")]
-        public double CyclomaticComplexity;
+        public double CyclomaticComplexity { get; set; }
 
         [JsonProperty("myerInterval")]
         /// <summary>
         /// Myer's interval indicates the distance between cyclomatic complexity number and the number of operators
         /// </summary>
-        public string MyerInterval;
+        public string MyerInterval { get; set; }
 
         [JsonProperty("myerDistance")]
         /// <summary>
         /// Myer's distance is derivated from Cyclomatic complexity
         /// </summary>
-        public double MyerDistance;
+        public double MyerDistance { get; set; }
 
         [JsonProperty("operators")]
-        public int NumberOfOperators;
+        public int NumberOfOperators { get; set; }
 
         [JsonProperty("lcom")]
         /// <summary>
         /// Lack of cohesion of methods (LCOM4)
         /// </summary>
-        public double LackOfCohesion;
+        public double LackOfCohesion { get; set; }
 
         [JsonProperty("sysc")]
         /// <summary>
         /// Total System complexity (Card and Agresti metric)
         /// </summary>
-        public double TotalSystemComplexity;
+        public double TotalSystemComplexity { get; set; }
 
         [JsonProperty("rsysc")]
         /// <summary>
         /// Relative System complexity (Card and Agresti metric)
         /// </summary>
-        public double RelativeSystemComplexity;
+        public double RelativeSystemComplexity { get; set; }
 
         [JsonProperty("dc")]
         /// <summary>
         /// Data Complexity (Card and Agresti metric)
         /// </summary>
-        public double DataComplexity;
+        public double DataComplexity { get; set; }
 
         [JsonProperty("rdc")]
         /// <summary>
         /// Relative data complexity (Card and Agresti metric)
         /// </summary>
-        public double RelativeDataComplexity;
+        public double RelativeDataComplexity { get; set; }
 
         [JsonProperty("sc")]
         /// <summary>
         /// System complexity (Card and Agresti metric)
         /// </summary>
-        public double SystemComplexity;
+        public double SystemComplexity { get; set; }
 
         [JsonProperty("rsc")]
         /// <summary>
         /// Relative structural complexity (Card and Agresti metric)
         /// </summary>
-        public double RelativeStructuralComplexity;
+        public double RelativeStructuralComplexity { get; set; }
     }
 }

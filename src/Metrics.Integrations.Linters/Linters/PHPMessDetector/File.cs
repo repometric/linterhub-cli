@@ -1,6 +1,5 @@
 namespace Metrics.Integrations.Linters.Phpmd
 {
-    using System;
     using System.Collections.Generic;
     using System.Xml;
     using System.Xml.Serialization;
@@ -8,7 +7,7 @@ namespace Metrics.Integrations.Linters.Phpmd
     public class File
     {
         [XmlElement("violation")]
-        public List<Violation> ViolationsList = new List<Violation>(); 
+        public List<Violation> ViolationsList { get; set; }
         [XmlAttribute("name")]
         public string FileName { get; set; }
     }

@@ -36,6 +36,9 @@
             else
             {
                 output = run.Output.ToString();
+                // For Linters which send statistics to Error
+                if (run.Error.ToString() != "")
+                    output += run.Error.ToString();
             }
 
             // TODO: Read stream from stdout.

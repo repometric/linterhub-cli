@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Metrics.Integrations.Linters.Cli": {
+      "commandName": "Project",
+      "commandLineArgs": "phpmetrics C:\\Users\\xsofa\\Documents\\Integrations.Linters\\src\\Metrics.Integrations.Linters\\Linters\\phpmetrics\\default.json"
+    }
+  }
+}

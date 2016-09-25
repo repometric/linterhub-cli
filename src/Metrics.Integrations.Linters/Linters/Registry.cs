@@ -41,6 +41,78 @@
                     Args = typeof(Phpmetrics.LintArgs),
                     Result = typeof(Phpmetrics.LintResult),
                     Model = typeof(Phpmetrics.LintResult)
+                },
+                new Record
+                {
+                    Name = "phpsa",
+                    Linter = typeof(Phpsa.Lint),
+                    Args = typeof(Phpsa.LintArgs),
+                    Result = typeof(Phpsa.LintResult),
+                    Model = typeof(Phpsa.LintResult)
+                },
+                new Record
+                {
+                    Name = "phpcpd",
+                    Linter = typeof(Phpcpd.Lint),
+                    Args = typeof(Phpcpd.LintArgs),
+                    Result = typeof(Phpcpd.LintResult),
+                    Model = typeof(Phpcpd.LintResult)
+                },
+                new Record
+                {
+                    Name = "phpassumptions",
+                    Linter = typeof(PhpAssumptions.Lint),
+                    Args = typeof(PhpAssumptions.LintArgs),
+                    Result = typeof(PhpAssumptions.LintResult),
+                    Model = typeof(PhpAssumptions.LintResult)
+                },
+                new Record
+                {
+                    Name = "phpcf",
+                    Linter = typeof(Phpcf.Lint),
+                    Args = typeof(Phpcf.LintArgs),
+                    Result = typeof(Phpcf.LintResult),
+                    Model = typeof(Phpcf.LintResult)
+                },
+                new Record
+                {
+                    Name = "htmlhint",
+                    Linter = typeof(htmlhint.Lint),
+                    Args = typeof(htmlhint.LintArgs),
+                    Result = typeof(htmlhint.LintResult),
+                    Model = typeof(htmlhint.LintResult)
+                },
+                new Record
+                {
+                    Name = "phpcheckstyle",
+                    Linter = typeof(phpcheckstyle.Lint),
+                    Args = typeof(phpcheckstyle.LintArgs),
+                    Result = typeof(phpcheckstyle.LintResult),
+                    Model = typeof(phpcheckstyle.LintResult)
+                },
+                new Record
+                {
+                    Name = "coffeelint",
+                    Linter = typeof(coffeelint.Lint),
+                    Args = typeof(coffeelint.LintArgs),
+                    Result = typeof(coffeelint.LintResult),
+                    Model = typeof(coffeelint.LintResult)
+                },
+                new Record
+                {
+                    Name = "csslint",
+                    Linter = typeof(csslint.Lint),
+                    Args = typeof(csslint.LintArgs),
+                    Result = typeof(csslint.LintResult),
+                    Model = typeof(csslint.LintResult)
+                },
+                new Record
+                {
+                    Name = "jshint",
+                    Linter = typeof(jshint.Lint),
+                    Args = typeof(jshint.LintArgs),
+                    Result = typeof(jshint.LintResult),
+                    Model = typeof(jshint.LintResult)
                 }
             };
         }

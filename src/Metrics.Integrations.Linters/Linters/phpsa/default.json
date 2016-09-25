@@ -1,0 +1,7 @@
+{
+  "OutputFile": "file.json",
+  "ToolPath": "phpsa",
+  "TestPath": "C:\\xampp\\htdocs\\DCMS-master\\src\\controllers",
+  "Command": "check",
+  "Verbose": 1
+}

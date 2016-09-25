@@ -3,6 +3,7 @@ namespace Metrics.Integrations.Linters.Phpcs
     using System.IO;
     using Extensions;
     using System.Collections.Generic;
+    using System.Linq;
 
     public class Lint : Linter
     {
@@ -13,17 +14,12 @@ namespace Metrics.Integrations.Linters.Phpcs
 
         public override ILinterModel Map(ILinterResult result)
         {
-            var res = (LintResult)result;
-            LinterFileModel lfm = new LinterFileModel();
-            foreach (KeyValuePair<string, Phpcs.File> kvp in res.Files)
+            return new LinterFileModel
             {
-                LinterFileModel.File lf = new LinterFileModel.File
+                Files = ((LintResult)result).Files.AsEnumerable<KeyValuePair<string, Phpcs.File>>().Select(kvp => new LinterFileModel.File
                 {
-                    Path = kvp.Key
-                };
-                foreach (var error in kvp.Value.Messages)
-                {
-                    LinterError le = new LinterError
+                    Path = kvp.Key,
+                    Errors = kvp.Value.Messages.Select(error => new LinterFileModel.Error
                     {
                         Message = error.Message,
                         Rule = new LinterFileModel.Rule
@@ -31,24 +27,15 @@ namespace Metrics.Integrations.Linters.Phpcs
                             Name = error.Source
                         },
                         Line = error.Line,
-                        Column = new LinterFileModel.Interval{
+                        Column = new LinterFileModel.Interval
+                        {
                             Start = error.Column,
                             End = error.Column
                         },
-                        Type = error.Type == LinterError.ERROR ? LinterError.ErrorType.Error : LinterError.ErrorType.Warning
-                    };
-                    lf.Errors.Add(le);
-                }
-                lfm.Files.Add(lf);
-            }
-            return lfm;
-        }
-
-        public class LinterError : LinterFileModel.Error
-        {
-            public ErrorType Type;
-            public const string ERROR = "ERROR";
-            public enum ErrorType { Warning, Error };
+                        Severity = error.Type
+                    }).ToList()
+                }).ToList()
+            };
         }
     }
 }

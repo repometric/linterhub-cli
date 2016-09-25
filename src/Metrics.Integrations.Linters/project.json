@@ -1,10 +1,8 @@
 {
   "version": "1.0.0-*",
   "dependencies": {
-    "Microsoft.NETCore.App": {
-      "type": "platform",
-      "version": "1.0.0"
-    },
+    "CsvHelper": "2.16.3",
+    "Microsoft.NETCore.App": "1.0.0",
     "Newtonsoft.Json": "9.0.1",
     "System.Xml.XmlDocument": "4.0.1-*",
     "System.Xml.XmlSerializer": "4.0.11-*"

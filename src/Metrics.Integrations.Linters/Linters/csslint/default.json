@@ -1,0 +1,5 @@
+{
+  "ToolPath": "csslint",
+  "TestPath": "C:\\xampp\\htdocs\\DCMS-master\\public\\assets\\css",
+  "ReportType": "json"
+}

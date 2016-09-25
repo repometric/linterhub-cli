@@ -5,10 +5,21 @@ namespace Metrics.Integrations.Linters.Phpcs
 
     public class File
     {
+        /// <summary>
+        /// Number of errors
+        /// </summary>
         [JsonProperty("errors")]
-        public int Errors;
+        public int Errors { get; set; }
+
+        /// <summary>
+        /// Number of warnings
+        /// </summary>
         [JsonProperty("warnings")]
-        public int Warnings;
+        public int Warnings { get; set; }
+
+        /// <summary>
+        /// List of messages
+        /// </summary>
         [JsonProperty("messages")]
         public List<Error> Messages { get; set; }
     }

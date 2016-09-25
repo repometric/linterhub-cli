@@ -1,9 +1,8 @@
 namespace Metrics.Integrations.Linters.Phpmetrics
 {
-    using System;
     using System.Collections.Generic;
 
-    public class LintResult : ILinterResult, ILinterModel
+    public class LintResult : ILinterResult
     {
         public List<File> FilesList { get; set; }
     }
