@@ -23,8 +23,8 @@ namespace Metrics.Integrations.Linters.coffeelint
         {
             return new LinterFileModel
             {
-                Files = (from Warning in ((LintResult)result).Records
-                         group Warning by Warning.Path into g
+                Files = (from warning in ((LintResult)result).Records
+                         group warning by warning.Path into g
                          select new LinterFileModel.File
                          {
                              Path = g.FirstOrDefault().Path,

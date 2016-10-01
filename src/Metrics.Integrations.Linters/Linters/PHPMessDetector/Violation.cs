@@ -1,8 +1,5 @@
 namespace Metrics.Integrations.Linters.Phpmd
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Xml;
     using System.Xml.Serialization;
 
     public class Violation
@@ -16,40 +13,40 @@ namespace Metrics.Integrations.Linters.Phpmd
         [XmlAttribute("rule")]
         public string Rule { get; set; }
 
-        [XmlAttribute("ruleset")]
         /// <summary>
         /// Ruleset that throws Violation
         /// </summary>
+        [XmlAttribute("ruleset")]
         public string RuleSet { get; set; }
 
-        [XmlAttribute("package")]
         /// <summary>
         /// Package where Violation was found
         /// </summary>
+        [XmlAttribute("package")]
         public string Package { get; set; }
 
-        [XmlAttribute("class")]
         /// <summary>
         /// Class where Violation was found
         /// </summary>
+        [XmlAttribute("class")]
         public string Class { get; set; }
 
-        [XmlAttribute("method")]
         /// <summary>
         /// Method where Violation was found
         /// </summary>
+        [XmlAttribute("method")]
         public string Method { get; set; }
 
-        [XmlAttribute("priority")]
         /// <summary>
         /// Importance of the Violation
         /// </summary>
+        [XmlAttribute("priority")]
         public int Priority { get; set; }
 
-        [XmlText]
         /// <summary>
         /// Detailed description of the error
         /// </summary>
+        [XmlText]
         public string Description { get; set; }
     }
 }

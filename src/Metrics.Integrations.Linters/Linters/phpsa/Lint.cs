@@ -20,8 +20,8 @@ namespace Metrics.Integrations.Linters.Phpsa
         {
             return new LinterFileModel
             {
-                Files = (from Error in ((LintResult)result).ErrorsList
-                         group Error by Error.File into g
+                Files = (from error in ((LintResult)result).ErrorsList
+                         group error by error.File into g
                          select new LinterFileModel.File
                          {
                              Path = g.FirstOrDefault().File,

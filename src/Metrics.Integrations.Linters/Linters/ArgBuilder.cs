@@ -4,7 +4,6 @@
     using System.Linq;
     using System.Reflection;
     using Extensions;
-    using System.Collections;
 
     public class ArgBuilder
     {
@@ -57,10 +56,9 @@
 
         private static string BuildArgument(KeyValuePair<ArgAttribute, object> arg)
         {
-            // check if value is List<string>
             if (arg.Value != null && arg.Value is IEnumerable<string>)
             {
-                var r = ((IEnumerable<string>)arg.Value).Select<string, KeyValuePair<ArgAttribute, object>>(z => new KeyValuePair<ArgAttribute, object>(arg.Key, z));
+                var r = ((IEnumerable<string>)arg.Value).Select(z => new KeyValuePair<ArgAttribute, object>(arg.Key, z));
                 return string.Join(" ", r.Select(BuildArgument));
             }
             const string template = "{0}{1}{2}";

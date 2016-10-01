@@ -16,7 +16,7 @@ namespace Metrics.Integrations.Linters.Phpcs
         {
             return new LinterFileModel
             {
-                Files = ((LintResult)result).Files.AsEnumerable<KeyValuePair<string, Phpcs.File>>().Select(kvp => new LinterFileModel.File
+                Files = ((LintResult)result).Files.Select(kvp => new LinterFileModel.File
                 {
                     Path = kvp.Key,
                     Errors = kvp.Value.Messages.Select(error => new LinterFileModel.Error

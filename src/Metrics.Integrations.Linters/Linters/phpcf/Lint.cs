@@ -27,8 +27,8 @@ namespace Metrics.Integrations.Linters.Phpcf
         {
             return new LinterFileModel
             {
-                Files = (from Warning in ((LintResult)result).WarningsList
-                         group Warning by Warning.FilePath into g
+                Files = (from warning in ((LintResult)result).WarningsList
+                         group warning by warning.FilePath into g
                          select new LinterFileModel.File
                          {
                              Path = g.FirstOrDefault().FilePath,

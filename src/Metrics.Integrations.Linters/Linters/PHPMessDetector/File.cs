@@ -1,7 +1,6 @@
 namespace Metrics.Integrations.Linters.Phpmd
 {
     using System.Collections.Generic;
-    using System.Xml;
     using System.Xml.Serialization;
 
     public class File

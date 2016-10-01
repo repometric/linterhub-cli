@@ -5,16 +5,16 @@ namespace Metrics.Integrations.Linters.csslint
 
     public class File
     {
-        [JsonProperty("filename")]
         /// <summary>
-        ///  Path of tested file
+        /// Path of tested file
         /// </summary>
+        [JsonProperty("filename")]
         public string FilePath { get; set; }
 
-        [JsonProperty("messages")]
         /// <summary>
-        ///  List of Messages (Errors) in file
+        /// List of Messages (Errors) in file
         /// </summary>
+        [JsonProperty("messages")]
         public List<Message> MessagesList { get; set; }
     }
 }
