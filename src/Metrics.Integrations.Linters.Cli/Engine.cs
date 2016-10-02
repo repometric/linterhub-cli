@@ -23,8 +23,8 @@
             var argBuilder = new ArgBuilder();
             var cmd = argBuilder.Build(args);
             var wrapper = new CmdWrapper();
-            var run = wrapper.RunExecutable(@"C:\WINDOWS\system32\cmd.exe", "/C " + cmd);
-            
+            //var run = wrapper.RunExecutable(@"C:\WINDOWS\system32\cmd.exe", "/C " + cmd);
+            var run = wrapper.RunExecutable(@"/bin/bash", "-c \" " + cmd + " \"");
             // TODO: Introduce interface or read and delete file from cmd
             var output = "";
             var propertyInfo = args.GetType().GetProperty("OutputFile");
