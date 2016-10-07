@@ -24,6 +24,21 @@ namespace Metrics.Integrations.Linters.jshint
         /// Warning, error ...
         /// </summary>
         [XmlAttribute("severity")]
-        public string Severity { get; set; }
+        public string sSeverity { get; set; }
+
+        public LinterFileModel.Error.SeverityType Severity {
+            get
+            {
+                switch(sSeverity)
+                {
+                    case "warning": return LinterFileModel.Error.SeverityType.warning;
+                    case "error": return LinterFileModel.Error.SeverityType.error;
+                    default: return LinterFileModel.Error.SeverityType.warning;
+                }
+            }
+            set {
+                Severity = value;
+            }
+        }
     }
 }

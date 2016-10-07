@@ -17,7 +17,6 @@
             var result = engine.Run(name, File.ReadAllText(config));
             //engine.Run(new Linter(), new LinterArgs());
             Console.WriteLine(JsonConvert.SerializeObject(result));
-            Console.ReadLine();
         }
     }
 }

@@ -29,7 +29,7 @@ namespace Metrics.Integrations.Linters.Phpsa
                              {
                                  Message = e.Message,
                                  Line = e.Line,
-                                 Severity = e.Type
+                                 Severity = LinterFileModel.Error.SeverityType.error // TODO
                              }).ToList()
                          }).ToList()
             };

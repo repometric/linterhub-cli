@@ -19,6 +19,16 @@ namespace Metrics.Integrations.Linters.coffeelint
             }
         }
 
+        public static LinterFileModel.Error.SeverityType SeverityConvertion(String s)
+        {
+            switch (s)
+            {
+                case "warn": return LinterFileModel.Error.SeverityType.warning;
+                case "error": return LinterFileModel.Error.SeverityType.error;
+                default: return LinterFileModel.Error.SeverityType.warning;
+            }
+        }
+
         public override ILinterModel Map(ILinterResult result)
         {
             return new LinterFileModel
@@ -36,7 +46,7 @@ namespace Metrics.Integrations.Linters.coffeelint
                                      End = Math.Max(Int32.Parse(x.StartLine), x.EndLine != string.Empty ? Int32.Parse(x.EndLine) : 0)
                                  },
                                  Message = x.Message,
-                                 Severity = x.Severity,
+                                 Severity = SeverityConvertion(x.Severity),
                                  Line = Int32.Parse(x.StartLine)
                              }).ToList()
                          }).ToList()

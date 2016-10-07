@@ -49,7 +49,12 @@ namespace Metrics.Integrations.Linters.jshint
         /// <summary>
         /// Tested project path
         /// </summary>
-        [Arg("", order: int.MaxValue)]
         public string TestPath { get; set; }
+
+        /// <summary>
+        /// Tested project path (in container)
+        /// </summary>
+        [Arg("", order: int.MaxValue)]
+        public string TestPathDocker { get; set; }
     }
 }

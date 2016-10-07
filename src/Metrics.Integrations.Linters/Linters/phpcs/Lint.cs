@@ -32,7 +32,7 @@ namespace Metrics.Integrations.Linters.Phpcs
                             Start = error.Column,
                             End = error.Column
                         },
-                        Severity = error.Type
+                        Severity = error.lfmSeverity
                     }).ToList()
                 }).ToList()
             };

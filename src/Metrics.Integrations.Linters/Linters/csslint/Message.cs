@@ -8,7 +8,24 @@ namespace Metrics.Integrations.Linters.csslint
         ///  Error, Warning etc
         /// </summary>
         [JsonProperty("type")]
-        public string Severity { get; set; }
+        public string sSeverity { get; set; }
+
+        public LinterFileModel.Error.SeverityType Severity
+        {
+            get
+            {
+                switch (sSeverity)
+                {
+                    case "warning": return LinterFileModel.Error.SeverityType.warning;
+                    case "error": return LinterFileModel.Error.SeverityType.error;
+                    default: return LinterFileModel.Error.SeverityType.warning;
+                }
+            }
+            set
+            {
+                Severity = value;
+            }
+        }
 
         [JsonProperty("line")]
         public int Line { get; set; }

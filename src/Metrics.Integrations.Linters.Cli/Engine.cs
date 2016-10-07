@@ -15,31 +15,22 @@
             var record = Registry.Get().Single(x => x.Name == name);
             var linter = (ILinter)Activator.CreateInstance(record.Linter);
             var args = (ILinterArgs)JsonConvert.DeserializeObject(config, record.Args);
-            return Run(linter, args);
+            return Run(linter, args, name);
         }
 
-        public ILinterModel Run(ILinter linter, ILinterArgs args)
+        public ILinterModel Run(ILinter linter, ILinterArgs args, String name)
         {
-            var argBuilder = new ArgBuilder();
-            var cmd = argBuilder.Build(args);
+            var DockerBuilder = new DockerEngine();
+            var FileName = (new Random()).Next(100000, 999999).ToString() + ".txt";
+            var cmd = DockerBuilder.Build(args, name, FileName);
             var wrapper = new CmdWrapper();
-            //var run = wrapper.RunExecutable(@"C:\WINDOWS\system32\cmd.exe", "/C " + cmd);
-            var run = wrapper.RunExecutable(@"/bin/bash", "-c \" " + cmd + " \"");
+            string env_cmd = Environment.GetEnvironmentVariable("ComSpec");
+            var run = wrapper.RunExecutable(env_cmd, "/C sh " + cmd, DockerBuilder.LinterHubPath);
             // TODO: Introduce interface or read and delete file from cmd
             var output = "";
-            var propertyInfo = args.GetType().GetProperty("OutputFile");
-            if (propertyInfo != null)
-            {
-                output = File.ReadAllText((string) propertyInfo.GetValue(args, null));
-                File.Delete((string) propertyInfo.GetValue(args, null));
-            }
-            else
-            {
-                output = run.Output.ToString();
-                // For Linters which send statistics to Error
-                if (run.Error.ToString() != "")
-                    output += run.Error.ToString();
-            }
+            FileName = DockerBuilder.LinterHubPath + FileName;
+            output = File.ReadAllText(FileName);
+            File.Delete(FileName);
 
             // TODO: Read stream from stdout.
             using (var stream = new MemoryStream(Encoding.UTF8.GetBytes(output)))
