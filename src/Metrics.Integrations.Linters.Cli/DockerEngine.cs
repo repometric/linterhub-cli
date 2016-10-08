@@ -16,7 +16,6 @@
         public string Build<T>(T configuration, String name, String Filename)
         {
             LinterHubPath = ((string)System.IO.Path.GetDirectoryName(Assembly.GetEntryAssembly().CodeBase)).ToString().Substring(6) + "\\..\\LinterHub\\";
-            //LinterHubPath = @"C:\Users\xsofa\Documents\LinterHub\";
             var propertyInfo = configuration.GetType().GetProperty("TestPath");
             var ProjectPath = (string)propertyInfo.GetValue(configuration, null);
             OutputFile = Filename;

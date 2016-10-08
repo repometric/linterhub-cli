@@ -33,7 +33,7 @@
             var log_path = args.TestPath + "\\.linterhub_logs";
             if (Directory.Exists(log_path))
             {
-                var time = (int)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
+                var time = (int)(DateTime.UtcNow.Ticks / 1000);
                 File.WriteAllText(log_path + "\\" + time +"_linterhub_output" + ".txt", run.Output.ToString());
                 File.WriteAllText(log_path + "\\" + time + "_linterhub_error" + ".txt", run.Error.ToString());
             }

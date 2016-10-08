@@ -4,6 +4,7 @@ namespace Metrics.Integrations.Linters.htmlhint
     using Extensions;
     using System.Collections.Generic;
     using System.Linq;
+    using System;
 
     public class Lint : Linter
     {
@@ -13,6 +14,16 @@ namespace Metrics.Integrations.Linters.htmlhint
             {
                 FilesList = stream.DeserializeAsJson<List<File>>()
             };
+        }
+
+        public static LinterFileModel.Error.SeverityType SeverityConvertion(String s)
+        {
+            switch (s)
+            {
+                case "warning": return LinterFileModel.Error.SeverityType.warning;
+                case "error": return LinterFileModel.Error.SeverityType.error;
+                default: return LinterFileModel.Error.SeverityType.warning;
+            }
         }
 
         public override ILinterModel Map(ILinterResult result)
@@ -32,14 +43,14 @@ namespace Metrics.Integrations.Linters.htmlhint
                         Line = e.Line,
                         Message = e.Message,
                         Evidence = e.Evidence,
-                        Type = e.Type,
+                        Type = e.Severity,
                         Raw = e.Raw,
                         Rule = new LinterFileModel.Rule
                         {
                             Name = e.Rule.Description,
                             Id = e.Rule.Id
                         },
-                        Severity = e.Severity
+                        Severity = SeverityConvertion(e.Severity)
                     }).Cast<LinterFileModel.Error>().ToList()
                 }).ToList()
             };

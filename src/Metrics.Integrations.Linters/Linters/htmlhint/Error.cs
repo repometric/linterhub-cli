@@ -17,24 +17,7 @@ namespace Metrics.Integrations.Linters.htmlhint
         /// Type of error (error, warning, ...)
         /// </summary>
         [JsonProperty("type")]
-        public string Type { get; set; }
-
-        public LinterFileModel.Error.SeverityType Severity
-        {
-            get
-            {
-                switch (Type)
-                {
-                    case "warning": return LinterFileModel.Error.SeverityType.warning;
-                    case "error": return LinterFileModel.Error.SeverityType.error;
-                    default: return LinterFileModel.Error.SeverityType.warning;
-                }
-            }
-            set
-            {
-                Severity = value;
-            }
-        }
+        public string Severity { get; set; }
 
         /// <summary>
         /// Wrong code
