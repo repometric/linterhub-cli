@@ -4,7 +4,6 @@
     using System.IO;
     using System.Linq;
     using System.Text;
-    using System.Reflection;
     using Extensions;
     using Newtonsoft.Json;
 
@@ -21,7 +20,7 @@
         public ILinterModel Run(ILinter linter, ILinterArgs args, String name)
         {
             var DockerBuilder = new DockerEngine();
-            var FileName = (new Random()).Next(100000, 999999).ToString() + ".txt";
+            var FileName = Guid.NewGuid() + ".txt";
             var cmd = DockerBuilder.Build(args, name, FileName);
             var wrapper = new CmdWrapper();
             string env_cmd = Environment.GetEnvironmentVariable("ComSpec");
@@ -29,6 +28,16 @@
             // TODO: Introduce interface or read and delete file from cmd
             var output = "";
             FileName = DockerBuilder.LinterHubPath + FileName;
+
+
+            var log_path = args.TestPath + "\\.linterhub_logs";
+            if (Directory.Exists(log_path))
+            {
+                var time = (int)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
+                File.WriteAllText(log_path + "\\" + time +"_linterhub_output" + ".txt", run.Output.ToString());
+                File.WriteAllText(log_path + "\\" + time + "_linterhub_error" + ".txt", run.Error.ToString());
+            }
+
             output = File.ReadAllText(FileName);
             File.Delete(FileName);
 

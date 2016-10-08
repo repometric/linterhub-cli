@@ -21,7 +21,7 @@ namespace Metrics.Integrations.Linters.csslint
             {
                 Files = ((LintResult)result).FilesList.Select(x => new LinterFileModel.File
                 {
-                    Path = x.FilePath,
+                    Path = x.FilePath.Substring(8),
                     Errors = x.MessagesList.Select(z => new LinterFileModel.Error
                     {
                         Message = z.ErrorMessage,

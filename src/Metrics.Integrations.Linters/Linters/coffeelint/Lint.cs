@@ -42,12 +42,17 @@ namespace Metrics.Integrations.Linters.coffeelint
                              {
                                  Row = new LinterFileModel.Interval
                                  {
-                                     Start = Int32.Parse(x.StartLine),
-                                     End = Math.Max(Int32.Parse(x.StartLine), x.EndLine != string.Empty ? Int32.Parse(x.EndLine) : 0)
+                                     Start = Int32.Parse(x.StartLine) - 1,
+                                     End = Math.Max(Int32.Parse(x.StartLine), x.EndLine != string.Empty ? Int32.Parse(x.EndLine) : 0) - 1
                                  },
                                  Message = x.Message,
                                  Severity = SeverityConvertion(x.Severity),
-                                 Line = Int32.Parse(x.StartLine)
+                                 Line = Int32.Parse(x.StartLine) - 1,
+                                 Column = new LinterFileModel.Interval
+                                 {
+                                     Start = 0, 
+                                     End = 1000
+                                 }
                              }).ToList()
                          }).ToList()
             };

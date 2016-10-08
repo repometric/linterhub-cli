@@ -27,10 +27,15 @@ namespace Metrics.Integrations.Linters.Phpcs
                             Name = error.Source
                         },
                         Line = error.Line,
+                        Row = new LinterFileModel.Interval
+                        {
+                            Start = error.Line,
+                            End = error.Line
+                        },
                         Column = new LinterFileModel.Interval
                         {
-                            Start = error.Column,
-                            End = error.Column
+                            Start = 0,
+                            End = 1000
                         },
                         Severity = error.lfmSeverity
                     }).ToList()

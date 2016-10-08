@@ -1,5 +1,6 @@
 {
-    "ReportType" : "json",
-    "ToolPath" : "phpcs",
-    "TestPath" : "C:\\test.php"
+  "ReportType": "json",
+  "ToolPath": "phpcs",
+  "TestPath": "C:\\xampp\\htdocs\\DCMS-master\\src\\models\\products",
+  "TestPathDocker": "./"
 }

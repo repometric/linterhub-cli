@@ -38,7 +38,8 @@ namespace Metrics.Integrations.Linters.htmlhint
                         {
                             Name = e.Rule.Description,
                             Id = e.Rule.Id
-                        }
+                        },
+                        Severity = e.Severity
                     }).Cast<LinterFileModel.Error>().ToList()
                 }).ToList()
             };

@@ -36,7 +36,12 @@ namespace Metrics.Integrations.Linters.coffeelint
         /// <summary>
         /// Tested project path
         /// </summary>
-        [Arg("", separator: "", order: int.MaxValue)]
         public string TestPath { get; set; }
+
+        /// <summary>
+        /// Tested project path (in container)
+        /// </summary>
+        [Arg("", order: int.MaxValue)]
+        public string TestPathDocker { get; set; }
     }
 }
