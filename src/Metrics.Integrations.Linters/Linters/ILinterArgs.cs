@@ -2,5 +2,6 @@
 {
     public interface ILinterArgs
     {
+        string TestPath { get; set; }
     }
 }

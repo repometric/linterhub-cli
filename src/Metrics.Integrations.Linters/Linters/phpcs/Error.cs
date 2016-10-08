@@ -15,6 +15,7 @@ namespace Metrics.Integrations.Linters.Phpcs
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }
+
         [JsonProperty("line")]
         public int Line { get; set; } 
         [JsonProperty("column")]

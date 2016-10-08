@@ -1,6 +1,6 @@
 {
   "OutputFile": "c:\\xampp\\htdocs\\php_assumptions\\report.xml",
   "OutputFormat": "xml",
-  "ToolPath": "c:\\xampp\\htdocs\\php_assumptions\\vendor\\bin\\phpa",
+  "ToolPath": "phpa",
   "TestPath": "c:\\xampp\\htdocs\\DCMS-master"
 }

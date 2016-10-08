@@ -1,6 +1,7 @@
 namespace Metrics.Integrations.Linters.csslint
 {
     using Extensions;
+    using System;
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
@@ -15,13 +16,23 @@ namespace Metrics.Integrations.Linters.csslint
             };
         }
 
+        public static LinterFileModel.Error.SeverityType SeverityConvertion(String s)
+        {
+            switch (s)
+            {
+                case "warning": return LinterFileModel.Error.SeverityType.warning;
+                case "error": return LinterFileModel.Error.SeverityType.error;
+                default: return LinterFileModel.Error.SeverityType.warning;
+            }
+        }
+
         public override ILinterModel Map(ILinterResult result)
         {
             return new LinterFileModel
             {
                 Files = ((LintResult)result).FilesList.Select(x => new LinterFileModel.File
                 {
-                    Path = x.FilePath,
+                    Path = x.FilePath.Substring(8),
                     Errors = x.MessagesList.Select(z => new LinterFileModel.Error
                     {
                         Message = z.ErrorMessage,
@@ -30,7 +41,7 @@ namespace Metrics.Integrations.Linters.csslint
                             Start = z.Column,
                             End = z.Column
                         },
-                        Severity = z.Severity,
+                        Severity = SeverityConvertion(z.Severity),
                         Row = new LinterFileModel.Interval
                         {
                             Start = z.Line,

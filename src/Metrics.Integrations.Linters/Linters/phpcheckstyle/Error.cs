@@ -22,5 +22,6 @@ namespace Metrics.Integrations.Linters.phpcheckstyle
         /// </summary>
         [XmlAttribute("severity")]
         public string Severity { get; set; }
+
     }
 }

@@ -24,9 +24,10 @@
 
         public class Error
         {
+            public enum SeverityType { error, warning, information, hint}
             public string Message { get; set; }
             public Rule Rule { get; set; }
-            public string Severity { get; set; }
+            public SeverityType Severity { get; set; }
             public string Evidence { get; set; }
             public int Line { get; set; }
             public Interval Column { get; set; }
