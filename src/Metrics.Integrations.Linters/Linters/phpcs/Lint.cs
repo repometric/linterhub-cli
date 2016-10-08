@@ -4,12 +4,23 @@ namespace Metrics.Integrations.Linters.Phpcs
     using Extensions;
     using System.Collections.Generic;
     using System.Linq;
+    using System;
 
     public class Lint : Linter
     {
         public override ILinterResult Parse(Stream stream)
         {
             return stream.DeserializeAsJson<LintResult>();
+        }
+
+        public static LinterFileModel.Error.SeverityType SeverityConvertion(String s)
+        {
+            switch (s)
+            {
+                case "WARNING": return LinterFileModel.Error.SeverityType.warning;
+                case "ERROR": return LinterFileModel.Error.SeverityType.error;
+                default: return LinterFileModel.Error.SeverityType.warning;
+            }
         }
 
         public override ILinterModel Map(ILinterResult result)
@@ -37,7 +48,7 @@ namespace Metrics.Integrations.Linters.Phpcs
                             Start = 0,
                             End = 1000
                         },
-                        Severity = error.lfmSeverity
+                        Severity = SeverityConvertion(error.Type)
                     }).ToList()
                 }).ToList()
             };

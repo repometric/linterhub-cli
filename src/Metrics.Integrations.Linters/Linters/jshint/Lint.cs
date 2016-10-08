@@ -1,6 +1,7 @@
 namespace Metrics.Integrations.Linters.jshint
 {
     using Extensions;
+    using System;
     using System.IO;
     using System.Linq;
 
@@ -9,6 +10,16 @@ namespace Metrics.Integrations.Linters.jshint
         public override ILinterResult Parse(Stream stream)
         {
             return stream.DeserializeAsXml<LintResult>();
+        }
+
+        public static LinterFileModel.Error.SeverityType SeverityConvertion(String s)
+        {
+            switch (s)
+            {
+                case "warning": return LinterFileModel.Error.SeverityType.warning;
+                case "error": return LinterFileModel.Error.SeverityType.error;
+                default: return LinterFileModel.Error.SeverityType.warning;
+            }
         }
 
         public override ILinterModel Map(ILinterResult result)
@@ -20,7 +31,7 @@ namespace Metrics.Integrations.Linters.jshint
                     Path = z.FilePath,
                     Errors = z.ErrorsList.Select(e => new LinterFileModel.Error
                     {
-                        Severity = e.Severity,
+                        Severity = SeverityConvertion(e.Severity),
                         Message = e.Message,
                         Rule = new LinterFileModel.Rule
                         {

@@ -14,24 +14,7 @@ namespace Metrics.Integrations.Linters.Phpcs
         /// Type of error (WARNING or ERROR)
         /// </summary>
         [JsonProperty("type")]
-        public string sType { get; set; }
-
-        public LinterFileModel.Error.SeverityType lfmSeverity
-        {
-            get
-            {
-                switch (sType)
-                {
-                    case "WARNING": return LinterFileModel.Error.SeverityType.warning;
-                    case "ERROR": return LinterFileModel.Error.SeverityType.error;
-                    default: return LinterFileModel.Error.SeverityType.warning;
-                }
-            }
-            set
-            {
-                lfmSeverity = value;
-            }
-        }
+        public string Type { get; set; }
 
         [JsonProperty("line")]
         public int Line { get; set; } 
