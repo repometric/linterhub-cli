@@ -1,0 +1,6 @@
+{
+  "command": "sh lh.sh --mode analyze --name {0}:\\\"{1}\\\":{2} --path {3} --clean true --session true",
+  "linterhub": "/Volumes/Repositories/Repometric/linterhub",
+  "terminal": "/bin/bash",
+  "terminalCommand": "-c \"{0}\""
+}

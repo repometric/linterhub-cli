@@ -23,22 +23,26 @@
             var FileName = Guid.NewGuid() + ".txt";
             var cmd = DockerBuilder.Build(args, name, FileName);
             var wrapper = new CmdWrapper();
-            string env_cmd = Environment.GetEnvironmentVariable("ComSpec");
-            var run = wrapper.RunExecutable(env_cmd, "/C sh " + cmd, DockerBuilder.LinterHubPath);
-            // TODO: Introduce interface or read and delete file from cmd
-            var output = "";
-            FileName = DockerBuilder.LinterHubPath + FileName;
-
-
-            var log_path = args.TestPath + "\\.linterhub_logs";
-            if (Directory.Exists(log_path))
+            var run = wrapper.RunExecutable(Program.Terminal, string.Format(Program.TerminalCommand, cmd), Program.Linterhub);
+            if (run.RunException != null)
             {
-                var time = (int)(DateTime.UtcNow.Ticks / 1000);
-                File.WriteAllText(log_path + "\\" + time +"_linterhub_output" + ".txt", run.Output.ToString());
-                File.WriteAllText(log_path + "\\" + time + "_linterhub_error" + ".txt", run.Error.ToString());
+                Console.WriteLine(run.RunException);
             }
 
+            var output = "";
+            FileName = Program.Linterhub + "/" + FileName;
+
             output = File.ReadAllText(FileName);
+            var log_path = args.TestPath + "/.linterhub_logs";
+
+            if (Directory.Exists(log_path))
+            {
+                var time = (int)(DateTime.UtcNow.Ticks);
+                File.WriteAllText(log_path + "/" + time +"_linterhub_output" + ".txt", run.Output?.ToString());
+                File.WriteAllText(log_path + "/" + time + "_linterhub_error" + ".txt", run.Error?.ToString());
+                File.WriteAllText(log_path + "/" + time + "_linterhub_raw" + ".txt", output);
+            }
+
             File.Delete(FileName);
 
             // TODO: Read stream from stdout.

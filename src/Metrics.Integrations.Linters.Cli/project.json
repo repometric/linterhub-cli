@@ -6,7 +6,8 @@
 
   "dependencies": {
     "Metrics.Integrations.Linters": "1.0.0-*",
-    "Microsoft.NETCore.App": "1.0.0"
+    "Microsoft.NETCore.App": "1.0.0",
+    "Microsoft.Framework.Configuration.Json": "1.0.0-beta8"
   },
 
   "frameworks": {
@@ -15,6 +16,7 @@
     }
   },
   "runtimes": {
-    "win10-x64": {}
+    "win10-x64": {},
+    "osx.10.11-x64": {}
   }
 }

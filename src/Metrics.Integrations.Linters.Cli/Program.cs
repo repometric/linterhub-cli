@@ -3,17 +3,30 @@
     using System;
     using System.IO;
     using System.Reflection;
-    using System.Text;
     using Newtonsoft.Json;
     using System.Linq;
+    using Microsoft.Framework.Configuration;
 
     internal class Program
     {
+        // TODO: Isolate settings in class.
+        public static string Command { get; set; }
+        public static string Linterhub { get; set; }
+        public static string Terminal { get; set; }
+        public static string TerminalCommand { get; set; }
+
         internal static void Main(string[] args)
         {
-            var name = args[0];
-            var projectPath = args[1];
-            var config = projectPath + "/.linterhub/" + args[0] + ".json";
+            var configurationBuilder = new ConfigurationBuilder().AddJsonFile(args[0]);
+            var configuration = configurationBuilder.Build();
+            Command = configuration["command"];
+            Linterhub = configuration["linterhub"];
+            Terminal = configuration["terminal"];
+            TerminalCommand = configuration["terminalCommand"];
+
+            var name = args[1];
+            var projectPath = args[2];
+            var config = projectPath + "/.linterhub/" + args[1] + ".json";
 
             if(!File.Exists(config))
             {
