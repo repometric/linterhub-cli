@@ -1,55 +1,65 @@
 ﻿namespace Metrics.Integrations.Linters
 {
-    using System;
     using System.IO;
-    using System.Linq;
     using System.Text;
     using Extensions;
-    using Newtonsoft.Json;
+    using Runtime;
 
     public class Engine
     {
-        public ILinterModel Run(string name, string config)
+        private LogManager log { get; }
+        private LinterContext context { get; }
+
+        public Engine(LinterContext context, LogManager log)
         {
-            var record = Registry.Get().Single(x => x.Name == name);
-            var linter = (ILinter)Activator.CreateInstance(record.Linter);
-            var args = (ILinterArgs)JsonConvert.DeserializeObject(config, record.Args);
-            return Run(linter, args, name);
+            this.context = context;
+            this.log = log;
         }
 
-        public ILinterModel Run(ILinter linter, ILinterArgs args, String name)
+        // TODO: Add more logs.
+        public ILinterModel Run(ILinter linter, ILinterArgs args)
         {
-            var DockerBuilder = new DockerEngine();
-            var FileName = Guid.NewGuid() + ".txt";
-            var cmd = DockerBuilder.Build(args, name, FileName);
+            // TODO: Think about not docker config
+            var argString = new ArgBuilder().Build(args);
+            var cmd = string.Format(
+                context.Configuration.Command,
+                context.RunContext.Linter,
+                argString,
+                context.OutputFileName,
+                args.TestPath);
+            log.Trace("Prepared command:", cmd);
+
             var wrapper = new CmdWrapper();
-            var run = wrapper.RunExecutable(Program.Terminal, string.Format(Program.TerminalCommand, cmd), Program.Linterhub);
+            var run = wrapper.RunExecutable(
+                context.Configuration.Terminal, 
+                string.Format(context.Configuration.TerminalCommand, cmd), 
+                context.Configuration.Linterhub);
+            log.Trace("Exec status:", run.ExitCode);
+
             if (run.RunException != null)
             {
-                Console.WriteLine(run.RunException);
+                throw run.RunException;
             }
 
-            var output = "";
-            FileName = Program.Linterhub + "/" + FileName;
-
-            output = File.ReadAllText(FileName);
-            var log_path = args.TestPath + "/.linterhub_logs";
-
-            if (Directory.Exists(log_path))
+            var output = File.ReadAllText(context.OutputFullPath);
+            var logFolder = context.GetLinterLogFolder();
+            log.Trace("Log folder", logFolder);
+            if (Directory.Exists(logFolder))
             {
-                var time = (int)(DateTime.UtcNow.Ticks);
-                File.WriteAllText(log_path + "/" + time +"_linterhub_output" + ".txt", run.Output?.ToString());
-                File.WriteAllText(log_path + "/" + time + "_linterhub_error" + ".txt", run.Error?.ToString());
-                File.WriteAllText(log_path + "/" + time + "_linterhub_raw" + ".txt", output);
+                log.Trace("Write logs");
+                File.WriteAllText(context.GetLinterLogFile("output"), run.Output?.ToString());
+                File.WriteAllText(context.GetLinterLogFile("error"), run.Error?.ToString());
+                File.WriteAllText(context.GetLinterLogFile("raw"), output);
             }
 
-            File.Delete(FileName);
+            File.Delete(context.OutputFullPath);
 
             // TODO: Read stream from stdout.
             using (var stream = new MemoryStream(Encoding.UTF8.GetBytes(output)))
             {
                 var result = linter.Parse(stream, args);
                 var map = linter.Map(result);
+                log.Trace("Linter output parsed");
                 return map;
             }
         }
