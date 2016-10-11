@@ -9,6 +9,7 @@ namespace Metrics.Integrations.Linters
     {
         public StringBuilder LogWriter { get; }
         private bool saved = false;
+        private bool error = false;
 
         public LogManager()
         {
@@ -27,6 +28,7 @@ namespace Metrics.Integrations.Linters
 
         public void Error(string message, params object[] args)
         {
+            error = true;
             Log("ERROR: " + message + " {0}", string.Join(" ", args));
             System.Console.Error.WriteLine(string.Format(message + " {0}", string.Join(" ", args)));
         }
@@ -39,7 +41,7 @@ namespace Metrics.Integrations.Linters
 
         public void Dispose()
         {
-            if (!saved)
+            if (!saved && error)
             {
                 System.Console.Write(LogWriter.ToString());
             }
