@@ -1,20 +1,48 @@
 namespace Metrics.Integrations.Linters
 {
-    public class LogManager
+    using System;
+    using System.IO;
+    using System.Text;
+
+    // TODO: Improve logging.
+    public class LogManager : IDisposable
     {
-        public void Console(string format, params object[] args)
+        public StringBuilder LogWriter { get; }
+        private bool saved = false;
+
+        public LogManager()
         {
-            System.Console.WriteLine(format, args);
+            LogWriter = new StringBuilder();
+        }
+
+        public void Log(string format, params object[] args)
+        {
+            LogWriter.AppendLine(string.Format(format, args));
         }
 
         public void Trace(string message, params object[] args)
         {
-            Console("TRACE: " + message + " {0}", string.Join(" ", args));
+            Log("TRACE: " + message + " {0}", string.Join(" ", args));
         }
 
         public void Error(string message, params object[] args)
         {
-            Console("ERROR: " + message + " {0}", string.Join(" ", args));
+            Log("ERROR: " + message + " {0}", string.Join(" ", args));
+            System.Console.Error.WriteLine(string.Format(message + " {0}", string.Join(" ", args)));
+        }
+
+        public void Save(string fileName)
+        {
+            saved = true;
+            File.WriteAllText(fileName, LogWriter.ToString());
+        }
+
+        public void Dispose()
+        {
+            if (!saved)
+            {
+                System.Console.Write(LogWriter.ToString());
+            }
         }
     }
 }

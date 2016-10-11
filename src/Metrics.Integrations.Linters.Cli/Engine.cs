@@ -16,8 +16,7 @@
             this.log = log;
         }
 
-        // TODO: Add more logs.
-        public ILinterModel Run(ILinter linter, ILinterArgs args)
+        public CmdWrapper.RunResults Run(ILinter linter, ILinterArgs args)
         {
             // TODO: Think about not docker config
             var argString = new ArgBuilder().Build(args);
@@ -27,6 +26,7 @@
                 argString,
                 context.OutputFileName,
                 args.TestPath);
+            // TODO: Move logging one level upper.
             log.Trace("Prepared command:", cmd);
 
             var wrapper = new CmdWrapper();
@@ -34,34 +34,23 @@
                 context.Configuration.Terminal, 
                 string.Format(context.Configuration.TerminalCommand, cmd), 
                 context.Configuration.Linterhub);
-            log.Trace("Exec status:", run.ExitCode);
 
-            if (run.RunException != null)
-            {
-                throw run.RunException;
-            }
+            return run;
+        }
 
-            var output = File.ReadAllText(context.OutputFullPath);
-            var logFolder = context.GetLinterLogFolder();
-            log.Trace("Log folder", logFolder);
-            if (Directory.Exists(logFolder))
-            {
-                log.Trace("Write logs");
-                File.WriteAllText(context.GetLinterLogFile("output"), run.Output?.ToString());
-                File.WriteAllText(context.GetLinterLogFile("error"), run.Error?.ToString());
-                File.WriteAllText(context.GetLinterLogFile("raw"), output);
-            }
-
-            File.Delete(context.OutputFullPath);
-
+        public ILinterResult Parse(ILinter linter, ILinterArgs args, string output)
+        {
             // TODO: Read stream from stdout.
             using (var stream = new MemoryStream(Encoding.UTF8.GetBytes(output)))
             {
                 var result = linter.Parse(stream, args);
-                var map = linter.Map(result);
-                log.Trace("Linter output parsed");
-                return map;
+                return result;
             }
+        }
+
+        public ILinterModel Map(ILinter linter, ILinterResult result)
+        {
+            return linter.Map(result);
         }
     }
 }
