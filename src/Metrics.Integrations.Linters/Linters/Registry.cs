@@ -113,6 +113,14 @@
                     Args = typeof(jshint.LintArgs),
                     Result = typeof(jshint.LintResult),
                     Model = typeof(jshint.LintResult)
+                },
+                new Record
+                {
+                    Name = "jslint",
+                    Linter = typeof(jslint.Lint),
+                    Args = typeof(LinterPlainArgs),
+                    Result = typeof(jslint.LintResult),
+                    Model = typeof(LinterFileModel)
                 }
             };
         }

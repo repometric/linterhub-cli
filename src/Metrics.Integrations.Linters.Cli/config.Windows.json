@@ -1,0 +1,6 @@
+{
+  "command": "sh lh.sh --mode analyze --name {0}:\"{1}\":{2} --path {3} --clean true --session true --env true",
+  "linterhub": "D:\\work\\repometric\\linterhub",
+  "terminal": "C:\\Windows\\system32\\cmd.exe",
+  "terminalCommand": "/C \"{0}\""
+}

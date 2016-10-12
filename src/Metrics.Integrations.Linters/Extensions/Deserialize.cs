@@ -16,6 +16,11 @@
             }
         }
 
+        public static T DeserializeAsJson<T>(this string self)
+        {
+            return JsonConvert.DeserializeObject<T>(self);
+        }
+
         public static T DeserializeAsXml<T>(this Stream self)
         {
             var deserializer = new XmlSerializer(typeof(T));
