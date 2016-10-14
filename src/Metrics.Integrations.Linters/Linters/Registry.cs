@@ -20,7 +20,7 @@
             {
                 new Record
                 {
-                    Name = "phpcs",
+                    Name = "phpcheckstyle",
                     Linter = typeof(Phpcs.Lint),
                     Args = typeof(Phpcs.LintArgs),
                     Result = typeof(Phpcs.LintResult),
@@ -60,7 +60,7 @@
                 },
                 new Record
                 {
-                    Name = "phpassumptions",
+                    Name = "php-assumptions",
                     Linter = typeof(PhpAssumptions.Lint),
                     Args = typeof(PhpAssumptions.LintArgs),
                     Result = typeof(PhpAssumptions.LintResult),
@@ -68,7 +68,7 @@
                 },
                 new Record
                 {
-                    Name = "phpcf",
+                    Name = "phpcodefixer",
                     Linter = typeof(Phpcf.Lint),
                     Args = typeof(Phpcf.LintArgs),
                     Result = typeof(Phpcf.LintResult),

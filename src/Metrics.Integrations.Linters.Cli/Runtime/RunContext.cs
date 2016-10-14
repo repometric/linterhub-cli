@@ -15,6 +15,8 @@ namespace Metrics.Integrations.Linters.Runtime
         public enum ModeEnum
         {
             Analyze,
+            Linters,
+            Generate,
             Help
         }
     }

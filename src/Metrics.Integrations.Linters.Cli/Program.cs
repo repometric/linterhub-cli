@@ -31,6 +31,7 @@
                 { "c=|config=", "Path to configuration.", v => runContext.Configuration = v },
                 { "l=|linter=", "The linter name.", v => runContext.Linter = v },
                 { "p=|project=", "Path to project", v => runContext.Project = v },
+                { "m=|mode=", "Run mode", v => runContext.Mode = (RunContext.ModeEnum)Enum.Parse(typeof(RunContext.ModeEnum), v) },
                 { "h|help",  "Show help.", v => runContext.Mode = RunContext.ModeEnum.Help },
             };
 
@@ -55,12 +56,6 @@
                 return;
             }
 
-            if (!Directory.Exists(runContext.Project))
-            {
-                log.Error("Project was not found:", runContext.Project);
-                return;
-            }
-
             if (!File.Exists(runContext.Configuration))
             {
                 log.Error("App configuration was not found:", runContext.Configuration);
@@ -78,28 +73,71 @@
                 return;
             }
 
-            var record = runContext.GetLinterRecord();
-            if (record == null)
+            if (!Directory.Exists(config.Linterhub))
             {
-                log.Error("Linter was not found:", runContext.Linter);
+                log.Error("Linterhub was not found:", config.Linterhub);
+                return;
             }
 
             log.Trace("Run  :", runContext.Mode);
             switch (runContext.Mode)
             {
                 case RunContext.ModeEnum.Analyze:
-                    Analyze(config, runContext, record, log);
+                    Analyze(config, runContext, log);
+                    break;
+                case RunContext.ModeEnum.Generate:
+                    Generate(config, runContext, log);
+                    break;
+                case RunContext.ModeEnum.Linters:
+                    Linters(config, runContext, log);
                     break;
                 // TODO: Add more modes.
             } 
         }
 
+        private static void Generate(
+            Configuration config,
+            RunContext runContext,
+            LogManager log)
+        {
+        }
+
+        private static void Linters(
+            Configuration config,
+            RunContext runContext,
+            LogManager log)
+        {
+            const string lintersFile = @"docs/linters.json";
+            var lintersPath = Path.Combine(config.Linterhub, lintersFile);
+            var lintersContent = File.ReadAllText(lintersPath);
+            var hubLinters = JsonConvert.DeserializeObject<Linters>(lintersContent);
+            var linters = Registry.Get();
+            var result = linters.Select(x => new 
+            {
+                name = x.Name,
+                hubLinters.linters.FirstOrDefault(y => y.name == x.Name)?.languages
+            });
+            var resultString = JsonConvert.SerializeObject(result);
+            Console.WriteLine(resultString);
+        }
+
         private static void Analyze(
             Configuration config,
             RunContext runContext,
-            Registry.Record record,
             LogManager log)
         {
+            if (!Directory.Exists(runContext.Project))
+            {
+                log.Error("Project was not found:", runContext.Project);
+                return;
+            }
+
+            var record = runContext.GetLinterRecord();
+            if (record == null)
+            {
+                log.Error("Linter was not found:", runContext.Linter);
+            }
+
             var linterContext = new LinterContext(config, runContext);
             var linterConfigFile = linterContext.GetLinterConfigFile();
             if (!File.Exists(linterConfigFile))
