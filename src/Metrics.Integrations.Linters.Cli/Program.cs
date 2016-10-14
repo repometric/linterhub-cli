@@ -100,6 +100,27 @@
             RunContext runContext,
             LogManager log)
         {
+            if (!Directory.Exists(runContext.Project))
+            {
+                log.Error("Project was not found:", runContext.Project);
+                return;
+            }
+
+            var record = runContext.GetLinterRecord();
+            if (record == null)
+            {
+                log.Error("Linter was not found:", runContext.Linter);
+            }
+
+            var args = (ILinterArgs)Activator.CreateInstance(record.Args);
+            args.TestPath = runContext.Project;
+
+            var linterContext = new LinterContext(config, runContext);
+            Directory.CreateDirectory(linterContext.GetLinterFolder());
+
+            var configString = JsonConvert.SerializeObject(args);
+
+            File.WriteAllText(linterContext.GetLinterConfigFile(), configString);
         }
 
         private static void Linters(
