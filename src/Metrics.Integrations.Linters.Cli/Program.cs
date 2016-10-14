@@ -8,6 +8,7 @@
     using Mono.Options;
     using Runtime;
     using Extensions;
+    using System.Runtime.InteropServices;
 
     // TODO: Improve readability.
     internal class Program
@@ -56,6 +57,24 @@
                 return;
             }
 
+            if (string.IsNullOrEmpty(runContext.Configuration))
+            {
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                {
+                    runContext.Configuration = "config.Windows.json";
+                }
+
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+                {
+                    runContext.Configuration = "config.MacOS.json";
+                }
+
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+                {
+                    runContext.Configuration = "config.Linux.json";
+                }
+            }
+            
             if (!File.Exists(runContext.Configuration))
             {
                 log.Error("App configuration was not found:", runContext.Configuration);
