@@ -32,8 +32,8 @@
                 var errors = jsonFileLine[1].Children<JObject>().Select(x => x.ToObject<Error>()).ToList();
                 result.FilesList.Add(new File
                 {
-                    path = path,
-                    error = errors
+                    Path = path,
+                    Errors = errors
                 });
             }
 
@@ -46,17 +46,17 @@
             {
                 Files = ((LintResult) result).FilesList.Select(file => new LinterFileModel.File
                 {
-                    Path = file.path,
-                    Errors = file.error.Select(fileError => (LinterFileModel.Error)new JsLintError
+                    Path = file.Path,
+                    Errors = file.Errors.Select(fileError => (LinterFileModel.Error)new JsLintError
                     {
-                        A = fileError.a,
-                        Character = fileError.character,
-                        Code = fileError.code,
-                        Evidence = fileError.evidence,
-                        Id = fileError.id,
-                        Line = fileError.line,
-                        Raw = fileError.raw,
-                        Message = fileError.reason
+                        A = fileError.A,
+                        Character = fileError.Character,
+                        Code = fileError.Code,
+                        Evidence = fileError.Evidence,
+                        Id = fileError.Id,
+                        Line = fileError.Line,
+                        Raw = fileError.Raw,
+                        Message = fileError.Reason
                     }).ToList()
                 }).ToList()
             };

@@ -121,6 +121,14 @@
                     Args = typeof(LinterPlainArgs),
                     Result = typeof(jslint.LintResult),
                     Model = typeof(LinterFileModel)
+                },
+                new Record
+                {
+                    Name = "eslint",
+                    Linter = typeof(eslint.Lint),
+                    Args = typeof(LinterPlainArgs),
+                    Result = typeof(eslint.LintResult),
+                    Model = typeof(LinterFileModel)
                 }
             };
         }
