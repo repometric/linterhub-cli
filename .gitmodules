@@ -1,0 +1,3 @@
+[submodule "linterhub"]
+	path = linterhub
+	url = https://github.com/Repometric/linterhub.git
