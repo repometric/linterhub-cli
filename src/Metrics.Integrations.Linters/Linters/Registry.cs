@@ -129,6 +129,14 @@
                     Args = typeof(LinterPlainArgs),
                     Result = typeof(eslint.LintResult),
                     Model = typeof(LinterFileModel)
+                },
+                new Record
+                {
+                    Name = "htmlvnu",
+                    Linter = typeof(htmlvnu.Lint),
+                    Args = typeof(LinterPlainArgs),
+                    Result = typeof(htmlvnu.LintResult),
+                    Model = typeof(LinterFileModel)
                 }
             };
         }
