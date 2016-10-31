@@ -1,7 +1,4 @@
-﻿using System.Runtime.InteropServices.ComTypes;
-using Metrics.Integrations.Linters.csslint;
-
-namespace Metrics.Integrations.Linters.eslint
+﻿namespace Metrics.Integrations.Linters.eslint
 {
 
     using System.IO;
@@ -37,7 +34,7 @@ namespace Metrics.Integrations.Linters.eslint
                         {
                             Start = fileError.Column
                         }, 
-                        Rule = new LinterRule
+                        Rule = new LinterFileModel.Rule
                         {
                             Id = fileError.RuleId
                         },
