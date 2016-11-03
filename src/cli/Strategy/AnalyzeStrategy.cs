@@ -18,6 +18,7 @@ namespace Linterhub.Cli.Strategy
                 {
                     var command = GetCommand(context, engine);
                     var result = new LinterhubWrapper(context, engine).Analyze(context.Linter, command, context.Project);
+                    System.Console.WriteLine(result);
                     input = new MemoryStream(Encoding.UTF8.GetBytes(result));
                     input.Position = 0;
                 }
@@ -38,23 +39,29 @@ namespace Linterhub.Cli.Strategy
         {
             var linterContext = new LinterContext(context.Configuration, context);
             var linterConfigFile = linterContext.GetLinterConfigFile();
-            if (!File.Exists(linterConfigFile))
+            string command;
+
+            if (File.Exists(linterConfigFile))
             {
-                throw new LinterException("Linter configuration was not found: ", linterConfigFile);
+                string linterConfiguration;
+                try
+                {
+                    linterConfiguration = File.ReadAllText(linterConfigFile);
+                }
+                catch (Exception e)
+                {
+                    throw new LinterException("Error reading linter configuration file: " + e.Message);
+                }
+
+                var args = engine.GetArguments(context.Linter, new MemoryStream(Encoding.UTF8.GetBytes(linterConfiguration)));
+                command = engine.Factory.CreateCommand(args);
+            }
+            else
+            {
+                command = engine.Factory.GetArguments(context.Linter);
             }
 
-            string linterConfiguration;
-            try
-            {
-                linterConfiguration = File.ReadAllText(linterConfigFile);
-            }
-            catch (Exception e)
-            {
-                throw new LinterException("Error reading linter configuration file: " + e.Message);
-            }
-
-            var args = engine.GetArguments(context.Linter, new MemoryStream(Encoding.UTF8.GetBytes(linterConfiguration)));
-            return engine.GetLinterCommand(args);
+            return command;
         }
     }
 }

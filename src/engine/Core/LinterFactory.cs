@@ -49,5 +49,23 @@ namespace Linterhub.Engine
             var args = Create<ILinterArgs>(record.Args);
             return args;
         }
+
+        public string CreateCommand(ILinterArgs args)
+        {
+            var builder = new ArgBuilder();
+            return builder.Build(args);
+        }
+
+        public string GetArguments(string name)
+        {
+            var record = GetRecord(name);
+            if (string.IsNullOrEmpty(record.ArgsDefault))
+            {
+                var args = CreateArguments(name);
+                return CreateCommand(args); 
+            }
+
+            return record.ArgsDefault;
+        }
     }
 }

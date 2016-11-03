@@ -13,6 +13,7 @@
             public Type Args { get; set; }
             public Type Result { get; set; }
             public Type Model { get; set; }
+            public string ArgsDefault { get; set; }
         }
 
         public static Record Get(string name)
@@ -96,14 +97,14 @@
                 Result = typeof(htmlhint.LintResult),
                 Model = typeof(htmlhint.LintResult)
             },
-            new Record
+            /*new Record
             {
                 Name = "phpcheckstyle",
                 Linter = typeof(phpcheckstyle.Lint),
                 Args = typeof(phpcheckstyle.LintArgs),
                 Result = typeof(phpcheckstyle.LintResult),
                 Model = typeof(phpcheckstyle.LintResult)
-            },
+            },*/
             new Record
             {
                 Name = "coffeelint",
@@ -118,7 +119,8 @@
                 Linter = typeof(csslint.Lint),
                 Args = typeof(csslint.LintArgs),
                 Result = typeof(csslint.LintResult),
-                Model = typeof(csslint.LintResult)
+                Model = typeof(csslint.LintResult),
+                ArgsDefault = "csslint . --format=json"
             },
             new Record
             {
@@ -126,7 +128,8 @@
                 Linter = typeof(jshint.Lint),
                 Args = typeof(jshint.LintArgs),
                 Result = typeof(jshint.LintResult),
-                Model = typeof(jshint.LintResult)
+                Model = typeof(jshint.LintResult),
+                ArgsDefault = "jshint . --reporter=jslint"
             },
             new Record
             {
@@ -134,7 +137,8 @@
                 Linter = typeof(jslint.Lint),
                 Args = typeof(LinterPlainArgs),
                 Result = typeof(jslint.LintResult),
-                Model = typeof(LinterFileModel)
+                Model = typeof(LinterFileModel),
+                ArgsDefault = "jslint --json **/*.js"
             },
             new Record
             {

@@ -66,6 +66,7 @@
             catch (Exception exception)
             {
                 log.Error(exception.Message);
+                log.Error(exception.StackTrace);
             }
         }
     }

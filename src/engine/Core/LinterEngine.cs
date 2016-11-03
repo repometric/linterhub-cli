@@ -13,12 +13,6 @@ namespace Linterhub.Engine
             Factory = new LinterFactory();
         }
 
-        public string GetLinterCommand(ILinterArgs args)
-        {
-            var builder = new ArgBuilder();
-            return builder.Build(args);
-        }
-
         public CmdWrapper.RunResults Run(string terminal, string command, string workingDirectory = null)
         {
             var wrapper = new CmdWrapper();
