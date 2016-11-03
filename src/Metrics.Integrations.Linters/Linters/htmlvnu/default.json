@@ -1,0 +1,4 @@
+{
+	"Cmd": "java -jar vnu.jar --format json --native true",
+	"TestPath": "D:/work/repometric/Test_Lints/Test_Js"
+}
