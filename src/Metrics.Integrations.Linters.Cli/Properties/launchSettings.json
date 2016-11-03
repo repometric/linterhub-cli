@@ -1,8 +1,0 @@
-{
-  "profiles": {
-    "Metrics.Integrations.Linters.Cli": {
-      "commandName": "Project",
-      "commandLineArgs": "-l pep8 -p C:\\xampp\\htdocs\\zxcvbn\\data-scripts"
-    }
-  }
-}

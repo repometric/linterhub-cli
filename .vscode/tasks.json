@@ -1,16 +1,30 @@
 {
     "version": "0.1.0",
-    "command": "dotnet",
     "isShellCommand": true,
-    "args": [],
+    "command": "sh",
+    "args": ["-c"],
+    "showOutput": "always",
+    "echoCommand": true,
     "tasks": [
         {
-            "taskName": "build",
+            "taskName": "build-engine",
             "args": [
-                "${workspaceRoot}/src/Metrics.Integrations.Linters.Cli/project.json"
+                "dotnet build ${workspaceRoot}/src/engine/project.json"
             ],
             "isBuildCommand": true,
-            "problemMatcher": "$msCompile"
+            "problemMatcher": "$msCompile",
+            "suppressTaskName": true,
+            "showOutput": "always"
+        },
+        {
+            "taskName": "publish-cli",
+            "args": [
+                "dotnet publish ${workspaceRoot}/src/cli/project.json --output bin/"
+            ],
+            "isBuildCommand": true,
+            "problemMatcher": "$msCompile",
+            "suppressTaskName": true,
+            "showOutput": "always"
         }
     ]
 }

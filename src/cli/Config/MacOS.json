@@ -1,0 +1,7 @@
+{
+  "command": "sh lh.sh --mode analyze --name {0}:\\\"{1}\\\" --path {2} --clean true --session true --log NO",
+  "command_info": "sh lh.sh info",
+  "linterhub": "linterhub",
+  "terminal": "/bin/bash",
+  "terminalCommand": "-c \"{0}\""
+}
