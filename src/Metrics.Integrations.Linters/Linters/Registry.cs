@@ -129,6 +129,14 @@
                     Args = typeof(LinterPlainArgs),
                     Result = typeof(eslint.LintResult),
                     Model = typeof(LinterFileModel)
+                },
+                new Record
+                {
+                    Name = "pep8",
+                    Linter = typeof(pep8.Lint),
+                    Args = typeof(pep8.LintArgs),
+                    Result = typeof(pep8.LintResult),
+                    Model = typeof(LinterFileModel)
                 }
             };
         }
