@@ -137,6 +137,14 @@
                     Args = typeof(LinterPlainArgs),
                     Result = typeof(htmlvnu.LintResult),
                     Model = typeof(LinterFileModel)
+                },
+                new Record
+                {
+                    Name = "pmd",
+                    Linter = typeof(pmd.Lint),
+                    Args = typeof(LinterPlainArgs),
+                    Result = typeof(pmd.LintResult),
+                    Model = typeof(LinterFileModel)
                 }
             };
         }
