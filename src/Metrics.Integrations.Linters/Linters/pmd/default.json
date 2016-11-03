@@ -1,0 +1,5 @@
+{
+  "Cmd": "pmd -dir D:\work\repometric\Lints_Test\Test_Java -f xml -rulesets java-basic,java-design",
+  "TestPath": "D:\work\repometric\Lints_Test\Test_Java",
+  "AppPath": "D:\work\repometric\Lints_Cmd\Pmd\bin"
+}
