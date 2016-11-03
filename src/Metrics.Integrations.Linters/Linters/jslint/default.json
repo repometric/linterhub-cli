@@ -1,0 +1,4 @@
+{
+  "Cmd": "jslint --json **/*.js",
+  "TestPath": "D:/work/repometric/Test_Lints/Test_Js"
+}
