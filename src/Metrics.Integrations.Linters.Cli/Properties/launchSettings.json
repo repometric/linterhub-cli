@@ -2,7 +2,7 @@
   "profiles": {
     "Metrics.Integrations.Linters.Cli": {
       "commandName": "Project",
-      "commandLineArgs": "csslint C:/xampp/htdocs/debugger.html/public/js/clients/chrome"
+      "commandLineArgs": "-l pep8 -p C:\\xampp\\htdocs\\zxcvbn\\data-scripts"
     }
   }
 }
