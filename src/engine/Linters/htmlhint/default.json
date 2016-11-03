@@ -1,6 +1,5 @@
 {
   "ReportType": "json",
   "ToolPath": "htmlhint",
-  "TestPath": "C:\\xampp\\htdocs\\debugger.html",
-  "TestPathDocker": "./"
+  "TestPath": "C:\\xampp\\htdocs\\debugger.html"
 }

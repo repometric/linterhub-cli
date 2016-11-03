@@ -8,12 +8,6 @@ namespace Linterhub.Engine.Linters.pep8
         public string TestPath { get; set; }
 
         /// <summary>
-        /// Tested project path (in container)
-        /// </summary>
-        [Arg("", order: 0)]
-        public string TestPathDocker { get; set; }
-
-        /// <summary>
         /// Tool path
         /// </summary>
         [Arg("", order: int.MinValue)]

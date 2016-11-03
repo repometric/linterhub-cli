@@ -8,12 +8,6 @@
         public string TestPath { get; set; }
 
         /// <summary>
-        /// Tested project path (in container)
-        /// </summary>
-        [Arg("", order: int.MaxValue)]
-        public string TestPathDocker { get; set; }
-
-        /// <summary>
         /// Your projcet Directory
         /// </summary>
         public string ProjectPath { get; set; }

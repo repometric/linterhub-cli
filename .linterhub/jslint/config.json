@@ -1,4 +1,3 @@
 {
-  "Cmd": "jslint --json **/*.js",
-  "TestPath": "D:/Test_Js"
+  "Cmd": "jslint --json **/*.js"
 }

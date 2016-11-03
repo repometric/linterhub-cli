@@ -1,6 +1,5 @@
 {
   "ToolPath": "jshint",
   "TestPath": "C:/xampp/htdocs/debugger.html/public/js/clients/chrome",
-  "TestPathDocker" : "./",
   "Reporter": "checkstyle"
 }

@@ -1,6 +1,4 @@
 {
   "ToolPath": "pep8",
-  "ReportType": "pylint",
-  "TestPathDocker": "./",
-  "TestPath":  ""
+  "ReportType": "pylint"
 }

@@ -1,6 +1,5 @@
 {
   "ReportType": "json",
   "ToolPath": "htmlhint",
-  "TestPath": "/Volumes/Repositories/Tests/html/",
-  "TestPathDocker": "./"
+  "TestPath": "/Volumes/Repositories/Tests/html/"
 }
