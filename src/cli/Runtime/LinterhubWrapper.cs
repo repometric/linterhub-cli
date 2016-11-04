@@ -1,6 +1,8 @@
 namespace Linterhub.Cli.Runtime
 {
+    using System;
     using Linterhub.Engine;
+    using Linterhub.Engine.Exceptions;
 
     public class LinterhubWrapper
     {
@@ -17,7 +19,20 @@ namespace Linterhub.Cli.Runtime
         {
             var cmd = string.Format(Context.Configuration.TerminalCommand, command);
             var run = Engine.Run(Context.Configuration.Terminal, cmd, Context.Configuration.Linterhub);
-            return run.Output.ToString();
+            if (run.RunException != null)
+            {
+                throw new LinterException("Runtime Exception: ", run.RunException.Message);
+            }
+
+            var error = run.Error?.ToString();
+            if (string.IsNullOrEmpty(error))
+            {
+                throw new LinterException(
+                    "Linter stderr: ", error, Environment.NewLine,
+                    "Linter stdout: ", run.Output?.ToString());
+            }
+
+            return run.Output?.ToString();
         }
 
         public string Info()

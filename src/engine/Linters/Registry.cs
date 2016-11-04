@@ -146,7 +146,8 @@
                 Linter = typeof(eslint.Lint),
                 Args = typeof(LinterPlainArgs),
                 Result = typeof(eslint.LintResult),
-                Model = typeof(LinterFileModel)
+                Model = typeof(LinterFileModel),
+                ArgsDefault = "eslint **/*.js -f json"
             },
             new Record
             {

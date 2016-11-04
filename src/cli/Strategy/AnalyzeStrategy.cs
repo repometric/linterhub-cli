@@ -18,7 +18,6 @@ namespace Linterhub.Cli.Strategy
                 {
                     var command = GetCommand(context, engine);
                     var result = new LinterhubWrapper(context, engine).Analyze(context.Linter, command, context.Project);
-                    System.Console.WriteLine(result);
                     input = new MemoryStream(Encoding.UTF8.GetBytes(result));
                     input.Position = 0;
                 }
