@@ -17,13 +17,13 @@ namespace Linterhub.Cli.Strategy
             {
                 throw new LinterException("App configuration was not found: ", context.Config);
             }
-
+/*          TODO: Temporary disable.
             context.Project = GetProjectPath(context.Project);
             if (!Directory.Exists(context.Project))
             {
                 throw new LinterException("Project was not found: ", context.Project);
             }
-
+*/
             try
             {
                 context.Configuration = ParseConfiguration(context.Config);

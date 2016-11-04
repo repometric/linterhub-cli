@@ -11,26 +11,28 @@ namespace Linterhub.Cli.Strategy
     {
         public object Run(RunContext context, LinterEngine engine)
         {
+            string result = string.Empty;
+            Stream input;
+            // TODO: Temporary disable
+            if (/*!context.InputAwailable*/true)
+            {
+                var command = GetCommand(context, engine);
+                result = new LinterhubWrapper(context, engine).Analyze(context.Linter, command, context.Project);
+                input = new MemoryStream(Encoding.UTF8.GetBytes(result));
+                input.Position = 0;
+            }
+            else
+            {
+                input = context.Input;
+            }
+
             try
             {
-                Stream input;
-                if (!context.InputAwailable)
-                {
-                    var command = GetCommand(context, engine);
-                    var result = new LinterhubWrapper(context, engine).Analyze(context.Linter, command, context.Project);
-                    input = new MemoryStream(Encoding.UTF8.GetBytes(result));
-                    input.Position = 0;
-                }
-                else
-                {
-                    input = context.Input;
-                }
-
                 return engine.GetModel(context.Linter, input, null);
             }
             catch (Exception exception)
             {
-                throw new LinterParseException(exception);
+                throw new LinterException(result + " " + exception.Message, exception);
             }
         }
 

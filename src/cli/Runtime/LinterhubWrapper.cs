@@ -24,8 +24,8 @@ namespace Linterhub.Cli.Runtime
                 throw new LinterException("Runtime Exception: ", run.RunException.Message);
             }
 
-            var error = run.Error?.ToString();
-            if (string.IsNullOrEmpty(error))
+            var error = run.Error?.ToString().Trim();
+            if (!string.IsNullOrEmpty(error))
             {
                 throw new LinterException(
                     "Linter stderr: ", error, Environment.NewLine,

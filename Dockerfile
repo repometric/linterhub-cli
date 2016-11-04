@@ -1,14 +1,5 @@
 FROM microsoft/dotnet:1.0.0-preview2.1-sdk
 MAINTAINER Repometric <docker@repometric.com>
-WORKDIR /temp
-COPY . .
-RUN dotnet restore src/cli/project.json
-RUN dotnet publish src/cli/project.json --output bin/
-WORKDIR /app
-RUN mv /temp/bin /app && \
-    mv /temp/src/cli/Config /app/bin && \
-    mv /temp/src/cli/linterhub /app/bin && \
-    rm -rf /temp
 
 # Configure bash
 RUN echo "dash dash/sh boolean false" | debconf-set-selections
@@ -32,4 +23,13 @@ RUN set -x \
 	&& rm docker.tgz \
 	&& docker -v
 
+WORKDIR /temp
+COPY . .
+RUN dotnet restore src/cli/project.json
+RUN dotnet publish src/cli/project.json --output bin/
+WORKDIR /app
+RUN mv /temp/bin /app && \
+    mv /temp/src/cli/Config /app/bin && \
+    mv /temp/src/cli/linterhub /app/bin && \
+    rm -rf /temp
 WORKDIR /app/bin

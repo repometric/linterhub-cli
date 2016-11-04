@@ -16,21 +16,26 @@ namespace Linterhub.Cli
             LogWriter = new StringBuilder();
         }
 
-        public void Log(string format, params object[] args)
+        public void Log(string format)
         {
-            LogWriter.AppendLine(string.Format(format, args));
+            LogWriter.AppendLine(format);
         }
 
         public void Trace(string message, params object[] args)
         {
-            Log("TRACE: " + message + " {0}", string.Join(" ", args));
+            Log("TRACE: " + message + " " + string.Join(" ", args));
         }
 
         public void Error(string message, params object[] args)
         {
             error = true;
-            Log("ERROR: " + message + " {0}", string.Join(" ", args));
-            System.Console.Error.WriteLine(string.Format(message + " {0}", string.Join(" ", args)));
+            Log("ERROR: " + message + " " + string.Join(" ", args));
+            System.Console.Error.WriteLine(message + " " + string.Join(" ", args));
+        }
+
+        public void Error(Exception exception)
+        {
+            Error(exception.Message, exception.StackTrace);
         }
 
         public void Save(string fileName)

@@ -48,7 +48,7 @@
             }
             catch (Exception exception) 
             {
-                log.Error(exception.Message);
+                log.Error(exception);
                 runContext.Mode = RunMode.Help;
             }
 
@@ -65,7 +65,7 @@
             }
             catch (Exception exception)
             {
-                log.Error(exception.Message);
+                log.Error(exception);
             }
         }
     }
