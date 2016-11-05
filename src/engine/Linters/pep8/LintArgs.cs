@@ -3,11 +3,6 @@ namespace Linterhub.Engine.Linters.pep8
     public class LintArgs : ILinterArgs
     {
         /// <summary>
-        /// Tested project path
-        /// </summary>
-        public string TestPath { get; set; }
-
-        /// <summary>
         /// Tool path
         /// </summary>
         [Arg("", order: int.MinValue)]
@@ -52,6 +47,12 @@ namespace Linterhub.Engine.Linters.pep8
         /// </summary>
         [Arg("--max-line-length", separator: "=", order: 1)]
         public int MaxLineLength { get; set; }
+
+        /// <summary>
+        /// Tested project path (in container)
+        /// </summary>
+        [Arg("", order: int.MaxValue)]
+        public string TestPathDocker { get; set; }
 
     }
 }

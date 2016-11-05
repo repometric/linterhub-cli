@@ -27,7 +27,7 @@ namespace Linterhub.Cli.Strategy
         {
             try
             {
-                return context.InputAwailable
+                return false
                      ? context.Input.DeserializeAsJson<Linters>()
                      : new LinterhubWrapper(context, engine).Info().DeserializeAsJson<Linters>();
             }

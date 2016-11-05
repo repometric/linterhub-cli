@@ -47,8 +47,10 @@ namespace Linterhub.Engine.Linters.jshint
         public string Extract { get; set; }
 
         /// <summary>
-        /// Tested project path
+        /// Tested project path (in container)
         /// </summary>
-        public string TestPath { get; set; }
+        [Arg("", order: int.MaxValue)]
+        public string TestPathDocker { get; set; }
+
     }
 }

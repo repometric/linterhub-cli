@@ -16,7 +16,7 @@ namespace Linterhub.Cli.Strategy
             // TODO: Temporary disable
             if (/*!context.InputAwailable*/true)
             {
-                var command = GetCommand(context, engine);
+                string command = GetCommand(context, engine);
                 result = new LinterhubWrapper(context, engine).Analyze(context.Linter, command, context.Project);
                 input = new MemoryStream(Encoding.UTF8.GetBytes(result));
                 input.Position = 0;

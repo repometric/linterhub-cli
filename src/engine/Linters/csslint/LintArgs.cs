@@ -3,12 +3,6 @@ namespace Linterhub.Engine.Linters.csslint
     public class LintArgs : ILinterArgs
     {
         /// <summary>
-        /// Tested project path
-        /// ATTENTION!! Choose only dirs, not files
-        /// </summary>
-        public string TestPath { get; set; }
-
-        /// <summary>
         /// Tool path
         /// </summary>
         [Arg("", order: int.MinValue)]
@@ -37,6 +31,12 @@ namespace Linterhub.Engine.Linters.csslint
         /// </summary>
         [Arg("--exclude-list", separator: "=", order: 1)]
         public string Exclude { get; set; }
+
+        /// <summary>
+        /// Tested project path (in container)
+        /// </summary>
+        [Arg("", order: int.MaxValue)]
+        public string TestPathDocker { get; set; }
 
     }
 }
