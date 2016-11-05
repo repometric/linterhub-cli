@@ -10,10 +10,23 @@ namespace Linterhub.Engine.Linters.csslint
     {
         public override ILinterResult Parse(Stream stream)
         {
-            return new LintResult
+            try
             {
-                FilesList = stream.DeserializeAsJson<List<File>>()
-            };
+                return new LintResult
+                {
+                    FilesList = stream.DeserializeAsJson<List<File>>()
+                };
+            }
+            catch(Exception)
+            {
+                return new LintResult
+                {
+                    FilesList = new List<File>
+                    {
+                        stream.DeserializeAsJson<File>()
+                    }
+                };
+            }
         }
 
         public static LinterFileModel.Error.SeverityType SeverityConvertion(String s)

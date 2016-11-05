@@ -2,7 +2,7 @@
   "profiles": {
     "Linterhub.Cli": {
       "commandName": "Project",
-      "commandLineArgs": "--mode=Analyze --linter=coffeelint --project=C:\\xampp\\htdocs\\zxcvbn\\data-scripts"
+      "commandLineArgs": "--mode=Analyze --linter=htmlhint --project=C:\\xampp\\htdocs\\debugger.html\\docs\\reference"
     },
     "cli": {
       "commandName": "Project"

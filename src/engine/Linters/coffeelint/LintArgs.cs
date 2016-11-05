@@ -34,11 +34,6 @@ namespace Linterhub.Engine.Linters.coffeelint
         public string Extensions { get; set; }
 
         /// <summary>
-        /// Tested project path
-        /// </summary>
-        public string TestPath { get; set; }
-
-        /// <summary>
         /// Tested project path (in container)
         /// </summary>
         [Arg("", order: int.MaxValue)]

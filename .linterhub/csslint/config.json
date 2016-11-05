@@ -1,4 +1,5 @@
 {
   "ToolPath": "csslint",
-  "ReportType": "json"
+  "ReportType": "json",
+  "TestPathDocker": "./"
 }
