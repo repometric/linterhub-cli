@@ -95,7 +95,8 @@
                 Linter = typeof(htmlhint.Lint),
                 Args = typeof(htmlhint.LintArgs),
                 Result = typeof(htmlhint.LintResult),
-                Model = typeof(htmlhint.LintResult)
+                Model = typeof(htmlhint.LintResult),
+                ArgsDefault = "htmlhint --format json ./"
             },
             /*new Record
             {
@@ -111,7 +112,8 @@
                 Linter = typeof(coffeelint.Lint),
                 Args = typeof(coffeelint.LintArgs),
                 Result = typeof(coffeelint.LintResult),
-                Model = typeof(coffeelint.LintResult)
+                Model = typeof(coffeelint.LintResult),
+                ArgsDefault = "coffeelint --reporter csv ./"
             },
             new Record
             {
@@ -120,7 +122,7 @@
                 Args = typeof(csslint.LintArgs),
                 Result = typeof(csslint.LintResult),
                 Model = typeof(csslint.LintResult),
-                ArgsDefault = "csslint . --format=json"
+                ArgsDefault = "csslint --format=json ./"
             },
             new Record
             {
