@@ -1,7 +1,7 @@
 {
   "version": "1.1.0-*",
   "buildOptions": {
-    "outputName": "Linterhub.Engine"
+    "outputName": "engine"
   },
   "description": "Linterhub engine.",
   "dependencies": {

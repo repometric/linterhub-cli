@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "Metrics.Integrations.Linters.Cli": {
+    "Linterhub.Cli": {
       "commandName": "Project",
       "commandLineArgs": "csslint C:/xampp/htdocs/debugger.html/public/js/clients/chrome"
     }
