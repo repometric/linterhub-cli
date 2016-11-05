@@ -40,7 +40,7 @@ namespace Linterhub.Cli.Strategy
             }
 
             runContext.Input = Console.OpenStandardInput();
-            runContext.InputAwailable = System.Console.IsInputRedirected;
+            //runContext.InputAwailable = System.Console.IsInputRedirected;
             return runContext;
         }
 

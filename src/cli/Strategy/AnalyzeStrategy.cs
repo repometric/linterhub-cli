@@ -13,8 +13,7 @@ namespace Linterhub.Cli.Strategy
         {
             string result = string.Empty;
             Stream input;
-            // TODO: Temporary disable
-            if (/*!context.InputAwailable*/true)
+            if (!context.InputAwailable)
             {
                 string command = GetCommand(context, engine);
                 result = new LinterhubWrapper(context, engine).Analyze(context.Linter, command, context.Project);
