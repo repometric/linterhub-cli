@@ -1,0 +1,6 @@
+{
+  "ToolPath": "jshint",
+  "TestPath": "/Volumes/Repositories/Tests/javascript/",
+  "Reporter": "checkstyle",
+  "TestPathDocker": "./"
+}

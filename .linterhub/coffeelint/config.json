@@ -1,4 +1,6 @@
 {
   "ToolPath": "coffeelint",
-  "ReportType": "csv"
+  "TestPath": "/Volumes/Repositories/Tests/coffeescript/",
+  "ReportType": "csv",
+  "TestPathDocker": "./"
 }
