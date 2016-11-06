@@ -3,5 +3,6 @@
   "command_info": "sh lh.sh info",
   "linterhub": "linterhub",
   "terminal": "/bin/bash",
-  "terminalCommand": "-c \"{0}\""
+  "terminalCommand": "-c \"{0}\"",
+  "projectConfig": ".linterhub"
 }

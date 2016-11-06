@@ -9,13 +9,13 @@ namespace Linterhub.Cli.Strategy
 
     public class AnalyzeStrategy : IStrategy
     {
-        public object Run(RunContext context, LinterEngine engine)
+        public object Run(RunContext context, LinterEngine engine, LogManager log)
         {
             string result = string.Empty;
             Stream input;
             if (!context.InputAwailable)
             {
-                string command = GetCommand(context, engine);
+                string command = GetCommand(context, engine, log);
                 result = new LinterhubWrapper(context, engine).Analyze(context.Linter, command, context.Project);
                 input = new MemoryStream(Encoding.UTF8.GetBytes(result));
                 input.Position = 0;
@@ -31,33 +31,36 @@ namespace Linterhub.Cli.Strategy
             }
             catch (Exception exception)
             {
-                throw new LinterException(result + " " + exception.Message, exception);
+                throw new LinterEngineException(result + " " + exception.Message, exception);
             }
         }
 
-        private string GetCommand(RunContext context, LinterEngine engine)
+        private string GetCommand(RunContext context, LinterEngine engine, LogManager log)
         {
-            var linterContext = new LinterContext(context.Configuration, context);
-            var linterConfigFile = linterContext.GetLinterConfigFile();
+            var projectConfigFile = Path.Combine(context.Project, context.Configuration.ProjectConfig, context.Linter ?? "", "config.json");
+            log.Trace("Expected project config: " + projectConfigFile);
             string command;
 
-            if (File.Exists(linterConfigFile))
+            if (File.Exists(projectConfigFile))
             {
+                log.Trace("Using project config");
                 string linterConfiguration;
                 try
                 {
-                    linterConfiguration = File.ReadAllText(linterConfigFile);
+                    linterConfiguration = File.ReadAllText(projectConfigFile);
                 }
-                catch (Exception e)
+                catch (Exception exception)
                 {
-                    throw new LinterException("Error reading linter configuration file: " + e.Message);
+                    throw new LinterEngineException("Error reading project configuration file", exception);
                 }
 
-                var args = engine.GetArguments(context.Linter, new MemoryStream(Encoding.UTF8.GetBytes(linterConfiguration)));
+                var stream = new MemoryStream(Encoding.UTF8.GetBytes(linterConfiguration));
+                var args = engine.GetArguments(context.Linter, stream);
                 command = engine.Factory.CreateCommand(args);
             }
             else
             {
+                log.Trace("Project config was not found");
                 command = engine.Factory.GetArguments(context.Linter);
             }
 

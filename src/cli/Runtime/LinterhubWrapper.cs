@@ -21,15 +21,15 @@ namespace Linterhub.Cli.Runtime
             var run = Engine.Run(Context.Configuration.Terminal, cmd, Context.Configuration.Linterhub);
             if (run.RunException != null)
             {
-                throw new LinterException("Runtime Exception: ", run.RunException.Message);
+                throw new LinterEngineException("Runtime Exception", run.RunException);
             }
 
             var error = run.Error?.ToString().Trim();
             if (!string.IsNullOrEmpty(error))
             {
-                throw new LinterException(
-                    "Linter stderr: ", error, Environment.NewLine,
-                    "Linter stdout: ", run.Output?.ToString());
+                throw new LinterEngineException(
+                    "Linter stderr: " + error + Environment.NewLine +
+                    "Linter stdout: " + run.Output?.ToString());
             }
 
             return run.Output?.ToString();

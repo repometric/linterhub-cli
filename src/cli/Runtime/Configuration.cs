@@ -7,5 +7,6 @@ namespace Linterhub.Cli.Runtime
         public string Linterhub { get; set; }
         public string Terminal { get; set; }
         public string TerminalCommand { get; set; }
+        public string ProjectConfig { get; set; }
     }
 }

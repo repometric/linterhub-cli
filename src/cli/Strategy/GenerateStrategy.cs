@@ -6,7 +6,7 @@ namespace Linterhub.Cli.Strategy
 
     public class GenerateStrategy : IStrategy
     {
-        public object Run(RunContext context, LinterEngine engine)
+        public object Run(RunContext context, LinterEngine engine, LogManager log)
         {
             var args = engine.Factory.CreateArguments(context.Linter);
             return args;

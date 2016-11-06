@@ -26,29 +26,37 @@ namespace Linterhub.Cli
             Log("TRACE: " + message + " " + string.Join(" ", args));
         }
 
-        public void Error(string message, params object[] args)
+        public void Error(string message)
         {
             error = true;
-            Log("ERROR: " + message + " " + string.Join(" ", args));
-            System.Console.Error.WriteLine(message + " " + string.Join(" ", args));
+            Log("ERROR: " + message);
+            System.Console.Error.WriteLine(message);
         }
 
         public void Error(Exception exception)
         {
-            Error(exception.Message, exception.StackTrace);
+            Error(exception.Message);
+            Error(exception.ToString());
         }
 
-        public void Save(string fileName)
+        public void Save(string fileName = null)
         {
             saved = true;
-            File.WriteAllText(fileName, LogWriter.ToString());
+            if (string.IsNullOrEmpty(fileName))
+            {
+                System.Console.Write(LogWriter.ToString());
+            }
+            else
+            {
+                File.WriteAllText(fileName, LogWriter.ToString());
+            }
         }
 
         public void Dispose()
         {
             if (!saved && error)
             {
-                System.Console.Write(LogWriter.ToString());
+                Save();
             }
         }
     }

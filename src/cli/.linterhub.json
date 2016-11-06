@@ -1,0 +1,45 @@
+{
+    "mode": "docker|local|docker-xx",
+    "linters": [
+        {
+            "name": "coffelint",
+            "config": {
+                "ToolPath": "coffeelint",
+                "ReportType": "csv",
+                "TestPathDocker": "./"
+            }
+        },
+        {
+            "name": "csslint",
+            "config": {
+                "ToolPath": "csslint",
+                "ReportType": "json",
+                "TestPathDocker": "./"
+            }
+        },
+        {
+            "name": "htmlhint",
+            "config": {
+                "ReportType": "json",
+                "ToolPath": "htmlhint",
+                "TestPathDocker": "./"
+            }
+        },
+        {
+            "name": "jshint",
+            "config": {
+                "ToolPath": "jshint",
+                "Reporter": "checkstyle",
+                "TestPathDocker": "./"
+            }
+        },
+        {
+            "name": "pep8",
+            "config": {
+                "ToolPath": "pep8",
+                "ReportType": "pylint",
+                "TestPathDocker": "./"
+            }
+        }
+    ]
+}

@@ -33,30 +33,34 @@
 
         internal static void Run(string[] args, LogManager log)
         {
-            log.Trace("Start:", Process.GetCurrentProcess().ProcessName);
-            log.Trace("Args :", args);
+            log.Trace("Start  :", Process.GetCurrentProcess().ProcessName);
+            log.Trace("Args   :", args);
 
             var optionsStrategy = new OptionsStrategy();
             var validateStrategy = new ValidateStrategy();
             var engine = new LinterEngine();
             Strategies.Add(RunMode.Help, optionsStrategy);
-            RunContext runContext = new RunContext();
+            var context = new RunContext();
             try
             {
-                runContext = optionsStrategy.Parse(args);
-                validateStrategy.Run(runContext, engine);
+                context = optionsStrategy.Parse(args);
+                validateStrategy.Run(context, engine, log);
             }
             catch (Exception exception) 
             {
                 log.Error(exception);
-                runContext.Mode = RunMode.Help;
+                return;
             }
 
             try
             {
-                log.Trace("Mode :", runContext.Mode);
-                var strategy = Strategies[runContext.Mode];
-                var result = strategy.Run(runContext, engine);
+                log.Trace("Mode   :", context.Mode);
+                log.Trace("Config :", context.Config);
+                log.Trace("Linter :", context.Linter);
+                log.Trace("Project:", context.Project);
+
+                var strategy = Strategies[context.Mode];
+                var result = strategy.Run(context, engine, log);
                 if (result != null)
                 {
                     var jsonResult = JsonConvert.SerializeObject(result);

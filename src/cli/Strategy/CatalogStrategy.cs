@@ -11,7 +11,7 @@ namespace Linterhub.Cli.Strategy
 
     public class CatalogStrategy : IStrategy
     {
-        public object Run(RunContext context, LinterEngine engine)
+        public object Run(RunContext context, LinterEngine engine, LogManager log)
         {
             var catalog = GetCatalog(context, engine);
             var result = engine.Factory.GetRecords().Select(x => new 

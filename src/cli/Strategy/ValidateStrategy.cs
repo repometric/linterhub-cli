@@ -10,33 +10,33 @@ namespace Linterhub.Cli.Strategy
 
     public class ValidateStrategy : IStrategy
     {
-        public object Run(RunContext context, LinterEngine engine)
+        public object Run(RunContext context, LinterEngine engine, LogManager log)
         {        
             context.Config = GetConfigurationPath(context.Config);    
             if (!File.Exists(context.Config))
             {
-                throw new LinterException("App configuration was not found: ", context.Config);
+                throw new LinterEngineException("App configuration was not found: " + context.Config);
             }
-/*          TODO: Temporary disable.
+
             context.Project = GetProjectPath(context.Project);
             if (!Directory.Exists(context.Project))
             {
-                throw new LinterException("Project was not found: ", context.Project);
+                throw new LinterEngineException("Project was not found: " + context.Project);
             }
-*/
+
             try
             {
                 context.Configuration = ParseConfiguration(context.Config);
             }
             catch (Exception exception)
             {
-                throw new LinterException("Error reading app configuration: ", exception.Message);
+                throw new LinterEngineException("Error parsing app configuration", exception);
             }
 
             if (!string.IsNullOrEmpty(context.Configuration.Linterhub) && 
                 !Directory.Exists(context.Configuration.Linterhub))
             {
-                throw new LinterException("Linterhub was not found: ", context.Configuration.Linterhub);
+                throw new LinterEngineException("Linterhub was not found: " + context.Configuration.Linterhub);
             }
 
             return true;
@@ -52,7 +52,8 @@ namespace Linterhub.Cli.Strategy
                 CommandInfo = configuration["command_info"],
                 Linterhub = configuration["linterhub"],
                 Terminal = configuration["terminal"],
-                TerminalCommand = configuration["terminalCommand"]
+                TerminalCommand = configuration["terminalCommand"],
+                ProjectConfig = configuration["projectConfig"]
             };
 
             return config;

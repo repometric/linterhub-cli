@@ -31,12 +31,12 @@ namespace Linterhub.Cli.Strategy
             }
             catch (Exception exception)
             {
-                throw new LinterException("Error parsing arguments: ", exception.Message);
+                throw new LinterEngineException("Error parsing arguments", exception);
             }
 
             if (extra.Any())
             {
-                throw new LinterException("Extra arguments: ", string.Join(",", extra));
+                throw new LinterEngineException("Extra arguments: " + string.Join(",", extra));
             }
 
             runContext.Input = Console.OpenStandardInput();
@@ -44,7 +44,7 @@ namespace Linterhub.Cli.Strategy
             return runContext;
         }
 
-        public object Run(RunContext context, LinterEngine engine)
+        public object Run(RunContext context, LinterEngine engine, LogManager log)
         {
             Console.WriteLine("Options:");
             Options.WriteOptionDescriptions(Console.Out);

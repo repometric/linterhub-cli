@@ -157,7 +157,8 @@
                 Linter = typeof(pep8.Lint),
                 Args = typeof(pep8.LintArgs),
                 Result = typeof(pep8.LintResult),
-                Model = typeof(LinterFileModel)
+                Model = typeof(LinterFileModel),
+                ArgsDefault = "pep8 --format=pylint ./"
             }
         };
     }

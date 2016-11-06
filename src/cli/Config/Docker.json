@@ -3,5 +3,6 @@
   "command_info": "docker run -it linterhub sh lh.sh info",
   "linterhub": "",
   "terminal": "/bin/bash",
-  "terminalCommand": "-c \"{0}\""
+  "terminalCommand": "-c \"{0}\"",
+  "projectConfig": ".linterhub"
 }

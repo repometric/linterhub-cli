@@ -3,5 +3,6 @@
   "command_info": "sh lh.sh info",
   "linterhub": "linterhub",
   "terminal": "C:\\Windows\\system32\\cmd.exe",
-  "terminalCommand": "/C \"{0}\""
+  "terminalCommand": "/C \"{0}\"",
+  "projectConfig": ".linterhub"
 }
