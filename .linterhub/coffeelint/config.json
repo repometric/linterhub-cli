@@ -1,5 +1,0 @@
-{
-  "ToolPath": "coffeelint",
-  "ReportType": "csv",
-  "TestPathDocker": "./"
-}

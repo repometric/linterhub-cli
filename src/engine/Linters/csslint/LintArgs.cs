@@ -2,6 +2,14 @@ namespace Linterhub.Engine.Linters.csslint
 {
     public class LintArgs : ILinterArgs
     {
+
+        public LintArgs()
+        {
+            ToolPath = "csslint";
+            ReportType = "json";
+            TestPathDocker = "./";
+        }
+
         /// <summary>
         /// Tool path
         /// </summary>

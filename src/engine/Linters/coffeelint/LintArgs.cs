@@ -2,6 +2,14 @@ namespace Linterhub.Engine.Linters.coffeelint
 {
     public class LintArgs : ILinterArgs
     {
+
+        public LintArgs()
+        {
+            ToolPath = "coffeelint";
+            ReportType = "csv";
+            TestPathDocker = "./";
+        }
+
         /// <summary>
         /// Tool path
         /// </summary>
