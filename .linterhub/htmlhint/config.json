@@ -1,5 +1,0 @@
-{
-  "ReportType": "json",
-  "ToolPath": "htmlhint",
-  "TestPathDocker": "./"
-}

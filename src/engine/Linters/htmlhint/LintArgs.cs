@@ -2,6 +2,14 @@ namespace Linterhub.Engine.Linters.htmlhint
 {
     public class LintArgs : ILinterArgs
     {
+
+        public LintArgs()
+        {
+            ToolPath = "htmlhint";
+            ReportType = "json";
+            TestPathDocker = "./";
+        }
+
         /// <summary>
         /// Report type (checkstyle,compact,json,junit,markdown,unix)
         /// </summary>

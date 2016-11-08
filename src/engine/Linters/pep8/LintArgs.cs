@@ -2,6 +2,14 @@ namespace Linterhub.Engine.Linters.pep8
 {
     public class LintArgs : ILinterArgs
     {
+
+        public LintArgs()
+        {
+            ToolPath = "pep8";
+            ReportType = "pylint";
+            TestPathDocker = "./";
+        }
+
         /// <summary>
         /// Tool path
         /// </summary>

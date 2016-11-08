@@ -2,6 +2,14 @@ namespace Linterhub.Engine.Linters.jshint
 {
     public class LintArgs : ILinterArgs
     {
+
+        public LintArgs()
+        {
+            ToolPath = "jshint";
+            Reporter = "checkstyle";
+            TestPathDocker = "./";
+        }
+
         /// <summary>
         /// Tool path
         /// </summary>

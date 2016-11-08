@@ -1,5 +1,0 @@
-{
-  "ToolPath": "jshint",
-  "Reporter": "checkstyle",
-  "TestPathDocker": "./"
-}
