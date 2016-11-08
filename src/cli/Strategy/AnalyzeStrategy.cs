@@ -52,23 +52,23 @@ namespace Linterhub.Cli.Strategy
                 log.Trace("Using project config");
                 try
                 {
-                    FileStream fs = File.Open(projectConfigFile, FileMode.Open);
-                    try
+                    using (FileStream fs = File.Open(projectConfigFile, FileMode.Open))
                     {
-                        ExtConfig e = fs.DeserializeAsJson<ExtConfig>();
-                        var a = e.Linters.Where(x => x.Name == linter).First().Config;
-                        var stream = new MemoryStream(Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(a)));
-                        var args = engine.GetArguments(context.Linter, stream);
-                        command = engine.Factory.CreateCommand(args);
-                    }
-                    catch (Exception exception)
-                    {
-                        throw new LinterEngineException("Error parsing project configuration file", exception);
+                        ExtConfig projectConfig = fs.DeserializeAsJson<ExtConfig>();
+                        var LinterConfig = projectConfig.Linters.Where(x => x.Name == linter).FirstOrDefault();
+                        if (LinterConfig == null)
+                            throw new LinterNotFoundException("Can't find linter with name: " + linter);
+                        else
+                        {
+                            var stream = new MemoryStream(Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(LinterConfig.Config)));
+                            var args = engine.GetArguments(context.Linter, stream);
+                            command = engine.Factory.CreateCommand(args);
+                        }
                     }
                 }
                 catch (Exception exception)
                 {
-                    throw new LinterEngineException("Error reading project configuration file", exception);
+                    throw new LinterEngineException("Error parsing project configuration file", exception);
                 }
             }
             else
