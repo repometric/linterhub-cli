@@ -13,6 +13,7 @@
     using Linterhub.Engine.Extensions;
     using Linterhub.Engine.Linters;
     using System.Runtime.InteropServices;
+    using Linterhub.Engine.Exceptions;
 
     internal class Program
     {
@@ -59,11 +60,41 @@
                 log.Trace("Linter :", context.Linter);
                 log.Trace("Project:", context.Project);
 
-                var strategy = Strategies[context.Mode];
-                var result = strategy.Run(context, engine, log);
-                if (result != null)
+                List<string> linters = new List<string>();
+
+                if (context.Linter != null)
+                    linters.Add(context.Linter);
+                else
                 {
-                    var jsonResult = JsonConvert.SerializeObject(result);
+                    var projectConfigPath = Path.Combine(context.Project, ".linterhub.json");
+                    if (File.Exists(projectConfigPath))
+                        using (FileStream fs = File.Open(projectConfigPath, FileMode.Open))
+                        {
+                            ExtConfig projectConfig = fs.DeserializeAsJson<ExtConfig>();
+                            linters.AddRange(projectConfig.Linters.Select(x => x.Name).ToList());
+                        }
+                    else
+                        throw new LinterConfigNotFoundException(context.Project);
+                }
+
+                object[] LintersResult = linters.Select(x => new
+                {
+                    Name = x,
+                    Model = Strategies[context.Mode].Run(new RunContext
+                    {
+                        Mode = context.Mode,
+                        Config = context.Config,
+                        Linter = x,
+                        Project = context.Project,
+                        Configuration = context.Configuration,
+                        Input = context.Input,
+                        InputAwailable = context.InputAwailable
+                    }, engine, log)
+                }).ToArray();
+
+                if (LintersResult.Length != 0)
+                {
+                    var jsonResult = JsonConvert.SerializeObject(LintersResult);
                     Console.WriteLine(jsonResult);
                 }
             }

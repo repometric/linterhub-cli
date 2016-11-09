@@ -13,7 +13,6 @@
             public Type Args { get; set; }
             public Type Result { get; set; }
             public Type Model { get; set; }
-            public string ArgsDefault { get; set; }
         }
 
         public static Record Get(string name)
@@ -95,8 +94,7 @@
                 Linter = typeof(htmlhint.Lint),
                 Args = typeof(htmlhint.LintArgs),
                 Result = typeof(htmlhint.LintResult),
-                Model = typeof(htmlhint.LintResult),
-                ArgsDefault = "htmlhint --format json ./"
+                Model = typeof(htmlhint.LintResult)
             },
             /*new Record
             {
@@ -112,8 +110,7 @@
                 Linter = typeof(coffeelint.Lint),
                 Args = typeof(coffeelint.LintArgs),
                 Result = typeof(coffeelint.LintResult),
-                Model = typeof(coffeelint.LintResult),
-                ArgsDefault = "coffeelint --reporter csv ./"
+                Model = typeof(coffeelint.LintResult)
             },
             new Record
             {
@@ -121,8 +118,7 @@
                 Linter = typeof(csslint.Lint),
                 Args = typeof(csslint.LintArgs),
                 Result = typeof(csslint.LintResult),
-                Model = typeof(csslint.LintResult),
-                ArgsDefault = "csslint --format=json ./"
+                Model = typeof(csslint.LintResult)
             },
             new Record
             {
@@ -130,8 +126,7 @@
                 Linter = typeof(jshint.Lint),
                 Args = typeof(jshint.LintArgs),
                 Result = typeof(jshint.LintResult),
-                Model = typeof(jshint.LintResult),
-                ArgsDefault = "jshint . --reporter=jslint"
+                Model = typeof(jshint.LintResult)
             },
             new Record
             {
@@ -139,8 +134,8 @@
                 Linter = typeof(jslint.Lint),
                 Args = typeof(LinterPlainArgs),
                 Result = typeof(jslint.LintResult),
-                Model = typeof(LinterFileModel),
-                ArgsDefault = "jslint --json **/*.js"
+                Model = typeof(LinterFileModel)
+                //ArgsDefault = "jslint --json **/*.js"
             },
             new Record
             {
@@ -148,8 +143,8 @@
                 Linter = typeof(eslint.Lint),
                 Args = typeof(LinterPlainArgs),
                 Result = typeof(eslint.LintResult),
-                Model = typeof(LinterFileModel),
-                ArgsDefault = "eslint **/*.js -f json"
+                Model = typeof(LinterFileModel)
+                //ArgsDefault = "eslint **/*.js -f json"
             },
             new Record
             {
@@ -157,8 +152,7 @@
                 Linter = typeof(pep8.Lint),
                 Args = typeof(pep8.LintArgs),
                 Result = typeof(pep8.LintResult),
-                Model = typeof(LinterFileModel),
-                ArgsDefault = "pep8 --format=pylint ./"
+                Model = typeof(LinterFileModel)
             }
         };
     }

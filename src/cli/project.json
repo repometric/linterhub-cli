@@ -10,10 +10,10 @@
   },
 
   "dependencies": {
-    "engine": "1.1.0-*",
     "Microsoft.NETCore.App": "1.0.0",
     "Microsoft.Framework.Configuration.Json": "1.0.0-beta8",
-    "Mono.Options": "4.4.0"
+    "Mono.Options": "4.4.0",
+    "engine": "1.1.0-*"
   },
 
   "frameworks": {

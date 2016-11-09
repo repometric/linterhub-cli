@@ -59,13 +59,8 @@ namespace Linterhub.Engine
         public string GetArguments(string name)
         {
             var record = GetRecord(name);
-            if (string.IsNullOrEmpty(record.ArgsDefault))
-            {
-                var args = CreateArguments(name);
-                return CreateCommand(args); 
-            }
-
-            return record.ArgsDefault;
+            var args = CreateArguments(name);
+            return CreateCommand(args); 
         }
     }
 }
