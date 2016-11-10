@@ -10,14 +10,16 @@
   },
 
   "dependencies": {
-    "Microsoft.NETCore.App": "1.0.0",
+    "NETStandard.Library": "1.6.0", 
+    "Microsoft.NETCore.Runtime.CoreCLR": "1.0.2",
+    "Microsoft.NETCore.DotNetHostPolicy":  "1.0.1",
     "Microsoft.Framework.Configuration.Json": "1.0.0-beta8",
     "Mono.Options": "4.4.0",
     "engine": "1.1.0-*"
   },
 
   "frameworks": {
-    "netcoreapp1.0": {
+    "netstandard1.6": {
       "imports": "dnxcore50"
     }
   },

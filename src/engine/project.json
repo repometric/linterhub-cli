@@ -6,13 +6,16 @@
   "description": "Linterhub engine.",
   "dependencies": {
     "CsvHelper": "2.16.3",
-    "Microsoft.NETCore.App": "1.0.0",
+    "NETStandard.Library": "1.6.0", 
+    "Microsoft.NETCore.Runtime.CoreCLR": "1.0.2",
+    "Microsoft.NETCore.DotNetHostPolicy":  "1.0.1",
     "Newtonsoft.Json": "9.0.1",
+    "System.Diagnostics.Process": "4.1.0",
     "System.Xml.XmlDocument": "4.0.1-*",
     "System.Xml.XmlSerializer": "4.0.11-*"
   },
   "frameworks": {
-    "netcoreapp1.0": {
+    "netstandard1.6": {
       "imports": "dnxcore50"
     }
   }

@@ -60,26 +60,29 @@
                 log.Trace("Linter :", context.Linter);
                 log.Trace("Project:", context.Project);
 
-                List<string> linters = new List<string>();
-
+                var linters = new List<string>();
                 if (context.Linter != null)
+                {
                     linters.Add(context.Linter);
+                }
                 else
                 {
                     var projectConfigPath = Path.Combine(context.Project, ".linterhub.json");
                     if (File.Exists(projectConfigPath))
+                    {
                         using (FileStream fs = File.Open(projectConfigPath, FileMode.Open))
                         {
-                            ExtConfig projectConfig = fs.DeserializeAsJson<ExtConfig>();
+                            var projectConfig = fs.DeserializeAsJson<ExtConfig>();
                             linters.AddRange(projectConfig.Linters.Select(x => x.Name).ToList());
                         }
+                    }
                     else
                     {
                         throw new LinterConfigNotFoundException(context.Project);
                     }
                 }
-
-                object[] lintersResult = linters.Select(x => new
+/*
+                var lintersResult = linters.Select(x => new
                 {
                     Name = x,
                     Model = Strategies[context.Mode].Run(new RunContext
@@ -93,10 +96,13 @@
                         InputAwailable = context.InputAwailable
                     }, engine, log)
                 }).ToArray();
+*/
+                var strategy = Strategies[context.Mode];
+                var result = strategy.Run(context, engine, log);
 
-                if (lintersResult.Length != 0)
+                if (result != null)
                 {
-                    var jsonResult = JsonConvert.SerializeObject(lintersResult);
+                    var jsonResult = JsonConvert.SerializeObject(result);
                     Console.WriteLine(jsonResult);
                 }
             }
