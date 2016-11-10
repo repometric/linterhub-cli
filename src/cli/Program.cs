@@ -74,10 +74,12 @@
                             linters.AddRange(projectConfig.Linters.Select(x => x.Name).ToList());
                         }
                     else
+                    {
                         throw new LinterConfigNotFoundException(context.Project);
+                    }
                 }
 
-                object[] LintersResult = linters.Select(x => new
+                object[] lintersResult = linters.Select(x => new
                 {
                     Name = x,
                     Model = Strategies[context.Mode].Run(new RunContext
@@ -92,9 +94,9 @@
                     }, engine, log)
                 }).ToArray();
 
-                if (LintersResult.Length != 0)
+                if (lintersResult.Length != 0)
                 {
-                    var jsonResult = JsonConvert.SerializeObject(LintersResult);
+                    var jsonResult = JsonConvert.SerializeObject(lintersResult);
                     Console.WriteLine(jsonResult);
                 }
             }
