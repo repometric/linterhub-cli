@@ -3,10 +3,10 @@ namespace Linterhub.Cli.Strategy
     using System;
     using System.IO;
     using System.Runtime.InteropServices;
-    using Microsoft.Framework.Configuration;
     using Linterhub.Cli.Runtime;
     using Linterhub.Engine;
     using Linterhub.Engine.Exceptions;
+    using Linterhub.Engine.Extensions;
 
     public class ValidateStrategy : IStrategy
     {
@@ -44,18 +44,8 @@ namespace Linterhub.Cli.Strategy
 
         private Configuration ParseConfiguration(string filePath)
         {
-            var configurationBuilder = new ConfigurationBuilder().AddJsonFile(filePath);
-            var configuration = configurationBuilder.Build();
-            var config = new Configuration
-            {
-                Command = configuration["command"],
-                CommandInfo = configuration["command_info"],
-                Linterhub = configuration["linterhub"],
-                Terminal = configuration["terminal"],
-                TerminalCommand = configuration["terminalCommand"],
-                ProjectConfig = configuration["projectConfig"]
-            };
-
+            var content = File.ReadAllText(filePath);
+            var config = content.DeserializeAsJson<Configuration>();
             return config;
         }
 
