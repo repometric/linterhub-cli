@@ -1,0 +1,8 @@
+{
+  "command": "sh lh.sh --mode analyze --name {0}:\"{1}\" --path {2} --clean true --session true --env true --log NO",
+  "command_info": "sh lh.sh info",
+  "linterhub": "linterhub",
+  "terminal": "C:\\Windows\\system32\\cmd.exe",
+  "terminalCommand": "/C \"{0}\"",
+  "projectConfig": ".linterhub"
+}

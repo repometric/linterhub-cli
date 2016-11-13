@@ -1,6 +1,0 @@
-{
-  "ToolPath": "coffeelint",
-  "TestPath": "C:\\xampp\\htdocs\\zxcvbn\\data-scripts",
-  "ReportType": "csv",
-  "TestPathDocker": "./"
-}

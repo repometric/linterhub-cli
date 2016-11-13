@@ -1,6 +1,0 @@
-{
-  "ToolPath": "csslint",
-  "TestPath": "/Volumes/Repositories/Tests/css",
-  "ReportType": "json",
-  "TestPathDocker": "./"
-}

@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "Linterhub.Cli": {
+      "commandName": "Project",
+      "commandLineArgs": "--mode=Analyze --project=D:\\work\\repometric\\Lints_Test"
+    },
+    "cli": {
+      "commandName": "Project"
+    }
+  }
+}

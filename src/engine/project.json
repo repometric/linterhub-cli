@@ -1,0 +1,28 @@
+{
+  "version": "1.1.0-*",
+  "buildOptions": {
+    "outputName": "engine"
+  },
+  "description": "Linterhub engine.",
+  "dependencies": {
+    "CsvHelper": "2.16.3",
+    "NETStandard.Library": "1.6.0", 
+    "Microsoft.NETCore.Runtime.CoreCLR": "1.0.2",
+    "Microsoft.NETCore.DotNetHostPolicy":  "1.0.1",
+    "Newtonsoft.Json": "9.0.1",
+    "System.Diagnostics.Process": "4.1.0",
+    "System.Xml.XmlDocument": "4.0.1-*",
+    "System.Xml.XmlSerializer": "4.0.11-*"
+  },
+  "frameworks": {
+    "netstandard1.6": {
+    }
+  },
+  "runtimes": {
+    "win10-x64": {},
+    "win8-x64": {},
+    "osx.10.10-x64": {},
+    "osx.10.11-x64": {},
+    "debian.8-x64": {}
+  }
+}

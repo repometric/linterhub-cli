@@ -1,0 +1,8 @@
+{
+  "command": "docker run -i -v /var/run/docker.sock:/var/run/docker.sock linterhub /bin/bash lh.sh --mode analyze --name {0}:\\\"{1}\\\" --path {2} --clean true --session true --log NO",
+  "command_info": "docker run -it linterhub sh lh.sh info",
+  "linterhub": "",
+  "terminal": "/bin/bash",
+  "terminalCommand": "-c \"{0}\"",
+  "projectConfig": ".linterhub"
+}
