@@ -17,6 +17,9 @@
 
             [JsonProperty("config")]
             public object Config { get; set; }
+
+            [JsonProperty("command")]
+            public string Command { get; set; }
         }
     }
 }
