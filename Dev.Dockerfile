@@ -1,4 +1,4 @@
-FROM microsoft/dotnet:1.1.0-preview1-runtime
+FROM microsoft/dotnet:1.0.0-preview2.1-sdk
 MAINTAINER Repometric <docker@repometric.com>
 
 # Configure bash
@@ -24,9 +24,12 @@ RUN set -x \
 	&& docker -v
 
 WORKDIR /temp
-ADD linterhub-cli-debian.8-x64.tar.gz ./
-ADD src/cli/Config bin/debian.8-x64/Config
-ADD src/cli/linterhub bin/debian.8-x64/linterhub
-WORKDIR /app/bin
-RUN mv /temp/bin/debian.8-x64/* /app/bin && \
+COPY . .
+RUN dotnet restore src/cli/project.json
+RUN dotnet publish src/cli/project.json --output bin/
+WORKDIR /app
+RUN mv /temp/bin /app && \
+    mv /temp/src/cli/Config /app/bin && \
+    mv /temp/src/cli/linterhub /app/bin && \
     rm -rf /temp
+WORKDIR /app/bin
