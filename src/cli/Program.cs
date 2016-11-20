@@ -1,19 +1,12 @@
 ﻿namespace Linterhub.Cli
 {
     using System;
-    using System.IO;
-    using Newtonsoft.Json;
     using System.Collections.Generic;
-    using System.Linq;
     using System.Diagnostics;
-    using Mono.Options;
+    using Newtonsoft.Json;
     using Runtime;
     using Strategy;
-    using Linterhub.Engine;
-    using Linterhub.Engine.Extensions;
-    using Linterhub.Engine.Linters;
-    using System.Runtime.InteropServices;
-    using Linterhub.Engine.Exceptions;
+    using Engine;
 
     internal class Program
     {
@@ -60,27 +53,27 @@
                 log.Trace("Linter :", context.Linter);
                 log.Trace("Project:", context.Project);
 
-                var linters = new List<string>();
-                if (context.Linter != null)
-                {
-                    linters.Add(context.Linter);
-                }
-                else
-                {
-                    var projectConfigPath = Path.Combine(context.Project, ".linterhub.json");
-                    if (File.Exists(projectConfigPath))
-                    {
-                        using (FileStream fs = File.Open(projectConfigPath, FileMode.Open))
-                        {
-                            var projectConfig = fs.DeserializeAsJson<ExtConfig>();
-                            linters.AddRange(projectConfig.Linters.Select(x => x.Name).ToList());
-                        }
-                    }
-                    else
-                    {
-                        throw new LinterConfigNotFoundException(context.Project);
-                    }
-                }
+                //var linters = new List<string>();
+                //if (context.Linter != null)
+                //{
+                //    linters.Add(context.Linter);
+                //}
+                //else
+                //{
+                //    var projectConfigPath = Path.Combine(context.Project, ".linterhub.json");
+                //    if (File.Exists(projectConfigPath))
+                //    {
+                //        using (var fs = File.Open(projectConfigPath, FileMode.Open))
+                //        {
+                //            var projectConfig = fs.DeserializeAsJson<ExtConfig>();
+                //            linters.AddRange(projectConfig.Linters.Select(x => x.Name).ToList());
+                //        }
+                //    }
+                //    else
+                //    {
+                //        throw new LinterConfigNotFoundException(context.Project);
+                //    }
+                //}
 /*
                 var lintersResult = linters.Select(x => new
                 {
@@ -97,14 +90,13 @@
                     }, engine, log)
                 }).ToArray();
 */
-                var strategy = Strategies[context.Mode];
-                var result = strategy.Run(context, engine, log);
+                var result = Strategies[context.Mode].Run(context, engine, log);
+               // var result = strategy.Run(context, engine, log);
 
-                if (result != null)
-                {
-                    var jsonResult = JsonConvert.SerializeObject(result);
-                    Console.WriteLine(jsonResult);
-                }
+                if (result == null) return;
+
+                var jsonResult = JsonConvert.SerializeObject(result);
+                Console.WriteLine(jsonResult);
             }
             catch (Exception exception)
             {
