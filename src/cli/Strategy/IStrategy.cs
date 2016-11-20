@@ -1,7 +1,7 @@
 namespace Linterhub.Cli.Strategy
 {
-    using Linterhub.Cli.Runtime;
-    using Linterhub.Engine;
+    using Runtime;
+    using Engine;
 
     public interface IStrategy
     {

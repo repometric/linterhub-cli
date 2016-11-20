@@ -1,8 +1,7 @@
 namespace Linterhub.Cli.Strategy
 {
-    using Newtonsoft.Json;
-    using Linterhub.Cli.Runtime;
-    using Linterhub.Engine;
+    using Runtime;
+    using Engine;
 
     public class GenerateStrategy : IStrategy
     {

@@ -2,7 +2,7 @@
     "mode": "docker|local|docker-xx",
     "linters": [
         {
-            "name": "coffelint",
+            "name": "coffeelint",
             "config": {
                 "ToolPath": "coffeelint",
                 "ReportType": "csv",

@@ -4,12 +4,14 @@ namespace Linterhub.Cli.Strategy
     using System.IO;
     using System.Text;
     using System.Collections.Generic;
+    using System.Linq;
     using Runtime;
     using Engine;
-    using Engine.Exceptions;
-    using System.Linq;
     using Engine.Extensions;
+    using Engine.Exceptions;
+    using Engine.Linters;
     using Newtonsoft.Json;
+    
 
     public class AnalyzeStrategy : IStrategy
     {
@@ -27,8 +29,8 @@ namespace Linterhub.Cli.Strategy
                     foreach (var linterConfig in configs.Linters)
                     {
                         result = new LinterhubWrapper(context, engine).Analyze(linterConfig.Name, linterConfig.Command, context.Project);
-                        input = new MemoryStream(Encoding.UTF8.GetBytes(result)) { Position = 0 };
-                        //TODO: не должно ложиться от ошибки одного линтера
+                        input = MemoryStreamUtf8(result);
+                        input.Position = 0;
                         linterModels.Add(engine.GetModel(linterConfig.Name, input, null));
                     }
                 }
@@ -49,7 +51,7 @@ namespace Linterhub.Cli.Strategy
         private ExtConfig GetCommands(RunContext context, LinterEngine engine, LogManager log)
         {
             var projectConfigFile = Path.Combine(context.Project, ".linterhub.json");
-            var linter = context.Linter ?? string.Empty;
+            var linterName = context.Linter ?? string.Empty;
             var extConfig = new ExtConfig();
 
             log.Trace("Expected project config: " + projectConfigFile);
@@ -62,24 +64,6 @@ namespace Linterhub.Cli.Strategy
                     using (var fs = File.Open(projectConfigFile, FileMode.Open))
                     {
                         extConfig = fs.DeserializeAsJson<ExtConfig>();
-                       
-                        if (linter == string.Empty)
-                        {
-                            foreach (var thisLinter in extConfig.Linters.Where(x => x.Config != null))
-                            {
-                                thisLinter.Command = GetCommand(thisLinter, engine);
-                            }
-                        }
-                        else
-                        {
-                            var linterConfig = extConfig.Linters.FirstOrDefault(x => x.Name == linter);
-                            if (linterConfig == null)
-                            {
-                                throw new LinterNotFoundException("Can't find linter with name: " + linter);
-                            }
-                            linterConfig.Command = GetCommand(linterConfig, engine);
-                        }
-                        
                     }
                 }
                 catch (Exception exception)
@@ -89,19 +73,73 @@ namespace Linterhub.Cli.Strategy
             }
             else
             {
-                log.Trace("Project config was not found");
-                extConfig.Linters[0].Command = engine.Factory.GetArguments(context.Linter);
-                extConfig.Linters[0].Name = context.Linter;
+                log.Trace("Project config was not found");    
             }
+
+            extConfig = linterName == string.Empty ?
+                    GetLinters(extConfig, engine) :
+                    GetLinter(linterName, extConfig, engine);
 
             return extConfig;
         }
 
+        public ExtConfig GetLinters(ExtConfig config, LinterEngine engine)
+        {
+            if (config.Linters.Count == 0)
+            {
+                var defaultLinters = Registry.Get().Where(x => x.ArgsDefault);
+
+                foreach (var linter in defaultLinters)
+                {
+                    config.Linters.Add(new ExtConfig.ExtLint
+                    {
+                        Command = engine.Factory.GetArguments(linter.Name),
+                        Name = linter.Name
+                    });
+                }
+            }
+            else
+            {
+                foreach (var thisLinter in config.Linters.Where(x => x.Config != null))
+                {
+                    thisLinter.Command = GetCommand(thisLinter, engine);
+                }
+            }
+            
+            return config;
+        }
+        public ExtConfig GetLinter(string name, ExtConfig config, LinterEngine engine)
+        {
+            var thisLinter = config.Linters.FirstOrDefault(x => x.Name == name);
+            if (thisLinter == null)
+            {
+                var findLinter = Registry.Get(name);
+                if (findLinter == null)
+                {
+                    throw new LinterNotFoundException("Can't find linter with name: " + name);
+                }
+                config.Linters.Add(new ExtConfig.ExtLint
+                {
+                    Command = engine.Factory.GetArguments(findLinter.Name),
+                    Name = findLinter.Name
+                });
+            }
+            else
+            {
+                thisLinter.Command = GetCommand(thisLinter, engine);
+            }
+            return config;
+        }
         public string GetCommand(ExtConfig.ExtLint extLint, LinterEngine engine)
         {
-            var stream = new MemoryStream(Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(extLint.Config)));
+            var stream = MemoryStreamUtf8(JsonConvert.SerializeObject(extLint.Config));
             var args = engine.GetArguments(extLint.Name, stream);
             return extLint.Command ?? engine.Factory.CreateCommand(args);
+        }
+
+        public Stream MemoryStreamUtf8(string str)
+        {
+            return new MemoryStream(Encoding.UTF8.GetBytes(str));
         }
     }
 }

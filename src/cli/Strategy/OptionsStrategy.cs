@@ -4,9 +4,9 @@ namespace Linterhub.Cli.Strategy
     using System.Collections.Generic;
     using System.Linq;
     using Mono.Options;
-    using Linterhub.Cli.Runtime;
-    using Linterhub.Engine;
-    using Linterhub.Engine.Exceptions;
+    using Runtime;
+    using Engine;
+    using Engine.Exceptions;
 
     public class OptionsStrategy : IStrategy
     {

@@ -1,13 +1,11 @@
 namespace Linterhub.Cli.Strategy
 {
     using System;
-    using System.IO;
     using System.Linq;
-    using Linterhub.Cli.Runtime;
-    using Linterhub.Engine;
-    using Linterhub.Engine.Exceptions;
-    using Linterhub.Engine.Extensions;
-    using Linterhub.Engine.Linters;
+    using Runtime;
+    using Engine;
+    using Engine.Exceptions;
+    using Engine.Extensions;
 
     public class CatalogStrategy : IStrategy
     {
