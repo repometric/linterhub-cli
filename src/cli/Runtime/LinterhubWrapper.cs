@@ -41,6 +41,12 @@ namespace Linterhub.Cli.Runtime
             return result;
         }
 
+        public string Version()
+        {
+            var result = Run(Context.Configuration.CommandInfo.Replace("info", "version"));
+            return result;
+        }
+
         public string Analyze(string name, string command, string path)
         {
             var cmd = string.Format(Context.Configuration.Command, name, command, path);

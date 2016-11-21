@@ -5,6 +5,7 @@ namespace Linterhub.Cli.Runtime
         Analyze,
         Catalog,
         Generate,
+        Version,
         Help
     }
 }

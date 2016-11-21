@@ -22,7 +22,8 @@
         {
             { RunMode.Catalog, new CatalogStrategy() },
             { RunMode.Generate, new GenerateStrategy() },
-            { RunMode.Analyze, new AnalyzeStrategy() }
+            { RunMode.Analyze, new AnalyzeStrategy() },
+            { RunMode.Version, new VersionStrategy() }
         };
 
         internal static void Run(string[] args, LogManager log)
@@ -94,9 +95,10 @@
                // var result = strategy.Run(context, engine, log);
 
                 if (result == null) return;
-
-                var jsonResult = JsonConvert.SerializeObject(result);
-                Console.WriteLine(jsonResult);
+                var output = result is string 
+                           ? result
+                           : JsonConvert.SerializeObject(result);
+                Console.WriteLine(output);
             }
             catch (Exception exception)
             {
