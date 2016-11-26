@@ -12,11 +12,14 @@ namespace Linterhub.Cli.Strategy
         public object Run(RunContext context, LinterEngine engine, LogManager log)
         {
             var catalog = GetCatalog(context, engine);
-            var result = engine.Factory.GetRecords().Select(x => new 
-            {
-                name = x.Name,
-                languages = catalog.linters.FirstOrDefault(y => y.name == x.Name)?.languages
-            }).OrderBy(x => x.name);
+            var result = 
+                from record in engine.Factory.GetRecords().OrderBy(x => x.Name)
+                let item = catalog.linters.FirstOrDefault(y => y.name == record.Name)
+                select new {
+                    name = record.Name,
+                    description = item?.description,
+                    languages = item?.languages
+                };
 
             return result;
         }
