@@ -19,6 +19,10 @@ namespace Linterhub.Cli.Runtime
 
         public class ExtLint
         {
+            public ExtLint()
+            {
+            }
+
             [JsonProperty("name")]
             public string Name { get; set; }
 
@@ -27,6 +31,9 @@ namespace Linterhub.Cli.Runtime
 
             [JsonProperty("command")]
             public string Command { get; set; }
+
+            [JsonProperty("active")]
+            public bool? Active { get; set; }
         }
     }
 }

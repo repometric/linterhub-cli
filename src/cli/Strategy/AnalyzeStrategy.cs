@@ -26,7 +26,7 @@ namespace Linterhub.Cli.Strategy
                 if (!context.InputAwailable)
                 {
                     var configs = GetCommands(context, engine, log);
-                    foreach (var linterConfig in configs.Linters)
+                    foreach (var linterConfig in configs.Linters.Where(x => x.Active == true || x.Active == null))
                     {
                         result = new LinterhubWrapper(context, engine).Analyze(linterConfig.Name, linterConfig.Command, context.Project);
                         input = MemoryStreamUtf8(result);
@@ -130,6 +130,7 @@ namespace Linterhub.Cli.Strategy
             }
             return config;
         }
+
         public string GetCommand(ExtConfig.ExtLint extLint, LinterEngine engine)
         {
             var stream = MemoryStreamUtf8(JsonConvert.SerializeObject(extLint.Config));

@@ -29,5 +29,10 @@
             var deserializer = new XmlSerializer(typeof(T));
             return (T)deserializer.Deserialize(self);
         }
+
+        public static string SerializeAsJson<T>(this T self)
+        {
+            return JsonConvert.SerializeObject(self, Newtonsoft.Json.Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
+        }
     }
 }

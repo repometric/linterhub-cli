@@ -23,7 +23,8 @@
             { RunMode.Catalog, new CatalogStrategy() },
             { RunMode.Generate, new GenerateStrategy() },
             { RunMode.Analyze, new AnalyzeStrategy() },
-            { RunMode.Version, new VersionStrategy() }
+            { RunMode.Version, new VersionStrategy() },
+            { RunMode.Activate, new ActivateStrategy() }
         };
 
         internal static void Run(string[] args, LogManager log)
