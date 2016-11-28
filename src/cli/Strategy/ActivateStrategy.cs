@@ -34,7 +34,7 @@ namespace Linterhub.Cli.Strategy
             var linter = extConfig.Linters.FirstOrDefault(x => x.Name == context.Linter);
             if (linter != null)
             {
-                linter.Active = context.Activate ? null : false;
+                linter.Active = context.Activate ? (bool?)null : false;
             }
             else
             {
