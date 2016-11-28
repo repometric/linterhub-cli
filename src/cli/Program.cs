@@ -99,7 +99,7 @@
                 var output = result is string 
                            ? result
                            : JsonConvert.SerializeObject(result);
-                Console.WriteLine(output);
+                Console.Write(output);
             }
             catch (Exception exception)
             {
