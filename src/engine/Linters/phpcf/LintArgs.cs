@@ -26,5 +26,11 @@ namespace Linterhub.Engine.Linters.Phpcf
         /// </summary>
         [Arg("", separator: "", order: int.MaxValue)]
         public string TestPath { get; set; }
+
+        /// <summary>
+        /// Tested project path (in container)
+        /// </summary>
+        [Arg("", order: int.MaxValue)]
+        public string TestPathDocker { get; set; }
     }
 }

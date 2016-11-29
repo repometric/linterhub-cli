@@ -1,3 +1,5 @@
+using System.IO;
+
 namespace Linterhub.Cli.Strategy
 {
     using System;
@@ -12,14 +14,11 @@ namespace Linterhub.Cli.Strategy
         public object Run(RunContext context, LinterEngine engine, LogManager log)
         {
             var catalog = GetCatalog(context, engine);
-            var result = 
-                from record in engine.Factory.GetRecords().OrderBy(x => x.Name)
-                let item = catalog.linters.FirstOrDefault(y => y.name == record.Name)
-                select new {
-                    name = record.Name,
-                    description = item?.description,
-                    languages = item?.languages
-                };
+            var result = engine.Factory.GetRecords().Select(x => new 
+            {
+                name = x.Name,
+                languages = catalog.linters.FirstOrDefault(y => y.name == x.Name)?.languages
+            }).OrderBy(x => x.name);
 
             return result;
         }
@@ -36,6 +35,13 @@ namespace Linterhub.Cli.Strategy
             {
                 throw new LinterParseException(exception);
             }
+        }
+
+        public string CreeateTempCatalog(string path, Guid guid)
+        {
+            var tempDirPath = path + "\\" + guid;
+            Directory.CreateDirectory(tempDirPath);
+            return tempDirPath;
         }
     }
 }

@@ -15,6 +15,12 @@ namespace Linterhub.Engine.Linters.PhpAssumptions
         public string ToolPath { get; set; }
 
         /// <summary>
+        /// Tested project path (in container)
+        /// </summary>
+        [Arg("", order: int.MaxValue)]
+        public string TestPathDocker { get; set; }
+
+        /// <summary>
         ///  Report format
         /// </summary>
         [Arg("-f", separator: " ", order: int.MaxValue)]

@@ -43,10 +43,11 @@ namespace Linterhub.Engine
             return proxy;
         }
 
-        public ILinterArgs CreateArguments(string name)
+        public ILinterArgs CreateArguments(string name, string testPathDocker = "./")
         {
             var record = GetRecord(name);
             var args = Create<ILinterArgs>(record.Args);
+            args.TestPathDocker = testPathDocker ?? "./";
             return args;
         }
 
@@ -61,6 +62,13 @@ namespace Linterhub.Engine
             var record = GetRecord(name);
             var args = CreateArguments(name);
             return CreateCommand(args); 
+        }
+
+        public string GetArguments(string name, string testPathDocker)
+        {
+            var record = GetRecord(name);
+            var args = CreateArguments(name, testPathDocker);
+            return CreateCommand(args);
         }
     }
 }

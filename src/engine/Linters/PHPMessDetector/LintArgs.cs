@@ -56,5 +56,11 @@ namespace Linterhub.Engine.Linters.Phpmd
         /// </summary>
         [Arg("", order: 1)]
         public string TestPath { get; set; }
+
+        /// <summary>
+        /// Tested project path (in container)
+        /// </summary>
+        [Arg("", order: int.MaxValue)]
+        public string TestPathDocker { get; set; }
     }
 }

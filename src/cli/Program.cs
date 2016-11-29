@@ -14,6 +14,36 @@
         {
             using (var log = new LogManager())
             {
+                //string[] test1 =
+                //{
+                //    @"--mode=Analyze",
+                //    @"--project=D:\work\repometric\Lints_Test"
+                //};
+                //Run(test1, log);
+
+                //string[] test2 =
+                //{
+                //    @"--mode=Analyze",
+                //    @"--project=D:\work\repometric\Lints_Test",
+                //    @"--file=D:\work\repometric\Lints_Test\Test_Js\easing.js",
+                //};
+                //Run(test2, log);
+
+                //string[] test3 = {
+                //    @"--mode=Analyze",
+                //    @"--project=D:\work\repometric\Lints_Test",
+                //    @"--file=D:\work\repometric\Lints_Test\Test_Js\easing.js",
+                //    @"--linter=jshint"
+                //};
+                //Run(test3, log);
+
+                //string[] test4 = {
+                //    @"--mode=Analyze",
+                //    @"--project=D:\work\repometric\Lints_Test",
+                //    @"--linter=jshint"
+                //};
+
+                //Run(test4, log);
                 Run(args, log);
             }
         }
@@ -26,7 +56,7 @@
             { RunMode.Version, new VersionStrategy() },
             { RunMode.Activate, new ActivateStrategy() }
         };
-
+        
         internal static void Run(string[] args, LogManager log)
         {
             log.Trace("Start  :", Process.GetCurrentProcess().ProcessName);
@@ -35,7 +65,7 @@
             var optionsStrategy = new OptionsStrategy();
             var validateStrategy = new ValidateStrategy();
             var engine = new LinterEngine();
-            Strategies.Add(RunMode.Help, optionsStrategy);
+            //Strategies.Add(RunMode.Help, optionsStrategy);
             var context = new RunContext();
             try
             {
@@ -54,51 +84,15 @@
                 log.Trace("Config :", context.Config);
                 log.Trace("Linter :", context.Linter);
                 log.Trace("Project:", context.Project);
+                log.Trace("File: ", context.File);
 
-                //var linters = new List<string>();
-                //if (context.Linter != null)
-                //{
-                //    linters.Add(context.Linter);
-                //}
-                //else
-                //{
-                //    var projectConfigPath = Path.Combine(context.Project, ".linterhub.json");
-                //    if (File.Exists(projectConfigPath))
-                //    {
-                //        using (var fs = File.Open(projectConfigPath, FileMode.Open))
-                //        {
-                //            var projectConfig = fs.DeserializeAsJson<ExtConfig>();
-                //            linters.AddRange(projectConfig.Linters.Select(x => x.Name).ToList());
-                //        }
-                //    }
-                //    else
-                //    {
-                //        throw new LinterConfigNotFoundException(context.Project);
-                //    }
-                //}
-/*
-                var lintersResult = linters.Select(x => new
-                {
-                    Name = x,
-                    Model = Strategies[context.Mode].Run(new RunContext
-                    {
-                        Mode = context.Mode,
-                        Config = context.Config,
-                        Linter = x,
-                        Project = context.Project,
-                        Configuration = context.Configuration,
-                        Input = context.Input,
-                        InputAwailable = context.InputAwailable
-                    }, engine, log)
-                }).ToArray();
-*/
                 var result = Strategies[context.Mode].Run(context, engine, log);
-               // var result = strategy.Run(context, engine, log);
 
                 if (result == null) return;
                 var output = result is string 
                            ? result
                            : JsonConvert.SerializeObject(result);
+
                 Console.Write(output);
             }
             catch (Exception exception)

@@ -15,11 +15,12 @@ namespace Linterhub.Cli.Strategy
         public RunContext Parse(string[] args)
         {
             var runContext = new RunContext();
-            Options = new OptionSet 
+            Options = new OptionSet
             {
                 { "c=|config=", "Path to configuration.", v => runContext.Config = v },
                 { "l=|linter=", "The linter name.", v => runContext.Linter = v },
                 { "p=|project=", "Path to project.", v => runContext.Project = v },
+                { "f=|file=", "File of project.", v => runContext.File = v },
                 { "m=|mode=", "Run mode.", v => runContext.Mode = (RunMode)Enum.Parse(typeof(RunMode), v, true) },
                 { "a=|active=", "Activate or not", v => runContext.Activate = bool.Parse(v) },
                 { "h|help",  "Show help.", v => runContext.Mode = RunMode.Help },

@@ -14,6 +14,7 @@
             public Type Result { get; set; }
             public Type Model { get; set; }
             public bool ArgsDefault { get; set; }
+            public bool OneFile { get; set; }
         }
 
         public static Record Get(string name)
@@ -95,17 +96,8 @@
                 Linter = typeof(htmlhint.Lint),
                 Args = typeof(htmlhint.LintArgs),
                 Result = typeof(htmlhint.LintResult),
-                Model = typeof(htmlhint.LintResult),
-                ArgsDefault = true
+                Model = typeof(htmlhint.LintResult)
             },
-            /*new Record
-            {
-                Name = "phpcheckstyle",
-                Linter = typeof(phpcheckstyle.Lint),
-                Args = typeof(phpcheckstyle.LintArgs),
-                Result = typeof(phpcheckstyle.LintResult),
-                Model = typeof(phpcheckstyle.LintResult)
-            },*/
             new Record
             {
                 Name = "coffeelint",
@@ -122,7 +114,6 @@
                 Args = typeof(csslint.LintArgs),
                 Result = typeof(csslint.LintResult),
                 Model = typeof(csslint.LintResult),
-                ArgsDefault = true
             },
             new Record
             {
@@ -131,7 +122,8 @@
                 Args = typeof(jshint.LintArgs),
                 Result = typeof(jshint.LintResult),
                 Model = typeof(jshint.LintResult),
-                ArgsDefault = true
+                ArgsDefault = true,
+                OneFile = true
             },
             new Record
             {
