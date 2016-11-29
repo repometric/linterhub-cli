@@ -18,7 +18,7 @@ namespace Linterhub.Cli.Strategy
         public static string TempDir;
         public object Run(RunContext context, LinterEngine engine, LogManager log)
         {
-            var result = string.Empty;
+            var result = TempDir = string.Empty;
             var linterModels = new List<ILinterModel>();
             
             try
@@ -113,10 +113,6 @@ namespace Linterhub.Cli.Strategy
             var tempDirName = Guid.NewGuid();
             var findDefaultLinter = false;
 
-            var conf = new ExtConfig()
-            {
-                Mode = config.Mode
-            };
             foreach (var linter in config.Linters)
             {
                 var defaultLinter = defaultLinters.Find(x => x.Name == linter.Name);
@@ -130,10 +126,9 @@ namespace Linterhub.Cli.Strategy
                 {
                     linter.Config.TestPathDocker = context.File.Replace(context.Project, ".").Replace("\\", "/");
                 }
-                conf.Linters.Add(linter);
             }
 
-            if (!findDefaultLinter) return conf;
+            if (!findDefaultLinter) return config;
 
             var catalogSrategy = new CatalogStrategy();
             var filePathSplit = context.File.Split('.');
@@ -141,7 +136,7 @@ namespace Linterhub.Cli.Strategy
 
             tempDir = catalogSrategy.CreeateTempCatalog(context.Project, tempDirName);
             File.Copy(context.File, TempDir + "\\temp." + filePermission);
-            return conf;
+            return config;
         }
         public ExtConfig GetLinters(ExtConfig config, LinterEngine engine, bool changePathDocker = false)
         {
@@ -149,7 +144,6 @@ namespace Linterhub.Cli.Strategy
             {
                 thisLinter.Command = engine.Factory.GetArguments(thisLinter.Name, thisLinter.Config.TestPathDocker);
             }
-            
             return config;
         }
         public ExtConfig GetLinter(string name, ExtConfig config, LinterEngine engine, RunContext context, ref string tempDir)

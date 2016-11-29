@@ -39,7 +39,7 @@ namespace Linterhub.Cli.Strategy
 
         public string CreeateTempCatalog(string path, Guid guid)
         {
-            var tempDirPath = path + "\\" + guid;
+            var tempDirPath = path + "\\" + guid + "\\";
             Directory.CreateDirectory(tempDirPath);
             return tempDirPath;
         }
