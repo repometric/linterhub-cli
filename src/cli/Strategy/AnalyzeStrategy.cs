@@ -15,11 +15,11 @@ namespace Linterhub.Cli.Strategy
 
     public class AnalyzeStrategy : IStrategy
     {
-        public static Guid TempDirName;
-        public static string TempDirPath;
-        public static RunContext Context;
-        public static LinterEngine Engine;
-        public static LogManager Log;
+        public Guid TempDirName;
+        public string TempDirPath;
+        public RunContext Context;
+        public LinterEngine Engine;
+        public LogManager Log;
         public object Run(RunContext context, LinterEngine engine, LogManager log)
         {
             Context = context;
@@ -123,8 +123,8 @@ namespace Linterhub.Cli.Strategy
             var filePermission = filePathSplit[filePathSplit.Length - 1];
             TempDirPath = catalogSrategy.CreeateTempCatalog(Context.Project, TempDirName);
 
-            var localFile = Context.Project + "\\" + Context.File;
-            var tempFile = TempDirPath + "\\temp." + filePermission;
+            var localFile = Path.Combine(Context.Project, Context.File);
+            var tempFile = Path.Combine(TempDirPath, "temp." + filePermission);
 
             if (!File.Exists(tempFile)){ File.Copy(localFile, tempFile); }
             return "./" + TempDirName + "/";
