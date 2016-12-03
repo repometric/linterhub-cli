@@ -5,10 +5,15 @@ namespace Linterhub.Engine.Linters.htmlhint
 
         public LintArgs()
         {
-            ToolPath = "htmlhint";
+            HtmlHint = true;
             ReportType = "json";
-            TestPathDocker = "./";
         }
+
+        /// <summary>
+        /// Tested project path
+        /// </summary>
+        [Arg("", order: int.MaxValue, path:true)]
+        public string TestPath { get; set; }
 
         /// <summary>
         /// Report type (checkstyle,compact,json,junit,markdown,unix)
@@ -37,13 +42,8 @@ namespace Linterhub.Engine.Linters.htmlhint
         /// <summary>
         /// Tool path
         /// </summary>
-        [Arg("", order: int.MinValue)]
-        public string ToolPath { get; set; }
+        [Arg("htmlhint", false, order: int.MinValue)]
+        public bool HtmlHint { get; set; }
 
-        /// <summary>
-        /// Tested project path (in container)
-        /// </summary>
-        [Arg("", order: int.MaxValue)]
-        public string TestPathDocker { get; set; }
     }
 }

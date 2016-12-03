@@ -1,22 +1,31 @@
 ﻿namespace Linterhub.Engine.Linters.jslint
 {
     public class LintArgs : ILinterArgs
-    { 
+    {
+        public LintArgs()
+        {
+            JsLint = true;
+            OutputFormatFile = true;
+        }
+
+
+        /// <summary>
+        /// Required field for work JsLint 
+        /// </summary>
+        [Arg("jslint", false)]
+        public bool JsLint { get; set; }
+
+        /// <summary>
+        /// Output file format Json
+        /// </summary>
+        [Arg("--json", false)]
+        public bool OutputFormatFile { get; set; }
+
         /// <summary>
         /// Tested project path
         /// </summary>
+        [Arg("", order: int.MaxValue,path:true)]
         public string TestPath { get; set; }
-
-        /// <summary>
-        /// Tested project path (in container)
-        /// </summary>
-        [Arg("", order: int.MaxValue)]
-        public string TestPathDocker { get; set; }
-
-        /// <summary>
-        /// Your projcet Directory
-        /// </summary>
-        public string ProjectPath { get; set; }
 
         /// <summary>
         /// Tolerate assignment expressions

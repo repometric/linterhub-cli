@@ -21,6 +21,7 @@ namespace Linterhub.Cli.Strategy
                 { "l=|linter=", "The linter name.", v => runContext.Linter = v },
                 { "p=|project=", "Path to project.", v => runContext.Project = v },
                 { "f=|file=", "File of project.", v => runContext.File = v },
+                { "d=|dir=", "Dir of project.", v => runContext.Dir = v },
                 { "m=|mode=", "Run mode.", v => runContext.Mode = (RunMode)Enum.Parse(typeof(RunMode), v, true) },
                 { "a=|active=", "Activate or not", v => runContext.Activate = bool.Parse(v) },
                 { "h|help",  "Show help.", v => runContext.Mode = RunMode.Help },

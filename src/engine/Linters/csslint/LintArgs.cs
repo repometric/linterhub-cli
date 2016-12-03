@@ -5,16 +5,16 @@ namespace Linterhub.Engine.Linters.csslint
 
         public LintArgs()
         {
-            ToolPath = "csslint";
+            CssLint = true;
             ReportType = "json";
-            TestPathDocker = "./";
         }
 
+        
         /// <summary>
         /// Tool path
         /// </summary>
-        [Arg("", order: int.MinValue)]
-        public string ToolPath { get; set; }
+        [Arg("csslint", false, order: int.MinValue)]
+        public bool CssLint { get; set; }
 
         /// <summary>
         /// Indicate which format to use for output.
@@ -43,8 +43,8 @@ namespace Linterhub.Engine.Linters.csslint
         /// <summary>
         /// Tested project path (in container)
         /// </summary>
-        [Arg("", order: int.MaxValue)]
-        public string TestPathDocker { get; set; }
+        [Arg("", order: int.MaxValue, path:true)]
+        public string TestPath { get; set; }
 
     }
 }

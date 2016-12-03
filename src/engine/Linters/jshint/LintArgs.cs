@@ -5,16 +5,21 @@ namespace Linterhub.Engine.Linters.jshint
 
         public LintArgs()
         {
-            ToolPath = "jshint";
+            JsHint = true;
             Reporter = "checkstyle";
-            TestPathDocker = "./";
         }
+
+        /// <summary>
+        /// Tested project path
+        /// </summary>
+        [Arg("", order: int.MaxValue, path:true)]
+        public string TestPath { get; set; }
 
         /// <summary>
         /// Tool path
         /// </summary>
-        [Arg("", order: int.MinValue)]
-        public string ToolPath { get; set; }
+        [Arg("jshint", false, order: int.MinValue)]
+        public bool JsHint { get; set; }
 
         /// <summary>
         /// Custom reporter (PATH|jslint|checkstyle|unix)
@@ -53,12 +58,5 @@ namespace Linterhub.Engine.Linters.jshint
         /// </summary>
         [Arg("--extract", order: 0)]
         public string Extract { get; set; }
-
-        /// <summary>
-        /// Tested project path (in container)
-        /// </summary>
-        [Arg("", order: int.MaxValue)]
-        public string TestPathDocker { get; set; }
-
     }
 }

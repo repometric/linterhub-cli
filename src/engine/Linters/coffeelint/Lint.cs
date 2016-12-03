@@ -50,7 +50,7 @@ namespace Linterhub.Engine.Linters.coffeelint
                                  Line = Int32.Parse(x.StartLine) - 1,
                                  Column = new LinterFileModel.Interval
                                  {
-                                     Start = 0, 
+                                     Start = 0,
                                      End = 1000
                                  }
                              }).ToList()

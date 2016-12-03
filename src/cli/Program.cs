@@ -14,36 +14,6 @@
         {
             using (var log = new LogManager())
             {
-                //string[] test1 =
-                //{
-                //    @"--mode=Analyze",
-                //    @"--project=D:\work\repometric\Lints_Test"
-                //};
-                //Run(test1, log);
-
-                //string[] test2 =
-                //{
-                //    @"--mode=Analyze",
-                //    @"--project=D:\work\repometric\Lints_Test",
-                //    @"--file=D:\work\repometric\Lints_Test\Test_Js\easing.js",
-                //};
-                //Run(test2, log);
-
-                //string[] test3 = {
-                //    @"--mode=Analyze",
-                //    @"--project=D:\work\repometric\Lints_Test",
-                //    @"--file=D:\work\repometric\Lints_Test\Test_Js\easing.js",
-                //    @"--linter=jshint"
-                //};
-                //Run(test3, log);
-
-                //string[] test4 = {
-                //    @"--mode=Analyze",
-                //    @"--project=D:\work\repometric\Lints_Test",
-                //    @"--linter=jshint"
-                //};
-
-                //Run(test4, log);
                 Run(args, log);
             }
         }
@@ -54,7 +24,8 @@
             { RunMode.Generate, new GenerateStrategy() },
             { RunMode.Analyze, new AnalyzeStrategy() },
             { RunMode.Version, new VersionStrategy() },
-            { RunMode.Activate, new ActivateStrategy() }
+            { RunMode.Activate, new ActivateStrategy() },
+            { RunMode.Help, new OptionsStrategy() }
         };
         
         internal static void Run(string[] args, LogManager log)
@@ -65,8 +36,8 @@
             var optionsStrategy = new OptionsStrategy();
             var validateStrategy = new ValidateStrategy();
             var engine = new LinterEngine();
-            //Strategies.Add(RunMode.Help, optionsStrategy);
             var context = new RunContext();
+
             try
             {
                 context = optionsStrategy.Parse(args);
@@ -85,6 +56,7 @@
                 log.Trace("Linter :", context.Linter);
                 log.Trace("Project:", context.Project);
                 log.Trace("File: ", context.File);
+                log.Trace("Dir: ", context.Dir);
 
                 var result = Strategies[context.Mode].Run(context, engine, log);
 

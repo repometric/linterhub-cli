@@ -12,12 +12,15 @@
 
         public int Order { get; }
 
-        public ArgAttribute(string name = null, bool add = true, string separator = " ", int order = int.MinValue)
+        public bool Path { get;  }
+
+        public ArgAttribute(string name = null, bool add = true, string separator = " ", int order = int.MinValue, bool path = false)
         {
             Name = name;
             Add = add;
             Separator = separator;
             Order = order;
+            Path = path;
         }
     }
 }

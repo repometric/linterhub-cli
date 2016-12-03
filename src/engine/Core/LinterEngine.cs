@@ -1,6 +1,5 @@
 namespace Linterhub.Engine
 {
-    using System.Collections;
     using System.IO;
     using Extensions;
 

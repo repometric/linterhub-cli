@@ -15,42 +15,50 @@ namespace Linterhub.Cli.Strategy
 
     public class AnalyzeStrategy : IStrategy
     {
-        public static string TempDir;
+        public static Guid TempDirName;
+        public static string TempDirPath;
+        public static RunContext Context;
+        public static LinterEngine Engine;
+        public static LogManager Log;
         public object Run(RunContext context, LinterEngine engine, LogManager log)
         {
-            var result = TempDir = string.Empty;
+            Context = context;
+            Engine = engine;
+            Log = log;
+            TempDirName = Guid.NewGuid();
+
+            var result = TempDirPath = string.Empty;
             var linterModels = new List<ILinterModel>();
-            
             try
             {
                 Stream input;
-                if (!context.InputAwailable)
+                if (!Context.InputAwailable)
                 {
-                    var configs = GetCommands(context, engine, log);
+                    var configs = GetCommands();
                   
                     foreach (var linterConfig in configs.Linters.Where(x => x.Command != null))
                     {
-                        result = new LinterhubWrapper(context, engine).Analyze(linterConfig.Name, linterConfig.Command, context.Project);
+                        result = new LinterhubWrapper(Context, Engine).Analyze(linterConfig.Name, linterConfig.Command, Context.Project);
                         input = MemoryStreamUtf8(result);
                         input.Position = 0;
-                        linterModels.Add(engine.GetModel(linterConfig.Name, input, null));
+                        linterModels.Add(Engine.GetModel(linterConfig.Name, input, null));
                     }
-                    if(!string.IsNullOrEmpty(TempDir))
+                    if (!string.IsNullOrEmpty(TempDirPath))
                     {
-                        Directory.Delete(TempDir, true);
+                        Directory.Delete(TempDirPath, true);
                     }
                 }
                 else
                 {
-                    input = context.Input;
-                    linterModels.Add(engine.GetModel(context.Linter, input, null));
+                    input = Context.Input;
+                    linterModels.Add(Engine.GetModel(Context.Linter, input, null));
                 }
             }
             catch (Exception exception)
             {
-                if (!string.IsNullOrEmpty(TempDir))
+                if (!string.IsNullOrEmpty(TempDirPath))
                 {
-                    Directory.Delete(TempDir, true);
+                    Directory.Delete(TempDirPath, true);
                 }
                 throw new LinterEngineException(result + " " + exception.Message, exception);
             }
@@ -58,18 +66,18 @@ namespace Linterhub.Cli.Strategy
             return linterModels;
         }
 
-        private ExtConfig GetCommands(RunContext context, LinterEngine engine, LogManager log)
+        private ExtConfig GetCommands()
         {
-            var projectConfigFile = Path.Combine(context.Project, ".linterhub.json");
-            var linterName = context.Linter ?? string.Empty;
+            var projectConfigFile = Path.Combine(Context.Project, ".linterhub.json");
+            var linterName = Context.Linter ?? string.Empty;
             var extConfig = new ExtConfig();
             
-            log.Trace("Expected project config: " + projectConfigFile);
+            Log.Trace("Expected project config: " + projectConfigFile);
 
             var existFileConfig = File.Exists(projectConfigFile);
             if (existFileConfig)
             {
-                log.Trace("Using project config");
+                Log.Trace("Using project config");
                 try
                 {
                     using (var fs = File.Open(projectConfigFile, FileMode.Open))
@@ -84,7 +92,7 @@ namespace Linterhub.Cli.Strategy
             }
             else
             {
-                log.Trace("Project config was not found. Config generate auotomat");
+                Log.Trace("Project file config was not found. Config file was generated automatically");
                 var defaultLinters = Registry.Get().Where(x => x.ArgsDefault);
                 
                 foreach (var linter in defaultLinters)
@@ -96,57 +104,44 @@ namespace Linterhub.Cli.Strategy
                 }
             }
 
-            extConfig = GetTestPathDocker(context, extConfig, ref TempDir);
-
             extConfig = linterName == string.Empty ?
-                    GetLinters(extConfig, engine, !existFileConfig) :
-                    GetLinter(linterName, extConfig, engine, context, ref TempDir);
+                    GetLinters(extConfig, existFileConfig) :
+                    GetLinter(linterName, extConfig);
 
             return extConfig;
         }
 
-        public ExtConfig GetTestPathDocker(RunContext context, ExtConfig config, ref string tempDir)
+        public string GetPath(string name)
         {
-            if (string.IsNullOrEmpty(context.File)) return config;
+            if (string.IsNullOrEmpty(Context.File)) return Context.Dir.Replace('\\', '/') ?? "./";
 
-            var defaultLinters = Registry.Get().Where(x => x.OneFile).ToList();
-            var tempDirName = Guid.NewGuid();
-            var findDefaultLinter = false;
-
-            foreach (var linter in config.Linters)
-            {
-                var defaultLinter = defaultLinters.Find(x => x.Name == linter.Name);
-
-                if (defaultLinter == null)
-                {
-                    findDefaultLinter = true;
-                    linter.Config.TestPathDocker = "./" + tempDirName + "/";
-                }
-                else
-                {
-                    linter.Config.TestPathDocker = context.File.Replace(context.Project, ".").Replace("\\", "/");
-                }
-            }
-
-            if (!findDefaultLinter) return config;
+            var defaultLinters = Registry.Get().SingleOrDefault(x => x.OneFile && x.Name == name);
+            if (defaultLinters != null){ return Context.File; }
 
             var catalogSrategy = new CatalogStrategy();
-            var filePathSplit = context.File.Split('.');
+            var filePathSplit = Context.File.Split('.');
             var filePermission = filePathSplit[filePathSplit.Length - 1];
+            TempDirPath = catalogSrategy.CreeateTempCatalog(Context.Project, TempDirName);
 
-            tempDir = catalogSrategy.CreeateTempCatalog(context.Project, tempDirName);
-            File.Copy(context.File, TempDir + "\\temp." + filePermission);
-            return config;
+            var localFile = Context.Project + "\\" + Context.File;
+            var tempFile = TempDirPath + "\\temp." + filePermission;
+
+            if (!File.Exists(tempFile)){ File.Copy(localFile, tempFile); }
+            return "./" + TempDirName + "/";
         }
-        public ExtConfig GetLinters(ExtConfig config, LinterEngine engine, bool changePathDocker = false)
+        public ExtConfig GetLinters(ExtConfig config, bool fileConfig)
         {
             foreach (var thisLinter in config.Linters.Where(x=> x.Active == true || x.Active == null))
             {
-                thisLinter.Command = engine.Factory.GetArguments(thisLinter.Name, thisLinter.Config.TestPathDocker);
+                var path = GetPath(thisLinter.Name);
+                thisLinter.Command = thisLinter.Command ??
+                                     (fileConfig
+                                         ? GetCommand(thisLinter, path)
+                                         : Engine.Factory.GetArguments(thisLinter.Name, path));
             }
             return config;
         }
-        public ExtConfig GetLinter(string name, ExtConfig config, LinterEngine engine, RunContext context, ref string tempDir)
+        public ExtConfig GetLinter(string name, ExtConfig config)
         {
             var thisLinter = config.Linters.FirstOrDefault(x => x.Name == name);
             if (thisLinter == null)
@@ -156,28 +151,27 @@ namespace Linterhub.Cli.Strategy
                 {
                     throw new LinterNotFoundException("Can't find linter with name: " + name);
                 }
-               
+
                 config.Linters.Add(new ExtConfig.ExtLint
                 {
-                    Command = engine.Factory.GetArguments(findLinter.Name),
+                    Command = Engine.Factory.GetArguments(findLinter.Name, GetPath(findLinter.Name)),
                     Name = findLinter.Name,
                 });
-                config = GetTestPathDocker(context, config, ref tempDir);
             }
             else
             {
-                thisLinter.Command = thisLinter.Active == true || thisLinter.Active == null ?
-                    engine.Factory.GetArguments(thisLinter.Name, thisLinter.Config.TestPathDocker) : null;
-
+               thisLinter.Command = thisLinter.Command ?? 
+                    (thisLinter.Active == true || thisLinter.Active == null ?
+                    Engine.Factory.GetArguments(thisLinter.Name, GetPath(thisLinter.Name)) : null);
             }
             return config;
         }
 
-        public string GetCommand(ExtConfig.ExtLint extLint, LinterEngine engine)
+        public string GetCommand(ExtConfig.ExtLint extLint, string path)
         {
             var stream = MemoryStreamUtf8(JsonConvert.SerializeObject(extLint.Config));
-            var args = engine.GetArguments(extLint.Name, stream);
-            return extLint.Command ?? engine.Factory.CreateCommand(args);
+            var args = Engine.GetArguments(extLint.Name, stream);
+            return extLint.Command ?? Engine.Factory.CreateCommand(args, path);
         }
 
         public Stream MemoryStreamUtf8(string str)

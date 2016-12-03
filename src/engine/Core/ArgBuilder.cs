@@ -11,6 +11,7 @@
         protected bool BoolDefault { get; }
         protected object ObjectDefault { get; }
         protected string StringDefault { get; }
+        protected static string Path { get; set; }
         protected IEnumerable<string> StringListDefault { get; }
 
         public ArgBuilder(
@@ -27,8 +28,9 @@
             StringListDefault = stringListDefault;
         }
 
-        public string Build<T>(T configuration)
+        public string Build<T>(T configuration, string path = "")
         {
+            Path = path;
             var provider = configuration as IArgProvider;
             if (provider != null)
             {
@@ -36,7 +38,7 @@
             }
 
             var properties = GetProperties(configuration);
-            var values = properties.Where(x => IsInclude(x.Value));
+            var values = properties.Where(x => IsInclude(x.Value) || x.Key.Path);
             return string.Join(" ", values.Select(BuildArgument));
         }
 
@@ -65,7 +67,7 @@
             return string.Format(template, 
                 arg.Key.Name,
                 arg.Key.Add ? arg.Key.Separator : null,
-                arg.Key.Add ? arg.Value : null);
+                arg.Key.Add ? arg.Key.Path ? Path : arg.Value : null);
         }
 
         private static IDictionary<ArgAttribute, object> GetProperties<T>(T configuration)
