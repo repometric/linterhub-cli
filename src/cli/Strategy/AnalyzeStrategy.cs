@@ -118,10 +118,9 @@ namespace Linterhub.Cli.Strategy
             var defaultLinters = Registry.Get().SingleOrDefault(x => x.OneFile && x.Name == name);
             if (defaultLinters != null){ return Context.File; }
 
-            var catalogSrategy = new CatalogStrategy();
             var filePathSplit = Context.File.Split('.');
             var filePermission = filePathSplit[filePathSplit.Length - 1];
-            TempDirPath = catalogSrategy.CreeateTempCatalog(Context.Project, TempDirName);
+            TempDirPath = CreateTempCatalog(Context.Project, TempDirName);
 
             var localFile = Path.Combine(Context.Project, Context.File);
             var tempFile = Path.Combine(TempDirPath, "temp." + filePermission);
@@ -177,6 +176,13 @@ namespace Linterhub.Cli.Strategy
         public Stream MemoryStreamUtf8(string str)
         {
             return new MemoryStream(Encoding.UTF8.GetBytes(str));
+        }
+
+        public string CreateTempCatalog(string path, Guid guid)
+        {
+            var tempDirPath = path + "\\" + guid + "\\";
+            Directory.CreateDirectory(tempDirPath);
+            return tempDirPath;
         }
     }
 }

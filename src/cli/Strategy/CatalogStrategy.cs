@@ -40,12 +40,5 @@ namespace Linterhub.Cli.Strategy
                 throw new LinterParseException(exception);
             }
         }
-
-        public string CreeateTempCatalog(string path, Guid guid)
-        {
-            var tempDirPath = path + "\\" + guid + "\\";
-            Directory.CreateDirectory(tempDirPath);
-            return tempDirPath;
-        }
     }
 }
