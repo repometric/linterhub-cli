@@ -39,7 +39,7 @@ namespace Linterhub.Cli.Strategy
                     foreach (var linterConfig in configs.Linters.Where(x => x.Command != null))
                     {
                         result = new LinterhubWrapper(Context, Engine).Analyze(linterConfig.Name, linterConfig.Command, Context.Project);
-                        input = MemoryStreamUtf8(result);
+                        input = result.GetMemoryStream();
                         input.Position = 0;
                         linterModels.Add(Engine.GetModel(linterConfig.Name, input, null));
                     }
@@ -168,14 +168,9 @@ namespace Linterhub.Cli.Strategy
 
         public string GetCommand(ExtConfig.ExtLint extLint, string path)
         {
-            var stream = MemoryStreamUtf8(JsonConvert.SerializeObject(extLint.Config));
+            var stream = JsonConvert.SerializeObject(extLint.Config).GetMemoryStream();
             var args = Engine.GetArguments(extLint.Name, stream);
             return extLint.Command ?? Engine.Factory.CreateCommand(args, path);
-        }
-
-        public Stream MemoryStreamUtf8(string str)
-        {
-            return new MemoryStream(Encoding.UTF8.GetBytes(str));
         }
 
         public string CreateTempCatalog(string path, Guid guid)
