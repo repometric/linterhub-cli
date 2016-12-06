@@ -33,7 +33,7 @@
             log.Trace("Start  :", Process.GetCurrentProcess().ProcessName);
             log.Trace("Args   :", args);
 
-            var optionsStrategy = new OptionsStrategy();
+            var optionsStrategy = Strategies[RunMode.Help] as OptionsStrategy;
             var validateStrategy = new ValidateStrategy();
             var engine = new LinterEngine();
             var context = new RunContext();
