@@ -18,7 +18,7 @@ namespace Linterhub.Cli.Strategy
                 throw new LinterEngineException("App configuration was not found: " + context.Config);
             }
 
-            context.Project = GetProjectPath(context.Project);
+            context.Project = context.GetProjectPath();
             if (!Directory.Exists(context.Project))
             {
                 throw new LinterEngineException("Project was not found: " + context.Project);
@@ -51,37 +51,27 @@ namespace Linterhub.Cli.Strategy
 
         private string GetConfigurationPath(string filePath)
         {
+            if (!string.IsNullOrEmpty(filePath))
+            {
+                return filePath;
+            }
+
             string path;
-            if (string.IsNullOrEmpty(filePath))
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
-                if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-                {
-                    path = "Windows.json";
-                } else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-                {
-                    path = "MacOS.json";
-                } else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-                {
-                    path = "Linux.json";
-                } else
-                {
-                    path = "Default.json";
-                }
-
-                path = "Config/" + path;
-                return path;
+                path = "Windows.json";
+            } else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            {
+                path = "MacOS.json";
+            } else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            {
+                path = "Linux.json";
+            } else
+            {
+                path = "Default.json";
             }
 
-            return filePath;
-        }
-
-        private string GetProjectPath(string path)
-        {
-            if (string.IsNullOrEmpty(path))
-            {
-                return Directory.GetCurrentDirectory();
-            }
-
+            path = "Config/" + path;
             return path;
         }
     }

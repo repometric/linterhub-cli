@@ -36,5 +36,10 @@
             File.WriteAllText(context.GetProjectConfigPath(), content);
             return content;
         }
+
+        public static string GetProjectPath(this RunContext context)
+        {
+            return string.IsNullOrEmpty(context.Project) ? Directory.GetCurrentDirectory() : context.Project;
+        }
     }
 }
