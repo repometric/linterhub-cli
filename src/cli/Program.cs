@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Diagnostics;
+    using System.Linq;
     using Newtonsoft.Json;
     using Runtime;
     using Strategy;
@@ -31,7 +32,7 @@
         internal static void Run(string[] args, LogManager log)
         {
             log.Trace("Start  :", Process.GetCurrentProcess().ProcessName);
-            log.Trace("Args   :", args);
+            log.Trace("Args   :", string.Join(" ", args));
 
             var optionsStrategy = Strategies[RunMode.Help] as OptionsStrategy;
             var validateStrategy = new ValidateStrategy();

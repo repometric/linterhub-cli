@@ -30,7 +30,7 @@ namespace Linterhub.Cli
         {
             error = true;
             Log("ERROR: " + message);
-            System.Console.Error.WriteLine(message);
+            Console.Error.WriteLine(message);
         }
 
         public void Error(Exception exception)
@@ -44,7 +44,7 @@ namespace Linterhub.Cli
             saved = true;
             if (string.IsNullOrEmpty(fileName))
             {
-                System.Console.Write(LogWriter.ToString());
+                Console.Write(LogWriter.ToString());
             }
             else
             {

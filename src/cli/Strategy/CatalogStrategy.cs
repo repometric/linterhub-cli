@@ -1,5 +1,3 @@
-using System.IO;
-
 namespace Linterhub.Cli.Strategy
 {
     using System;
