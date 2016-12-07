@@ -26,26 +26,26 @@ namespace Linterhub.Cli.Strategy
 
             try
             {
-                context.Configuration = ParseConfiguration(context.Config);
+                context.CliConfig = ParseConfiguration(context.Config);
             }
             catch (Exception exception)
             {
                 throw new LinterEngineException("Error parsing app configuration", exception);
             }
 
-            if (!string.IsNullOrEmpty(context.Configuration.Linterhub) && 
-                !Directory.Exists(context.Configuration.Linterhub))
+            if (!string.IsNullOrEmpty(context.CliConfig.Linterhub) && 
+                !Directory.Exists(context.CliConfig.Linterhub))
             {
-                throw new LinterEngineException("Linterhub was not found: " + context.Configuration.Linterhub);
+                throw new LinterEngineException("Linterhub was not found: " + context.CliConfig.Linterhub);
             }
 
             return true;
         }
 
-        private Configuration ParseConfiguration(string filePath)
+        private CliConfig ParseConfiguration(string filePath)
         {
             var content = File.ReadAllText(filePath);
-            var config = content.DeserializeAsJson<Configuration>();
+            var config = content.DeserializeAsJson<CliConfig>();
             return config;
         }
 

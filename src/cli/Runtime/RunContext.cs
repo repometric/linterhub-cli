@@ -19,6 +19,6 @@ namespace Linterhub.Cli.Runtime
             Mode = mode;
         }
 
-        public Configuration Configuration { get; set; }
+        public CliConfig CliConfig { get; set; }
     }
 }

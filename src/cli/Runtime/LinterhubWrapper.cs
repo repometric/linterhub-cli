@@ -17,8 +17,8 @@ namespace Linterhub.Cli.Runtime
 
         public string Run(string command)
         {
-            var cmd = string.Format(Context.Configuration.TerminalCommand, command);
-            var run = Engine.Run(Context.Configuration.Terminal, cmd, Context.Configuration.Linterhub);
+            var cmd = string.Format(Context.CliConfig.TerminalCommand, command);
+            var run = Engine.Run(Context.CliConfig.Terminal, cmd, Context.CliConfig.Linterhub);
             if (run.RunException != null)
             {
                 throw new LinterEngineException("Runtime Exception", run.RunException);
@@ -37,19 +37,19 @@ namespace Linterhub.Cli.Runtime
 
         public string Info()
         {
-            var result = Run(Context.Configuration.CommandInfo);
+            var result = Run(Context.CliConfig.CommandInfo);
             return result;
         }
 
         public string Version()
         {
-            var result = Run(Context.Configuration.CommandInfo.Replace("info", "version"));
+            var result = Run(Context.CliConfig.CommandInfo.Replace("info", "version"));
             return result;
         }
 
         public string Analyze(string name, string command, string path)
         {
-            var cmd = string.Format(Context.Configuration.Command, name, command, path);
+            var cmd = string.Format(Context.CliConfig.Command, name, command, path);
             var result = Run(cmd);
             return result;
         }
