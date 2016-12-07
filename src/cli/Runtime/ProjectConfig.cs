@@ -3,21 +3,21 @@
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class ExtConfig
+    public class ProjectConfig
     {
         [JsonProperty("mode")]
         public string Mode { get; set; }
 
         [JsonProperty("linters")]
-        public List<ExtLint> Linters { get; set; }
+        public List<Linter> Linters { get; set; }
 
-        public ExtConfig()
+        public ProjectConfig()
         {
-            Linters = new List<ExtLint>();
+            Linters = new List<Linter>();
 
         }
 
-        public class ExtLint
+        public class Linter
         {
             [JsonProperty("name")]
             public string Name { get; set; }

@@ -22,7 +22,7 @@ namespace Linterhub.Cli.Strategy
             }
             else
             {
-                extConfig.Linters.Add(new ExtConfig.ExtLint 
+                extConfig.Linters.Add(new ProjectConfig.Linter 
                 {
                     Name = context.Linter,
                     Active = context.Activate,

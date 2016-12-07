@@ -10,29 +10,29 @@
             return Path.Combine(context.Project, ".linterhub.json");
         }
 
-        public static ExtConfig GetProjectConfig(this RunContext context)
+        public static ProjectConfig GetProjectConfig(this RunContext context)
         {
-            ExtConfig extConfig;
+            ProjectConfig projectConfig;
             var projectConfigFile = context.GetProjectConfigPath();
 
             if (!File.Exists(projectConfigFile))
             {
-                extConfig = new ExtConfig();
+                projectConfig = new ProjectConfig();
             }
             else
             {
                 using (var fileStream = File.Open(projectConfigFile, FileMode.Open))
                 {
-                    extConfig = fileStream.DeserializeAsJson<ExtConfig>();
+                    projectConfig = fileStream.DeserializeAsJson<ProjectConfig>();
                 }
             }
 
-            return extConfig;
+            return projectConfig;
         }
 
-        public static string SetProjectConfig(this RunContext context, ExtConfig extConfig)
+        public static string SetProjectConfig(this RunContext context, ProjectConfig projectConfig)
         {
-            var content = extConfig.SerializeAsJson();
+            var content = projectConfig.SerializeAsJson();
             File.WriteAllText(context.GetProjectConfigPath(), content);
             return content;
         }

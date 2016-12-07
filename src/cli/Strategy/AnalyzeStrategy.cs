@@ -66,11 +66,11 @@ namespace Linterhub.Cli.Strategy
             return linterModels;
         }
 
-        private ExtConfig GetCommands()
+        private ProjectConfig GetCommands()
         {
             var projectConfigFile = Path.Combine(Context.Project, ".linterhub.json");
             var linterName = Context.Linter ?? string.Empty;
-            var extConfig = new ExtConfig();
+            var extConfig = new ProjectConfig();
             
             Log.Trace("Expected project config: " + projectConfigFile);
 
@@ -82,7 +82,7 @@ namespace Linterhub.Cli.Strategy
                 {
                     using (var fs = File.Open(projectConfigFile, FileMode.Open))
                     {
-                        extConfig = fs.DeserializeAsJson<ExtConfig>();
+                        extConfig = fs.DeserializeAsJson<ProjectConfig>();
                     }
                 }
                 catch (Exception exception)
@@ -97,7 +97,7 @@ namespace Linterhub.Cli.Strategy
                 
                 foreach (var linter in defaultLinters)
                 {                  
-                    extConfig.Linters.Add(new ExtConfig.ExtLint
+                    extConfig.Linters.Add(new ProjectConfig.Linter
                     {
                         Name = linter.Name
                     });
@@ -128,7 +128,7 @@ namespace Linterhub.Cli.Strategy
             if (!File.Exists(tempFile)){ File.Copy(localFile, tempFile); }
             return "./" + TempDirName + "/";
         }
-        public ExtConfig GetLinters(ExtConfig config, bool fileConfig)
+        public ProjectConfig GetLinters(ProjectConfig config, bool fileConfig)
         {
             foreach (var thisLinter in config.Linters.Where(x=> x.Active == true || x.Active == null))
             {
@@ -140,7 +140,7 @@ namespace Linterhub.Cli.Strategy
             }
             return config;
         }
-        public ExtConfig GetLinter(string name, ExtConfig config)
+        public ProjectConfig GetLinter(string name, ProjectConfig config)
         {
             var thisLinter = config.Linters.FirstOrDefault(x => x.Name == name);
             if (thisLinter == null)
@@ -151,7 +151,7 @@ namespace Linterhub.Cli.Strategy
                     throw new LinterNotFoundException("Can't find linter with name: " + name);
                 }
 
-                config.Linters.Add(new ExtConfig.ExtLint
+                config.Linters.Add(new ProjectConfig.Linter
                 {
                     Command = Engine.Factory.GetArguments(findLinter.Name, GetPath(findLinter.Name)),
                     Name = findLinter.Name,
@@ -166,11 +166,11 @@ namespace Linterhub.Cli.Strategy
             return config;
         }
 
-        public string GetCommand(ExtConfig.ExtLint extLint, string path)
+        public string GetCommand(ProjectConfig.Linter linter, string path)
         {
-            var stream = JsonConvert.SerializeObject(extLint.Config).GetMemoryStream();
-            var args = Engine.GetArguments(extLint.Name, stream);
-            return extLint.Command ?? Engine.Factory.CreateCommand(args, path);
+            var stream = JsonConvert.SerializeObject(linter.Config).GetMemoryStream();
+            var args = Engine.GetArguments(linter.Name, stream);
+            return linter.Command ?? Engine.Factory.CreateCommand(args, path);
         }
 
         public string CreateTempCatalog(string path, Guid guid)
