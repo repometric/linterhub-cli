@@ -18,12 +18,12 @@ namespace Linterhub.Cli.Strategy
         public Guid TempDirName;
         public string TempDirPath;
         public RunContext Context;
-        public LinterEngine Engine;
+        public LinterFactory Factory;
         public LogManager Log;
-        public object Run(RunContext context, LinterEngine engine, LogManager log)
+        public object Run(RunContext context, LinterFactory factory, LogManager log)
         {
             Context = context;
-            Engine = engine;
+            Factory = factory;
             Log = log;
             TempDirName = Guid.NewGuid();
 
@@ -38,10 +38,10 @@ namespace Linterhub.Cli.Strategy
                   
                     foreach (var linterConfig in configs.Linters.Where(x => x.Command != null))
                     {
-                        result = new LinterhubWrapper(Context, Engine).Analyze(linterConfig.Name, linterConfig.Command, Context.Project);
+                        result = new LinterhubWrapper(Context, Factory).Analyze(linterConfig.Name, linterConfig.Command, Context.Project);
                         input = result.GetMemoryStream();
                         input.Position = 0;
-                        linterModels.Add(Engine.GetModel(linterConfig.Name, input, null));
+                        linterModels.Add(Factory.CreateModel(linterConfig.Name, input, null));
                     }
                     if (!string.IsNullOrEmpty(TempDirPath))
                     {
@@ -51,7 +51,7 @@ namespace Linterhub.Cli.Strategy
                 else
                 {
                     input = Context.Input;
-                    linterModels.Add(Engine.GetModel(Context.Linter, input, null));
+                    linterModels.Add(Factory.CreateModel(Context.Linter, input, null));
                 }
             }
             catch (Exception exception)
@@ -136,7 +136,7 @@ namespace Linterhub.Cli.Strategy
                 thisLinter.Command = thisLinter.Command ??
                                      (fileConfig
                                          ? GetCommand(thisLinter, path)
-                                         : Engine.Factory.GetArguments(thisLinter.Name, path));
+                                         : Factory.BuildCommand(thisLinter.Name, path));
             }
             return config;
         }
@@ -153,7 +153,7 @@ namespace Linterhub.Cli.Strategy
 
                 config.Linters.Add(new ProjectConfig.Linter
                 {
-                    Command = Engine.Factory.GetArguments(findLinter.Name, GetPath(findLinter.Name)),
+                    Command = Factory.BuildCommand(findLinter.Name, GetPath(findLinter.Name)),
                     Name = findLinter.Name,
                 });
             }
@@ -161,7 +161,7 @@ namespace Linterhub.Cli.Strategy
             {
                thisLinter.Command = thisLinter.Command ?? 
                     (thisLinter.Active == true || thisLinter.Active == null ?
-                    Engine.Factory.GetArguments(thisLinter.Name, GetPath(thisLinter.Name)) : null);
+                    Factory.BuildCommand(thisLinter.Name, GetPath(thisLinter.Name)) : null);
             }
             return config;
         }
@@ -169,8 +169,8 @@ namespace Linterhub.Cli.Strategy
         public string GetCommand(ProjectConfig.Linter linter, string path)
         {
             var stream = JsonConvert.SerializeObject(linter.Config).GetMemoryStream();
-            var args = Engine.GetArguments(linter.Name, stream);
-            return linter.Command ?? Engine.Factory.CreateCommand(args, path);
+            var args = Factory.CreateArguments(linter.Name, stream);
+            return linter.Command ?? Factory.BuildCommand(args, path);
         }
 
         public string CreateTempCatalog(string path, Guid guid)

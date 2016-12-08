@@ -3,22 +3,30 @@ namespace Linterhub.Cli.Runtime
     using System;
     using Engine;
     using Engine.Exceptions;
+    using Engine.Extensions;
 
     public class LinterhubWrapper
     {
         public RunContext Context { get; }
-        public LinterEngine Engine { get; }
+        public LinterFactory Factory { get; }
 
-        public LinterhubWrapper(RunContext context, LinterEngine engine)
+        public LinterhubWrapper(RunContext context, LinterFactory factory)
         {
             Context = context;
-            Engine = engine;
+            Factory = factory;
+        }
+
+        private static CmdWrapper.RunResults Run(string terminal, string command, string workingDirectory = null)
+        {
+            var wrapper = new CmdWrapper();
+            var run = wrapper.RunExecutable(terminal, command, workingDirectory);
+            return run;
         }
 
         public string Run(string command)
         {
             var cmd = string.Format(Context.CliConfig.TerminalCommand, command);
-            var run = Engine.Run(Context.CliConfig.Terminal, cmd, Context.CliConfig.Linterhub);
+            var run = Run(Context.CliConfig.Terminal, cmd, Context.CliConfig.Linterhub);
             if (run.RunException != null)
             {
                 throw new LinterEngineException("Runtime Exception", run.RunException);

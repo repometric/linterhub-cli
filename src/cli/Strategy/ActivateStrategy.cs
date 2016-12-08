@@ -7,7 +7,7 @@ namespace Linterhub.Cli.Strategy
 
     public class ActivateStrategy : IStrategy
     {
-        public object Run(RunContext context, LinterEngine engine, LogManager log)
+        public object Run(RunContext context, LinterFactory factory, LogManager log)
         {
             if (string.IsNullOrEmpty(context.Linter))
             {
@@ -26,7 +26,7 @@ namespace Linterhub.Cli.Strategy
                 {
                     Name = context.Linter,
                     Active = context.Activate,
-                    Command = engine.Factory.GetArguments(context.Linter)
+                    Command = factory.BuildCommand(context.Linter)
                 });
             }
 

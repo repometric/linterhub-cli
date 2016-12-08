@@ -1,5 +1,5 @@
 {
-  "version": "1.2.1-*",
+  "version": "1.2.2-*",
   "buildOptions": {
     "outputName": "cli",
     "debugType": "portable",
@@ -17,7 +17,8 @@
     "Microsoft.NETCore.Runtime.CoreCLR": "1.0.2",
     "Microsoft.NETCore.DotNetHostPolicy": "1.0.1",
     "Mono.Options": "4.4.0",
-    "engine": "1.1.1-*"
+    "System.Diagnostics.Process": "4.1.0",
+    "engine": "1.1.2-*"
   },
 
   "frameworks": {

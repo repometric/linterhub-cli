@@ -24,15 +24,15 @@
 
         public static IEnumerable<Record> Get()
         {
-            return linters;
+            return Linters;
         }
 
         public static void Register(Record record)
         {
-            linters.Add(record);
+            Linters.Add(record);
         }
 
-        private static List<Record> linters = new List<Record>
+        private static readonly List<Record> Linters = new List<Record>
         {
             new Record
             {

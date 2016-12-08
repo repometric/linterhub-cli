@@ -36,13 +36,13 @@
 
             var optionsStrategy = Strategies[RunMode.Help] as OptionsStrategy;
             var validateStrategy = new ValidateStrategy();
-            var engine = new LinterEngine();
+            var factory = new LinterFactory();
             var context = new RunContext();
 
             try
             {
                 context = optionsStrategy.Parse(args);
-                validateStrategy.Run(context, engine, log);
+                validateStrategy.Run(context, factory, log);
             }
             catch (Exception exception) 
             {
@@ -59,7 +59,7 @@
                 log.Trace("File: ", context.File);
                 log.Trace("Dir: ", context.Dir);
 
-                var result = Strategies[context.Mode].Run(context, engine, log);
+                var result = Strategies[context.Mode].Run(context, factory, log);
 
                 if (result == null) return;
                 var output = result is string 

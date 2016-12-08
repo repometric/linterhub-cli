@@ -50,7 +50,7 @@
                 .Case<bool>(v => isInclude = v != BoolDefault)
                 .Case<string>(v => isInclude = !string.IsNullOrEmpty(v) && v != StringDefault)
                 .Case<object>(v => isInclude = v != ObjectDefault)
-                .Case<IEnumerable<string>>(v => isInclude = v != StringListDefault && v.Count() != 0)
+                .Case<IEnumerable<string>>(v => isInclude = !Equals(v, StringListDefault) && v.Count() != 0)
                 .Default(v => isInclude = false);
 
             return isInclude;

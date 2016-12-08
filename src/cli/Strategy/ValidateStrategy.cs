@@ -10,7 +10,7 @@ namespace Linterhub.Cli.Strategy
 
     public class ValidateStrategy : IStrategy
     {
-        public object Run(RunContext context, LinterEngine engine, LogManager log)
+        public object Run(RunContext context, LinterFactory factory, LogManager log)
         {        
             context.Config = GetConfigurationPath(context.Config);    
             if (!File.Exists(context.Config))

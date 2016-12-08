@@ -1,6 +1,7 @@
 ﻿namespace Linterhub.Cli.Runtime
 {
     using System.IO;
+    using System.Text;
     using Engine.Extensions;
 
     public static class Extensions
@@ -40,6 +41,11 @@
         public static string GetProjectPath(this RunContext context)
         {
             return string.IsNullOrEmpty(context.Project) ? Directory.GetCurrentDirectory() : context.Project;
+        }
+
+        public static Stream GetMemoryStream(this string self)
+        {
+            return new MemoryStream(Encoding.UTF8.GetBytes(self));
         }
     }
 }

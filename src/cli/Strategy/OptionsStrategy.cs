@@ -47,7 +47,7 @@ namespace Linterhub.Cli.Strategy
             return runContext;
         }
 
-        public object Run(RunContext context, LinterEngine engine, LogManager log)
+        public object Run(RunContext context, LinterFactory factory, LogManager log)
         {
             Console.WriteLine("Options:");
             Options.WriteOptionDescriptions(Console.Out);
