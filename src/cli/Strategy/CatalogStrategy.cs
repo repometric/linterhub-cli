@@ -31,7 +31,7 @@ namespace Linterhub.Cli.Strategy
             {
                 return context.InputAwailable
                      ? context.Input.DeserializeAsJson<Linters>()
-                     : new LinterhubWrapper(context, factory).Info().DeserializeAsJson<Linters>();
+                     : new LinterhubWrapper(context).Info().DeserializeAsJson<Linters>();
             }
             catch (Exception exception)
             {
