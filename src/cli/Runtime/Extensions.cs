@@ -1,7 +1,9 @@
 ﻿namespace Linterhub.Cli.Runtime
 {
+    using System;
     using System.IO;
     using System.Text;
+    using Engine.Exceptions;
     using Engine.Extensions;
 
     public static class Extensions
@@ -22,9 +24,16 @@
             }
             else
             {
-                using (var fileStream = File.Open(projectConfigFile, FileMode.Open))
+                try
                 {
-                    projectConfig = fileStream.DeserializeAsJson<ProjectConfig>();
+                    using (var fileStream = File.Open(projectConfigFile, FileMode.Open))
+                    {
+                        projectConfig = fileStream.DeserializeAsJson<ProjectConfig>();
+                    }
+                }
+                catch (Exception exception)
+                {
+                    throw new LinterEngineException("Error parsing project configuration file", exception);
                 }
             }
 

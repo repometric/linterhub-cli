@@ -8,7 +8,7 @@ namespace Linterhub.Cli.Strategy
     {
         public object Run(RunContext context, LinterFactory factory, LogManager log)
         {
-            var linterhubVersion = new LinterhubWrapper(context, factory).Version().Trim();
+            var linterhubVersion = new LinterhubWrapper(context).Version().Trim();
             var engineVersion = typeof(LinterFactory).GetTypeInfo().Assembly.GetName().Version.ToString();
             var cliVersion = typeof(Program).GetTypeInfo().Assembly.GetName().Version.ToString();
             return 

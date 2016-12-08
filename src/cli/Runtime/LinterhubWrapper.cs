@@ -8,12 +8,10 @@ namespace Linterhub.Cli.Runtime
     public class LinterhubWrapper
     {
         public RunContext Context { get; }
-        public LinterFactory Factory { get; }
 
-        public LinterhubWrapper(RunContext context, LinterFactory factory)
+        public LinterhubWrapper(RunContext context)
         {
             Context = context;
-            Factory = factory;
         }
 
         private static CmdWrapper.RunResults Run(string terminal, string command, string workingDirectory = null)
