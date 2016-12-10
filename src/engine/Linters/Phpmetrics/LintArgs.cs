@@ -25,5 +25,11 @@ namespace Linterhub.Engine.Linters.Phpmetrics
 
         [Arg("--excluded-dirs ", separator: "=", order: 1)]
         public string ExcludedDirectories { get; set; }
+
+        /// <summary>
+        /// Tested project path (in container)
+        /// </summary>
+        [Arg("", order: int.MaxValue)]
+        public string TestPathDocker { get; set; }
     }
 }

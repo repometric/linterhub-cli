@@ -32,7 +32,10 @@
 
         public static string SerializeAsJson<T>(this T self)
         {
-            return JsonConvert.SerializeObject(self, Newtonsoft.Json.Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
+            return JsonConvert.SerializeObject(self, Formatting.Indented, new JsonSerializerSettings
+            {
+                NullValueHandling = NullValueHandling.Ignore
+            });
         }
     }
 }

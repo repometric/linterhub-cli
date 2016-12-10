@@ -6,10 +6,10 @@ namespace Linterhub.Cli.Strategy
 
     public class VersionStrategy : IStrategy
     {
-        public object Run(RunContext context, LinterEngine engine, LogManager log)
+        public object Run(RunContext context, LinterFactory factory, LogManager log)
         {
-            var linterhubVersion = new LinterhubWrapper(context, engine).Version().Trim();
-            var engineVersion = typeof(LinterEngine).GetTypeInfo().Assembly.GetName().Version.ToString();
+            var linterhubVersion = new LinterhubWrapper(context).Version().Trim();
+            var engineVersion = typeof(LinterFactory).GetTypeInfo().Assembly.GetName().Version.ToString();
             var cliVersion = typeof(Program).GetTypeInfo().Assembly.GetName().Version.ToString();
             return 
                 $"Linterhub: {linterhubVersion}\nEngine: {engineVersion}\nCLI: {cliVersion}";

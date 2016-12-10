@@ -7,6 +7,8 @@ namespace Linterhub.Cli.Runtime
         public string Config { get; set; }
         public string Linter { get; set; }
         public string Project { get; set; }
+        public string File { get; set; }
+        public string Dir { get; set; }
         public bool Activate { get; set; }
         public RunMode Mode { get; set; }
         public Stream Input { get; set; }
@@ -17,6 +19,6 @@ namespace Linterhub.Cli.Runtime
             Mode = mode;
         }
 
-        public Configuration Configuration { get; set; }
+        public CliConfig CliConfig { get; set; }
     }
 }

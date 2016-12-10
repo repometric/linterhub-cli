@@ -2,7 +2,7 @@ namespace Linterhub.Cli.Runtime
 {
     using Newtonsoft.Json;
 
-    public class Configuration
+    public class CliConfig
     {
         [JsonProperty("command")]
         public string Command { get; set; }

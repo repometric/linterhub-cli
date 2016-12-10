@@ -1,21 +1,22 @@
 ﻿namespace Linterhub.Engine.Linters.eslint
 {
-    public class LintArg
+    public class LintArg : ILinterArgs
     {
+        public LintArg()
+        {
+            EsLint = true;
+            OutputFormatFile = "json";
+        }
         /// <summary>
         /// Tested project path
         /// </summary>
+        [Arg("", order: int.MaxValue, path:true)]
         public string TestPath { get; set; }
-
-        /// <summary>
-        /// Your projcet Directory
-        /// </summary>
-        public string ProjectPath { get; set; }
 
         /// <summary>
         /// Required field for work EsLint 
         /// </summary>
-        [Arg("eslint")]
+        [Arg("eslint", false)]
         public bool EsLint { get; set; }
 
         /// <summary>
@@ -146,7 +147,7 @@
         public bool? Debug { get; set; }
 
         /// <summary>
-        /// Output file format (Example: jslint-xml)
+        /// Output file format (Example: json)
         /// </summary>
         [Arg("-f")]
         public string OutputFormatFile { get; set; }

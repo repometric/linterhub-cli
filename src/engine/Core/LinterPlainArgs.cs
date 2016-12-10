@@ -7,6 +7,8 @@
 
         public string TestPath { get; set; }
 
+        public string TestPathDocker { get; set; }
+
         public string Path { get; set; }
 
         public string Build()

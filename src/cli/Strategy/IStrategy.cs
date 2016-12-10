@@ -5,6 +5,6 @@ namespace Linterhub.Cli.Strategy
 
     public interface IStrategy
     {
-        object Run(RunContext context, LinterEngine engine, LogManager log);
+        object Run(RunContext context, LinterFactory factory, LogManager log);
     }
 }

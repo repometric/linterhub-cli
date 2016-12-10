@@ -1,4 +1,4 @@
-﻿namespace Linterhub.Engine.Extensions
+﻿namespace Linterhub.Cli.Runtime
 {
 	using System;
     using System.Diagnostics;

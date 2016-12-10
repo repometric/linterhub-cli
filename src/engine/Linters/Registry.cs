@@ -14,6 +14,7 @@
             public Type Result { get; set; }
             public Type Model { get; set; }
             public bool ArgsDefault { get; set; }
+            public bool OneFile { get; set; }
         }
 
         public static Record Get(string name)
@@ -23,15 +24,15 @@
 
         public static IEnumerable<Record> Get()
         {
-            return linters;
+            return Linters;
         }
 
         public static void Register(Record record)
         {
-            linters.Add(record);
+            Linters.Add(record);
         }
 
-        private static List<Record> linters = new List<Record>
+        private static readonly List<Record> Linters = new List<Record>
         {
             new Record
             {
@@ -106,15 +107,8 @@
                 Result = typeof(htmlhint.LintResult),
                 Model = typeof(htmlhint.LintResult),
                 ArgsDefault = true
+                //Command = "htmlhint --format json"
             },
-            /*new Record
-            {
-                Name = "phpcheckstyle",
-                Linter = typeof(phpcheckstyle.Lint),
-                Args = typeof(phpcheckstyle.LintArgs),
-                Result = typeof(phpcheckstyle.LintResult),
-                Model = typeof(phpcheckstyle.LintResult)
-            },*/
             new Record
             {
                 Name = "coffeelint",
@@ -131,7 +125,8 @@
                 Args = typeof(csslint.LintArgs),
                 Result = typeof(csslint.LintResult),
                 Model = typeof(csslint.LintResult),
-                ArgsDefault = true
+                ArgsDefault = true,
+                //Command = "csslint --format=json"
             },
             new Record
             {
@@ -140,25 +135,31 @@
                 Args = typeof(jshint.LintArgs),
                 Result = typeof(jshint.LintResult),
                 Model = typeof(jshint.LintResult),
-                ArgsDefault = true
+                ArgsDefault = true,
+                OneFile = true
+                //Command = "jshint --reporter checkstyle"
             },
             new Record
             {
                 Name = "jslint",
                 Linter = typeof(jslint.Lint),
-                Args = typeof(LinterPlainArgs),
+                Args = typeof(jslint.LintArgs),
                 Result = typeof(jslint.LintResult),
-                Model = typeof(LinterFileModel)
-                //ArgsDefault = "jslint --json **/*.js"
+                Model = typeof(jslint.LintResult),
+                OneFile = true,
+               // ArgsDefault = true
+                //Command = "jslint --json"
             },
             new Record
             {
                 Name = "eslint",
                 Linter = typeof(eslint.Lint),
-                Args = typeof(LinterPlainArgs),
+                Args = typeof(eslint.LintArg),
                 Result = typeof(eslint.LintResult),
-                Model = typeof(LinterFileModel)
-                //ArgsDefault = "eslint **/*.js -f json"
+                Model = typeof(eslint.LintResult),
+                OneFile = true,
+                ArgsDefault = true
+                //Command = "eslint -f json"
             },
             new Record
             {
@@ -168,6 +169,7 @@
                 Result = typeof(pep8.LintResult),
                 Model = typeof(LinterFileModel),
                 ArgsDefault = true
+                //Command = "pep8 --format=pylint ./"
             }
         };
     }

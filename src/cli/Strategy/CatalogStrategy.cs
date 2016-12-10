@@ -9,13 +9,14 @@ namespace Linterhub.Cli.Strategy
 
     public class CatalogStrategy : IStrategy
     {
-        public object Run(RunContext context, LinterEngine engine, LogManager log)
+        public object Run(RunContext context, LinterFactory factory, LogManager log)
         {
-            var catalog = GetCatalog(context, engine);
-            var result = 
-                from record in engine.Factory.GetRecords().OrderBy(x => x.Name)
+            var catalog = GetCatalog(context, factory);
+            var result =
+                from record in factory.GetRecords().OrderBy(x => x.Name)
                 let item = catalog.linters.FirstOrDefault(y => y.name == record.Name)
-                select new {
+                select new
+                {
                     name = record.Name,
                     description = item?.description,
                     languages = item?.languages
@@ -24,13 +25,13 @@ namespace Linterhub.Cli.Strategy
             return result;
         }
 
-        private Linters GetCatalog(RunContext context, LinterEngine engine)
+        private Linters GetCatalog(RunContext context, LinterFactory factory)
         {
             try
             {
                 return context.InputAwailable
                      ? context.Input.DeserializeAsJson<Linters>()
-                     : new LinterhubWrapper(context, engine).Info().DeserializeAsJson<Linters>();
+                     : new LinterhubWrapper(context).Info().DeserializeAsJson<Linters>();
             }
             catch (Exception exception)
             {

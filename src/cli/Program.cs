@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Diagnostics;
+    using System.Linq;
     using Newtonsoft.Json;
     using Runtime;
     using Strategy;
@@ -24,23 +25,24 @@
             { RunMode.Generate, new GenerateStrategy() },
             { RunMode.Analyze, new AnalyzeStrategy() },
             { RunMode.Version, new VersionStrategy() },
-            { RunMode.Activate, new ActivateStrategy() }
+            { RunMode.Activate, new ActivateStrategy() },
+            { RunMode.Help, new OptionsStrategy() }
         };
-
+        
         internal static void Run(string[] args, LogManager log)
         {
             log.Trace("Start  :", Process.GetCurrentProcess().ProcessName);
-            log.Trace("Args   :", args);
+            log.Trace("Args   :", string.Join(" ", args));
 
-            var optionsStrategy = new OptionsStrategy();
+            var optionsStrategy = Strategies[RunMode.Help] as OptionsStrategy;
             var validateStrategy = new ValidateStrategy();
-            var engine = new LinterEngine();
-            Strategies.Add(RunMode.Help, optionsStrategy);
+            var factory = new LinterFactory();
             var context = new RunContext();
+
             try
             {
                 context = optionsStrategy.Parse(args);
-                validateStrategy.Run(context, engine, log);
+                validateStrategy.Run(context, factory, log);
             }
             catch (Exception exception) 
             {
@@ -54,51 +56,16 @@
                 log.Trace("Config :", context.Config);
                 log.Trace("Linter :", context.Linter);
                 log.Trace("Project:", context.Project);
+                log.Trace("File: ", context.File);
+                log.Trace("Dir: ", context.Dir);
 
-                //var linters = new List<string>();
-                //if (context.Linter != null)
-                //{
-                //    linters.Add(context.Linter);
-                //}
-                //else
-                //{
-                //    var projectConfigPath = Path.Combine(context.Project, ".linterhub.json");
-                //    if (File.Exists(projectConfigPath))
-                //    {
-                //        using (var fs = File.Open(projectConfigPath, FileMode.Open))
-                //        {
-                //            var projectConfig = fs.DeserializeAsJson<ExtConfig>();
-                //            linters.AddRange(projectConfig.Linters.Select(x => x.Name).ToList());
-                //        }
-                //    }
-                //    else
-                //    {
-                //        throw new LinterConfigNotFoundException(context.Project);
-                //    }
-                //}
-/*
-                var lintersResult = linters.Select(x => new
-                {
-                    Name = x,
-                    Model = Strategies[context.Mode].Run(new RunContext
-                    {
-                        Mode = context.Mode,
-                        Config = context.Config,
-                        Linter = x,
-                        Project = context.Project,
-                        Configuration = context.Configuration,
-                        Input = context.Input,
-                        InputAwailable = context.InputAwailable
-                    }, engine, log)
-                }).ToArray();
-*/
-                var result = Strategies[context.Mode].Run(context, engine, log);
-               // var result = strategy.Run(context, engine, log);
+                var result = Strategies[context.Mode].Run(context, factory, log);
 
                 if (result == null) return;
                 var output = result is string 
                            ? result
                            : JsonConvert.SerializeObject(result);
+
                 Console.Write(output);
             }
             catch (Exception exception)

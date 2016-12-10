@@ -11,14 +11,14 @@ namespace Linterhub.Engine.Linters.PhpAssumptions
         /// <summary>
         /// Tool path
         /// </summary>
-        [Arg("", order: int.MinValue)]
-        public string ToolPath { get; set; }
+        [Arg("phpa", false, order: int.MinValue)]
+        public string PhpA { get; set; }
 
         /// <summary>
         ///  Report format
         /// </summary>
         [Arg("-f", separator: " ", order: int.MaxValue)]
-        public string OutputFormat { get; set; }
+        public string ReportType { get; set; }
 
         /// <summary>
         /// Tested project path
