@@ -12,7 +12,7 @@
 
         public int Order { get; }
 
-        public ArgAttribute(string name = null, bool add = true, string separator = " ", int order = int.MinValue)
+        public ArgAttribute(string name = null, bool add = true, string separator = " ", int order = 0)
         {
             Name = name;
             Add = add;

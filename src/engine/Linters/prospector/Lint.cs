@@ -21,7 +21,7 @@ namespace Linterhub.Engine.Linters.prospector
                          group error by error.WarningLocation.Path into g
                          select new LinterFileModel.File
                          {
-                             Path = g.FirstOrDefault().WarningLocation.Path,
+                             Path = g.First().WarningLocation.Path,
                              Errors = g.Select(e => new LinterFileModel.Error
                              {
                                  Message = e.Description,
