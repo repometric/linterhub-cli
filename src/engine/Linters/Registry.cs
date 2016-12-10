@@ -159,6 +159,15 @@
                 Result = typeof(pep8.LintResult),
                 Model = typeof(LinterFileModel),
                 ArgsDefault = true
+            },
+            new Record
+            {
+                Name = "prospector",
+                Linter = typeof(prospector.Lint),
+                Args = typeof(prospector.LintArgs),
+                Result = typeof(prospector.LintResult),
+                Model = typeof(LinterFileModel),
+                ArgsDefault = true
             }
         };
     }
