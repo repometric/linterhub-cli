@@ -1,11 +1,23 @@
 {
   "profiles": {
-    "Linterhub.Cli": {
-      "commandName": "Project",
-      "commandLineArgs": "--mode=Analyze --project=C:\\xampp\\htdocs\\debugger.html\\public\\js\\clients\\chrome"
-    },
     "cli": {
       "commandName": "Project"
+    },
+    "coffeelint-file": {
+      "commandName": "Project",
+      "commandLineArgs": "--mode=Analyze --project=C:\\Users\\Andrey\\Desktop\\linterhub-tests\\marp --linter=coffeelint --file=coffee\\index.coffee"
+    },
+    "coffeelint-folder": {
+      "commandName": "Project",
+      "commandLineArgs": "--mode=Analyze --project=C:\\Users\\Andrey\\Desktop\\linterhub-tests\\marp --linter=coffeelint"
+    },
+    "jshint-file": {
+      "commandName": "Project",
+      "commandLineArgs": "--mode=Analyze --project=C:\\Users\\Andrey\\Desktop\\linterhub-tests\\jquery --linter=jshint --file=src\\ajax.js"
+    },
+    "jshint-folder": {
+      "commandName": "Project",
+      "commandLineArgs": "--mode=Analyze --project=C:\\Users\\Andrey\\Desktop\\linterhub-tests\\jquery --linter=jshint"
     }
   }
 }

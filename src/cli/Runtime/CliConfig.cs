@@ -5,16 +5,36 @@ namespace Linterhub.Cli.Runtime
     public class CliConfig
     {
         [JsonProperty("command")]
-        public string Command { get; set; }
-        [JsonProperty("command_info")]
-        public string CommandInfo { get; set; }
+        public CommandSection Command { get; set; }
         [JsonProperty("linterhub")]
-        public string Linterhub { get; set; }
+        public LinterhubSection Linterhub { get; set; }
         [JsonProperty("terminal")]
-        public string Terminal { get; set; }
-        [JsonProperty("terminalCommand")]
-        public string TerminalCommand { get; set; }
-        [JsonProperty("projectConfig")]
-        public string ProjectConfig { get; set; }
+        public TerminalSection Terminal { get; set; }
+
+        public class CommandSection
+        {
+            [JsonProperty("analyze")]
+            public string Analyze { get; set; }
+            [JsonProperty("info")]
+            public string Info { get; set; }
+            [JsonProperty("version")]
+            public string Version { get; set; }
+        }
+
+        public class TerminalSection
+        {
+            [JsonProperty("path")]
+            public string Path { get; set; }
+            [JsonProperty("command")]
+            public string Command { get; set; }
+        }
+
+        public class LinterhubSection
+        {
+            [JsonProperty("path")]
+            public string Path { get; set; }
+            [JsonProperty("command")]
+            public string Command { get; set; }
+        }
     }
 }

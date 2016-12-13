@@ -49,7 +49,8 @@
 
         public static string GetProjectPath(this RunContext context)
         {
-            return string.IsNullOrEmpty(context.Project) ? Directory.GetCurrentDirectory() : context.Project;
+            var path = string.IsNullOrEmpty(context.Project) ? Directory.GetCurrentDirectory() : context.Project;
+            return path.Replace("\\", "/");
         }
 
         public static Stream GetMemoryStream(this string self)

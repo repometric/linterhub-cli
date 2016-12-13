@@ -12,8 +12,8 @@ namespace Linterhub.Engine.Linters.coffeelint
         /// <summary>
         /// Tested project path
         /// </summary>
-        [Arg("", order: int.MaxValue, path:true)]
-        public string TestPath { get; set; }
+        [ArgPath]
+        public string Path { get; set; }
 
         /// <summary>
         /// Tool path

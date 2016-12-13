@@ -1,8 +1,15 @@
 {
-  "command": "sh lh.sh --mode analyze --name {0}:\"{1}\" --path {2} --clean true --session true --env true --log NO",
-  "command_info": "sh lh.sh info",
-  "linterhub": "linterhub",
-  "terminal": "C:\\Windows\\system32\\cmd.exe",
-  "terminalCommand": "/C \"{0}\"",
-  "projectConfig": ".linterhub"
+  "command": {
+    "analyze": "--mode analyze --name {0}:\"{1}\" --path {2} --log NO --native true",
+    "info": "info",
+    "version": "version"
+  },
+  "linterhub": {
+    "path": "linterhub",
+    "command": "sh lh.sh"
+  },
+  "terminal": {
+    "path": "C:\\Windows\\system32\\cmd.exe",
+    "command": "/C \"{0}\""
+  }
 }

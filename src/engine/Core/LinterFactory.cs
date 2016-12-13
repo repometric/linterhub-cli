@@ -94,16 +94,16 @@ namespace Linterhub.Engine
             return stream.DeserializeAsJson<ILinterArgs>(args.GetType());
         }
 
-        public string BuildCommand(ILinterArgs args, string path = "")
+        public string BuildCommand(ILinterArgs args, string workDir, string path, ArgMode mode)
         {
             var builder = new ArgBuilder();
-            return builder.Build(args, path);
+            return builder.Build(args, workDir, path, mode);
         }
 
-        public string BuildCommand(string name, string path = "")
+        public string BuildCommand(string name, string workDir, string path, ArgMode mode)
         {
             var args = CreateArguments(name);
-            return BuildCommand(args, path); 
+            return BuildCommand(args, workDir, path, mode); 
         }
     }
 }

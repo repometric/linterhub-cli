@@ -107,7 +107,8 @@
                 Args = typeof(coffeelint.LintArgs),
                 Result = typeof(coffeelint.LintResult),
                 Model = typeof(coffeelint.LintResult),
-                ArgsDefault = true
+                ArgsDefault = true,
+                OneFile = true
             },
             new Record
             {

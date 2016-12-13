@@ -27,8 +27,6 @@
         /// </summary>
         public int Order { get; }
 
-        public bool Path { get;  }
-
         /// <summary>
         /// Initializes a new instance of <see cref="ArgAttribute"/> class.
         /// </summary>
@@ -36,14 +34,12 @@
         /// <param name="add">Whether to add a prefix and the value.</param>
         /// <param name="separator">The separator.</param>
         /// <param name="order">The order.</param>
-        /// <param name="path"></param>
-        public ArgAttribute(string name = null, bool add = true, string separator = " ", int order = int.MinValue, bool path = false)
+        public ArgAttribute(string name = null, bool add = true, string separator = " ", int order = int.MinValue)
         {
             Name = name;
             Add = add;
             Separator = separator;
             Order = order;
-            Path = path;
         }
     }
 }

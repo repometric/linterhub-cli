@@ -26,7 +26,7 @@ namespace Linterhub.Cli.Strategy
                 {
                     Name = context.Linter,
                     Active = context.Activate,
-                    Command = factory.BuildCommand(context.Linter)
+                    Command = factory.BuildCommand(context.Linter, "", "", ArgMode.Folder)
                 });
             }
 

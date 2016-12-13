@@ -19,6 +19,7 @@ namespace Linterhub.Cli.Strategy
             }
 
             context.Project = context.GetProjectPath();
+            context.File = context.File?.Replace("\\", "/");
             if (!Directory.Exists(context.Project))
             {
                 throw new LinterEngineException("Project was not found: " + context.Project);
@@ -33,8 +34,8 @@ namespace Linterhub.Cli.Strategy
                 throw new LinterEngineException("Error parsing app configuration", exception);
             }
 
-            if (!string.IsNullOrEmpty(context.CliConfig.Linterhub) && 
-                !Directory.Exists(context.CliConfig.Linterhub))
+            if (!string.IsNullOrEmpty(context.CliConfig.Linterhub.Path) && 
+                !Directory.Exists(context.CliConfig.Linterhub.Path))
             {
                 throw new LinterEngineException("Linterhub was not found: " + context.CliConfig.Linterhub);
             }
