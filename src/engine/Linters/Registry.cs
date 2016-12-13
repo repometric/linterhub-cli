@@ -106,7 +106,8 @@
                 Args = typeof(htmlhint.LintArgs),
                 Result = typeof(htmlhint.LintResult),
                 Model = typeof(htmlhint.LintResult),
-                ArgsDefault = true
+                ArgsDefault = true,
+                OneFile = true
                 //Command = "htmlhint --format json"
             },
             new Record
@@ -127,6 +128,7 @@
                 Result = typeof(csslint.LintResult),
                 Model = typeof(csslint.LintResult),
                 ArgsDefault = true,
+                OneFile = true
                 //Command = "csslint --format=json"
             },
             new Record

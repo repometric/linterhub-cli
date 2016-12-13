@@ -38,9 +38,11 @@ namespace Linterhub.Cli.Strategy
                     foreach (var linterConfig in configs.Linters.Where(x => x.Command != null))
                     {
                         result = new LinterhubWrapper(Context).Analyze(linterConfig.Name, linterConfig.Command, Context.Project);
-                        input = result.GetMemoryStream();
-                        input.Position = 0;
-                        linterModels.Add(Factory.CreateModel(linterConfig.Name, input, null));
+                        using (input = result.GetMemoryStream())
+                        {
+                            //input.Position = 0;
+                            linterModels.Add(Factory.CreateModel(linterConfig.Name, input, null));
+                        }
                     }
                     if (!string.IsNullOrEmpty(TempDirPath))
                     {

@@ -34,6 +34,22 @@
     "eslint-folder": {
       "commandName": "Project",
       "commandLineArgs": "--mode=Analyze --project=C:\\Users\\Andrey\\Desktop\\linterhub-tests\\jquery --linter=eslint"
+    },
+    "htmlhint-file": {
+      "commandName": "Project",
+      "commandLineArgs": "--mode=Analyze --project=C:\\Users\\Andrey\\Desktop\\linterhub-tests\\\\styleguide --linter=htmlhint --file=cppguide.html"
+    },
+    "htmlhint-folder": {
+      "commandName": "Project",
+      "commandLineArgs": "--mode=Analyze --project=C:\\Users\\Andrey\\Desktop\\linterhub-tests\\\\styleguide --linter=htmlhint"
+    },
+    "csslint-file": {
+      "commandName": "Project",
+      "commandLineArgs": "--mode=Analyze --project=C:\\Users\\Andrey\\Desktop\\linterhub-tests\\\\bootstrap --linter=csslint --file=dist\\css\\bootstrap-grid.css"
+    },
+    "csslint-folder": {
+      "commandName": "Project",
+      "commandLineArgs": "--mode=Analyze --project=C:\\Users\\Andrey\\Desktop\\linterhub-tests\\\\bootstrap --linter=csslint"
     }
   }
 }

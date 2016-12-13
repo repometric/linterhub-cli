@@ -17,8 +17,9 @@ namespace Linterhub.Engine.Linters.csslint
                     FilesList = stream.DeserializeAsJson<List<File>>()
                 };
             }
-            catch(Exception)
+            catch (Exception exception)
             {
+                stream.Position = 0;
                 return new LintResult
                 {
                     FilesList = new List<File>

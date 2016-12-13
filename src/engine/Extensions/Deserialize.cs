@@ -2,6 +2,7 @@
 {
     using System.IO;
     using System;
+    using System.Text;
     using Newtonsoft.Json;
     using System.Xml.Serialization;
     
@@ -10,7 +11,8 @@
         public static T DeserializeAsJson<T>(this Stream self, Type type = null)
         {
             var serializer = new JsonSerializer();
-            using (var reader = new StreamReader(self))
+            // TODO: Refactor.
+            using (var reader = new StreamReader(self, Encoding.UTF8, true, 4096, true))
             using (var jsonTextReader = new JsonTextReader(reader))
             {
                 return type == null
