@@ -18,6 +18,22 @@
     "jshint-folder": {
       "commandName": "Project",
       "commandLineArgs": "--mode=Analyze --project=C:\\Users\\Andrey\\Desktop\\linterhub-tests\\jquery --linter=jshint"
+    },
+    "jslint-file": {
+      "commandName": "Project",
+      "commandLineArgs": "--mode=Analyze --project=C:\\Users\\Andrey\\Desktop\\linterhub-tests\\jquery --linter=jslint --file=src\\ajax.js"
+    },
+    "jslint-folder": {
+      "commandName": "Project",
+      "commandLineArgs": "--mode=Analyze --project=C:\\Users\\Andrey\\Desktop\\linterhub-tests\\jquery --linter=jslint"
+    },
+    "eslint-file": {
+      "commandName": "Project",
+      "commandLineArgs": "--mode=Analyze --project=C:\\Users\\Andrey\\Desktop\\linterhub-tests\\jquery --linter=eslint --file=src\\ajax.js"
+    },
+    "eslint-folder": {
+      "commandName": "Project",
+      "commandLineArgs": "--mode=Analyze --project=C:\\Users\\Andrey\\Desktop\\linterhub-tests\\jquery --linter=eslint"
     }
   }
 }

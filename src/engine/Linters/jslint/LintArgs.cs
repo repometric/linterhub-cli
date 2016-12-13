@@ -24,7 +24,7 @@
         /// <summary>
         /// Tested project path
         /// </summary>
-        [ArgPath]
+        [ArgPath("**/*.js")]
         public string Path { get; set; }
 
         /// <summary>

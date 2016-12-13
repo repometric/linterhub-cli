@@ -10,6 +10,7 @@ namespace Linterhub.Cli.Strategy
     using Engine.Linters;
     using Newtonsoft.Json;
 
+    //// TODO: Refactor this code!
     public class AnalyzeStrategy : IStrategy
     {
         public Guid TempDirName;
