@@ -34,7 +34,7 @@
         /// <param name="add">Whether to add a prefix and the value.</param>
         /// <param name="separator">The separator.</param>
         /// <param name="order">The order.</param>
-        public ArgAttribute(string name = null, bool add = true, string separator = " ", int order = int.MinValue)
+        public ArgAttribute(string name = null, bool add = true, string separator = " ", int order = default(int))
         {
             Name = name;
             Add = add;
