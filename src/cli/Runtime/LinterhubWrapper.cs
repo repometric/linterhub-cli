@@ -1,9 +1,7 @@
 namespace Linterhub.Cli.Runtime
 {
     using System;
-    using Engine;
     using Engine.Exceptions;
-    using Engine.Extensions;
 
     public class LinterhubWrapper
     {

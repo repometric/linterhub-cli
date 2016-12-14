@@ -7,8 +7,7 @@ namespace Linterhub.Cli.Strategy
     using Runtime;
     using Engine;
     using Engine.Exceptions;
-    using Engine.Linters;
-    using Newtonsoft.Json;
+    using Engine.Extensions;
 
     //// TODO: Refactor this code!
     public class AnalyzeStrategy : IStrategy
@@ -22,14 +21,12 @@ namespace Linterhub.Cli.Strategy
                 Stream input;
                 if (!context.InputAwailable)
                 {
-                    var configs = GetCommands(context, factory, log);
-                  
+                    var configs = GetConfigs(context, factory, log);
                     foreach (var linterConfig in configs.Linters.Where(x => x.Command != null))
                     {
                         result = new LinterhubWrapper(context).Analyze(linterConfig.Name, linterConfig.Command, context.Project);
                         using (input = result.GetMemoryStream())
                         {
-                            //input.Position = 0;
                             linterModels.Add(factory.CreateModel(linterConfig.Name, input, null));
                         }
                     }
@@ -42,25 +39,24 @@ namespace Linterhub.Cli.Strategy
             }
             catch (Exception exception)
             {
+                // TODO: If single linter failed - don't stop others.
                 throw new LinterEngineException(result + " " + exception.Message, exception);
             }
             
             return linterModels;
         }
 
-        private ProjectConfig GetCommands(RunContext context, LinterFactory factory, LogManager log)
+        private ProjectConfig GetConfigs(RunContext context, LinterFactory factory, LogManager log)
         {
             var projectConfigFile = context.GetProjectConfigPath();
+            var existFileConfig = File.Exists(projectConfigFile);
             log.Trace("Expected project config: " + projectConfigFile);
             var config = context.GetProjectConfig();
-
-            var existFileConfig = File.Exists(projectConfigFile);
             var mode = !string.IsNullOrEmpty(context.File) ? ArgMode.File : ArgMode.Folder;
-            config = string.IsNullOrEmpty(context.Linter) ?
-                    GetLinters(context, factory, config, existFileConfig, mode) :
-                    GetLinter(context, factory, context.Linter, config, mode);
-
-            return config;
+            var isLinterSpecified = !string.IsNullOrEmpty(context.Linter);
+            return isLinterSpecified
+                ? GetLinter(context, factory, context.Linter, config, mode):
+                    GetLinters(context, factory, config, existFileConfig, mode);
         }
 
         public ProjectConfig GetLinters(RunContext context, LinterFactory factory, ProjectConfig config, bool fileConfig, ArgMode mode)
@@ -68,11 +64,9 @@ namespace Linterhub.Cli.Strategy
             foreach (var thisLinter in config.Linters.Where(x=> x.Active != false))
             {
                 var path = context.GetAnalyzePath();
-                thisLinter.Command = thisLinter.Command ??
-                                     (fileConfig
-                                         ? GetCommand(factory, thisLinter, path, mode)
-                                         : factory.BuildCommand(thisLinter.Name, context.Project, path, mode));
+                thisLinter.Command = GetCommand(factory, thisLinter, context.Project, path, mode, fileConfig);
             }
+
             return config;
         }
 
@@ -82,11 +76,6 @@ namespace Linterhub.Cli.Strategy
             if (thisLinter == null)
             {
                 var findLinter = factory.GetRecord(name);
-                if (findLinter == null)
-                {
-                    throw new LinterNotFoundException("Can't find linter with name: " + name);
-                }
-
                 config.Linters.Add(new ProjectConfig.Linter
                 {
                     Command = factory.BuildCommand(findLinter.Name, context.Project, context.GetAnalyzePath(), mode),
@@ -96,7 +85,7 @@ namespace Linterhub.Cli.Strategy
             else
             {
                thisLinter.Command = thisLinter.Command ?? 
-                    (thisLinter.Active == true || thisLinter.Active == null ?
+                    (thisLinter.Active != false ?
                     factory.BuildCommand(thisLinter.Name, context.Project, context.GetAnalyzePath(), mode) : null);
             }
             return config;
@@ -104,9 +93,18 @@ namespace Linterhub.Cli.Strategy
  
         public string GetCommand(LinterFactory factory, ProjectConfig.Linter linter, string path, ArgMode mode)
         {
-            var stream = JsonConvert.SerializeObject(linter.Config).GetMemoryStream();
+            var stream = linter.Config.SerializeAsJson().GetMemoryStream();
             var args = factory.CreateArguments(linter.Name, stream);
             return linter.Command ?? factory.BuildCommand(args, path, path, mode);
+        }
+
+        public string GetCommand(LinterFactory factory, ProjectConfig.Linter linter, string workDir, string path, ArgMode mode, bool fileConfig)
+        {
+
+            return linter.Command ??
+                   (fileConfig
+                       ? GetCommand(factory, linter, path, mode)
+                       : factory.BuildCommand(linter.Name, workDir, path, mode));
         }
     }
 }

@@ -20,6 +20,7 @@
         /// <returns>The <seealso cref="RunResults"/>.</returns>
         public RunResults RunExecutable(string executablePath, string arguments, string workingDirectory = null, int waitTimeout = -1)
         {
+            // TODO: Replace with Streams.
             var runResults = new RunResults
             {
                 Output = new StringBuilder(),
