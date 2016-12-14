@@ -50,7 +50,12 @@
         public static string GetProjectPath(this RunContext context)
         {
             var path = string.IsNullOrEmpty(context.Project) ? Directory.GetCurrentDirectory() : context.Project;
-            return path.Replace("\\", "/");
+            return path;
+        }
+
+        public static string GetAnalyzePath(this RunContext context)
+        {
+            return string.IsNullOrEmpty(context.File) ? context.Dir : context.File;
         }
 
         public static Stream GetMemoryStream(this string self)

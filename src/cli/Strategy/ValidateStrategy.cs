@@ -18,8 +18,9 @@ namespace Linterhub.Cli.Strategy
                 throw new LinterEngineException("App configuration was not found: " + context.Config);
             }
 
-            context.Project = context.GetProjectPath();
+            context.Project = context.GetProjectPath()?.Replace("\\", "/");
             context.File = context.File?.Replace("\\", "/");
+            context.Dir = context.Dir?.Replace("\\", "/") ?? context.Project;
             if (!Directory.Exists(context.Project))
             {
                 throw new LinterEngineException("Project was not found: " + context.Project);

@@ -17,17 +17,17 @@
             public bool OneFile { get; set; }
         }
 
-        public static Record Get(string name)
+        internal static Record Get(string name)
         {
             return Get().SingleOrDefault(x => x.Name == name);
         }
 
-        public static IEnumerable<Record> Get()
+        internal static IEnumerable<Record> Get()
         {
             return Linters;
         }
 
-        public static void Register(Record record)
+        internal static void Register(Record record)
         {
             Linters.Add(record);
         }
