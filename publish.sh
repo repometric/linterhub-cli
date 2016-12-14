@@ -2,14 +2,14 @@
 
 # Nuget is not needed right now
 # dotnet pack src/engine/project.json -c Release -o bin
-Version='0.1'
+Version='0.2'
 
 sh src/script/package.native.sh dotnet $Version
 #sh src/script/package.sh osx.10.10-x64 $Version
-#sh src/script/package.sh osx.10.11-x64 $Version
-#sh src/script/package.sh win8-x64 $Version
-#sh src/script/package.sh win10-x64 $Version
-#sh src/script/package.sh debian.8-x64 $Version
+sh src/script/package.sh osx.10.11-x64 $Version
+sh src/script/package.sh win8-x64 $Version
+sh src/script/package.sh win10-x64 $Version
+sh src/script/package.sh debian.8-x64 $Version
 exit 0
 
 docker build -t linterhub-cli-dev -f Dev.Dockerfile . && \

@@ -1,5 +1,5 @@
 *.user
-project.lock.json
+*.lock.json
 bin
 obj
 *.suo
