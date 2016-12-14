@@ -15,7 +15,7 @@ namespace Linterhub.Cli.Strategy
         public object Run(RunContext context, LinterFactory factory, LogManager log)
         {
             var result = string.Empty;
-            var linterModels = new List<ILinterModel>();
+            var linterModels = new List<RunResult>();
             try
             {
                 Stream input;
@@ -27,14 +27,22 @@ namespace Linterhub.Cli.Strategy
                         result = new LinterhubWrapper(context).Analyze(linterConfig.Name, linterConfig.Command, context.Project);
                         using (input = result.GetMemoryStream())
                         {
-                            linterModels.Add(factory.CreateModel(linterConfig.Name, input, null));
+                            linterModels.Add(new RunResult 
+                            {
+                                Name = linterConfig.Name,
+                                Model = factory.CreateModel(linterConfig.Name, input, null)
+                            });
                         }
                     }
                 }
                 else
                 {
                     input = context.Input;
-                    linterModels.Add(factory.CreateModel(context.Linter, input, null));
+                    linterModels.Add(new RunResult 
+                    {
+                        Name = context.Linter,
+                        Model = factory.CreateModel(context.Linter, input, null)
+                    });
                 }
             }
             catch (Exception exception)
