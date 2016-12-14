@@ -1,6 +1,6 @@
 {
   "command": {
-    "analyze": "--mode analyze --name {0}:\\\"{1}\\\" --path {2} --clean true --session true --log NO",
+    "analyze": "--mode analyze --name {0}:\\\"{1}\\\" --path {2} --log NO --native true",
     "info": "info",
     "version": "version"
   },
