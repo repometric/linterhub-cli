@@ -8,6 +8,7 @@ namespace Linterhub.Cli.Strategy
     using Engine;
     using Engine.Exceptions;
     using Engine.Extensions;
+    using System.Threading.Tasks;
 
     //// TODO: Refactor this code!
     public class AnalyzeStrategy : IStrategy
@@ -15,22 +16,36 @@ namespace Linterhub.Cli.Strategy
         public object Run(RunContext context, LinterFactory factory, LogManager log)
         {
             var result = string.Empty;
-            var linterModels = new List<RunResult>();
+            var linterResults = new List<RunResult>();
+
             try
             {
                 Stream input;
                 if (!context.InputAwailable)
                 {
                     var configs = GetConfigs(context, factory, log);
-                    foreach (var linterConfig in configs.Linters.Where(x => x.Command != null))
-                    {
-                        result = new LinterhubWrapper(context).Analyze(linterConfig.Name, linterConfig.Command, context.Project);
-                        using (input = result.GetMemoryStream())
-                        {
-                            linterModels.Add(new RunResult 
+                    var linterModels = new List<LinterResult>();
+                    linterModels.AddRange(
+                        configs
+                            .Linters.Where(x => x.Command != null)
+                            .Select(linterConfig => new LinterResult
                             {
                                 Name = linterConfig.Name,
-                                Model = factory.CreateModel(linterConfig.Name, input, null)
+                                Task = Task<string>.Factory.StartNew(() =>
+                                    new LinterhubWrapper(context).Analyze(linterConfig.Name, linterConfig.Command, context.Project)
+                                   )
+                            }
+                            ));
+
+                    Task.WaitAll(linterModels.Select(x => x.Task).ToArray());
+                    foreach (var linter in linterModels)
+                    {
+                        using (input = linter.Task.Result.GetMemoryStream())
+                        {
+                            linterResults.Add(new RunResult
+                            {
+                                Name = linter.Name,
+                                Model = factory.CreateModel(linter.Name, input, null)
                             });
                         }
                     }
@@ -38,7 +53,7 @@ namespace Linterhub.Cli.Strategy
                 else
                 {
                     input = context.Input;
-                    linterModels.Add(new RunResult 
+                    linterResults.Add(new RunResult
                     {
                         Name = context.Linter,
                         Model = factory.CreateModel(context.Linter, input, null)
@@ -50,8 +65,8 @@ namespace Linterhub.Cli.Strategy
                 // TODO: If single linter failed - don't stop others.
                 throw new LinterEngineException(result + " " + exception.Message, exception);
             }
-            
-            return linterModels;
+
+            return linterResults;
         }
 
         private ProjectConfig GetConfigs(RunContext context, LinterFactory factory, LogManager log)
@@ -63,13 +78,13 @@ namespace Linterhub.Cli.Strategy
             var mode = !string.IsNullOrEmpty(context.File) ? ArgMode.File : ArgMode.Folder;
             var isLinterSpecified = !string.IsNullOrEmpty(context.Linter);
             return isLinterSpecified
-                ? GetLinter(context, factory, context.Linter, config, mode):
+                ? GetLinter(context, factory, context.Linter, config, mode) :
                     GetLinters(context, factory, config, existFileConfig, mode);
         }
 
         public ProjectConfig GetLinters(RunContext context, LinterFactory factory, ProjectConfig config, bool fileConfig, ArgMode mode)
         {
-            foreach (var thisLinter in config.Linters.Where(x=> x.Active != false))
+            foreach (var thisLinter in config.Linters.Where(x => x.Active != false))
             {
                 var path = context.GetAnalyzePath();
                 thisLinter.Command = GetCommand(factory, thisLinter, context.Project, path, mode, fileConfig);
@@ -92,13 +107,13 @@ namespace Linterhub.Cli.Strategy
             }
             else
             {
-               thisLinter.Command = thisLinter.Command ?? 
-                    (thisLinter.Active != false ?
-                    factory.BuildCommand(thisLinter.Name, context.Project, context.GetAnalyzePath(), mode) : null);
+                thisLinter.Command = thisLinter.Command ??
+                     (thisLinter.Active != false ?
+                     factory.BuildCommand(thisLinter.Name, context.Project, context.GetAnalyzePath(), mode) : null);
             }
             return config;
         }
- 
+
         public string GetCommand(LinterFactory factory, ProjectConfig.Linter linter, string path, ArgMode mode)
         {
             var stream = linter.Config.SerializeAsJson().GetMemoryStream();
