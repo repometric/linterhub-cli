@@ -1,5 +1,6 @@
 namespace Linterhub.Engine.Linters.coffeelint
 {
+    [ArgVersion]
     public class LintArgs : ILinterArgs
     {
 

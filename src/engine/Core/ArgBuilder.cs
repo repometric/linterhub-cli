@@ -40,6 +40,16 @@
             return string.Join(" ", values.Select(x => BuildArgument(x, workDir, path, mode)));
         }
 
+        public string BuildVersion<T>(T configuration)
+        {
+            var attribute = configuration
+                .GetType()
+                .GetTypeInfo()
+                .GetCustomAttribute<ArgVersionAttribute>();
+            
+            return attribute != null ? attribute.Name : null;
+        }
+
         private bool IsInclude(object value)
         {
             var isInclude = false;

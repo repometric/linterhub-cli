@@ -100,6 +100,13 @@ namespace Linterhub.Engine
             return builder.Build(args, workDir, path, mode);
         }
 
+        public string BuildVersionCommand(string name)
+        {
+            var args = CreateArguments(name);
+            var builder = new ArgBuilder();
+            return builder.BuildVersion(args);
+        }
+
         public string BuildCommand(string name, string workDir, string path, ArgMode mode)
         {
             var args = CreateArguments(name);
