@@ -5,10 +5,12 @@
     public class LinterFileModel : ILinterModel
     {
         public List<File> Files { get; set; }
+        public string ErrorParse { get; set; }
 
         public LinterFileModel()
         {
             Files = new List<File>();
+            ErrorParse = string.Empty;
         }
 
         public class File

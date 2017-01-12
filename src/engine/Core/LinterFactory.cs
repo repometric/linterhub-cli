@@ -83,8 +83,17 @@ namespace Linterhub.Engine
         public ILinterModel CreateModel(string name, Stream stream, ILinterArgs args)
         {
             var linter = Create(name);
-            var raw = linter.Parse(stream, args);
-            var map = linter.Map(raw);
+            ILinterModel map;
+            try
+            {
+                var raw = linter.Parse(stream, args);
+                map = linter.Map(raw);
+            }
+            catch (Exception m)
+            {
+                map = new LinterFileModel {ErrorParse = m.Message};
+            }
+           
             return map;
         }
 
