@@ -19,6 +19,8 @@ namespace Linterhub.Cli.Runtime
             public string Info { get; set; }
             [JsonProperty("version")]
             public string Version { get; set; }
+            [JsonProperty("linterVersion")]
+            public string LinterVersion { get; set; }
         }
 
         public class TerminalSection

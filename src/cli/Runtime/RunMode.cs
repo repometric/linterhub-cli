@@ -10,6 +10,7 @@ namespace Linterhub.Cli.Runtime
         Catalog,
         Generate,
         Version,
-        Help
+        Help,
+        LinterVersion
     }
 }

@@ -26,7 +26,8 @@
             { RunMode.Analyze, new AnalyzeStrategy() },
             { RunMode.Version, new VersionStrategy() },
             { RunMode.Activate, new ActivateStrategy() },
-            { RunMode.Help, new OptionsStrategy() }
+            { RunMode.Help, new OptionsStrategy() },
+            { RunMode.LinterVersion, new LinterVersionStrategy() }
         };
         
         internal static void Run(string[] args, LogManager log)

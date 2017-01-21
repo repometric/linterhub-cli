@@ -57,5 +57,12 @@ namespace Linterhub.Cli.Runtime
             var result = Run(cmd);
             return result;
         }
+
+        public string LinterVersion(string name, string command)
+        {
+            var cmd = string.Format(Context.CliConfig.Command.LinterVersion, name, command);
+            var result = Run(cmd);
+            return result;
+        }
     }
 }

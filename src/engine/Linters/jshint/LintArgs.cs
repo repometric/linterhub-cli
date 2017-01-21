@@ -18,7 +18,7 @@ namespace Linterhub.Engine.Linters.jshint
         /// <summary>
         /// Tool path
         /// </summary>
-        [Arg("jshint", false, order: int.MinValue)]
+        [ArgToolPathAttribute("jshint", false)]
         public bool JsHint { get; set; }
 
         /// <summary>
@@ -58,5 +58,8 @@ namespace Linterhub.Engine.Linters.jshint
         /// </summary>
         [Arg("--extract", order: 0)]
         public string Extract { get; set; }
+
+        [ArgVersionAttribute("--version")]
+        public string Version { get; set; }
     }
 }

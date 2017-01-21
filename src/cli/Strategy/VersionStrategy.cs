@@ -12,13 +12,7 @@ namespace Linterhub.Cli.Strategy
             var engineVersion = typeof(LinterFactory).GetTypeInfo().Assembly.GetName().Version.ToString();
             var cliVersion = typeof(Program).GetTypeInfo().Assembly.GetName().Version.ToString();
             var result = $"Linterhub: {linterhubVersion}\nEngine: {engineVersion}\nCLI: {cliVersion}";
-            if (!string.IsNullOrEmpty(context.Linter))
-            {
-                var versionCmd = factory.BuildVersionCommand(context.Linter);
-                var version = string.IsNullOrEmpty(versionCmd) ? "Unknown" : new LinterhubWrapper(context).Run(versionCmd).Trim();
-                result += $"\n{context.Linter}: {version}";
-            }
-
+            
             return result;
         }
     }
