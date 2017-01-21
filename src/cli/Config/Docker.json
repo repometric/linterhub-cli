@@ -2,7 +2,8 @@
   "command": {
     "analyze": "--mode analyze --name {0}:\\\"{1}\\\" --path {2} --clean true --session true --log NO",
     "info": "info",
-    "version": "version"
+    "version": "version",
+    "linterVersion": "--mode engine:version --name {0} --log NO --command \\\"{1}\\\""
   },
   "linterhub": {
     "path": "",

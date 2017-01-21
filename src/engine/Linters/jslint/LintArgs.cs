@@ -12,7 +12,7 @@
         /// <summary>
         /// Required field for work JsLint 
         /// </summary>
-        [Arg("jslint", false)]
+        [ArgToolPathAttribute("jslint", false)]
         public bool JsLint { get; set; }
 
         /// <summary>
@@ -230,5 +230,8 @@
         /// </summary>
         [Arg("-windows", false)]
         public bool? Windows { get; set; }
+
+        [ArgVersionAttribute("--version")]
+        public string Version { get; set; }
     }
 }

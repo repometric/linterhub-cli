@@ -42,8 +42,11 @@ namespace Linterhub.Engine.Linters.htmlhint
         /// <summary>
         /// Tool path
         /// </summary>
-        [Arg("htmlhint", false, order: int.MinValue)]
+        [ArgToolPathAttribute("htmlhint", false)]
         public bool HtmlHint { get; set; }
+
+        [ArgVersionAttribute("--version")]
+        public string Version { get; set; }
 
     }
 }

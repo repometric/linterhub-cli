@@ -19,7 +19,7 @@ namespace Linterhub.Cli.Runtime
             return run;
         }
 
-        public string Run(string command)
+        public CmdWrapper.RunResults Run(string command)
         {
             var cmd =  string.Format(Context.CliConfig.Terminal.Command, Context.CliConfig.Linterhub.Command + " " + command);
             var run = Run(Context.CliConfig.Terminal.Path, cmd, Context.CliConfig.Linterhub.Path);
@@ -36,24 +36,31 @@ namespace Linterhub.Cli.Runtime
                     "Linter stdout: " + run.Output?.ToString());
             }
 
-            return run.Output?.ToString();
+            return run;
         }
 
         public string Info()
         {
             var result = Run(Context.CliConfig.Command.Info);
-            return result;
+            return result.Output?.ToString();
         }
 
         public string Version()
         {
             var result = Run(Context.CliConfig.Command.Version);
-            return result;
+            return result.Output?.ToString();
         }
 
         public string Analyze(string name, string command, string path)
         {
             var cmd = string.Format(Context.CliConfig.Command.Analyze, name, command, path);
+            var result = Run(cmd);
+            return result.Output?.ToString();
+        }
+
+        public CmdWrapper.RunResults LinterVersion(string name, string command)
+        {
+            var cmd = string.Format(Context.CliConfig.Command.LinterVersion, name, command);
             var result = Run(cmd);
             return result;
         }

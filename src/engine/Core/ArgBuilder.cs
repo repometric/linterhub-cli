@@ -36,18 +36,20 @@
             }
 
             var properties = GetProperties(configuration);
-            var values = properties.Where(x => IsInclude(x.Value) || x.Key is ArgPathAttribute);
+            var values = properties
+                .Where(x => IsInclude(x.Value) || x.Key is ArgPathAttribute)
+                .Where(x => !(x.Key is ArgVersionAttribute));
+
             return string.Join(" ", values.Select(x => BuildArgument(x, workDir, path, mode)));
         }
 
         public string BuildVersion<T>(T configuration)
         {
-            var attribute = configuration
-                .GetType()
-                .GetTypeInfo()
-                .GetCustomAttribute<ArgVersionAttribute>();
-            
-            return attribute != null ? attribute.Name : null;
+            var properties = GetProperties(configuration);
+            var values = properties
+                .Where(x => x.Key is ArgVersionAttribute || x.Key is ArgToolPathAttribute);
+
+            return string.Join(" ", values.Select(x => BuildArgument(x, null, null, ArgMode.File)));
         }
 
         private bool IsInclude(object value)

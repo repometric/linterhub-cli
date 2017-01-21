@@ -13,7 +13,7 @@ namespace Linterhub.Engine.Linters.csslint
         /// <summary>
         /// Tool path
         /// </summary>
-        [Arg("csslint", false, order: int.MinValue)]
+        [ArgToolPathAttribute("csslint", false)]
         public bool CssLint { get; set; }
 
         /// <summary>
@@ -45,6 +45,9 @@ namespace Linterhub.Engine.Linters.csslint
         /// </summary>
         [ArgPath]
         public string Path { get; set; }
+
+        [ArgVersionAttribute("--version")]
+        public string Version { get; set; }
 
     }
 }

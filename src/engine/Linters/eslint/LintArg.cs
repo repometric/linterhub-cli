@@ -16,7 +16,7 @@
         /// <summary>
         /// Required field for work EsLint 
         /// </summary>
-        [Arg("eslint", false)]
+        [ArgToolPathAttribute("eslint", false)]
         public bool EsLint { get; set; }
 
         /// <summary>
@@ -151,5 +151,8 @@
         /// </summary>
         [Arg("-f")]
         public string OutputFormatFile { get; set; }
+
+        [ArgVersionAttribute("--version")]
+        public string Version { get; set; }
     }
 }
