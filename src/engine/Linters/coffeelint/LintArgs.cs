@@ -19,7 +19,7 @@ namespace Linterhub.Engine.Linters.coffeelint
         /// <summary>
         /// Tool path
         /// </summary>
-        [Arg("coffeelint", false, order: int.MinValue)]
+        [ArgToolPathAttribute("coffeelint", false)]
         public bool CoffeeLint { get; set; }
 
         /// <summary>
@@ -46,5 +46,8 @@ namespace Linterhub.Engine.Linters.coffeelint
         /// </summary>
         [Arg("--ext", order: 0)]
         public string Extensions { get; set; }
+
+        [ArgVersionAttribute("--version")]
+        public string Version { get; set; }
     }
 }
