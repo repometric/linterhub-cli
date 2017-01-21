@@ -11,6 +11,7 @@ namespace Linterhub.Cli.Runtime
         Generate,
         Version,
         Help,
-        LinterVersion
+        LinterVersion,
+        LinterInstall
     }
 }

@@ -3,7 +3,6 @@
     using System;
     using System.Collections.Generic;
     using System.Diagnostics;
-    using System.Linq;
     using Newtonsoft.Json;
     using Runtime;
     using Strategy;
@@ -27,7 +26,8 @@
             { RunMode.Version, new VersionStrategy() },
             { RunMode.Activate, new ActivateStrategy() },
             { RunMode.Help, new OptionsStrategy() },
-            { RunMode.LinterVersion, new LinterVersionStrategy() }
+            { RunMode.LinterVersion, new LinterVersionStrategy() },
+            { RunMode.LinterInstall, new InstallStrategy() }
         };
         
         internal static void Run(string[] args, LogManager log)
