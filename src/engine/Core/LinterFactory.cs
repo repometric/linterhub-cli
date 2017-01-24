@@ -103,12 +103,6 @@ namespace Linterhub.Engine
             return stream.DeserializeAsJson<ILinterArgs>(args.GetType());
         }
 
-        public string BuildCommand(ILinterArgs args, string workDir, string path, ArgMode mode)
-        {
-            var builder = new ArgBuilder();
-            return builder.Build(args, workDir, path, mode);
-        }
-
         public string BuildVersionCommand(string name)
         {
             var args = CreateArguments(name);
@@ -116,10 +110,11 @@ namespace Linterhub.Engine
             return builder.BuildVersion(args);
         }
 
-        public string BuildCommand(string name, string workDir, string path, ArgMode mode)
+        public string BuildCommand(string name, string workDir, string path, ArgMode mode, ILinterArgs args = null)
         {
-            var args = CreateArguments(name);
-            return BuildCommand(args, workDir, path, mode); 
+            args = args ?? (CreateArguments(name));
+            var builder = new ArgBuilder();
+            return builder.Build(args, workDir, path, mode);
         }
     }
 }

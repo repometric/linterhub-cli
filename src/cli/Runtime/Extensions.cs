@@ -3,30 +3,49 @@
     using System;
     using System.IO;
     using System.Text;
+    using System.Linq;
+    using Engine;
     using Engine.Exceptions;
     using Engine.Extensions;
 
     public static class Extensions
     {
-        public static string GetProjectConfigPath(this RunContext context)
+        public static ValidationContext ValidateContext(this RunContext context, LinterFactory factory, LogManager log)
         {
-            return Path.Combine(context.Project, ".linterhub.json");
-        }
+            var validation = new ValidationContext
+            {
+                WorkDir = context.Project,
+                PathFileConfig = Path.Combine(context.Project, ".linterhub.json"),
+                Path = string.IsNullOrEmpty(context.File) ? context.Dir : context.File,
+                ArgMode = string.IsNullOrEmpty(context.File) ? ArgMode.Folder : ArgMode.File,
+                IsLinterSpecified = !string.IsNullOrEmpty(context.Linter)
+            };
+            validation.ExistFileConfig = File.Exists(validation.PathFileConfig);
+            validation.ProjectConfig = context.GetProjectConfig(factory, validation);
 
-        public static ProjectConfig GetProjectConfig(this RunContext context)
+            log.Trace("Expected project config: " + validation.PathFileConfig);
+            return validation;
+        }
+        
+        public static ProjectConfig GetProjectConfig(this RunContext context, LinterFactory factory, ValidationContext validationContext)
         {
             ProjectConfig projectConfig;
-            var projectConfigFile = context.GetProjectConfigPath();
-
-            if (!File.Exists(projectConfigFile))
+            if (!validationContext.ExistFileConfig)
             {
                 projectConfig = new ProjectConfig();
+                foreach (var linter in factory.GetRecords().Where(x => x.ArgsDefault))
+                {
+                    projectConfig.Linters.Add(new ProjectConfig.Linter
+                    {
+                        Name = linter.Name,
+                    });
+                }
             }
             else
             {
                 try
                 {
-                    using (var fileStream = File.Open(projectConfigFile, FileMode.Open))
+                    using (var fileStream = File.Open(validationContext.PathFileConfig, FileMode.Open))
                     {
                         projectConfig = fileStream.DeserializeAsJson<ProjectConfig>();
                     }
@@ -36,14 +55,14 @@
                     throw new LinterEngineException("Error parsing project configuration file", exception);
                 }
             }
-
+            
             return projectConfig;
         }
 
-        public static string SetProjectConfig(this RunContext context, ProjectConfig projectConfig)
+        public static string SetProjectConfig(this RunContext context, ValidationContext validationContext)
         {
-            var content = projectConfig.SerializeAsJson();
-            File.WriteAllText(context.GetProjectConfigPath(), content);
+            var content = validationContext.ProjectConfig.SerializeAsJson();
+            File.WriteAllText(validationContext.PathFileConfig, content);
             return content;
         }
 
@@ -51,11 +70,6 @@
         {
             var path = string.IsNullOrEmpty(context.Project) ? Directory.GetCurrentDirectory() : context.Project;
             return path;
-        }
-
-        public static string GetAnalyzePath(this RunContext context)
-        {
-            return string.IsNullOrEmpty(context.File) ? context.Dir : context.File;
         }
 
         public static Stream GetMemoryStream(this string self)

@@ -1,8 +1,5 @@
 ﻿namespace Linterhub.Engine
 {
-    using System;
-    using System.IO;
-
     /// <summary>
     /// Represents configuration for linter argument with path to file/folder.
     /// </summary>
@@ -33,10 +30,12 @@
         /// <param name="fullPath">The full path.</param>
         /// <param name="mode">The mode.</param>
         /// <returns>The mask.</returns>
-        public virtual string GetPath(string workDir, string fullPath, ArgMode mode)
+       public virtual string GetPath(string fullPath, ArgMode mode)
         {
-            var relative = workDir.Replace(fullPath, "./");
-            if (mode == ArgMode.Folder)
+            var dirSeparator = System.IO.Path.DirectorySeparatorChar;
+            var altrDirSeparator = System.IO.Path.AltDirectorySeparatorChar;
+            var relative = fullPath == null ? "." + dirSeparator  : System.IO.Path.Combine("." + dirSeparator, fullPath.Replace(altrDirSeparator, dirSeparator));
+             if (mode == ArgMode.Folder)
             {
                 return string.IsNullOrEmpty(Path) ? relative : relative + Path;
             }
