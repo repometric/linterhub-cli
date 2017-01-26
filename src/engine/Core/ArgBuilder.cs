@@ -73,12 +73,12 @@
                 var r = ((IEnumerable<string>)arg.Value).Select(z => new KeyValuePair<ArgAttribute, object>(arg.Key, z));
                 return string.Join(" ", r.Select(x => BuildArgument(x, workDir, path, mode)));
             }
-            var isPath = arg.Key is ArgPathAttribute && !string.IsNullOrEmpty(path);
+            var isPath = arg.Key is ArgPathAttribute;
             const string template = "{0}{1}{2}";
             return string.Format(template, 
                 arg.Key.Name,
                 arg.Key.Add ? arg.Key.Separator : null,
-                arg.Key.Add ? isPath ? ((ArgPathAttribute)arg.Key).GetPath(workDir, path, mode) : arg.Value : null);
+                arg.Key.Add ? isPath ? ((ArgPathAttribute)arg.Key).GetPath(path, mode) : arg.Value : null);
         }
 
         private static IDictionary<ArgAttribute, object> GetProperties<T>(T configuration)

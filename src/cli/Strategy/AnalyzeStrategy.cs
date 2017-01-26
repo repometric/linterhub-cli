@@ -7,20 +7,17 @@ namespace Linterhub.Cli.Strategy
     using Runtime;
     using Engine;
     using Engine.Exceptions;
-    using Engine.Extensions;
     using System.Threading.Tasks;
 
-    //// TODO: Refactor this code!
     public class AnalyzeStrategy : IStrategy
     {
         public object Run(RunContext context, LinterFactory factory, LogManager log)
         {
-            var result = string.Empty;
             var linterResults = new List<RunResult>();
-
             try
             {
                 Stream input;
+
                 if (!context.InputAwailable)
                 {
                     var configs = GetConfigs(context, factory, log);
@@ -46,6 +43,7 @@ namespace Linterhub.Cli.Strategy
                             {
                                 Name = linter.Name,
                                 Model = factory.CreateModel(linter.Name, input, null)
+                               
                             });
                         }
                     }
@@ -62,72 +60,60 @@ namespace Linterhub.Cli.Strategy
             }
             catch (Exception exception)
             {
-                // TODO: If single linter failed - don't stop others.
-                throw new LinterEngineException(result + " " + exception.Message, exception);
+                throw new LinterEngineException(exception.Message, exception);
             }
-
             return linterResults;
         }
 
         private ProjectConfig GetConfigs(RunContext context, LinterFactory factory, LogManager log)
         {
-            var projectConfigFile = context.GetProjectConfigPath();
-            var existFileConfig = File.Exists(projectConfigFile);
-            log.Trace("Expected project config: " + projectConfigFile);
-            var config = context.GetProjectConfig();
-            var mode = !string.IsNullOrEmpty(context.File) ? ArgMode.File : ArgMode.Folder;
-            var isLinterSpecified = !string.IsNullOrEmpty(context.Linter);
-            return isLinterSpecified
-                ? GetLinter(context, factory, context.Linter, config, mode) :
-                    GetLinters(context, factory, config, existFileConfig, mode);
+            var validateResult = context.ValidateContext(factory, log);
+            return validateResult.IsLinterSpecified
+                    ? GetLinter(factory, context.Linter, validateResult) :
+                        GetLinters(factory, validateResult);
         }
 
-        public ProjectConfig GetLinters(RunContext context, LinterFactory factory, ProjectConfig config, bool fileConfig, ArgMode mode)
+        public ProjectConfig GetLinters(LinterFactory factory, ValidationContext validateContext)
         {
-            foreach (var thisLinter in config.Linters.Where(x => x.Active != false))
+            foreach (var linter in validateContext.ProjectConfig.Linters.Where(x => x.Active != false))
             {
-                var path = context.GetAnalyzePath();
-                thisLinter.Command = GetCommand(factory, thisLinter, context.Project, path, mode, fileConfig);
+                linter.Command = GetCommand(factory, validateContext, linter);
             }
-
-            return config;
+            return validateContext.ProjectConfig;
         }
 
-        public ProjectConfig GetLinter(RunContext context, LinterFactory factory, string name, ProjectConfig config, ArgMode mode)
+        public ProjectConfig GetLinter(LinterFactory factory, string name, ValidationContext validateContext)
         {
-            var thisLinter = config.Linters.FirstOrDefault(x => x.Name == name);
-            if (thisLinter == null)
+            var linter = validateContext.ProjectConfig.Linters.FirstOrDefault(x => x.Name == name && x.Active != false);
+            var command = GetCommand(factory, validateContext, linter, name);
+            if (linter == null)
             {
-                var findLinter = factory.GetRecord(name);
-                config.Linters.Add(new ProjectConfig.Linter
+                validateContext.ProjectConfig.Linters.Add(new ProjectConfig.Linter
                 {
-                    Command = factory.BuildCommand(findLinter.Name, context.Project, context.GetAnalyzePath(), mode),
-                    Name = findLinter.Name,
+                    Command = command,
+                    Name = name,
                 });
             }
             else
             {
-                thisLinter.Command = thisLinter.Command ??
-                     (thisLinter.Active != false ?
-                     factory.BuildCommand(thisLinter.Name, context.Project, context.GetAnalyzePath(), mode) : null);
+                linter.Command = command;
             }
-            return config;
+            return validateContext.ProjectConfig;
         }
 
-        public string GetCommand(LinterFactory factory, ProjectConfig.Linter linter, string path, ArgMode mode)
+        public string GetCommand(LinterFactory factory, ValidationContext validateConext, ProjectConfig.Linter linter = null, string linterName = null)
         {
-            var stream = linter.Config.SerializeAsJson().GetMemoryStream();
-            var args = factory.CreateArguments(linter.Name, stream);
-            return linter.Command ?? factory.BuildCommand(args, path, path, mode);
-        }
+            ILinterArgs args = null;
+            linter = linter ?? new ProjectConfig.Linter();
 
-        public string GetCommand(LinterFactory factory, ProjectConfig.Linter linter, string workDir, string path, ArgMode mode, bool fileConfig)
-        {
-
-            return linter.Command ??
-                   (fileConfig
-                       ? GetCommand(factory, linter, path, mode)
-                       : factory.BuildCommand(linter.Name, workDir, path, mode));
+            return linter.Command ?? (
+                        linter.Active != false ? 
+                            factory.BuildCommand(
+                                linterName ?? linter.Name,
+                                validateConext.WorkDir,
+                                validateConext.Path,
+                                validateConext.ArgMode,
+                                args) : null);
         }
     }
 }

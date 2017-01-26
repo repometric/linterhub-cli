@@ -9,20 +9,20 @@ namespace Linterhub.Cli.Strategy
     {
         public object Run(RunContext context, LinterFactory factory, LogManager log)
         {
-            if (string.IsNullOrEmpty(context.Linter))
+            var validationContext = context.ValidateContext(factory, log);
+            if (!validationContext.IsLinterSpecified)
             {
                 throw new LinterEngineException("Linter is not specified: " + context.Linter);
             }
 
-            var extConfig = context.GetProjectConfig();
-            var linter = extConfig.Linters.FirstOrDefault(x => x.Name == context.Linter);
+            var linter = validationContext.ProjectConfig.Linters.FirstOrDefault(x => x.Name == context.Linter);
             if (linter != null)
             {
                 linter.Active = context.Activate;
             }
             else
             {
-                extConfig.Linters.Add(new ProjectConfig.Linter 
+                validationContext.ProjectConfig.Linters.Add(new ProjectConfig.Linter 
                 {
                     Name = context.Linter,
                     Active = context.Activate,
@@ -31,7 +31,7 @@ namespace Linterhub.Cli.Strategy
                 });
             }
 
-            return context.SetProjectConfig(extConfig);
+            return context.SetProjectConfig(validationContext);
         }
     }
 }
