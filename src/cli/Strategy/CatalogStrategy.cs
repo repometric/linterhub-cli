@@ -5,6 +5,7 @@ namespace Linterhub.Cli.Strategy
     using Runtime;
     using Engine;
     using Engine.Exceptions;
+    using System.IO;
     using Engine.Extensions;
 
     public class CatalogStrategy : IStrategy
@@ -12,6 +13,13 @@ namespace Linterhub.Cli.Strategy
         public object Run(RunContext context, LinterFactory factory, LogManager log)
         {
             var catalog = GetCatalog(context, factory);
+            ProjectConfig config = null;
+            if(context.Project != null)
+            {
+                var projectConfigFile = context.GetProjectConfigPath();
+                if(File.Exists(projectConfigFile))
+                    config = context.GetProjectConfig();
+            }
             var result =
                 from record in factory.GetRecords().OrderBy(x => x.Name)
                 let item = catalog.linters.FirstOrDefault(y => y.name == record.Name)
@@ -19,7 +27,8 @@ namespace Linterhub.Cli.Strategy
                 {
                     name = record.Name,
                     description = item?.description,
-                    languages = item?.languages
+                    languages = item?.languages,
+                    active = config == null ? false : config?.Linters.Any(x => x.Name == record.Name && x.Active == true)
                 };
 
             return result;
