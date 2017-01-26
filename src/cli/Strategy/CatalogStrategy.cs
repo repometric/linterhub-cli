@@ -7,7 +7,6 @@ namespace Linterhub.Cli.Strategy
     using Engine.Exceptions;
     using System.IO;
     using Engine.Extensions;
-    using Newtonsoft.Json;
 
     public class CatalogStrategy : IStrategy
     {
@@ -17,7 +16,9 @@ namespace Linterhub.Cli.Strategy
             ProjectConfig config = null;
             if(context.Project != null)
             {
-                config = context.GetProjectConfig();
+                var projectConfigFile = context.GetProjectConfigPath();
+                if(File.Exists(projectConfigFile))
+                    config = context.GetProjectConfig();
             }
             var result =
                 from record in factory.GetRecords().OrderBy(x => x.Name)
@@ -27,7 +28,7 @@ namespace Linterhub.Cli.Strategy
                     name = record.Name,
                     description = item?.description,
                     languages = item?.languages,
-                    active = config.Linters.Any(x => x.Name == record.Name && x.Active == true)
+                    active = config == null ? false : config?.Linters.Any(x => x.Name == record.Name && x.Active == true)
                 };
 
             return result;
