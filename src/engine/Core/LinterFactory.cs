@@ -91,7 +91,20 @@ namespace Linterhub.Engine
             }
             catch (Exception m)
             {
-                map = new LinterFileModel {ErrorParse = m.Message};
+                var input = string.Empty;
+                if (stream.CanRead)
+                {
+                    stream.Position = 0;
+                    using (var sr = new StreamReader(stream)) { input = sr.ReadToEnd(); }
+                }
+                map = new LinterFileModel 
+                {
+                    ParseErrors =
+                    {
+                        ErrorMessage = m.Message,
+                        Input = input
+                    }
+                };
             }
            
             return map;
@@ -110,9 +123,9 @@ namespace Linterhub.Engine
             return builder.BuildVersion(args);
         }
 
-        public string BuildCommand(string name, string workDir, string path, ArgMode mode, ILinterArgs args = null)
+        public string BuildCommand(string name, string workDir, string path, ArgMode mode)
         {
-            args = args ?? (CreateArguments(name));
+            var args = CreateArguments(name);
             var builder = new ArgBuilder();
             return builder.Build(args, workDir, path, mode);
         }

@@ -22,6 +22,7 @@
             };
             validation.ExistFileConfig = File.Exists(validation.PathFileConfig);
             validation.ProjectConfig = context.GetProjectConfig(factory, validation);
+            validation.Path = validation.Path?.ReplacePath();
 
             log.Trace("Expected project config: " + validation.PathFileConfig);
             return validation;
@@ -76,5 +77,10 @@
         {
             return new MemoryStream(Encoding.UTF8.GetBytes(self));
         }
+
+        public static string ReplacePath(this string self)
+        {
+            return Path.Combine("./", self.Replace("\\", "/"));
+        } 
     }
 }

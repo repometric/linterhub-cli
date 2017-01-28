@@ -27,15 +27,6 @@ namespace Linterhub.Cli.Runtime
             {
                 throw new LinterEngineException("Runtime Exception", run.RunException);
             }
-
-            var error = run.Error?.ToString().Trim();
-            if (!string.IsNullOrEmpty(error))
-            {
-                throw new LinterEngineException(
-                    "Linter stderr: " + error + Environment.NewLine +
-                    "Linter stdout: " + run.Output?.ToString());
-            }
-
             return run;
         }
 

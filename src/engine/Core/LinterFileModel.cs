@@ -5,14 +5,19 @@
     public class LinterFileModel : ILinterModel
     {
         public List<File> Files { get; set; }
-        public string ErrorParse { get; set; }
+        public ParseError ParseErrors { get; set; }
 
         public LinterFileModel()
         {
             Files = new List<File>();
-            ErrorParse = string.Empty;
+            ParseErrors = new ParseError();
         }
 
+        public class ParseError
+        {
+            public string ErrorMessage { get; set; }
+            public string Input { get; set; }
+        }
         public class File
         {
             public string Path { get; set; }
