@@ -41,7 +41,7 @@
                 Args = typeof(prospector.LintArgs),
                 Result = typeof(prospector.LintResult),
                 Model = typeof(LinterFileModel),
-                ArgsDefault = true
+                //ArgsDefault = true
             },
             new Record
             {
@@ -106,7 +106,7 @@
                 Args = typeof(htmlhint.LintArgs),
                 Result = typeof(htmlhint.LintResult),
                 Model = typeof(htmlhint.LintResult),
-                ArgsDefault = true,
+               // ArgsDefault = true,
                 OneFile = true
                 //Command = "htmlhint --format json"
             },
@@ -127,7 +127,7 @@
                 Args = typeof(csslint.LintArgs),
                 Result = typeof(csslint.LintResult),
                 Model = typeof(csslint.LintResult),
-                ArgsDefault = true,
+               // ArgsDefault = true,
                 OneFile = true
                 //Command = "csslint --format=json"
             },
@@ -150,7 +150,7 @@
                 Result = typeof(jslint.LintResult),
                 Model = typeof(jslint.LintResult),
                 OneFile = true,
-               // ArgsDefault = true
+                ArgsDefault = true
                 //Command = "jslint --json"
             },
             new Record
@@ -171,7 +171,7 @@
                 Args = typeof(pep8.LintArgs),
                 Result = typeof(pep8.LintResult),
                 Model = typeof(LinterFileModel),
-                ArgsDefault = true
+               // ArgsDefault = true
                 //Command = "pep8 --format=pylint ./"
             }
         };
