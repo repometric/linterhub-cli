@@ -12,13 +12,14 @@ namespace Linterhub.Cli.Strategy
     {
         public object Run(RunContext context, LinterFactory factory, LogManager log)
         {
+            var validationContext = context.ValidateContext(factory, log);
             var catalog = GetCatalog(context, factory);
             ProjectConfig config = null;
             if(context.Project != null)
             {
-                var projectConfigFile = context.GetProjectConfigPath();
+                var projectConfigFile = validationContext.PathFileConfig;
                 if(File.Exists(projectConfigFile))
-                    config = context.GetProjectConfig();
+                    config = validationContext.ProjectConfig;
             }
             var result =
                 from record in factory.GetRecords().OrderBy(x => x.Name)

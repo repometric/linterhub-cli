@@ -77,7 +77,7 @@ namespace Linterhub.Cli.Strategy
         {
             foreach (var linter in validateContext.ProjectConfig.Linters.Where(x => x.Active != false))
             {
-                linter.Command = GetCommand(factory, validateContext, linter);
+                linter.Command = linter.Command ?? GetCommand(factory, validateContext, linter);
             }
             return validateContext.ProjectConfig;
         }
@@ -96,14 +96,13 @@ namespace Linterhub.Cli.Strategy
             }
             else
             {
-                linter.Command = command;
+                linter.Command = linter.Command ?? command;
             }
             return validateContext.ProjectConfig;
         }
 
         public string GetCommand(LinterFactory factory, ValidationContext validateConext, ProjectConfig.Linter linter = null, string linterName = null)
         {
-            ILinterArgs args = null;
             linter = linter ?? new ProjectConfig.Linter();
 
             return linter.Command ?? (
@@ -112,8 +111,7 @@ namespace Linterhub.Cli.Strategy
                                 linterName ?? linter.Name,
                                 validateConext.WorkDir,
                                 validateConext.Path,
-                                validateConext.ArgMode,
-                                args) : null);
+                                validateConext.ArgMode) : null);
         }
     }
 }
