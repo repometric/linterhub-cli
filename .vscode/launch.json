@@ -6,7 +6,7 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceRoot}/src/Metrics.Integrations.Linters.Cli/bin/Debug/netcoreapp1.0/Metrics.Integrations.Linters.Cli.dll",
+            "program": "${workspaceRoot}/src/cli/bin/Debug/netstandard1.6/cli.dll",
             "args": [],
             "cwd": "${workspaceRoot}",
             "externalConsole": false,
