@@ -3,5 +3,7 @@ dist: trusty
 sudo: required
 mono: none
 dotnet: 1.0.0-preview2-003121
+install:
+- sh script/setup.sh
 script:
-  - sh ./build.sh --quiet verify
+- sh script/cibuild.sh
