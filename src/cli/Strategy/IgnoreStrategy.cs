@@ -4,6 +4,8 @@ namespace Linterhub.Cli.Strategy
     using Runtime;
     using Engine;
     using Engine.Exceptions;
+    using System;
+    using System.Collections.Generic;
 
     public class IgnoreStrategy : IStrategy
     {
@@ -24,6 +26,13 @@ namespace Linterhub.Cli.Strategy
                 rule.Error = context.ExtraArgs["error"];
             }
 
+            bool is_add = true;
+
+            if (context.ExtraArgs.ContainsKey("add"))
+            {
+                is_add = Convert.ToBoolean(context.ExtraArgs["add"]);
+            }
+
             if (validationContext.IsLinterSpecified)
             {
                 var linter = validationContext.ProjectConfig.Linters.FirstOrDefault(x => x.Name == context.Linter);
@@ -33,8 +42,20 @@ namespace Linterhub.Cli.Strategy
                     {
                         throw new LinterEngineException("Linter is not exist: " + context.Linter);
                     }
-                    if(linter.Ignore.Where(x => x.Error == rule.Error && x.FileName == rule.FileName && x.Line == rule.Line).Count() == 0)
-                        linter.Ignore.Add(rule);
+                    if (findRule(linter.Ignore, rule) == null)
+                    {
+                        if (is_add)
+                        {
+                            linter.Ignore.Add(rule);
+                        }
+                    }
+                    else
+                    {
+                        if (!is_add)
+                        {
+                            linter.Ignore.Remove(findRule(linter.Ignore, rule));
+                        }
+                    }
                 }
                 else
                 {
@@ -43,11 +64,28 @@ namespace Linterhub.Cli.Strategy
             }
             else
             {
-                if(validationContext.ProjectConfig.Ignore.Where(x => x.Error == rule.Error && x.FileName == rule.FileName && x.Line == rule.Line).Count() == 0)
-                    validationContext.ProjectConfig.Ignore.Add(rule);
+                if (findRule(validationContext.ProjectConfig.Ignore, rule) == null)
+                {
+                    if (is_add)
+                    {
+                        validationContext.ProjectConfig.Ignore.Add(rule);
+                    }
+                }
+                else
+                {
+                    if (!is_add)
+                    {
+                        validationContext.ProjectConfig.Ignore.Remove(findRule(validationContext.ProjectConfig.Ignore, rule));
+                    }
+                }
             }
 
             return context.SetProjectConfig(validationContext);
+        }
+
+        private ProjectConfig.IgnoreRule findRule(List<ProjectConfig.IgnoreRule> list, ProjectConfig.IgnoreRule rule)
+        {
+            return list.Where(x => x.Error == rule.Error && x.FileName == rule.FileName && x.Line == rule.Line).FirstOrDefault();
         }
     }
 }
