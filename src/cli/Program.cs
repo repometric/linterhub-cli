@@ -27,7 +27,8 @@
             { RunMode.Activate, new ActivateStrategy() },
             { RunMode.Help, new OptionsStrategy() },
             { RunMode.LinterVersion, new LinterVersionStrategy() },
-            { RunMode.LinterInstall, new InstallStrategy() }
+            { RunMode.LinterInstall, new InstallStrategy() },
+            { RunMode.Ignore, new IgnoreStrategy() }
         };
         
         internal static void Run(string[] args, LogManager log)

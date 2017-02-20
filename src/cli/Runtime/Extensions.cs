@@ -21,13 +21,20 @@
                 IsLinterSpecified = !string.IsNullOrEmpty(context.Linter)
             };
             validation.ExistFileConfig = File.Exists(validation.PathFileConfig);
-            validation.ProjectConfig = context.GetProjectConfig(factory, validation);
+            if (context.Mode == RunMode.Activate && !validation.ExistFileConfig)
+            {
+                validation.ProjectConfig = new ProjectConfig();
+            }
+            else
+            {
+                validation.ProjectConfig = context.GetProjectConfig(factory, validation);
+            }
             validation.Path = validation.Path?.ReplacePath();
 
             log.Trace("Expected project config: " + validation.PathFileConfig);
             return validation;
         }
-        
+
         public static ProjectConfig GetProjectConfig(this RunContext context, LinterFactory factory, ValidationContext validationContext)
         {
             ProjectConfig projectConfig;
@@ -56,7 +63,7 @@
                     throw new LinterEngineException("Error parsing project configuration file", exception);
                 }
             }
-            
+
             return projectConfig;
         }
 
@@ -81,6 +88,6 @@
         public static string ReplacePath(this string self)
         {
             return Path.Combine("./", self.Replace("\\", "/"));
-        } 
+        }
     }
 }

@@ -2,7 +2,6 @@ namespace Linterhub.Engine.Linters.Phpcs
 {
     using System.IO;
     using Extensions;
-    using System.Collections.Generic;
     using System.Linq;
     using System;
 

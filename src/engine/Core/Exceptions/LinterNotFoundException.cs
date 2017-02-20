@@ -1,6 +1,5 @@
 namespace Linterhub.Engine.Exceptions
 {
-    using System;
 
     public class LinterNotFoundException: LinterException
     {

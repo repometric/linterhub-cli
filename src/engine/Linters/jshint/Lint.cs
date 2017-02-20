@@ -46,7 +46,8 @@ namespace Linterhub.Engine.Linters.jshint
                         {
                             Start = int.Parse(e.Column),
                             End = int.Parse(e.Column)
-                        }
+                        },
+                        Line = int.Parse(e.Line)
                     }).ToList()
                 }).ToList()
             };

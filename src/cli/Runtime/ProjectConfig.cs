@@ -21,11 +21,39 @@
         public List<Linter> Linters { get; set; }
 
         /// <summary>
+        /// Gets or sets ignore rules for whole project.
+        /// </summary>
+        [JsonProperty("ignore")]
+        public List<IgnoreRule> Ignore { get; set; }
+
+        /// <summary>
         /// Initializes a new instance of <see cref="ProjectConfig"/> class.
         /// </summary>
         public ProjectConfig()
         {
             Linters = new List<Linter>();
+            Ignore = new List<IgnoreRule>();
+        }
+
+        public class IgnoreRule
+        {
+            /// <summary>
+            /// Gets or sets file to ignore.
+            /// </summary>
+            [JsonProperty("file")]
+            public string FileName { get; set; }
+
+            /// <summary>
+            /// Gets or sets line with error to ignore.
+            /// </summary>
+            [JsonProperty("line")]
+            public int? Line { get; set; }
+
+            /// <summary>
+            /// Gets or sets error to ignore.
+            /// </summary>
+            [JsonProperty("error")]
+            public string Error { get; set; }
 
         }
 
@@ -57,6 +85,17 @@
             /// </summary>
             [JsonProperty("active")]
             public bool? Active { get; set; }
+
+            /// <summary>
+            /// Gets or sets ignore rules for linter.
+            /// </summary>
+            [JsonProperty("ignore")]
+            public List<IgnoreRule> Ignore { get; set; }
+
+            public Linter()
+            {
+                Ignore = new List<IgnoreRule>();
+            }
         }
     }
 }
