@@ -24,7 +24,7 @@ RUN set -x \
 	&& docker -v
 
 WORKDIR /temp
-ADD linterhub-cli-debian.8-x64.tar.gz ./
+ADD linterhub-cli-debian.8-x64.zip ./
 ADD src/cli/Config bin/debian.8-x64/Config
 ADD src/cli/linterhub bin/debian.8-x64/linterhub
 WORKDIR /app/bin

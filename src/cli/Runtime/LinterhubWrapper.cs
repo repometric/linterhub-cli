@@ -18,6 +18,17 @@ namespace Linterhub.Cli.Runtime
             return run;
         }
 
+        public CmdWrapper.RunResults RunTerminal(string command)
+        {
+            var cmd =  string.Format(Context.CliConfig.Terminal.Command, command);
+            var run = Run(Context.CliConfig.Terminal.Path, cmd, Context.CliConfig.Linterhub.Path);
+            if (run.RunException != null)
+            {
+                throw new LinterEngineException("Runtime Exception", run.RunException);
+            }
+            return run;
+        }
+
         public CmdWrapper.RunResults Run(string command)
         {
             var cmd =  string.Format(Context.CliConfig.Terminal.Command, Context.CliConfig.Linterhub.Command + " " + command);

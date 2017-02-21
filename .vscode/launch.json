@@ -5,10 +5,10 @@
             "name": ".NET Core Launch (console)",
             "type": "coreclr",
             "request": "launch",
-            "preLaunchTask": "build",
-            "program": "${workspaceRoot}/src/cli/bin/Debug/netstandard1.6/cli.dll",
+            "preLaunchTask": "build-engine",
+            "program": "${workspaceRoot}/src/cli/bin/Debug/netcoreapp1.0/cli.dll",
             "args": [],
-            "cwd": "${workspaceRoot}",
+            "cwd": "${workspaceRoot}/src/cli",
             "externalConsole": false,
             "stopAtEntry": false,
             "internalConsoleOptions": "openOnSessionStart"

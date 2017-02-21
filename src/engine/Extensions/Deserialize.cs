@@ -5,7 +5,8 @@
     using System.Text;
     using Newtonsoft.Json;
     using System.Xml.Serialization;
-    
+    using Newtonsoft.Json.Linq;
+
     public static class Deserialize
     {
         public static T DeserializeAsJson<T>(this Stream self, Type type = null)
@@ -20,6 +21,23 @@
                        : (T)serializer.Deserialize(jsonTextReader, type);
             }
         }
+
+        public static dynamic DeserializeDynamic(this Stream self)
+        {
+            using (var reader = new StreamReader(self, Encoding.UTF8, true, 4096, true))
+            using (var jsonTextReader = new JsonTextReader(reader))
+            {
+                dynamic value = (JObject)JToken.ReadFrom(jsonTextReader);
+                return value;
+            }
+        }
+
+        public static dynamic DeserializeDynamic(this string self)
+        {
+            return JsonConvert.DeserializeObject(self);
+        }
+
+
 
         public static T DeserializeAsJson<T>(this string self)
         {

@@ -9,7 +9,7 @@
         {
             "taskName": "build-engine",
             "args": [
-                "dotnet build ${workspaceRoot}/src/engine/project.json"
+                "dotnet build ${workspaceRoot}/src/cli/project.json"
             ],
             "isBuildCommand": true,
             "problemMatcher": "$msCompile",
