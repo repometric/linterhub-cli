@@ -45,7 +45,7 @@ namespace Linterhub.Cli.Strategy
             Dictionary<string, string> extraArgs = new Dictionary<string, string>();
             foreach (string arg in extra)
             {
-                string pattern = @"([a-zA-Z0-9])+";
+                string pattern = @"([a-zA-Z0-9].)+";
                 Regex rgx = new Regex(pattern, RegexOptions.IgnoreCase);
                 MatchCollection matches = rgx.Matches(arg);
                 extraArgs.Add(matches[0].Value, matches[1].Value);
