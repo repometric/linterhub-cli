@@ -2,11 +2,11 @@ namespace Linterhub.Cli.Strategy
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
     using Mono.Options;
     using Runtime;
     using Engine;
     using Engine.Exceptions;
+    using System.Text.RegularExpressions;
 
     public class OptionsStrategy : IStrategy
     {
@@ -37,11 +37,21 @@ namespace Linterhub.Cli.Strategy
                 throw new LinterEngineException("Error parsing arguments", exception);
             }
 
-            if (extra.Any())
+            /*if (extra.Any())
             {
                 throw new LinterEngineException("Extra arguments: " + string.Join(",", extra));
+            }*/
+
+            Dictionary<string, string> extraArgs = new Dictionary<string, string>();
+            foreach (string arg in extra)
+            {
+                string pattern = @"([a-zA-Z0-9])+";
+                Regex rgx = new Regex(pattern, RegexOptions.IgnoreCase);
+                MatchCollection matches = rgx.Matches(arg);
+                extraArgs.Add(matches[0].Value, matches[1].Value);
             }
 
+            runContext.ExtraArgs = extraArgs;
             runContext.Input = Console.OpenStandardInput();
             runContext.InputAwailable = false; //Console.IsInputRedirected;
             return runContext;

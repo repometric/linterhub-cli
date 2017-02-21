@@ -14,6 +14,10 @@ namespace Linterhub.Cli.Strategy
             {
                 throw new LinterEngineException("Linter is not specified: " + context.Linter);
             }
+            if(factory.GetRecords().FirstOrDefault(x => x.Name == context.Linter) == null)
+            {
+                throw new LinterEngineException("Linter is not exist: " + context.Linter);
+            }
 
             var linter = validationContext.ProjectConfig.Linters.FirstOrDefault(x => x.Name == context.Linter);
             if (linter != null)
@@ -26,7 +30,7 @@ namespace Linterhub.Cli.Strategy
                 {
                     Name = context.Linter,
                     Active = context.Activate,
-                    Config = factory.CreateArguments(context.Linter)
+                    Config = new object()
                     //Command = factory.BuildCommand(context.Linter, "", "", ArgMode.Folder)
                 });
             }

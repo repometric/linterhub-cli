@@ -39,12 +39,12 @@ namespace Linterhub.Cli.Strategy
                     {
                         using (input = linter.Task.Result.GetMemoryStream())
                         {
-                            linterResults.Add(new RunResult
+                            linterResults.Add(ExcludeWarnings(new RunResult
                             {
                                 Name = linter.Name,
                                 Model = factory.CreateModel(linter.Name, input, null)
-                               
-                            });
+
+                            }, configs.Linters.First(x => x.Name == linter.Name).Ignore, configs.Ignore));
                         }
                     }
                 }
@@ -63,6 +63,31 @@ namespace Linterhub.Cli.Strategy
                 throw new LinterEngineException(exception.Message, exception);
             }
             return linterResults;
+        }
+
+        private RunResult ExcludeWarnings(RunResult result, List<ProjectConfig.IgnoreRule> rules, List<ProjectConfig.IgnoreRule> global)
+        {
+            rules.AddRange(global);
+            if (result.Model is LinterFileModel)
+            {
+                LinterFileModel model = result.Model as LinterFileModel;
+                rules.ForEach(rule =>
+                {
+                    model.Files.ForEach(file =>
+                    {
+                        file.Errors = file.Errors.Where(x =>
+                        {
+                            bool filename = rule.FileName != null ? file.Path == rule.FileName : true;
+                            bool line = rule.Line != null ? x.Line == rule.Line : true;
+                            bool error = rule.Error != null ? x.Rule.Name == rule.Error : true;
+                            return !(filename && line && error);
+                        }
+                        ).ToList();
+                    });
+                });
+                result.Model = model;
+            }
+            return result;
         }
 
         private ProjectConfig GetConfigs(RunContext context, LinterFactory factory, LogManager log)
@@ -106,7 +131,7 @@ namespace Linterhub.Cli.Strategy
             linter = linter ?? new ProjectConfig.Linter();
 
             return linter.Command ?? (
-                        linter.Active != false ? 
+                        linter.Active != false ?
                             factory.BuildCommand(
                                 linterName ?? linter.Name,
                                 validateConext.WorkDir,

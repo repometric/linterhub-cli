@@ -1,5 +1,6 @@
 namespace Linterhub.Cli.Runtime
 {
+    using System.Collections.Generic;
     using System.IO;
 
     public class RunContext
@@ -13,6 +14,8 @@ namespace Linterhub.Cli.Runtime
         public RunMode Mode { get; set; }
         public Stream Input { get; set; }
         public bool InputAwailable { get; set; }
+
+        public Dictionary<string, string> ExtraArgs { get; set; }
 
         public RunContext(RunMode mode = RunMode.Help)
         {

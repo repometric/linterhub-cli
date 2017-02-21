@@ -12,6 +12,7 @@ namespace Linterhub.Cli.Runtime
         Version,
         Help,
         LinterVersion,
-        LinterInstall
+        LinterInstall,
+        Ignore
     }
 }
