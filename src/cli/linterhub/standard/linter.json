@@ -1,0 +1,23 @@
+{
+    "$schema": "./../linter.schema.json",
+    "name": "standard",
+    "description": "JavaScript Standard Style",
+    "url": "http://standardjs.com",
+    "languages": [ "javascript" ],
+    "extensions": [ "*.js" ],
+    "license": "MIT",
+    "areas": [ "syntax" ],
+    "requirements": [ 
+        { "manager": "system", "package": "npm" },
+        { "manager": "npm", "package": "standard" },
+        { "manager": "npm", "package": "standard-json" }
+    ],
+    "version": {
+        "local": "9.0.1",
+        "package": "9.0.1"
+    },
+    "postfix": " | standard-json",
+    "defaults": {
+        "--verbose": null
+    }
+}
