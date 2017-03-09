@@ -1,0 +1,9 @@
+{
+  "command": {
+    "installed": "type {0} 2>/dev/null || {{ exit -1; }}"
+  },
+  "terminal": {
+    "path": "/bin/bash",
+    "command": "-c \"{0}\""
+  }
+}

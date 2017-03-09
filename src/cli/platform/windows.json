@@ -1,0 +1,9 @@
+{
+  "command": {
+    "installed": "type {0} 2>/dev/null || {{ exit -1; }}"
+  },
+  "terminal": {
+    "path": "C:\\Windows\\system32\\cmd.exe",
+    "command": "/C \"{0}\""
+  }
+}
