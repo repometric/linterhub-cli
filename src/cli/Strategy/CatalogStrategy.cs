@@ -1,52 +1,33 @@
 namespace Linterhub.Cli.Strategy
 {
-    using System;
     using System.Linq;
-    using Runtime;
-    using Engine;
-    using Engine.Exceptions;
-    using System.IO;
-    using Engine.Extensions;
+    using Linterhub.Engine.Factory;
+    using Linterhub.Engine.Schema;
 
+    /// <summary>
+    /// The 'catalog linter' strategy logic.
+    /// </summary>
     public class CatalogStrategy : IStrategy
     {
-        public object Run(RunContext context, LinterFactory factory, LogManager log)
+        /// <summary>
+        /// Run strategy.
+        /// </summary>
+        /// <param name="locator">The service locator.</param>
+        /// <returns>Run results (list of linters).</returns>
+        public object Run(ServiceLocator locator)
         {
-            var validationContext = context.ValidateContext(factory, log);
-            var catalog = GetCatalog(context, factory);
-            ProjectConfig config = null;
-            if(context.Project != null)
+            var factory = locator.Get<ILinterFactory>();
+            var projectConfig = locator.Get<LinterhubSchema>();
+            
+            // List all linters and detect active linters (active for the project)
+            var linters = factory.GetSpecifications().Select(x => x.Schema);
+            var result = linters.Select(linter => 
             {
-                var projectConfigFile = validationContext.PathFileConfig;
-                if(File.Exists(projectConfigFile))
-                    config = validationContext.ProjectConfig;
-            }
-            var result =
-                from record in factory.GetRecords().OrderBy(x => x.Name)
-                let item = catalog.linters.FirstOrDefault(y => y.name == record.Name)
-                select new
-                {
-                    name = record.Name,
-                    description = item?.description,
-                    languages = item?.languages,
-                    active = config == null ? false : config?.Linters.Any(x => x.Name == record.Name && x.Active == true)
-                };
+                linter.Active = projectConfig.Linters.Any(projectLinter => projectLinter.Name == linter.Name && projectLinter.Active != false);
+                return linter;
+            });
 
             return result;
-        }
-
-        private Linters GetCatalog(RunContext context, LinterFactory factory)
-        {
-            try
-            {
-                return context.InputAwailable
-                     ? context.Input.DeserializeAsJson<Linters>()
-                     : new LinterhubWrapper(context).Info().DeserializeAsJson<Linters>();
-            }
-            catch (Exception exception)
-            {
-                throw new LinterParseException(exception);
-            }
         }
     }
 }

@@ -1,61 +1,72 @@
 ﻿namespace Linterhub.Engine.Extensions
 {
     using System.IO;
-    using System;
-    using System.Text;
     using Newtonsoft.Json;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json.Linq;
+    using System.Collections.Generic;
+    using Linterhub.Engine.Utils;
+    using System.Linq;
+    using System.Reflection;
+    using Linterhub.Engine.Schema;
 
     public static class Deserialize
     {
-        public static T DeserializeAsJson<T>(this Stream self, Type type = null)
+        public static object GetPropertyValue(this object obj, string propertyName)
         {
-            var serializer = new JsonSerializer();
-            // TODO: Refactor.
-            using (var reader = new StreamReader(self, Encoding.UTF8, true, 4096, true))
-            using (var jsonTextReader = new JsonTextReader(reader))
+            foreach (var prop in propertyName.Split('.').Select(s => obj?.GetType()?.GetProperty(s, BindingFlags.IgnoreCase |  BindingFlags.Public | BindingFlags.Instance)))
             {
-                return type == null
-                       ? serializer.Deserialize<T>(jsonTextReader)
-                       : (T)serializer.Deserialize(jsonTextReader, type);
+                obj = prop?.GetValue(obj, null);
             }
+
+            return obj;
         }
 
-        public static dynamic DeserializeDynamic(this Stream self)
+        public static string NormalizePath(this string self)
         {
-            using (var reader = new StreamReader(self, Encoding.UTF8, true, 4096, true))
-            using (var jsonTextReader = new JsonTextReader(reader))
+            return self?.Replace(Path.AltDirectorySeparatorChar, Path.DirectorySeparatorChar);
+        }
+
+        public static TValue GetValueOrDefault<TKey, TValue>
+            (this IDictionary<TKey, TValue> dictionary, 
+            TKey key,
+            TValue defaultValue = default(TValue))
+        {
+            TValue value;
+            return dictionary.TryGetValue(key, out value) ? value : defaultValue;
+        }
+
+        public static T DeserializeAsJsonFromFile<T>(this string self)
+            where T : new()
+        {
+            if (!string.IsNullOrEmpty(self) && File.Exists(self))
             {
-                dynamic value = (JObject)JToken.ReadFrom(jsonTextReader);
-                return value;
+                return File.ReadAllText(self).DeserializeAsJson<T>();
             }
+
+            return new T();
         }
-
-        public static dynamic DeserializeDynamic(this string self)
-        {
-            return JsonConvert.DeserializeObject(self);
-        }
-
-
 
         public static T DeserializeAsJson<T>(this string self)
         {
             return JsonConvert.DeserializeObject<T>(self);
         }
 
-        public static T DeserializeAsXml<T>(this Stream self)
+        public static string SerializeAsJson<T>(this T self, IEnumerable<string> allowedNames = null, IEnumerable<string> filters = null)
         {
-            var deserializer = new XmlSerializer(typeof(T));
-            return (T)deserializer.Deserialize(self);
-        }
-
-        public static string SerializeAsJson<T>(this T self)
-        {
-            return JsonConvert.SerializeObject(self, Formatting.Indented, new JsonSerializerSettings
+            var settings = new JsonSerializerSettings
             {
-                NullValueHandling = NullValueHandling.Ignore
-            });
+                NullValueHandling = NullValueHandling.Ignore,
+                ContractResolver = new ShouldSerializeContractResolver(allowedNames),
+                DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate,
+            };
+
+            if (filters != null && filters.Any())
+            {
+                // TODO: Now it supports only linter schema.
+                var supportedTypes =  new[] { typeof(IEnumerable<LinterSchema>) };
+                settings.Converters.Add(new ShouldSerializeConverter(supportedTypes, filters));
+            }
+
+            return JsonConvert.SerializeObject(self, Formatting.Indented, settings);
         }
     }
 }

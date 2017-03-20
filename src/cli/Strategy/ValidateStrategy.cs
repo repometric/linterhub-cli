@@ -1,82 +1,109 @@
 namespace Linterhub.Cli.Strategy
 {
-    using System;
     using System.IO;
     using System.Runtime.InteropServices;
-    using Runtime;
-    using Engine;
-    using Engine.Exceptions;
-    using Engine.Extensions;
+    using Linterhub.Engine.Exceptions;
+    using Linterhub.Engine.Extensions;
+    using Linterhub.Cli.Runtime;
 
+    /// <summary>
+    /// The 'validate input' strategy logic.
+    /// </summary>
     public class ValidateStrategy : IStrategy
     {
-        public object Run(RunContext context, LinterFactory factory, LogManager log)
-        {        
-            context.Config = GetConfigurationPath(context.Config);    
-            if (!File.Exists(context.Config))
+        /// <summary>
+        /// Run strategy.
+        /// </summary>
+        /// <param name="locator">The service locator.</param>
+        /// <returns>Run results (null).</returns>
+        public object Run(ServiceLocator locator)
+        {
+            var context = locator.Get<RunContext>();
+            var ensure = locator.Get<Ensure>();
+            context.Project = GetProjectPath(context.Project).NormalizePath();
+            context.Linterhub = GetLinterhubPath(context.Linterhub).NormalizePath();
+            context.PlatformConfig = GetPlatformConfigPath(context.PlatformConfig).NormalizePath();
+            context.ProjectConfig = GetProjectConfigPath(context.ProjectConfig, context.Project).NormalizePath();
+
+            ensure.ProjectExists();
+            ensure.LinterhubExists();
+            ensure.PlatformConfigExists();
+
+            if (!string.IsNullOrEmpty(context.ProjectConfig))
             {
-                throw new LinterEngineException("App configuration was not found: " + context.Config);
+                ensure.ProjectConfigExists();
+            }
+            else
+            {
+                var possiblePath = Path.Combine(context.Project, ".linterhub.json");
+                if (File.Exists(possiblePath))
+                {
+                    context.ProjectConfig = possiblePath;
+                }
             }
 
-            context.Project = context.GetProjectPath()?.Replace(Path.AltDirectorySeparatorChar, Path.DirectorySeparatorChar);
-            context.File = context.File?.Replace(Path.AltDirectorySeparatorChar, Path.DirectorySeparatorChar);
-            context.Dir = context.Dir?.Replace(Path.AltDirectorySeparatorChar, Path.DirectorySeparatorChar);
-
-
-            if (!Directory.Exists(context.Project))
+            if (!string.IsNullOrEmpty(context.Directory))
             {
-                throw new LinterEngineException("Project was not found: " + context.Project);
+                context.Directory = Path.Combine(context.Project, context.Directory);
+                ensure.DirectoryExists();
             }
 
-            try
+            if (!string.IsNullOrEmpty(context.File) && !File.Exists(context.File))
             {
-                context.CliConfig = ParseConfiguration(context.Config);
-            }
-            catch (Exception exception)
-            {
-                throw new LinterEngineException("Error parsing app configuration", exception);
+                context.File = Path.Combine(context.Project, context.File);
+                ensure.FileExists();
             }
 
-            if (!string.IsNullOrEmpty(context.CliConfig.Linterhub.Path) && 
-                !Directory.Exists(context.CliConfig.Linterhub.Path))
-            {
-                throw new LinterEngineException("Linterhub was not found: " + context.CliConfig.Linterhub);
-            }
-
-            return true;
+            return null;
         }
 
-        private CliConfig ParseConfiguration(string filePath)
+        private string GetPlatformConfigPath(string path)
         {
-            var content = File.ReadAllText(filePath);
-            var config = content.DeserializeAsJson<CliConfig>();
-            return config;
-        }
-
-        private string GetConfigurationPath(string filePath)
-        {
-            if (!string.IsNullOrEmpty(filePath))
+            if (!string.IsNullOrEmpty(path))
             {
-                return filePath;
+                return path;
             }
 
-            string path;
+            string file;
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
-                path = "Windows.json";
-            } else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+                file = "windows.json";
+            }
+            else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
             {
-                path = "MacOS.json";
-            } else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+                file = "macos.json";
+            }
+            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             {
-                path = "Linux.json";
-            } else
+                file = "linux.json";
+            }
+            else
             {
-                path = "Default.json";
+                file = "default.json";
             }
 
-            path = "Config/" + path;
-            return path;
+            file = Path.Combine(Directory.GetCurrentDirectory(), "platform", file);
+            return file;
+        }
+
+        private string GetLinterhubPath(string path)
+        {
+            if (!string.IsNullOrEmpty(path))
+            {
+                return path;
+            }
+
+            return Path.Combine(Directory.GetCurrentDirectory(), "linterhub");
+        }
+
+        private string GetProjectPath(string path)
+        {
+            return string.IsNullOrEmpty(path) ? Directory.GetCurrentDirectory() : path;
+        }
+
+        private string GetProjectConfigPath(string path, string projectPath)
+        {
+            return !string.IsNullOrEmpty(path) ? path : string.Empty;
         }
     }
 }

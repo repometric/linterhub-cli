@@ -9,15 +9,15 @@
     }
   },
   "publishOptions": {
-    "include": ["Config", "linterhub"]
+    "include": ["platform", "linterhub"]
   },
-
   "dependencies": {
     "NETStandard.Library": "1.6.1",
     "Microsoft.NETCore.Runtime.CoreCLR": "1.1.0",
     "Microsoft.NETCore.DotNetHostPolicy": "1.1.0",
     "Mono.Options": "4.4.0",
     "System.Diagnostics.Process": "4.3.0",
+    "Newtonsoft.Json.Schema": "2.0.8",
     "engine": "1.2.1-*"
   },
 

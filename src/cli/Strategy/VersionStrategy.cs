@@ -1,19 +1,30 @@
 namespace Linterhub.Cli.Strategy
 {
+    using System;
     using System.Reflection;
-    using Runtime;
-    using Engine;
 
+    /// <summary>
+    /// The 'version' strategy logic.
+    /// </summary>
     public class VersionStrategy : IStrategy
     {
-        public object Run(RunContext context, LinterFactory factory, LogManager log)
+        /// <summary>
+        /// Run strategy.
+        /// </summary>
+        /// <param name="locator">The service locator.</param>
+        /// <returns>Run results (version string).</returns>
+        public object Run(ServiceLocator locator)
         {
-            var linterhubVersion = new LinterhubWrapper(context).Version().Trim();
-            var engineVersion = typeof(LinterFactory).GetTypeInfo().Assembly.GetName().Version.ToString();
-            var cliVersion = typeof(Program).GetTypeInfo().Assembly.GetName().Version.ToString();
-            var result = $"Linterhub: {linterhubVersion}\nEngine: {engineVersion}\nCLI: {cliVersion}";
-            
+            // Engine version is not needed right now
+            // var engineVersion = GetVersion(typeof(LinterSpecification));
+            var cliVersion = GetVersion(typeof(Program));
+            var result = $"{cliVersion}";
             return result;
+        }
+
+        private string GetVersion(Type type)
+        {
+            return type.GetTypeInfo().Assembly.GetName().Version.ToString();
         }
     }
 }

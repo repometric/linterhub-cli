@@ -3,10 +3,12 @@
     using System;
     using System.Collections.Generic;
     using System.Diagnostics;
-    using Newtonsoft.Json;
-    using Runtime;
-    using Strategy;
-    using Engine;
+    using Linterhub.Engine.Schema;
+    using Linterhub.Engine.Runtime;
+    using Linterhub.Engine.Factory;
+    using Linterhub.Engine.Extensions;
+    using Linterhub.Cli.Runtime;
+    using Linterhub.Cli.Strategy;
 
     internal class Program
     {
@@ -21,13 +23,12 @@
         internal static Dictionary<RunMode, IStrategy> Strategies = new Dictionary<RunMode, IStrategy>
         {
             { RunMode.Catalog, new CatalogStrategy() },
-            { RunMode.Generate, new GenerateStrategy() },
             { RunMode.Analyze, new AnalyzeStrategy() },
             { RunMode.Version, new VersionStrategy() },
             { RunMode.Activate, new ActivateStrategy() },
             { RunMode.Help, new OptionsStrategy() },
             { RunMode.LinterVersion, new LinterVersionStrategy() },
-            { RunMode.LinterInstall, new InstallStrategy() },
+            { RunMode.LinterInstall, new LinterInstallStrategy() },
             { RunMode.Ignore, new IgnoreStrategy() }
         };
         
@@ -36,44 +37,63 @@
             log.Trace("Start  :", Process.GetCurrentProcess().ProcessName);
             log.Trace("Args   :", string.Join(" ", args));
 
-            var optionsStrategy = Strategies[RunMode.Help] as OptionsStrategy;
+            var optionsStrategy = (OptionsStrategy)Strategies[RunMode.Help];
+            var context = optionsStrategy.Parse(args);
+            var locator = new ServiceLocator();
+            locator.Register<RunContext>(context);
+            locator.Register<Ensure>(new Ensure(locator));
             var validateStrategy = new ValidateStrategy();
-            var factory = new LinterFactory();
-            var context = new RunContext();
+            validateStrategy.Run(locator);
+            locator = RegisterServices(context);
 
             try
             {
-                context = optionsStrategy.Parse(args);
-                validateStrategy.Run(context, factory, log);
-            }
-            catch (Exception exception) 
-            {
-                log.Error(exception);
-                return;
-            }
+                var result = Strategies[context.Mode].Run(locator);
+                if (context.SaveConfig)
+                {
+                    var content = locator.Get<LinterhubSchema>().SerializeAsJson();
+                    System.IO.File.WriteAllText(string.IsNullOrEmpty(context.ProjectConfig) ? "linterhub.json" : context.ProjectConfig, content);
+                }
 
-            try
-            {
-                log.Trace("Mode   :", context.Mode);
-                log.Trace("Config :", context.Config);
-                log.Trace("Linter :", context.Linter);
-                log.Trace("Project:", context.Project);
-                log.Trace("File: ", context.File);
-                log.Trace("Dir: ", context.Dir);
-
-                var result = Strategies[context.Mode].Run(context, factory, log);
-
-                if (result == null) return;
-                var output = result is string 
+                var output = result is string || result == null
                            ? result
-                           : JsonConvert.SerializeObject(result);
+                           : result.SerializeAsJson(context.Keys, context.Filters);
 
-                Console.Write(output);
+                if (output != null)
+                {
+                    Console.WriteLine(output);
+                }
             }
             catch (Exception exception)
             {
                 log.Error(exception);
             }
+        }
+
+        private static ServiceLocator RegisterServices(RunContext context)
+        {
+            var locator = new ServiceLocator();
+            
+            var platformConfig = context.PlatformConfig.DeserializeAsJsonFromFile<PlatformConfig>();
+            var projectConfig = context.ProjectConfig.DeserializeAsJsonFromFile<LinterhubSchema>();
+
+            var terminal = new TerminalWrapper(platformConfig.Terminal.Path, platformConfig.Terminal.Command);
+            var linterFactory = new LinterFileSystemFactory(context.Linterhub);
+            var linterContextFactory = new LinterContextFactory(linterFactory);
+            var commandFactory = new CommandFactory();
+            var installer = new Installer(terminal, platformConfig.Command.Installed);
+            var linterRunner = new LinterWrapper(terminal, commandFactory);
+
+            locator.Register<LinterhubSchema>(new LinterhubSchema());
+            locator.Register<RunContext>(context);
+            locator.Register<PlatformConfig>(platformConfig);
+            locator.Register<ILinterFactory>(linterFactory);
+            locator.Register<LinterContextFactory>(linterContextFactory);
+            locator.Register<TerminalWrapper>(terminal);
+            locator.Register<LinterWrapper>(linterRunner);
+            locator.Register<Installer>(installer);
+
+            return locator;
         }
     }
 }

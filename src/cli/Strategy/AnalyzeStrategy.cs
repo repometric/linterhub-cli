@@ -1,18 +1,54 @@
 namespace Linterhub.Cli.Strategy
 {
-    using System;
-    using System.IO;
     using System.Collections.Generic;
     using System.Linq;
     using Runtime;
-    using Engine;
-    using Engine.Exceptions;
-    using System.Threading.Tasks;
+    using Linterhub.Engine.Schema;
+    using Linterhub.Engine.Runtime;
+    using Linterhub.Engine.Factory;
+    using Linterhub.Engine.Extensions;
 
     public class AnalyzeStrategy : IStrategy
     {
-        public object Run(RunContext context, LinterFactory factory, LogManager log)
+        private IEnumerable<string> MergeLinters(IEnumerable<string> lintersFromCommand, IEnumerable<LinterhubSchema.Linter> lintersFromConfig)
         {
+            var linters = lintersFromConfig
+                .Where(x => x.Active != false)
+                .Select(x => x.Name)
+                .Concat(lintersFromCommand)
+                .Distinct();
+            return linters;
+        }
+
+        public object Run(ServiceLocator locator)
+        {
+            var context = locator.Get<RunContext>();
+            var config = locator.Get<LinterhubSchema>();
+            var linterRunner = locator.Get<LinterWrapper>();
+            var linterFactory = locator.Get<ILinterFactory>();
+
+            var linters = MergeLinters(context.Linters, config.Linters);
+            var contexts =
+                from linter in linters
+                let specification = linterFactory.GetSpecification(linter)
+                let configOptions = config.Linters.FirstOrDefault(y => y.Name == linter)?.Config ?? specification.Schema.Defaults
+                let runOptions = new LinterOptions { { "{path}", "" } }
+                let workingDirectory = context.Project
+                select new LinterWrapper.Context
+                {
+                    Specification = specification,
+                    ConfigOptions = configOptions,
+                    RunOptions = runOptions,
+                    WorkingDirectory = workingDirectory
+                };
+
+
+            var r = linterRunner.RunAnalysis(contexts.First());
+
+            var zx = linterRunner.RunVersion(contexts.First());
+            var t = r.DeserializeAsJson<LinterOutputSchema.File[]>();
+            return t;
+            /* 
             var linterResults = new List<RunResult>();
             try
             {
@@ -73,12 +109,12 @@ namespace Linterhub.Cli.Strategy
                 LinterFileModel model = result.Model as LinterFileModel;
                 rules.ForEach(rule =>
                 {
-                    model.Files.ForEach(file =>
+                    model.Files.ToList().ForEach(file =>
                     {
                         file.Errors = file.Errors.Where(x =>
                         {
                             bool filename = rule.FileName != null ? file.Path == rule.FileName : true;
-                            bool line = rule.Line != null ? x.Line == rule.Line : true;
+                            bool line = rule.Line != null ? x.Line == rule.Line.ToString() : true;
                             bool error = rule.Error != null ? x.Rule.Name == rule.Error : true;
                             return !(filename && line && error);
                         }
@@ -137,6 +173,7 @@ namespace Linterhub.Cli.Strategy
                                 validateConext.WorkDir,
                                 validateConext.Path,
                                 validateConext.ArgMode) : null);
+        }*/
         }
     }
 }

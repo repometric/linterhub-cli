@@ -1,91 +1,48 @@
 namespace Linterhub.Cli.Strategy
 {
     using System.Linq;
-    using Runtime;
-    using Engine;
-    using Engine.Exceptions;
-    using System;
-    using System.Collections.Generic;
+    using Linterhub.Engine.Schema;
+    using Linterhub.Cli.Runtime;
 
     public class IgnoreStrategy : IStrategy
     {
-        public object Run(RunContext context, LinterFactory factory, LogManager log)
+        public object Run(ServiceLocator locator)
         {
-            ProjectConfig.IgnoreRule rule = new ProjectConfig.IgnoreRule();
-            var validationContext = context.ValidateContext(factory, log);
-            if (context.File != null)
+            var context = locator.Get<RunContext>();
+            var config = locator.Get<LinterhubSchema>();
+            var rule = new LinterhubSchema.IgnoreRule()
             {
-                rule.FileName = context.File;
-            }
-            if (context.ExtraArgs.ContainsKey("line"))
-            {
-                rule.Line = int.Parse(context.ExtraArgs["line"]);
-            }
-            if (context.ExtraArgs.ContainsKey("error"))
-            {
-                rule.Error = context.ExtraArgs["error"];
-            }
+                Path = context.Path,
+                Line = context.Line,
+                RuleId = context.RuleId
+            };
 
-            bool is_add = true;
-
-            if (context.ExtraArgs.ContainsKey("add"))
+            if (context.Linters.Any())
             {
-                is_add = Convert.ToBoolean(context.ExtraArgs["add"]);
-            }
-
-            if (validationContext.IsLinterSpecified)
-            {
-                var linter = validationContext.ProjectConfig.Linters.FirstOrDefault(x => x.Name == context.Linter);
-                if (linter != null)
+                // TODO: File could be mask
+                // TODO: Rule for project > for file > for line. Avoid dublicates and improve logic
+                foreach (var linter in context.Linters)
                 {
-                    if (factory.GetRecords().FirstOrDefault(x => x.Name == context.Linter) == null)
+                    var linterConfig = config.Linters.FirstOrDefault(x => x.Name == linter);
+                    if (linterConfig == null)
                     {
-                        throw new LinterEngineException("Linter is not exist: " + context.Linter);
-                    }
-                    if (findRule(linter.Ignore, rule) == null)
-                    {
-                        if (is_add)
+                        linterConfig = new LinterhubSchema.Linter
                         {
-                            linter.Ignore.Add(rule);
-                        }
+                            Name = linter
+                        };
+                        config.Linters.Add(linterConfig);
                     }
-                    else
-                    {
-                        if (!is_add)
-                        {
-                            linter.Ignore.Remove(findRule(linter.Ignore, rule));
-                        }
-                    }
-                }
-                else
-                {
-                    throw new LinterEngineException("Config for this linter is not exist in project file: " + context.Linter);
+
+                    linterConfig.Ignore.Add(rule);
                 }
             }
             else
             {
-                if (findRule(validationContext.ProjectConfig.Ignore, rule) == null)
-                {
-                    if (is_add)
-                    {
-                        validationContext.ProjectConfig.Ignore.Add(rule);
-                    }
-                }
-                else
-                {
-                    if (!is_add)
-                    {
-                        validationContext.ProjectConfig.Ignore.Remove(findRule(validationContext.ProjectConfig.Ignore, rule));
-                    }
-                }
+                config.Ignore.Add(rule);
             }
 
-            return context.SetProjectConfig(validationContext);
-        }
-
-        private ProjectConfig.IgnoreRule findRule(List<ProjectConfig.IgnoreRule> list, ProjectConfig.IgnoreRule rule)
-        {
-            return list.Where(x => x.Error == rule.Error && x.FileName == rule.FileName && x.Line == rule.Line).FirstOrDefault();
+            context.SaveConfig = true;
+            return null;
         }
     }
 }

@@ -4,8 +4,7 @@ namespace Linterhub.Cli.Strategy
     using System.Collections.Generic;
     using Mono.Options;
     using Runtime;
-    using Engine;
-    using Engine.Exceptions;
+    using Linterhub.Engine.Exceptions;
     using System.Text.RegularExpressions;
 
     public class OptionsStrategy : IStrategy
@@ -17,17 +16,21 @@ namespace Linterhub.Cli.Strategy
             var runContext = new RunContext();
             Options = new OptionSet
             {
-                { "c=|config=", "Path to configuration.", v => runContext.Config = v },
-                { "l=|linter=", "The linter name.", v => runContext.Linter = v },
+                { "c=|config=", "Path to configuration.", v => runContext.ProjectConfig = v },
+                { "s=|system=", "Path to platform configuration.", v => runContext.PlatformConfig = v },
+                { "l=|linter=", "The linter name.", v => runContext.Linters = string.IsNullOrEmpty(v) ? new string[0] : v.Split(',') },
                 { "p=|project=", "Path to project.", v => runContext.Project = v },
-                { "f=|file=", "File of project.", v => runContext.File = v },
-                { "d=|dir=", "Dir of project.", v => runContext.Dir = v },
+                { "d=|folder=", "Path to directory", v => runContext.Directory = v },
+                { "f=|file=", "Path to file.", v => runContext.File = v },
                 { "m=|mode=", "Run mode.", v => runContext.Mode = (RunMode)Enum.Parse(typeof(RunMode), v, true) },
-                { "a=|active=", "Activate or not", v => runContext.Activate = bool.Parse(v) },
+                { "a=|active=", "Activate or not.", v => runContext.Activate = bool.Parse(v) },
+                { "k=|keys=", "Keys to include.", v => runContext.Keys = string.IsNullOrEmpty(v) ? new string[0] : v.Replace("\"", "").Replace("'", "").Split(',') },
+                { "filters=", "Filters to apply", v => runContext.Filters = string.IsNullOrEmpty(v) ? new string[0] : v.Replace("\"", "").Replace("'", "").Split(',') },
+                { "linterhub=", "Path to linterhub.", v => runContext.Linterhub = v },
                 { "h|help",  "Show help.", v => runContext.Mode = RunMode.Help },
             };
 
-            List<string> extra;
+            List<string> extra = null;
             try
             {
                 extra = Options.Parse(args);
@@ -41,7 +44,7 @@ namespace Linterhub.Cli.Strategy
             {
                 throw new LinterEngineException("Extra arguments: " + string.Join(",", extra));
             }*/
-
+            /*
             Dictionary<string, string> extraArgs = new Dictionary<string, string>();
             foreach (string arg in extra)
             {
@@ -52,12 +55,13 @@ namespace Linterhub.Cli.Strategy
             }
 
             runContext.ExtraArgs = extraArgs;
+            */
             runContext.Input = Console.OpenStandardInput();
             runContext.InputAwailable = false; //Console.IsInputRedirected;
             return runContext;
         }
 
-        public object Run(RunContext context, LinterFactory factory, LogManager log)
+        public object Run(ServiceLocator locator)
         {
             Console.WriteLine("Options:");
             Options.WriteOptionDescriptions(Console.Out);

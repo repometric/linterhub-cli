@@ -1,41 +1,49 @@
 namespace Linterhub.Cli.Strategy
 {
     using System.Linq;
-    using Runtime;
-    using Engine;
-    using Engine.Exceptions;
+    using Linterhub.Cli.Runtime;
+    using Linterhub.Engine.Schema;
 
+    /// <summary>
+    /// The 'activate linter' strategy logic.
+    /// </summary>
     public class ActivateStrategy : IStrategy
     {
-        public object Run(RunContext context, LinterFactory factory, LogManager log)
+        /// <summary>
+        /// Run strategy.
+        /// </summary>
+        /// <param name="locator">The service locator.</param>
+        /// <returns>Run results (null).</returns>
+        public object Run(ServiceLocator locator)
         {
-            var validationContext = context.ValidateContext(factory, log);
-            if (!validationContext.IsLinterSpecified)
-            {
-                throw new LinterEngineException("Linter is not specified: " + context.Linter);
-            }
-            if(factory.GetRecords().FirstOrDefault(x => x.Name == context.Linter) == null)
-            {
-                throw new LinterEngineException("Linter is not exist: " + context.Linter);
-            }
+            var ensure = locator.Get<Ensure>();
+            var context = locator.Get<RunContext>();
+            var projectConfig = locator.Get<LinterhubSchema>();
 
-            var linter = validationContext.ProjectConfig.Linters.FirstOrDefault(x => x.Name == context.Linter);
-            if (linter != null)
+            // Validate
+            ensure.LinterSpecified();
+            ensure.LinterExists();
+            ensure.ArgumentSpecified(nameof(context.Activate), context.Activate);
+
+            // Enumerate linters and activate/deactivate
+            foreach (var linter in context.Linters)
             {
-                linter.Active = context.Activate;
-            }
-            else
-            {
-                validationContext.ProjectConfig.Linters.Add(new ProjectConfig.Linter 
+                var projectLinter = projectConfig.Linters.FirstOrDefault(x => x.Name == linter);
+                if (projectLinter != null)
                 {
-                    Name = context.Linter,
-                    Active = context.Activate,
-                    Config = new object()
-                    //Command = factory.BuildCommand(context.Linter, "", "", ArgMode.Folder)
-                });
+                    projectLinter.Active = context.Activate == true ? (bool?)null : false;
+                }
+                else
+                {
+                    projectConfig.Linters.Add(new LinterhubSchema.Linter
+                    {
+                        Name = linter
+                    });
+                }
             }
 
-            return context.SetProjectConfig(validationContext);
+            context.SaveConfig = true;
+            return null;
         }
     }
 }
