@@ -34,20 +34,20 @@
         
         internal static void Run(string[] args, LogManager log)
         {
-            log.Trace("Start  :", Process.GetCurrentProcess().ProcessName);
-            log.Trace("Args   :", string.Join(" ", args));
-
-            var optionsStrategy = (OptionsStrategy)Strategies[RunMode.Help];
-            var context = optionsStrategy.Parse(args);
-            var locator = new ServiceLocator();
-            locator.Register<RunContext>(context);
-            locator.Register<Ensure>(new Ensure(locator));
-            var validateStrategy = new ValidateStrategy();
-            validateStrategy.Run(locator);
-            locator = RegisterServices(context);
-
             try
             {
+                var optionsStrategy = (OptionsStrategy)Strategies[RunMode.Help];
+                var context = optionsStrategy.Parse(args);
+                var locator = new ServiceLocator();
+                if (context.Mode != RunMode.Help)
+                {
+                    locator.Register<RunContext>(context);
+                    locator.Register<Ensure>(new Ensure(locator));
+                    var validateStrategy = new ValidateStrategy();
+                    validateStrategy.Run(locator);
+                    locator = RegisterServices(context);
+                }
+
                 var result = Strategies[context.Mode].Run(locator);
                 if (context.SaveConfig)
                 {
