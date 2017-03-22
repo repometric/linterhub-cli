@@ -12,29 +12,23 @@ module.exports = class Reporter
         filesResult = []
         for path, errors of @errorReport.paths
             fileResult = {
-                path: path
+                filePath: path
                 messages: []
             }
             for e in errors when not @quiet or e.level is 'error'
                 fileResult.messages.push({
                     message: e.message
                     description: e.description
-                    severity: e.level
+                    severity: if e.level == 'warn' then 'warning' else if e.level == 'ignore' then 'hint' else e.level
                     context: e.context
-                    line: e.line
-                    row: {
-                        start: e.lineNumber - 1,
-                        end: if e.lineNumberEnd then e.lineNumberEnd - 1 else e.lineNumber - 1
-                    }
-                    column: {
-                        start: 0,
-                        end: 1000
-                    }
-                    rule: {
-                        id: e.value,
-                        name: e.name,
-                        namespace: e.rule
-                    }
+                    source: e.line
+                    line: e.lineNumber - 1,
+                    lineEnd: if e.lineNumberEnd then e.lineNumberEnd - 1 else e.lineNumber - 1
+                    column: 0,
+                    columnEnd: 1000,
+                    ruleId: e.value,
+                    ruleName: e.name,
+                    ruleNamespace: e.rule
                 })
             filesResult.push(fileResult)
 

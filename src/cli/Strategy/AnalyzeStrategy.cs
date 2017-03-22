@@ -32,7 +32,11 @@ namespace Linterhub.Cli.Strategy
                 from linter in linters
                 let specification = linterFactory.GetSpecification(linter)
                 let configOptions = config.Linters.FirstOrDefault(y => y.Name == linter)?.Config ?? specification.Schema.Defaults
-                let runOptions = new LinterOptions { { "{path}", "" } }
+                let runOptions = new LinterOptions 
+                { 
+                    { "{path}", specification.Schema.Defaults.GetValueOrDefault("") },
+                    { "file://{schema}", context.Linterhub }
+                }
                 let workingDirectory = context.Project
                 select new LinterWrapper.Context
                 {
@@ -41,7 +45,6 @@ namespace Linterhub.Cli.Strategy
                     RunOptions = runOptions,
                     WorkingDirectory = workingDirectory
                 };
-
 
             var r = linterRunner.RunAnalysis(contexts.First());
 

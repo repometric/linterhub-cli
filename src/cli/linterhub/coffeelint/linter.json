@@ -16,6 +16,7 @@
         "manager": "1.16.0"
     },
     "defaults": {
-        "--reporter": "file://{schema}/coffeelint/reporter.coffee"
+        "--reporter": "file://{schema}/coffeelint/reporter.coffee",
+        "": "*/**/*.coffee"
     }
 }

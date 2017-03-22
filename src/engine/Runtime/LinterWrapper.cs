@@ -1,5 +1,6 @@
 namespace Linterhub.Engine.Runtime
 {
+    using System.IO;
     using Linterhub.Engine.Exceptions;
     using Linterhub.Engine.Schema;
 
@@ -62,7 +63,7 @@ namespace Linterhub.Engine.Runtime
         protected string Run(LinterWrapper.Context context, string command, string commandSeparator = " ", int successCode = 0)
         {
             var linter = context.Specification.Schema.Name + commandSeparator;
-            var result = Terminal.RunTerminal(linter + command, context.WorkingDirectory);
+            var result = Terminal.RunTerminal(linter + command, Path.GetFullPath(context.WorkingDirectory));
 
             if (result.RunException != null)
             {
