@@ -7,3 +7,4 @@ obj
 _/
 __/
 Linters/
+test/integration/actual/*.log

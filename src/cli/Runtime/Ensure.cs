@@ -81,7 +81,7 @@ namespace Linterhub.Cli.Runtime
 
         public void FileExists()
         {
-            if (!File.Exists(Context.Directory))
+            if (!File.Exists(Context.File))
             {
                 throw new LinterFileSystemException(nameof(Context.File), Context.File);
             }

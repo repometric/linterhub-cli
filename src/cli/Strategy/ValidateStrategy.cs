@@ -47,13 +47,13 @@ namespace Linterhub.Cli.Strategy
                 context.Directory = Path.Combine(context.Project, context.Directory);
                 ensure.DirectoryExists();
             }
-
+/* 
             if (!string.IsNullOrEmpty(context.File) && !File.Exists(context.File))
             {
                 context.File = Path.Combine(context.Project, context.File);
                 ensure.FileExists();
             }
-
+*/
             return null;
         }
 
