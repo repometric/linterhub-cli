@@ -193,8 +193,12 @@
                 "postfix": {
                     "type": "string",
                     "description": "Postfix in terminal (normaly post processor)"
+                },
+                "successCode": {
+                    "type": "integer",
+                    "description": "Success exit code"
                 }
-            } 
+            }
         }
     }
 }

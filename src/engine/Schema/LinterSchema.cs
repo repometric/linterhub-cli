@@ -57,6 +57,11 @@ namespace Linterhub.Engine.Schema
         public RequirementDefinition[] Requirements { get; set; }
 
         /// <summary>
+        /// Gets or sets the success exit code.
+        /// </summary>
+        public int SuccessCode { get; set; }
+
+        /// <summary>
         /// Represents the version definition.
         /// </summary>
         public class VersionDefinition

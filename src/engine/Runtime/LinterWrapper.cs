@@ -38,7 +38,7 @@ namespace Linterhub.Engine.Runtime
         public string RunAnalysis(LinterWrapper.Context context)
         {
             var command = CommandFactory.GetAnalyzeCommand(context.Specification, context.RunOptions, context.ConfigOptions);
-            return Run(context, command);
+            return Run(context, command, successCode: context.Specification.Schema.SuccessCode);
         }
 
         /// <summary>

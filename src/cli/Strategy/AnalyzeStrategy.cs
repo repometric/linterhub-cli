@@ -51,6 +51,17 @@ namespace Linterhub.Cli.Strategy
 
             var zx = linterRunner.RunVersion(contexts.First());
             var t = r.DeserializeAsJson<LinterOutputSchema.File[]>();
+
+            foreach (var file in t)
+            {
+                file.FilePath = file
+                    .FilePath
+                    .Replace(context.Project, string.Empty)
+                    .Replace(System.IO.Path.GetFullPath(context.Project), string.Empty)
+                    .TrimStart('/')
+                    .TrimStart('\\');
+            }
+
             return t;
             /* 
             var linterResults = new List<RunResult>();

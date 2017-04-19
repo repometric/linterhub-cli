@@ -186,6 +186,7 @@
         "package": "standard-json"
       }
     ],
+    "successCode": 1,
     "postfix": " | standard-json",
     "active": false
   }

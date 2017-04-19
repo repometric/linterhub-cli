@@ -18,6 +18,8 @@
     },
     "postfix": " | standard-json",
     "defaults": {
-        "--verbose": null
-    }
+        "--verbose": null,
+        "": "*/**/*.js"
+    },
+    "successCode": 1
 }
