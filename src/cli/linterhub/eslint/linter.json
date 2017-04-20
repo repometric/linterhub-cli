@@ -16,6 +16,8 @@
         "manager": "3.2.0"
     },
     "defaults": {
-        "--format": "json"
+        "--format": "json",
+        "--config": "file://{schema}/eslint/.eslintrc.js",
+        "": "*/**/*.js"
     }
 }
