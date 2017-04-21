@@ -1,0 +1,26 @@
+[
+  {
+    "name": "coffeelint",
+    "url": "http://www.coffeelint.org"
+  },
+  {
+    "name": "csslint",
+    "url": "http://csslint.net"
+  },
+  {
+    "name": "eslint",
+    "url": "http://eslint.org"
+  },
+  {
+    "name": "htmlhint",
+    "url": "http://htmlhint.com"
+  },
+  {
+    "name": "jshint",
+    "url": "http://jshint.com"
+  },
+  {
+    "name": "standard",
+    "url": "http://standardjs.com"
+  }
+]
