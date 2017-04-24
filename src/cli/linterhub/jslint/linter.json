@@ -26,12 +26,13 @@
             "package": "jslint"
         }
     ],
+    "postfix": " | node file://{schema}/jslint/reporter.js",
     "version": {
         "local": "node-jslint version: 0.10.3  JSLint edition 2013-08-26",
         "manager": "0.10.3"
     },
     "defaults": {
-        "": "**/**/*.js | node file://{schema}/jslint/reporter.js",
+        "": "**/**/*.js",
         "--json": ""
     }
 }

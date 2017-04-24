@@ -153,6 +153,7 @@
                     "description": "Show version of linter"
                 },
                 "": {
+                    "id": "{path}",
                     "type": "string",
                     "description": "Path for analysis"
                 }

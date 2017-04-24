@@ -18,7 +18,12 @@ namespace Linterhub.Engine.Schema
             var command = string.Join(argSeparator, args);
             if (specification.Schema.Postfix != null)
             {
-                command = command + specification.Schema.Postfix;
+                var postfix = specification.Schema.Postfix;
+                foreach (var runtimeOption in runtimeOptions)
+                {
+                    postfix = postfix?.Replace(runtimeOption.Key, runtimeOption.Value);
+                }
+                command = command + postfix;
             }
 
             return command;
