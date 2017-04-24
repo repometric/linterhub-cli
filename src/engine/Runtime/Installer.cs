@@ -2,6 +2,7 @@ namespace Linterhub.Engine.Runtime
 {
     using System.Linq;
     using Linterhub.Engine.Schema;
+    using static Schema.LinterSchema;
 
     public class Installer
     {
@@ -14,21 +15,39 @@ namespace Linterhub.Engine.Runtime
             IsInstalledCommand = isInstalledCommand;
         }
 
-        public InstallResult IsInstalled(string program)
+        public InstallResult IsInstalled(RequirementDefinition requirement)
         {
-            var command = string.Format(IsInstalledCommand, program);
-            var result = Terminal.RunTerminal(command);
-            return new InstallResult
+            // var command = string.Format(IsInstalledCommand, package);
+            // hot fix
+            var command = string.Format("{0} --version", requirement.Package);
+
+            switch(requirement.Manager)
             {
-                Installed = result.ExitCode == 0
-            };
+                case "npm":
+                case "pip":
+                    command = "npm list -g --depth=0";
+                    if (requirement.Manager == "pip")
+                        command = "pip show " + requirement.Package;
+                    return new InstallResult
+                    {
+                        Installed = Terminal.RunTerminal(command)
+                                    .Output.ToString()
+                                    .Contains(requirement.Package)
+                    };
+                default:
+                    var result = Terminal.RunTerminal(command);
+                    return new InstallResult
+                    {
+                        Installed = result.ExitCode == 0
+                    };
+            }
         }
 
         public InstallResult Install(LinterSpecification specification)
         {
             var requirementsChecks = specification.Schema.Requirements.Select(requirement => 
             {
-                var installCheck = IsInstalled(requirement.Package);
+                var installCheck = IsInstalled(requirement);
                 if (installCheck.Installed)
                 {
                     return installCheck;
@@ -40,23 +59,25 @@ namespace Linterhub.Engine.Runtime
             return requirementsChecks.FirstOrDefault(x => !x.Installed) ?? new InstallResult { Installed = true };
         }
 
-        private InstallResult Install(LinterSchema.RequirementDefinition requirement)
+        private InstallResult Install(RequirementDefinition requirement)
         {
-            if (requirement.Manager == "npm")
+            var command = "";
+            switch(requirement.Manager)
             {
-                return InstallNpm(requirement.Package);
+                case "npm":
+                    command = $"npm install {requirement.Package} -g";
+                    break;
+                case "pip":
+                    command = $"pip install {requirement.Package}";
+                    break;
+                default:
+                    return new InstallResult
+                    {
+                        Installed = false,
+                        Message = $"Automatic installation for '{requirement.Package}' using '{requirement.Manager}' is not supported"
+                    };
             }
 
-            return new InstallResult
-            {
-                Installed = false,
-                Message = $"Automatic installation for '{requirement.Package}' using '{requirement.Manager}' is not supported"
-            };
-        }
-
-        private InstallResult InstallNpm(string package)
-        {
-            var command = $"npm install {package} -g";
             var result = Terminal.RunTerminal(command);
             var stdError = result.Error.ToString().Trim();
             var isInstalled = result.ExitCode == 0 && string.IsNullOrEmpty(stdError) && result.RunException == null;
