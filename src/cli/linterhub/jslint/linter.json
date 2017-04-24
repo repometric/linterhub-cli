@@ -1,0 +1,37 @@
+{
+    "$schema": "./../linter.schema.json",
+    "name": "jslint",
+    "description": "The JavaScript Code Quality Tool.",
+    "url": "http://jslint.com",
+    "languages": [
+        "javascript"
+    ],
+    "extensions": [
+        "*.js"
+    ],
+    "license": "MIT",
+    "areas": [
+        "syntax",
+        "formatting",
+        "complexity",
+        "unused code"
+    ],
+    "requirements": [
+        {
+            "manager": "system",
+            "package": "npm"
+        },
+        {
+            "manager": "npm",
+            "package": "jslint"
+        }
+    ],
+    "version": {
+        "local": "node-jslint version: 0.10.3  JSLint edition 2013-08-26",
+        "manager": "0.10.3"
+    },
+    "defaults": {
+        "": "**/**/*.js | node file://{schema}/jslint/reporter.js",
+        "--json": ""
+    }
+}
