@@ -26,25 +26,19 @@ module.exports = {
             files[record.file].push({
                 message: error.reason,
                 severity: severity,
-                line: error.evidence,
-                row: {
-                    start: error.line,
-                    end: error.line
-                },
-                column: {
-                    start: error.character,
-                    end: 1000
-                },
-                rule: {
-                    id: error.code,
-                    name: error.id,
-                    namespace: error.scope
-                }
+                source: error.evidence,
+                line: error.line,
+                lineEnd: error.line,
+                column: error.character,
+                columnEnd: 1000,
+                ruleId: error.code,
+                ruleName: error.id,
+                ruleNamespace: error.scope
             });
         });
         process.stdout.write(JSON.stringify(Object.keys(files).map(function (key) {
             return {
-                path: key,
+                filePath: key,
                 messages: files[key]
             }
         })));
