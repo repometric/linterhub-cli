@@ -32,7 +32,7 @@ function processLine(line) {
         data[1].forEach(function (problem) {
             obj.messages.push({
                 message: problem.reason,
-                severity: problem.id == "(error)" ? "error" : "warning",
+                severity: problem.id === "(error)" ? "error" : "warning",
                 source: problem.evidence,
                 line: problem.line - 1,
                 lineEnd: problem.line - 1,
@@ -46,5 +46,5 @@ function processLine(line) {
 }
 
 function print_result() {
-    console.log(JSON.stringify(result))
+    console.log(JSON.stringify(result));
 }
