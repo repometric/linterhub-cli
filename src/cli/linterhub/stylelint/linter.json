@@ -1,0 +1,36 @@
+{
+  "$schema": "./../linter.schema.json",
+  "name": "stylelint",
+  "description": "A mighty, modern CSS linter that helps you enforce consistent conventions and avoid errors in your stylesheets.",
+  "url": "https://stylelint.io/",
+  "languages": [
+    "css"
+  ],
+  "extensions": [
+    "*.css", "*.scss", "*.less", ".sss"
+  ],
+  "license": "MIT",
+  "areas": [
+    "simplification",
+    "syntax",
+    "formatting"
+  ],
+  "requirements": [
+    {
+      "manager": "system",
+      "package": "npm"
+    },
+    {
+      "manager": "npm",
+      "package": "stylelint"
+    }
+  ],
+  "version": {
+    "local": "7.10.1",
+    "manager": "7.10.1"
+  },
+  "defaults": {
+    "": "**/**/*.js",
+    "--custom-formatter": "file://{schema}/stylelint/reporter.js"
+  }
+}
