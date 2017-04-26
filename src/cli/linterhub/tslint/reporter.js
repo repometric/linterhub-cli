@@ -26,7 +26,7 @@ function processLine(line) {
             var obj = result.find(function (element, index, array) {
                 return problem.name === element.filePath;
             });
-            if (obj == undefined) {
+            if (obj === undefined) {
                 obj = {
                     filePath: problem.name,
                     messages: []
