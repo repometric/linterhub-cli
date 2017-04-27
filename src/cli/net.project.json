@@ -1,5 +1,5 @@
 {
-  "version": "1.2.2-*",
+  "version": "0.4.0",
   "buildOptions": {
     "outputName": "cli",
     "debugType": "portable",
@@ -15,15 +15,15 @@
   "dependencies": {
     "NETStandard.Library": {
       "type": "platform",
-      "version": "1.6.0"
+      "version": "1.6.1"
     },
-    "Mono.Options": "4.4.0",
-    "System.Diagnostics.Process": "4.1.0",
-    "engine": "1.1.2-*"
+    "Mono.Options": "5.3.0",
+    "System.Diagnostics.Process": "4.3.0",
+    "engine": "0.4.0"
   },
 
   "frameworks": {
-    "netstandard1.6": {
+    "netstandard1.6.1": {
        "imports": "dnxcore50"
     }
   }
