@@ -14,7 +14,7 @@
       "properties": {
         "--config": {
           "type": "string",
-          "description": " The location of the configuration file"
+          "description": "The location of the configuration file"
         },
         "--exclude": {
           "type": "array",

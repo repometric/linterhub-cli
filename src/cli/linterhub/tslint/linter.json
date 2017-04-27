@@ -39,6 +39,7 @@
   "defaults": {
     "": "**/**/*.js",
     "--force": true,
-    "--format": "json"
+    "--format": "json",
+    "--config": "file://{schema}/tslint/tslint.json"
   }
 }
