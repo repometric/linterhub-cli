@@ -21,31 +21,30 @@ process.stdin.on('end', function () {
 var result = [];
 
 function processLine(line) {
-        var data = JSON.parse(line);
-        data.forEach(function (problem) {
-            var obj = result.find(function (element, index, array) {
-                return problem.name === element.filePath;
-            });
-            if (obj === undefined) {
-                obj = {
-                    filePath: problem.name,
-                    messages: []
-                };
-            }
-            else result.splice(result.lastIndexOf(obj), 1);
-            obj.messages.push({
-                message: problem.failure,
-                severity: problem.ruleSeverity === "ERROR" ? "error" : "warning",
-                line: problem.startPosition.line,
-                lineEnd: problem.endPosition.line,
-                column: problem.startPosition.character ,
-                columnEnd: problem.endPosition.character,
-                ruleId: "tslint:" + problem.ruleName,
-                ruleName: problem.ruleName
-            });
-            result.push(obj);
+    var data = JSON.parse(line);
+    data.forEach(function (problem) {
+        var obj = result.find(function (element, index, array) {
+            return problem.name === element.filePath;
         });
-        print_result();
+        if (obj === undefined) {
+            obj = {
+                filePath: problem.name,
+                messages: []
+            };
+            result.push(obj);
+        }
+        obj.messages.push({
+            message: problem.failure,
+            severity: problem.ruleSeverity === "ERROR" ? "error" : "warning",
+            line: problem.startPosition.line,
+            lineEnd: problem.endPosition.line,
+            column: problem.startPosition.character,
+            columnEnd: problem.endPosition.character,
+            ruleId: "tslint:" + problem.ruleName,
+            ruleName: problem.ruleName
+        });
+    });
+    print_result();
 }
 
 function print_result() {
