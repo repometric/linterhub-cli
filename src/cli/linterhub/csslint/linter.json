@@ -1,18 +1,30 @@
 {
-    "$schema": "./../linter.schema.json",
-    "name": "csslint",
-    "description": "Automated linting of Cascading Stylesheets",
-    "url": "http://csslint.net",
-    "languages": [ "css" ],
-    "extensions": [ "*.css" ],
-    "license": "MIT",
-    "areas": [ "syntax", "code simplification" ],
-    "requirements": [ 
-        { "manager": "system", "package": "npm" },
-        { "manager": "npm", "package": "csslint" }
-    ],
-    "version": {
-        "local": "v1.0.3",
-        "manager": "1.0.3"    
+  "$schema": "./../linter.schema.json",
+  "name": "csslint",
+  "description": "Automated linting of Cascading Stylesheets",
+  "url": "http://csslint.net",
+  "languages": [ "css" ],
+  "extensions": [ "*.css" ],
+  "license": "MIT",
+  "areas": [ "syntax", "code simplification" ],
+  "requirements": [
+    {
+      "manager": "system",
+      "package": "npm"
+    },
+    {
+      "manager": "npm",
+      "package": "csslint"
     }
+  ],
+  "version": {
+    "local": "v1.0.3",
+    "manager": "1.0.3"
+  },
+  "postfix": " | node file://{schema}/csslint/reporter.js",
+  "optionsDelimiter": "=",
+  "defaults": {
+    "": "./",
+    "--format": "compact"
+  }
 }

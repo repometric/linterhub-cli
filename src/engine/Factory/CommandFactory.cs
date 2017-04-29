@@ -13,8 +13,9 @@ namespace Linterhub.Engine.Schema
             LinterOptions configOptions,
             string argSeparator = " ")
         {
+            var valueSeparator = specification.Schema.OptionsDelimiter ?? " ";
             var options = MergeOptions(configOptions, specification);
-            var args = options.Select(x => BuildArg(runtimeOptions, x)).Where(x => !string.IsNullOrEmpty(x));
+            var args = options.Select(x => BuildArg(runtimeOptions, x, valueSeparator)).Where(x => !string.IsNullOrEmpty(x));
             var command = string.Join(argSeparator, args);
             if (specification.Schema.Postfix != null)
             {
