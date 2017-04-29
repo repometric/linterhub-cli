@@ -60,7 +60,9 @@
         "package": "csslint"
       }
     ],
-    "active": false
+    "postfix": " | node file://{schema}/csslint/reporter.js",
+    "active": false,
+    "optionsDelimiter": "="
   },
   {
     "name": "eslint",

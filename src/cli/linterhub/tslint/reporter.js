@@ -14,10 +14,6 @@ process.stdin.on('data', function (chunk) {
     lines.forEach(processLine);
 });
 
-process.stdin.on('end', function () {
-    processLine(lingeringLine);
-});
-
 var result = [];
 
 function processLine(line) {

@@ -15,52 +15,45 @@ process.stdin.on('data', function (chunk) {
 });
 
 process.stdin.on('end', function () {
-    processLine(lingeringLine);
+    print_result();
 });
 
 var result = [];
 
 function processLine(line) {
-    if (line === "")
-        print_result();
-    else {
-        var arr = line.split(":");
-        var filePath = "";
-        var sdv = 0;
+    var regex = /(.*):([0-9]+):([0-9]+): (.*) \((.*)\)/g;
+    var match = regex.exec(line);
 
-        if (arr.length != 4)
-            sdv = arr.length - 4;
-
-        for (var i = 0; i <= sdv; ++i)
-        {
-            filePath += arr[i];
-            if (i != sdv)
-                filePath += ":";
-        }
-
-        filePath = filePath.trim();
-
-        var problem = {
-            line: arr[1 + sdv] - 1,
-            lineEnd: arr[1 + sdv] - 1,
-            column: arr[2 + sdv],
-            columnEnd: 1000,
-            message: arr[3 + sdv].split("(")[0].trim(),
-            ruleId: (arr[3 + sdv].split("(")[1]).split(")")[0].trim()
-        };
-
-        var obj = result.find(function (element, index, array) {
-            return filePath === element.filePath;
-        });
-        if (obj === undefined) {
-            obj = {
-                filePath: filePath,
-                messages: []
-            };
-            result.push(obj);
-        }
-        obj.messages.push(problem);
+    if (match == null) {
+        return;
     }
+
+    var problem = {
+        message: match[4],
+        severity: "warning",
+        line: match[2] - 1,
+        lineEnd: match[2] - 1,
+        column: match[3] - 1,
+        columnEnd: 1000,
+        ruleId: "standard:" + match[5],
+        ruleName: match[5]
+    }
+
+    var filePath = match[1].trim();
+
+    var obj = result.find(function (element, index, array) {
+        return filePath === element.filePath;
+    });
+
+    if (obj === undefined) {
+        obj = {
+            filePath: filePath,
+            messages: []
+        };
+        result.push(obj);
+    }
+
+    obj.messages.push(problem);
 }
 
 function print_result() {

@@ -4,1523 +4,1713 @@
     "messages": [
       {
         "message": "'TocTypeEnum' is not defined.",
-        "column": "1",
+        "severity": 4,
+        "column": "0",
         "columnEnd": "1000",
         "line": "0",
         "lineEnd": "0",
-        "ruleId": "no-undef"
+        "ruleId": "standard:no-undef"
       },
       {
         "message": "Extra semicolon.",
-        "column": "2",
+        "severity": 4,
+        "column": "1",
         "columnEnd": "1000",
         "line": "3",
         "lineEnd": "3",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Missing space before function parentheses.",
-        "column": "19",
+        "severity": 4,
+        "column": "18",
         "columnEnd": "1000",
         "line": "5",
         "lineEnd": "5",
-        "ruleId": "space-before-function-paren"
+        "ruleId": "standard:space-before-function-paren"
       },
       {
         "message": "Block must not be padded by blank lines.",
-        "column": "32",
+        "severity": 4,
+        "column": "31",
         "columnEnd": "1000",
         "line": "5",
         "lineEnd": "5",
-        "ruleId": "padded-blocks"
+        "ruleId": "standard:padded-blocks"
       },
       {
         "message": "Extra semicolon.",
-        "column": "48",
+        "severity": 4,
+        "column": "47",
         "columnEnd": "1000",
         "line": "8",
         "lineEnd": "8",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Extra semicolon.",
-        "column": "35",
+        "severity": 4,
+        "column": "34",
         "columnEnd": "1000",
         "line": "10",
         "lineEnd": "10",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Extra semicolon.",
-        "column": "14",
+        "severity": 4,
+        "column": "13",
         "columnEnd": "1000",
         "line": "11",
         "lineEnd": "11",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Expected indentation of 4 spaces but found 6.",
-        "column": "7",
+        "severity": 4,
+        "column": "6",
         "columnEnd": "1000",
         "line": "14",
         "lineEnd": "14",
-        "ruleId": "indent"
+        "ruleId": "standard:indent"
       },
       {
         "message": "Expected indentation of 6 spaces but found 8.",
-        "column": "9",
+        "severity": 4,
+        "column": "8",
         "columnEnd": "1000",
         "line": "15",
         "lineEnd": "15",
-        "ruleId": "indent"
+        "ruleId": "standard:indent"
       },
       {
         "message": "'TocTypeEnum' is not defined.",
-        "column": "19",
+        "severity": 4,
+        "column": "18",
         "columnEnd": "1000",
         "line": "15",
         "lineEnd": "15",
-        "ruleId": "no-undef"
+        "ruleId": "standard:no-undef"
       },
       {
         "message": "Extra semicolon.",
-        "column": "41",
+        "severity": 4,
+        "column": "40",
         "columnEnd": "1000",
         "line": "15",
         "lineEnd": "15",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Expected indentation of 6 spaces but found 8.",
-        "column": "9",
+        "severity": 4,
+        "column": "8",
         "columnEnd": "1000",
         "line": "16",
         "lineEnd": "16",
-        "ruleId": "indent"
+        "ruleId": "standard:indent"
       },
       {
         "message": "Extra semicolon.",
-        "column": "14",
+        "severity": 4,
+        "column": "13",
         "columnEnd": "1000",
         "line": "16",
         "lineEnd": "16",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Expected indentation of 4 spaces but found 6.",
-        "column": "7",
+        "severity": 4,
+        "column": "6",
         "columnEnd": "1000",
         "line": "17",
         "lineEnd": "17",
-        "ruleId": "indent"
+        "ruleId": "standard:indent"
       },
       {
         "message": "Expected indentation of 6 spaces but found 8.",
-        "column": "9",
+        "severity": 4,
+        "column": "8",
         "columnEnd": "1000",
         "line": "18",
         "lineEnd": "18",
-        "ruleId": "indent"
+        "ruleId": "standard:indent"
       },
       {
         "message": "'TocTypeEnum' is not defined.",
-        "column": "19",
+        "severity": 4,
+        "column": "18",
         "columnEnd": "1000",
         "line": "18",
         "lineEnd": "18",
-        "ruleId": "no-undef"
+        "ruleId": "standard:no-undef"
       },
       {
         "message": "Extra semicolon.",
-        "column": "39",
+        "severity": 4,
+        "column": "38",
         "columnEnd": "1000",
         "line": "18",
         "lineEnd": "18",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Expected indentation of 6 spaces but found 8.",
-        "column": "9",
+        "severity": 4,
+        "column": "8",
         "columnEnd": "1000",
         "line": "19",
         "lineEnd": "19",
-        "ruleId": "indent"
+        "ruleId": "standard:indent"
       },
       {
         "message": "Extra semicolon.",
-        "column": "14",
+        "severity": 4,
+        "column": "13",
         "columnEnd": "1000",
         "line": "19",
         "lineEnd": "19",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Expected indentation of 4 spaces but found 6.",
-        "column": "7",
+        "severity": 4,
+        "column": "6",
         "columnEnd": "1000",
         "line": "20",
         "lineEnd": "20",
-        "ruleId": "indent"
+        "ruleId": "standard:indent"
       },
       {
         "message": "Expected indentation of 6 spaces but found 8.",
-        "column": "9",
+        "severity": 4,
+        "column": "8",
         "columnEnd": "1000",
         "line": "21",
         "lineEnd": "21",
-        "ruleId": "indent"
+        "ruleId": "standard:indent"
       },
       {
         "message": "'TocTypeEnum' is not defined.",
-        "column": "19",
+        "severity": 4,
+        "column": "18",
         "columnEnd": "1000",
         "line": "21",
         "lineEnd": "21",
-        "ruleId": "no-undef"
+        "ruleId": "standard:no-undef"
       },
       {
         "message": "Extra semicolon.",
-        "column": "39",
+        "severity": 4,
+        "column": "38",
         "columnEnd": "1000",
         "line": "21",
         "lineEnd": "21",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Expected indentation of 6 spaces but found 8.",
-        "column": "9",
+        "severity": 4,
+        "column": "8",
         "columnEnd": "1000",
         "line": "22",
         "lineEnd": "22",
-        "ruleId": "indent"
+        "ruleId": "standard:indent"
       },
       {
         "message": "Extra semicolon.",
-        "column": "14",
+        "severity": 4,
+        "column": "13",
         "columnEnd": "1000",
         "line": "22",
         "lineEnd": "22",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Extra semicolon.",
-        "column": "20",
+        "severity": 4,
+        "column": "19",
         "columnEnd": "1000",
         "line": "27",
         "lineEnd": "27",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Identifier 'toc_levels' is not in camel case.",
-        "column": "14",
+        "severity": 4,
+        "column": "13",
         "columnEnd": "1000",
         "line": "28",
         "lineEnd": "28",
-        "ruleId": "camelcase"
+        "ruleId": "standard:camelcase"
       },
       {
         "message": "Extra semicolon.",
-        "column": "28",
+        "severity": 4,
+        "column": "27",
         "columnEnd": "1000",
         "line": "29",
         "lineEnd": "29",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Extra semicolon.",
-        "column": "58",
+        "severity": 4,
+        "column": "57",
         "columnEnd": "1000",
         "line": "35",
         "lineEnd": "35",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Extra semicolon.",
-        "column": "52",
+        "severity": 4,
+        "column": "51",
         "columnEnd": "1000",
         "line": "38",
         "lineEnd": "38",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Extra semicolon.",
-        "column": "33",
+        "severity": 4,
+        "column": "32",
         "columnEnd": "1000",
         "line": "39",
         "lineEnd": "39",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Extra semicolon.",
-        "column": "40",
+        "severity": 4,
+        "column": "39",
         "columnEnd": "1000",
         "line": "40",
         "lineEnd": "40",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Extra semicolon.",
-        "column": "48",
+        "severity": 4,
+        "column": "47",
         "columnEnd": "1000",
         "line": "41",
         "lineEnd": "41",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Extra semicolon.",
-        "column": "30",
+        "severity": 4,
+        "column": "29",
         "columnEnd": "1000",
         "line": "42",
         "lineEnd": "42",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Extra semicolon.",
-        "column": "38",
+        "severity": 4,
+        "column": "37",
         "columnEnd": "1000",
         "line": "43",
         "lineEnd": "43",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Extra semicolon.",
-        "column": "24",
+        "severity": 4,
+        "column": "23",
         "columnEnd": "1000",
         "line": "44",
         "lineEnd": "44",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Extra semicolon.",
-        "column": "61",
+        "severity": 4,
+        "column": "60",
         "columnEnd": "1000",
         "line": "45",
         "lineEnd": "45",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Extra semicolon.",
-        "column": "34",
+        "severity": 4,
+        "column": "33",
         "columnEnd": "1000",
         "line": "46",
         "lineEnd": "46",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Extra semicolon.",
-        "column": "49",
+        "severity": 4,
+        "column": "48",
         "columnEnd": "1000",
         "line": "49",
         "lineEnd": "49",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Expected '===' and instead saw '=='.",
-        "column": "15",
+        "severity": 4,
+        "column": "14",
         "columnEnd": "1000",
         "line": "50",
         "lineEnd": "50",
-        "ruleId": "eqeqeq"
+        "ruleId": "standard:eqeqeq"
       },
       {
         "message": "'TocTypeEnum' is not defined.",
-        "column": "18",
+        "severity": 4,
+        "column": "17",
         "columnEnd": "1000",
         "line": "50",
         "lineEnd": "50",
-        "ruleId": "no-undef"
+        "ruleId": "standard:no-undef"
       },
       {
         "message": "Extra semicolon.",
-        "column": "35",
+        "severity": 4,
+        "column": "34",
         "columnEnd": "1000",
         "line": "51",
         "lineEnd": "51",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Extra semicolon.",
-        "column": "28",
+        "severity": 4,
+        "column": "27",
         "columnEnd": "1000",
         "line": "53",
         "lineEnd": "53",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Identifier 'tbody_element' is not in camel case.",
-        "column": "7",
+        "severity": 4,
+        "column": "6",
         "columnEnd": "1000",
         "line": "55",
         "lineEnd": "55",
-        "ruleId": "camelcase"
+        "ruleId": "standard:camelcase"
       },
       {
         "message": "Extra semicolon.",
-        "column": "54",
+        "severity": 4,
+        "column": "53",
         "columnEnd": "1000",
         "line": "55",
         "lineEnd": "55",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Extra semicolon.",
-        "column": "46",
+        "severity": 4,
+        "column": "45",
         "columnEnd": "1000",
         "line": "56",
         "lineEnd": "56",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Extra semicolon.",
-        "column": "34",
+        "severity": 4,
+        "column": "33",
         "columnEnd": "1000",
         "line": "57",
         "lineEnd": "57",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Extra semicolon.",
-        "column": "38",
+        "severity": 4,
+        "column": "37",
         "columnEnd": "1000",
         "line": "58",
         "lineEnd": "58",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "'firstHeading' is assigned a value but never used.",
-        "column": "7",
+        "severity": 4,
+        "column": "6",
         "columnEnd": "1000",
         "line": "61",
         "lineEnd": "61",
-        "ruleId": "no-unused-vars"
+        "ruleId": "standard:no-unused-vars"
       },
       {
         "message": "Extra semicolon.",
-        "column": "33",
+        "severity": 4,
+        "column": "32",
         "columnEnd": "1000",
         "line": "61",
         "lineEnd": "61",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Extra semicolon.",
-        "column": "54",
+        "severity": 4,
+        "column": "53",
         "columnEnd": "1000",
         "line": "62",
         "lineEnd": "62",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Extra semicolon.",
-        "column": "70",
+        "severity": 4,
+        "column": "69",
         "columnEnd": "1000",
         "line": "65",
         "lineEnd": "65",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "'TocTypeEnum' is not defined.",
-        "column": "10",
+        "severity": 4,
+        "column": "9",
         "columnEnd": "1000",
         "line": "68",
         "lineEnd": "68",
-        "ruleId": "no-undef"
+        "ruleId": "standard:no-undef"
       },
       {
         "message": "Expected indentation of 6 spaces but found 8.",
-        "column": "9",
+        "severity": 4,
+        "column": "8",
         "columnEnd": "1000",
         "line": "69",
         "lineEnd": "69",
-        "ruleId": "indent"
+        "ruleId": "standard:indent"
       },
       {
         "message": "Extra semicolon.",
-        "column": "79",
+        "severity": 4,
+        "column": "78",
         "columnEnd": "1000",
         "line": "69",
         "lineEnd": "69",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Expected indentation of 6 spaces but found 8.",
-        "column": "9",
+        "severity": 4,
+        "column": "8",
         "columnEnd": "1000",
         "line": "70",
         "lineEnd": "70",
-        "ruleId": "indent"
+        "ruleId": "standard:indent"
       },
       {
         "message": "Extra semicolon.",
-        "column": "14",
+        "severity": 4,
+        "column": "13",
         "columnEnd": "1000",
         "line": "70",
         "lineEnd": "70",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "'TocTypeEnum' is not defined.",
-        "column": "10",
+        "severity": 4,
+        "column": "9",
         "columnEnd": "1000",
         "line": "71",
         "lineEnd": "71",
-        "ruleId": "no-undef"
+        "ruleId": "standard:no-undef"
       },
       {
         "message": "Expected indentation of 6 spaces but found 8.",
-        "column": "9",
+        "severity": 4,
+        "column": "8",
         "columnEnd": "1000",
         "line": "72",
         "lineEnd": "72",
-        "ruleId": "indent"
+        "ruleId": "standard:indent"
       },
       {
         "message": "Extra semicolon.",
-        "column": "77",
+        "severity": 4,
+        "column": "76",
         "columnEnd": "1000",
         "line": "72",
         "lineEnd": "72",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Expected indentation of 6 spaces but found 8.",
-        "column": "9",
+        "severity": 4,
+        "column": "8",
         "columnEnd": "1000",
         "line": "73",
         "lineEnd": "73",
-        "ruleId": "indent"
+        "ruleId": "standard:indent"
       },
       {
         "message": "Extra semicolon.",
-        "column": "14",
+        "severity": 4,
+        "column": "13",
         "columnEnd": "1000",
         "line": "73",
         "lineEnd": "73",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Expected indentation of 2 spaces but found 3.",
-        "column": "4",
+        "severity": 4,
+        "column": "3",
         "columnEnd": "1000",
         "line": "75",
         "lineEnd": "75",
-        "ruleId": "indent"
+        "ruleId": "standard:indent"
       },
       {
         "message": "Missing space before function parentheses.",
-        "column": "29",
+        "severity": 4,
+        "column": "28",
         "columnEnd": "1000",
         "line": "78",
         "lineEnd": "78",
-        "ruleId": "space-before-function-paren"
+        "ruleId": "standard:space-before-function-paren"
       },
       {
         "message": "Identifier 'tbody_element' is not in camel case.",
-        "column": "50",
+        "severity": 4,
+        "column": "49",
         "columnEnd": "1000",
         "line": "79",
         "lineEnd": "79",
-        "ruleId": "camelcase"
+        "ruleId": "standard:camelcase"
       },
       {
         "message": "Block must not be padded by blank lines.",
-        "column": "65",
+        "severity": 4,
+        "column": "64",
         "columnEnd": "1000",
         "line": "79",
         "lineEnd": "79",
-        "ruleId": "padded-blocks"
+        "ruleId": "standard:padded-blocks"
       },
       {
         "message": "Extra semicolon.",
-        "column": "12",
+        "severity": 4,
+        "column": "11",
         "columnEnd": "1000",
         "line": "82",
         "lineEnd": "82",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Extra semicolon.",
-        "column": "29",
+        "severity": 4,
+        "column": "28",
         "columnEnd": "1000",
         "line": "83",
         "lineEnd": "83",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Extra semicolon.",
-        "column": "30",
+        "severity": 4,
+        "column": "29",
         "columnEnd": "1000",
         "line": "87",
         "lineEnd": "87",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Extra semicolon.",
-        "column": "52",
+        "severity": 4,
+        "column": "51",
         "columnEnd": "1000",
         "line": "90",
         "lineEnd": "90",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Extra semicolon.",
-        "column": "67",
+        "severity": 4,
+        "column": "66",
         "columnEnd": "1000",
         "line": "92",
         "lineEnd": "92",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Expected '===' and instead saw '=='.",
-        "column": "16",
+        "severity": 4,
+        "column": "15",
         "columnEnd": "1000",
         "line": "95",
         "lineEnd": "95",
-        "ruleId": "eqeqeq"
+        "ruleId": "standard:eqeqeq"
       },
       {
         "message": "'toc_current_row' is not defined.",
-        "column": "7",
+        "severity": 4,
+        "column": "6",
         "columnEnd": "1000",
         "line": "96",
         "lineEnd": "96",
-        "ruleId": "no-undef"
+        "ruleId": "standard:no-undef"
       },
       {
         "message": "Identifier 'toc_current_row' is not in camel case.",
-        "column": "7",
+        "severity": 4,
+        "column": "6",
         "columnEnd": "1000",
         "line": "96",
         "lineEnd": "96",
-        "ruleId": "camelcase"
+        "ruleId": "standard:camelcase"
       },
       {
         "message": "Extra semicolon.",
-        "column": "61",
+        "severity": 4,
+        "column": "60",
         "columnEnd": "1000",
         "line": "96",
         "lineEnd": "96",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Extra semicolon.",
-        "column": "29",
+        "severity": 4,
+        "column": "28",
         "columnEnd": "1000",
         "line": "97",
         "lineEnd": "97",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Expected '===' and instead saw '=='.",
-        "column": "16",
+        "severity": 4,
+        "column": "15",
         "columnEnd": "1000",
         "line": "100",
         "lineEnd": "100",
-        "ruleId": "eqeqeq"
+        "ruleId": "standard:eqeqeq"
       },
       {
         "message": "Extra semicolon.",
-        "column": "28",
+        "severity": 4,
+        "column": "27",
         "columnEnd": "1000",
         "line": "101",
         "lineEnd": "101",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Expected '!==' and instead saw '!='.",
-        "column": "16",
+        "severity": 4,
+        "column": "15",
         "columnEnd": "1000",
         "line": "104",
         "lineEnd": "104",
-        "ruleId": "eqeqeq"
+        "ruleId": "standard:eqeqeq"
       },
       {
         "message": "'toc_current_row' is not defined.",
-        "column": "22",
+        "severity": 4,
+        "column": "21",
         "columnEnd": "1000",
         "line": "105",
         "lineEnd": "105",
-        "ruleId": "no-undef"
+        "ruleId": "standard:no-undef"
       },
       {
         "message": "Extra semicolon.",
-        "column": "47",
+        "severity": 4,
+        "column": "46",
         "columnEnd": "1000",
         "line": "105",
         "lineEnd": "105",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Extra semicolon.",
-        "column": "8",
+        "severity": 4,
+        "column": "7",
         "columnEnd": "1000",
         "line": "109",
         "lineEnd": "109",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Missing space before function parentheses.",
-        "column": "22",
+        "severity": 4,
+        "column": "21",
         "columnEnd": "1000",
         "line": "114",
         "lineEnd": "114",
-        "ruleId": "space-before-function-paren"
+        "ruleId": "standard:space-before-function-paren"
       },
       {
         "message": "Block must not be padded by blank lines.",
-        "column": "42",
+        "severity": 4,
+        "column": "41",
         "columnEnd": "1000",
         "line": "114",
         "lineEnd": "114",
-        "ruleId": "padded-blocks"
+        "ruleId": "standard:padded-blocks"
       },
       {
         "message": "Identifier 'toc_tr' is not in camel case.",
-        "column": "7",
+        "severity": 4,
+        "column": "6",
         "columnEnd": "1000",
         "line": "117",
         "lineEnd": "117",
-        "ruleId": "camelcase"
+        "ruleId": "standard:camelcase"
       },
       {
         "message": "Extra semicolon.",
-        "column": "44",
+        "severity": 4,
+        "column": "43",
         "columnEnd": "1000",
         "line": "117",
         "lineEnd": "117",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Extra semicolon.",
-        "column": "31",
+        "severity": 4,
+        "column": "30",
         "columnEnd": "1000",
         "line": "118",
         "lineEnd": "118",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Extra semicolon.",
-        "column": "39",
+        "severity": 4,
+        "column": "38",
         "columnEnd": "1000",
         "line": "119",
         "lineEnd": "119",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Identifier 'toc_tr_td' is not in camel case.",
-        "column": "7",
+        "severity": 4,
+        "column": "6",
         "columnEnd": "1000",
         "line": "120",
         "lineEnd": "120",
-        "ruleId": "camelcase"
+        "ruleId": "standard:camelcase"
       },
       {
         "message": "Extra semicolon.",
-        "column": "47",
+        "severity": 4,
+        "column": "46",
         "columnEnd": "1000",
         "line": "120",
         "lineEnd": "120",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Extra semicolon.",
-        "column": "32",
+        "severity": 4,
+        "column": "31",
         "columnEnd": "1000",
         "line": "121",
         "lineEnd": "121",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Identifier 'toc_category' is not in camel case.",
-        "column": "7",
+        "severity": 4,
+        "column": "6",
         "columnEnd": "1000",
         "line": "122",
         "lineEnd": "122",
-        "ruleId": "camelcase"
+        "ruleId": "standard:camelcase"
       },
       {
         "message": "Extra semicolon.",
-        "column": "51",
+        "severity": 4,
+        "column": "50",
         "columnEnd": "1000",
         "line": "122",
         "lineEnd": "122",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Extra semicolon.",
-        "column": "38",
+        "severity": 4,
+        "column": "37",
         "columnEnd": "1000",
         "line": "123",
         "lineEnd": "123",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Extra semicolon.",
-        "column": "42",
+        "severity": 4,
+        "column": "41",
         "columnEnd": "1000",
         "line": "124",
         "lineEnd": "124",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Extra semicolon.",
-        "column": "41",
+        "severity": 4,
+        "column": "40",
         "columnEnd": "1000",
         "line": "127",
         "lineEnd": "127",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Extra semicolon.",
-        "column": "31",
+        "severity": 4,
+        "column": "30",
         "columnEnd": "1000",
         "line": "128",
         "lineEnd": "128",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Extra semicolon.",
-        "column": "41",
+        "severity": 4,
+        "column": "40",
         "columnEnd": "1000",
         "line": "129",
         "lineEnd": "129",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Extra semicolon.",
-        "column": "33",
+        "severity": 4,
+        "column": "32",
         "columnEnd": "1000",
         "line": "130",
         "lineEnd": "130",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Identifier 'toc_td' is not in camel case.",
-        "column": "7",
+        "severity": 4,
+        "column": "6",
         "columnEnd": "1000",
         "line": "133",
         "lineEnd": "133",
-        "ruleId": "camelcase"
+        "ruleId": "standard:camelcase"
       },
       {
         "message": "Extra semicolon.",
-        "column": "44",
+        "severity": 4,
+        "column": "43",
         "columnEnd": "1000",
         "line": "133",
         "lineEnd": "133",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Extra semicolon.",
-        "column": "29",
+        "severity": 4,
+        "column": "28",
         "columnEnd": "1000",
         "line": "134",
         "lineEnd": "134",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Identifier 'toc_td_div' is not in camel case.",
-        "column": "7",
+        "severity": 4,
+        "column": "6",
         "columnEnd": "1000",
         "line": "135",
         "lineEnd": "135",
-        "ruleId": "camelcase"
+        "ruleId": "standard:camelcase"
       },
       {
         "message": "Extra semicolon.",
-        "column": "49",
+        "severity": 4,
+        "column": "48",
         "columnEnd": "1000",
         "line": "135",
         "lineEnd": "135",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Extra semicolon.",
-        "column": "42",
+        "severity": 4,
+        "column": "41",
         "columnEnd": "1000",
         "line": "136",
         "lineEnd": "136",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Extra semicolon.",
-        "column": "33",
+        "severity": 4,
+        "column": "32",
         "columnEnd": "1000",
         "line": "137",
         "lineEnd": "137",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Identifier 'toc_td_div' is not in camel case.",
-        "column": "11",
+        "severity": 4,
+        "column": "10",
         "columnEnd": "1000",
         "line": "139",
         "lineEnd": "139",
-        "ruleId": "camelcase"
+        "ruleId": "standard:camelcase"
       },
       {
         "message": "Extra semicolon.",
-        "column": "22",
+        "severity": 4,
+        "column": "21",
         "columnEnd": "1000",
         "line": "139",
         "lineEnd": "139",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Missing space before function parentheses.",
-        "column": "24",
+        "severity": 4,
+        "column": "23",
         "columnEnd": "1000",
         "line": "143",
         "lineEnd": "143",
-        "ruleId": "space-before-function-paren"
+        "ruleId": "standard:space-before-function-paren"
       },
       {
         "message": "Identifier 'toc_div' is not in camel case.",
-        "column": "25",
+        "severity": 4,
+        "column": "24",
         "columnEnd": "1000",
         "line": "143",
         "lineEnd": "143",
-        "ruleId": "camelcase"
+        "ruleId": "standard:camelcase"
       },
       {
         "message": "Block must not be padded by blank lines.",
-        "column": "43",
+        "severity": 4,
+        "column": "42",
         "columnEnd": "1000",
         "line": "143",
         "lineEnd": "143",
-        "ruleId": "padded-blocks"
+        "ruleId": "standard:padded-blocks"
       },
       {
         "message": "Identifier 'toc_list_element' is not in camel case.",
-        "column": "9",
+        "severity": 4,
+        "column": "8",
         "columnEnd": "1000",
         "line": "149",
         "lineEnd": "149",
-        "ruleId": "camelcase"
+        "ruleId": "standard:camelcase"
       },
       {
         "message": "Extra semicolon.",
-        "column": "56",
+        "severity": 4,
+        "column": "55",
         "columnEnd": "1000",
         "line": "149",
         "lineEnd": "149",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Extra semicolon.",
-        "column": "45",
+        "severity": 4,
+        "column": "44",
         "columnEnd": "1000",
         "line": "150",
         "lineEnd": "150",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Extra semicolon.",
-        "column": "42",
+        "severity": 4,
+        "column": "41",
         "columnEnd": "1000",
         "line": "151",
         "lineEnd": "151",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Extra semicolon.",
-        "column": "43",
+        "severity": 4,
+        "column": "42",
         "columnEnd": "1000",
         "line": "154",
         "lineEnd": "154",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Extra semicolon.",
-        "column": "33",
+        "severity": 4,
+        "column": "32",
         "columnEnd": "1000",
         "line": "155",
         "lineEnd": "155",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Extra semicolon.",
-        "column": "43",
+        "severity": 4,
+        "column": "42",
         "columnEnd": "1000",
         "line": "156",
         "lineEnd": "156",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Extra semicolon.",
-        "column": "39",
+        "severity": 4,
+        "column": "38",
         "columnEnd": "1000",
         "line": "157",
         "lineEnd": "157",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Missing space before function parentheses.",
-        "column": "27",
+        "severity": 4,
+        "column": "26",
         "columnEnd": "1000",
         "line": "161",
         "lineEnd": "161",
-        "ruleId": "space-before-function-paren"
+        "ruleId": "standard:space-before-function-paren"
       },
       {
         "message": "Identifier 'tbody_element' is not in camel case.",
-        "column": "64",
+        "severity": 4,
+        "column": "63",
         "columnEnd": "1000",
         "line": "161",
         "lineEnd": "161",
-        "ruleId": "camelcase"
+        "ruleId": "standard:camelcase"
       },
       {
         "message": "Block must not be padded by blank lines.",
-        "column": "79",
+        "severity": 4,
+        "column": "78",
         "columnEnd": "1000",
         "line": "161",
         "lineEnd": "161",
-        "ruleId": "padded-blocks"
+        "ruleId": "standard:padded-blocks"
       },
       {
         "message": "Identifier 'toc_tr' is not in camel case.",
-        "column": "7",
+        "severity": 4,
+        "column": "6",
         "columnEnd": "1000",
         "line": "164",
         "lineEnd": "164",
-        "ruleId": "camelcase"
+        "ruleId": "standard:camelcase"
       },
       {
         "message": "Extra semicolon.",
-        "column": "44",
+        "severity": 4,
+        "column": "43",
         "columnEnd": "1000",
         "line": "164",
         "lineEnd": "164",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Extra semicolon.",
-        "column": "36",
+        "severity": 4,
+        "column": "35",
         "columnEnd": "1000",
         "line": "165",
         "lineEnd": "165",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Identifier 'toc_tr_td' is not in camel case.",
-        "column": "7",
+        "severity": 4,
+        "column": "6",
         "columnEnd": "1000",
         "line": "166",
         "lineEnd": "166",
-        "ruleId": "camelcase"
+        "ruleId": "standard:camelcase"
       },
       {
         "message": "Extra semicolon.",
-        "column": "47",
+        "severity": 4,
+        "column": "46",
         "columnEnd": "1000",
         "line": "166",
         "lineEnd": "166",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Extra semicolon.",
-        "column": "38",
+        "severity": 4,
+        "column": "37",
         "columnEnd": "1000",
         "line": "167",
         "lineEnd": "167",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Extra semicolon.",
-        "column": "32",
+        "severity": 4,
+        "column": "31",
         "columnEnd": "1000",
         "line": "168",
         "lineEnd": "168",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "More than 1 blank line not allowed.",
-        "column": "1",
+        "severity": 4,
+        "column": "0",
         "columnEnd": "1000",
         "line": "169",
         "lineEnd": "169",
-        "ruleId": "no-multiple-empty-lines"
+        "ruleId": "standard:no-multiple-empty-lines"
       },
       {
         "message": "Extra semicolon.",
-        "column": "12",
+        "severity": 4,
+        "column": "11",
         "columnEnd": "1000",
         "line": "172",
         "lineEnd": "172",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Identifier 'toc_current_col' is not in camel case.",
-        "column": "7",
+        "severity": 4,
+        "column": "6",
         "columnEnd": "1000",
         "line": "173",
         "lineEnd": "173",
-        "ruleId": "camelcase"
+        "ruleId": "standard:camelcase"
       },
       {
         "message": "Extra semicolon.",
-        "column": "29",
+        "severity": 4,
+        "column": "28",
         "columnEnd": "1000",
         "line": "173",
         "lineEnd": "173",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Extra semicolon.",
-        "column": "29",
+        "severity": 4,
+        "column": "28",
         "columnEnd": "1000",
         "line": "174",
         "lineEnd": "174",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Extra semicolon.",
-        "column": "30",
+        "severity": 4,
+        "column": "29",
         "columnEnd": "1000",
         "line": "178",
         "lineEnd": "178",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Extra semicolon.",
-        "column": "52",
+        "severity": 4,
+        "column": "51",
         "columnEnd": "1000",
         "line": "181",
         "lineEnd": "181",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Extra semicolon.",
-        "column": "67",
+        "severity": 4,
+        "column": "66",
         "columnEnd": "1000",
         "line": "183",
         "lineEnd": "183",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Expected '===' and instead saw '=='.",
-        "column": "16",
+        "severity": 4,
+        "column": "15",
         "columnEnd": "1000",
         "line": "186",
         "lineEnd": "186",
-        "ruleId": "eqeqeq"
+        "ruleId": "standard:eqeqeq"
       },
       {
         "message": "Identifier 'td_dl' is not in camel case.",
-        "column": "13",
+        "severity": 4,
+        "column": "12",
         "columnEnd": "1000",
         "line": "190",
         "lineEnd": "190",
-        "ruleId": "camelcase"
+        "ruleId": "standard:camelcase"
       },
       {
         "message": "Extra semicolon.",
-        "column": "49",
+        "severity": 4,
+        "column": "48",
         "columnEnd": "1000",
         "line": "190",
         "lineEnd": "190",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Extra semicolon.",
-        "column": "37",
+        "severity": 4,
+        "column": "36",
         "columnEnd": "1000",
         "line": "191",
         "lineEnd": "191",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Identifier 'td_dt' is not in camel case.",
-        "column": "13",
+        "severity": 4,
+        "column": "12",
         "columnEnd": "1000",
         "line": "192",
         "lineEnd": "192",
-        "ruleId": "camelcase"
+        "ruleId": "standard:camelcase"
       },
       {
         "message": "Extra semicolon.",
-        "column": "49",
+        "severity": 4,
+        "column": "48",
         "columnEnd": "1000",
         "line": "192",
         "lineEnd": "192",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Extra semicolon.",
-        "column": "33",
+        "severity": 4,
+        "column": "32",
         "columnEnd": "1000",
         "line": "193",
         "lineEnd": "193",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Identifier 'toc_current_col' is not in camel case.",
-        "column": "9",
+        "severity": 4,
+        "column": "8",
         "columnEnd": "1000",
         "line": "194",
         "lineEnd": "194",
-        "ruleId": "camelcase"
+        "ruleId": "standard:camelcase"
       },
       {
         "message": "Identifier 'td_dl' is not in camel case.",
-        "column": "27",
+        "severity": 4,
+        "column": "26",
         "columnEnd": "1000",
         "line": "194",
         "lineEnd": "194",
-        "ruleId": "camelcase"
+        "ruleId": "standard:camelcase"
       },
       {
         "message": "Extra semicolon.",
-        "column": "32",
+        "severity": 4,
+        "column": "31",
         "columnEnd": "1000",
         "line": "194",
         "lineEnd": "194",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Extra semicolon.",
-        "column": "47",
+        "severity": 4,
+        "column": "46",
         "columnEnd": "1000",
         "line": "197",
         "lineEnd": "197",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Extra semicolon.",
-        "column": "37",
+        "severity": 4,
+        "column": "36",
         "columnEnd": "1000",
         "line": "198",
         "lineEnd": "198",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Extra semicolon.",
-        "column": "47",
+        "severity": 4,
+        "column": "46",
         "columnEnd": "1000",
         "line": "199",
         "lineEnd": "199",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Extra semicolon.",
-        "column": "32",
+        "severity": 4,
+        "column": "31",
         "columnEnd": "1000",
         "line": "200",
         "lineEnd": "200",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Extra semicolon.",
-        "column": "31",
+        "severity": 4,
+        "column": "30",
         "columnEnd": "1000",
         "line": "201",
         "lineEnd": "201",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Expected '===' and instead saw '=='.",
-        "column": "16",
+        "severity": 4,
+        "column": "15",
         "columnEnd": "1000",
         "line": "207",
         "lineEnd": "207",
-        "ruleId": "eqeqeq"
+        "ruleId": "standard:eqeqeq"
       },
       {
         "message": "Extra semicolon.",
-        "column": "28",
+        "severity": 4,
+        "column": "27",
         "columnEnd": "1000",
         "line": "208",
         "lineEnd": "208",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Expected '!==' and instead saw '!='.",
-        "column": "16",
+        "severity": 4,
+        "column": "15",
         "columnEnd": "1000",
         "line": "211",
         "lineEnd": "211",
-        "ruleId": "eqeqeq"
+        "ruleId": "standard:eqeqeq"
       },
       {
         "message": "Identifier 'td_dd' is not in camel case.",
-        "column": "13",
+        "severity": 4,
+        "column": "12",
         "columnEnd": "1000",
         "line": "215",
         "lineEnd": "215",
-        "ruleId": "camelcase"
+        "ruleId": "standard:camelcase"
       },
       {
         "message": "Extra semicolon.",
-        "column": "49",
+        "severity": 4,
+        "column": "48",
         "columnEnd": "1000",
         "line": "215",
         "lineEnd": "215",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Extra semicolon.",
-        "column": "43",
+        "severity": 4,
+        "column": "42",
         "columnEnd": "1000",
         "line": "216",
         "lineEnd": "216",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "'link' is already defined.",
-        "column": "13",
+        "severity": 4,
+        "column": "12",
         "columnEnd": "1000",
         "line": "218",
         "lineEnd": "218",
-        "ruleId": "no-redeclare"
+        "ruleId": "standard:no-redeclare"
       },
       {
         "message": "Extra semicolon.",
-        "column": "47",
+        "severity": 4,
+        "column": "46",
         "columnEnd": "1000",
         "line": "218",
         "lineEnd": "218",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Extra semicolon.",
-        "column": "37",
+        "severity": 4,
+        "column": "36",
         "columnEnd": "1000",
         "line": "219",
         "lineEnd": "219",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Extra semicolon.",
-        "column": "47",
+        "severity": 4,
+        "column": "46",
         "columnEnd": "1000",
         "line": "220",
         "lineEnd": "220",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Extra semicolon.",
-        "column": "32",
+        "severity": 4,
+        "column": "31",
         "columnEnd": "1000",
         "line": "221",
         "lineEnd": "221",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Extra semicolon.",
-        "column": "8",
+        "severity": 4,
+        "column": "7",
         "columnEnd": "1000",
         "line": "226",
         "lineEnd": "226",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Missing space before function parentheses.",
-        "column": "18",
+        "severity": 4,
+        "column": "17",
         "columnEnd": "1000",
         "line": "234",
         "lineEnd": "234",
-        "ruleId": "space-before-function-paren"
+        "ruleId": "standard:space-before-function-paren"
       },
       {
         "message": "Expected indentation of 2 spaces but found 4.",
-        "column": "5",
+        "severity": 4,
+        "column": "4",
         "columnEnd": "1000",
         "line": "235",
         "lineEnd": "235",
-        "ruleId": "indent"
+        "ruleId": "standard:indent"
       },
       {
         "message": "Extra semicolon.",
-        "column": "73",
+        "severity": 4,
+        "column": "72",
         "columnEnd": "1000",
         "line": "235",
         "lineEnd": "235",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Missing space before function parentheses.",
-        "column": "23",
+        "severity": 4,
+        "column": "22",
         "columnEnd": "1000",
         "line": "244",
         "lineEnd": "244",
-        "ruleId": "space-before-function-paren"
+        "ruleId": "standard:space-before-function-paren"
       },
       {
         "message": "Extra semicolon.",
-        "column": "41",
+        "severity": 4,
+        "column": "40",
         "columnEnd": "1000",
         "line": "245",
         "lineEnd": "245",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Extra semicolon.",
-        "column": "30",
+        "severity": 4,
+        "column": "29",
         "columnEnd": "1000",
         "line": "246",
         "lineEnd": "246",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Extra semicolon.",
-        "column": "51",
+        "severity": 4,
+        "column": "50",
         "columnEnd": "1000",
         "line": "247",
         "lineEnd": "247",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Extra semicolon.",
-        "column": "59",
+        "severity": 4,
+        "column": "58",
         "columnEnd": "1000",
         "line": "252",
         "lineEnd": "252",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Extra semicolon.",
-        "column": "27",
+        "severity": 4,
+        "column": "26",
         "columnEnd": "1000",
         "line": "253",
         "lineEnd": "253",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Missing space before function parentheses.",
-        "column": "30",
+        "severity": 4,
+        "column": "29",
         "columnEnd": "1000",
         "line": "258",
         "lineEnd": "258",
-        "ruleId": "space-before-function-paren"
+        "ruleId": "standard:space-before-function-paren"
       },
       {
         "message": "Extra semicolon.",
-        "column": "55",
+        "severity": 4,
+        "column": "54",
         "columnEnd": "1000",
         "line": "259",
         "lineEnd": "259",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Extra semicolon.",
-        "column": "13",
+        "severity": 4,
+        "column": "12",
         "columnEnd": "1000",
         "line": "260",
         "lineEnd": "260",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Expected '!==' and instead saw '!='.",
-        "column": "21",
+        "severity": 4,
+        "column": "20",
         "columnEnd": "1000",
         "line": "261",
         "lineEnd": "261",
-        "ruleId": "eqeqeq"
+        "ruleId": "standard:eqeqeq"
       },
       {
         "message": "Extra semicolon.",
-        "column": "24",
+        "severity": 4,
+        "column": "23",
         "columnEnd": "1000",
         "line": "262",
         "lineEnd": "262",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Expected '!==' and instead saw '!='.",
-        "column": "21",
+        "severity": 4,
+        "column": "20",
         "columnEnd": "1000",
         "line": "264",
         "lineEnd": "264",
-        "ruleId": "eqeqeq"
+        "ruleId": "standard:eqeqeq"
       },
       {
         "message": "Extra semicolon.",
-        "column": "46",
+        "severity": 4,
+        "column": "45",
         "columnEnd": "1000",
         "line": "265",
         "lineEnd": "265",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Extra semicolon.",
-        "column": "36",
+        "severity": 4,
+        "column": "35",
         "columnEnd": "1000",
         "line": "266",
         "lineEnd": "266",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Extra semicolon.",
-        "column": "43",
+        "severity": 4,
+        "column": "42",
         "columnEnd": "1000",
         "line": "267",
         "lineEnd": "267",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Missing space before function parentheses.",
-        "column": "24",
+        "severity": 4,
+        "column": "23",
         "columnEnd": "1000",
         "line": "274",
         "lineEnd": "274",
-        "ruleId": "space-before-function-paren"
+        "ruleId": "standard:space-before-function-paren"
       },
       {
         "message": "Extra semicolon.",
-        "column": "29",
+        "severity": 4,
+        "column": "28",
         "columnEnd": "1000",
         "line": "275",
         "lineEnd": "275",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Extra semicolon.",
-        "column": "29",
+        "severity": 4,
+        "column": "28",
         "columnEnd": "1000",
         "line": "276",
         "lineEnd": "276",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Extra semicolon.",
-        "column": "29",
+        "severity": 4,
+        "column": "28",
         "columnEnd": "1000",
         "line": "277",
         "lineEnd": "277",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "'initStyleGuide' is defined but never used.",
-        "column": "10",
+        "severity": 4,
+        "column": "9",
         "columnEnd": "1000",
         "line": "285",
         "lineEnd": "285",
-        "ruleId": "no-unused-vars"
+        "ruleId": "standard:no-unused-vars"
       },
       {
         "message": "Missing space before function parentheses.",
-        "column": "24",
+        "severity": 4,
+        "column": "23",
         "columnEnd": "1000",
         "line": "285",
         "lineEnd": "285",
-        "ruleId": "space-before-function-paren"
+        "ruleId": "standard:space-before-function-paren"
       },
       {
         "message": "Extra semicolon.",
-        "column": "19",
+        "severity": 4,
+        "column": "18",
         "columnEnd": "1000",
         "line": "286",
         "lineEnd": "286",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       },
       {
         "message": "Extra semicolon.",
-        "column": "22",
+        "severity": 4,
+        "column": "21",
         "columnEnd": "1000",
         "line": "287",
         "lineEnd": "287",
-        "ruleId": "semi"
+        "ruleId": "standard:semi"
       }
     ]
   }
