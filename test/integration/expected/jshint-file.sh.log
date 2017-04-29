@@ -1,0 +1,27 @@
+[
+  {
+    "filePath": "include/styleguide.js",
+    "messages": [
+      {
+        "message": "'link' is already defined.",
+        "source": "var link = document.createElement('a');",
+        "severity": 4,
+        "column": "13",
+        "columnEnd": "1000",
+        "line": "219",
+        "lineEnd": "219",
+        "ruleId": "W004"
+      },
+      {
+        "message": "Use '!==' to compare with ''.",
+        "source": "if (header.id != '') {",
+        "severity": 4,
+        "column": "21",
+        "columnEnd": "1000",
+        "line": "265",
+        "lineEnd": "265",
+        "ruleId": "W041"
+      }
+    ]
+  }
+]

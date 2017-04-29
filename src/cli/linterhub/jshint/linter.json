@@ -15,7 +15,8 @@
         "local": "jshint v2.9.4",
         "manager": "2.9.4"
     },
-    "defaults": {
-        "--reporter": "file://{schema}/jshint/reporter.js"
-    }
+  "defaults": {
+    "": "./",
+    "--reporter": "file://{schema}/jshint/reporter.js"
+  }
 }
