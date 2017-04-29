@@ -3,7 +3,12 @@ dist: trusty
 sudo: required
 mono: none
 dotnet: 1.0.0-preview2-003121
+node_js:
+- '6.10.1'
+before_install:
+- npm install -g eslint coffeelint csslint jshint standard
 install:
 - sh script/setup.sh
 script:
 - sh script/cibuild.sh
+- sh test/integration.sh
