@@ -20,7 +20,19 @@
     "url": "http://jshint.com"
   },
   {
+    "name": "jslint",
+    "url": "http://jslint.com"
+  },
+  {
     "name": "standard",
     "url": "http://standardjs.com"
+  },
+  {
+    "name": "stylelint",
+    "url": "https://stylelint.io/"
+  },
+  {
+    "name": "tslint",
+    "url": "https://palantir.github.io/tslint/"
   }
 ]

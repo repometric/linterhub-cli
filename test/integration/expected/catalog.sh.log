@@ -155,6 +155,39 @@
     "active": false
   },
   {
+    "name": "jslint",
+    "description": "The JavaScript Code Quality Tool.",
+    "version": {
+      "local": "node-jslint version: 0.10.3  JSLint edition 2013-08-26"
+    },
+    "url": "http://jslint.com",
+    "languages": [
+      "javascript"
+    ],
+    "license": "MIT",
+    "areas": [
+      "syntax",
+      "formatting",
+      "complexity",
+      "unused code"
+    ],
+    "extensions": [
+      "*.js"
+    ],
+    "requirements": [
+      {
+        "manager": "system",
+        "package": "npm"
+      },
+      {
+        "manager": "npm",
+        "package": "jslint"
+      }
+    ],
+    "postfix": " | node file://{schema}/jslint/reporter.js",
+    "active": false
+  },
+  {
     "name": "standard",
     "description": "JavaScript Standard Style",
     "version": {
@@ -180,14 +213,81 @@
       {
         "manager": "npm",
         "package": "standard"
+      }
+    ],
+    "postfix": " | node file://{schema}/standard/reporter.js",
+    "active": false
+  },
+  {
+    "name": "stylelint",
+    "description": "A mighty, modern CSS linter that helps you enforce consistent conventions and avoid errors in your stylesheets.",
+    "version": {
+      "local": "7.10.1"
+    },
+    "url": "https://stylelint.io/",
+    "languages": [
+      "css"
+    ],
+    "license": "MIT",
+    "areas": [
+      "simplification",
+      "syntax",
+      "formatting"
+    ],
+    "extensions": [
+      "*.css",
+      "*.scss",
+      "*.less",
+      ".sss"
+    ],
+    "requirements": [
+      {
+        "manager": "system",
+        "package": "npm"
       },
       {
         "manager": "npm",
-        "package": "standard-json"
+        "package": "stylelint"
       }
     ],
-    "successCode": 1,
-    "postfix": " | standard-json",
+    "active": false
+  },
+  {
+    "name": "tslint",
+    "description": "An extensible linter for the TypeScript language.",
+    "version": {
+      "local": "5.1.0"
+    },
+    "url": "https://palantir.github.io/tslint/",
+    "languages": [
+      "typescript"
+    ],
+    "license": "Apache-2.0",
+    "areas": [
+      "simplification",
+      "syntax",
+      "formatting",
+      "complexity",
+      "unused code"
+    ],
+    "extensions": [
+      "*.ts"
+    ],
+    "requirements": [
+      {
+        "manager": "system",
+        "package": "npm"
+      },
+      {
+        "manager": "npm",
+        "package": "typescript"
+      },
+      {
+        "manager": "npm",
+        "package": "tslint"
+      }
+    ],
+    "postfix": " | node file://{schema}/tslint/reporter.js",
     "active": false
   }
 ]
