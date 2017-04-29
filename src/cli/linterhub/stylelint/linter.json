@@ -30,7 +30,7 @@
     "manager": "7.10.1"
   },
   "defaults": {
-    "": "**/**/*.js",
+    "": "**/**/*.css",
     "--custom-formatter": "file://{schema}/stylelint/reporter.js"
   }
 }

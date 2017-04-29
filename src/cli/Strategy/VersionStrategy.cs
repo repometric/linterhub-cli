@@ -18,7 +18,7 @@ namespace Linterhub.Cli.Strategy
             // Engine version is not needed right now
             // var engineVersion = GetVersion(typeof(LinterSpecification));
             var cliVersion = GetVersion(typeof(Program));
-            var result = $"{cliVersion.Substring(0,cliVersion.LastIndexOf('.'))}";
+            var result = $"{cliVersion}";
             return result;
         }
 

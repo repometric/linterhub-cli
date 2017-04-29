@@ -25,23 +25,22 @@ function processLine(line) {
         print_result();
     else {
         var data = JSON.parse(line);
-        var obj = {
+        result.push({
             filePath: data[0],
-            messages: []
-        };
-        data[1].forEach(function (problem) {
-            obj.messages.push({
-                message: problem.reason,
-                severity: problem.id === "(error)" ? "error" : "warning",
-                source: problem.evidence,
-                line: problem.line - 1,
-                lineEnd: problem.line - 1,
-                column: problem.character - 1,
-                columnEnd: 1000,
-                ruleId: problem.code
-            });
+            messages: data[1].map(function (problem) {
+                if (problem != null)
+                    return {
+                        message: problem.reason,
+                        severity: problem.id === "(error)" ? "error" : "warning",
+                        source: problem.evidence,
+                        line: problem.line - 1,
+                        lineEnd: problem.line - 1,
+                        column: problem.character - 1,
+                        columnEnd: 1000,
+                        ruleId: problem.code
+                    };
+            })
         });
-        result.push(obj);
     }
 }
 
