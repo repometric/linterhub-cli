@@ -1,55 +1,96 @@
 {
   "profiles": {
     "cli": {
-      "commandName": "Project"
-    },
-    "coffeelint-file": {
       "commandName": "Project",
-      "commandLineArgs": "--mode=Analyze --project=C:\\Users\\Andrey\\Desktop\\linterhub-tests\\marp --linter=coffeelint --file=coffee\\index.coffee"
+      "commandLineArgs": "--mode=Analyze --project=../../test/linterhub-tests/marp --folder=coffee/classes --linter=coffeelint"
     },
-    "coffeelint-folder": {
+    "catalog": {
       "commandName": "Project",
-      "commandLineArgs": "--mode=Analyze --project=C:\\Users\\Andrey\\Desktop\\linterhub-tests\\marp --linter=coffeelint"
-    },
-    "jshint-file": {
-      "commandName": "Project",
-      "commandLineArgs": "--mode=Analyze --project=C:\\Users\\Andrey\\Desktop\\linterhub-tests\\jquery --linter=jshint --file=src\\ajax.js"
-    },
-    "jshint-folder": {
-      "commandName": "Project",
-      "commandLineArgs": "--mode=Analyze --project=C:\\Users\\Andrey\\Desktop\\linterhub-tests\\jquery --linter=jshint"
-    },
-    "jslint-file": {
-      "commandName": "Project",
-      "commandLineArgs": "--mode=Analyze --project=C:\\Users\\Andrey\\Desktop\\linterhub-tests\\jquery --linter=jslint --file=src\\ajax.js"
-    },
-    "jslint-folder": {
-      "commandName": "Project",
-      "commandLineArgs": "--mode=Analyze --project=C:\\Users\\Andrey\\Desktop\\linterhub-tests\\jquery --linter=jslint"
+      "commandLineArgs": "--mode=catalog"
     },
     "eslint-file": {
       "commandName": "Project",
-      "commandLineArgs": "--mode=Analyze --project=C:\\Users\\Andrey\\Desktop\\linterhub-tests\\jquery --linter=eslint --file=src\\ajax.js"
+      "commandLineArgs": "--mode=Analyze --project=../../test/linterhub-tests/styleguide --file=include/styleguide.js --linter=eslint"
     },
     "eslint-folder": {
       "commandName": "Project",
-      "commandLineArgs": "--mode=Analyze --project=C:\\Users\\Andrey\\Desktop\\linterhub-tests\\jquery --linter=eslint"
+      "commandLineArgs": "--mode=Analyze --project=../../test/linterhub-tests/styleguide --folder=include --linter=eslint"
+    },
+    "eslint-project": {
+      "commandName": "Project",
+      "commandLineArgs": "--mode=Analyze --project=../../test/linterhub-tests/styleguide --linter=eslint"
     },
     "htmlhint-file": {
       "commandName": "Project",
-      "commandLineArgs": "--mode=Analyze --project=C:\\Users\\Andrey\\Desktop\\linterhub-tests\\\\styleguide --linter=htmlhint --file=cppguide.html"
+      "commandLineArgs": "--mode=Analyze --project=../../test/linterhub-tests/styleguide --file=xmlstyle.html --linter=htmlhint"
     },
     "htmlhint-folder": {
       "commandName": "Project",
-      "commandLineArgs": "--mode=Analyze --project=C:\\Users\\Andrey\\Desktop\\linterhub-tests\\\\styleguide --linter=htmlhint"
+      "commandLineArgs": "--mode=Analyze --project=../../test/linterhub-tests/jquery --folder=test/data/core --linter=htmlhint"
     },
-    "csslint-file": {
+    "htmlhint-project": {
       "commandName": "Project",
-      "commandLineArgs": "--mode=Analyze --project=C:\\Users\\Andrey\\Desktop\\linterhub-tests\\\\bootstrap --linter=csslint --file=dist\\css\\bootstrap-grid.css"
+      "commandLineArgs": "--mode=Analyze --project=../../test/linterhub-tests/jquery/test/data --linter=htmlhint"
     },
-    "csslint-folder": {
+    "jshint-file": {
       "commandName": "Project",
-      "commandLineArgs": "--mode=Analyze --project=C:\\Users\\Andrey\\Desktop\\linterhub-tests\\\\bootstrap --linter=csslint"
+      "commandLineArgs": "--mode=Analyze --project=../../test/linterhub-tests/styleguide --file=include/styleguide.js --linter=jshint"
+    },
+    "jshint-folder": {
+      "commandName": "Project",
+      "commandLineArgs": "--mode=Analyze --project=../../test/linterhub-tests/styleguide --folder=include --linter=jshint"
+    },
+    "jshint-project": {
+      "commandName": "Project",
+      "commandLineArgs": "--mode=Analyze --project=../../test/linterhub-tests/styleguide --linter=jshint"
+    },
+    "jslint-file": {
+      "commandName": "Project",
+      "commandLineArgs": "--mode=Analyze --project=../../test/linterhub-tests/styleguide --file=include/styleguide.js --linter=jslint"
+    },
+    "jslint-folder": {
+      "commandName": "Project",
+      "commandLineArgs": "--mode=Analyze --project=../../test/linterhub-tests/jquery --folder=src/core/var --linter=jslint"
+    },
+    "jslint-project": {
+      "commandName": "Project",
+      "commandLineArgs": "--mode=Analyze --project=../../test/linterhub-tests/jquery/src/core/var --linter=jslint"
+    },
+    "standard-file": {
+      "commandName": "Project",
+      "commandLineArgs": "--mode=Analyze --project=../../test/linterhub-tests/styleguide --file=include/styleguide.js --linter=standard"
+    },
+    "standard-folder": {
+      "commandName": "Project",
+      "commandLineArgs": "--mode=Analyze --project=../../test/linterhub-tests/styleguide --folder=include --linter=standard"
+    },
+    "standard-project": {
+      "commandName": "Project",
+      "commandLineArgs": "--mode=Analyze --project=../../test/linterhub-tests/styleguide --linter=standard"
+    },
+    "stylelint-file": {
+      "commandName": "Project",
+      "commandLineArgs": "--mode=Analyze --project=../../test/linterhub-tests/Font-Awesome --folder=less --file=core.less --linter=stylelint"
+    },
+    "stylelint-folder": {
+      "commandName": "Project",
+      "commandLineArgs": "--mode=Analyze --project=../../test/linterhub-tests/bulma --folder=sass/base --linter=stylelint"
+    },
+    "stylelint-project": {
+      "commandName": "Project",
+      "commandLineArgs": "--mode=Analyze --project=../../test/linterhub-tests/bulma/sass/grid --linter=stylelint"
+    },
+    "tslint-file": {
+      "commandName": "Project",
+      "commandLineArgs": "--mode=Analyze --project=../../test/linterhub-tests/angular --folder=integration/hello_world__closure/src --file=main.ts --linter=tslint"
+    },
+    "tslint-folder": {
+      "commandName": "Project",
+      "commandLineArgs": "--mode=Analyze --project=../../test/linterhub-tests/angular --folder=integration/hello_world__closure/src --linter=tslint"
+    },
+    "tslint-project": {
+      "commandName": "Project",
+      "commandLineArgs": "--mode=Analyze --project=../../test/linterhub-tests/angular/integration/hello_world__closure --linter=tslint"
     }
   }
 }
