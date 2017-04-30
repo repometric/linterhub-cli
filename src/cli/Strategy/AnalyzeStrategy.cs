@@ -49,7 +49,6 @@ namespace Linterhub.Cli.Strategy
 
             var r = linterRunner.RunAnalysis(contexts.First());
 
-            var zx = linterRunner.RunVersion(contexts.First());
             var t = r.DeserializeAsJson<LinterOutputSchema.File[]>();
 
             foreach (var file in t)
@@ -59,7 +58,8 @@ namespace Linterhub.Cli.Strategy
                     .Replace(context.Project, string.Empty)
                     .Replace(System.IO.Path.GetFullPath(context.Project), string.Empty)
                     .TrimStart('/')
-                    .TrimStart('\\');
+                    .TrimStart('\\')
+                    .Replace("/", "\\");
             }
 
             return t;

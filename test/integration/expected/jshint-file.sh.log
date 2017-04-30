@@ -1,6 +1,6 @@
 [
   {
-    "filePath": "include/styleguide.js",
+    "filePath": "include\\styleguide.js",
     "messages": [
       {
         "message": "'link' is already defined.",
