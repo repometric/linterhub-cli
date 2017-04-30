@@ -15,14 +15,14 @@ process.stdin.on('data', function (chunk) {
 });
 
 process.stdin.on('end', function () {
-    processLine(lingeringLine);
+    console.log(JSON.stringify(result));
 });
 
 var result = [];
 
 function processLine(line) {
     if (line === "")
-        print_result();
+        return;
     else {
         var data = JSON.parse(line);
         result.push({
@@ -42,8 +42,4 @@ function processLine(line) {
             })
         });
     }
-}
-
-function print_result() {
-    console.log(JSON.stringify(result));
 }
