@@ -37,9 +37,8 @@
     "manager": "5.1.0"
   },
   "defaults": {
-    "": "**/**/*.js",
-    "--force": true,
-    "--format": "json",
+    "": "**/**/*.ts",
+    "--format": "verbose",
     "--config": "file://{schema}/tslint/tslint.json"
   }
 }

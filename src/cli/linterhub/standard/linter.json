@@ -24,6 +24,6 @@
   "postfix": " | node file://{schema}/standard/reporter.js",
   "defaults": {
     "--verbose": null,
-    "": "*/**/*.js"
+    "": "**/**/*.js"
   }
 }
