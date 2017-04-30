@@ -131,30 +131,7 @@
     ]
   },
   {
-    "filePath": "src\\main.ts",
-    "messages": [
-      {
-        "message": "' should be \"",
-        "severity": 5,
-        "column": "30",
-        "columnEnd": "1000",
-        "line": "0",
-        "lineEnd": "0",
-        "ruleId": "standard:quotemark"
-      },
-      {
-        "message": "' should be \"",
-        "severity": 5,
-        "column": "33",
-        "columnEnd": "1000",
-        "line": "1",
-        "lineEnd": "1",
-        "ruleId": "standard:quotemark"
-      }
-    ]
-  },
-  {
-    "filePath": "src\\test\\app.ts",
+    "filePath": "src\\app.ts",
     "messages": [
       {
         "message": "The key 'bootstrap' is not sorted alphabetically",
@@ -195,7 +172,7 @@
     ]
   },
   {
-    "filePath": "src\\test\\hello-world.component.ts",
+    "filePath": "src\\hello-world.component.ts",
     "messages": [
       {
         "message": "The class property 'name' must be marked either 'private', 'public', or 'protected'",
@@ -231,6 +208,29 @@
         "columnEnd": "1000",
         "line": "10",
         "lineEnd": "10",
+        "ruleId": "standard:quotemark"
+      }
+    ]
+  },
+  {
+    "filePath": "src\\main.ts",
+    "messages": [
+      {
+        "message": "' should be \"",
+        "severity": 5,
+        "column": "30",
+        "columnEnd": "1000",
+        "line": "0",
+        "lineEnd": "0",
+        "ruleId": "standard:quotemark"
+      },
+      {
+        "message": "' should be \"",
+        "severity": 5,
+        "column": "33",
+        "columnEnd": "1000",
+        "line": "1",
+        "lineEnd": "1",
         "ruleId": "standard:quotemark"
       }
     ]

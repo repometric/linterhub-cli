@@ -62,7 +62,7 @@ namespace Linterhub.Cli.Strategy
                     .Replace("/", "\\");
             }
 
-            return t;
+            return t.OrderBy(x => x.FilePath);
             /* 
             var linterResults = new List<RunResult>();
             try

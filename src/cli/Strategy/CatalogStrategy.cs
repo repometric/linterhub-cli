@@ -27,7 +27,7 @@ namespace Linterhub.Cli.Strategy
                 return linter;
             });
 
-            return result;
+            return result.OrderBy(x => x.Name);
         }
     }
 }

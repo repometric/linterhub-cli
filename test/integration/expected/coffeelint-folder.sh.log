@@ -1,6 +1,6 @@
 [
   {
-    "filePath": "coffee/classes/mds_config.coffee",
+    "filePath": "mds_config.coffee",
     "messages": [
       {
         "message": "Line exceeds maximum allowed length",
@@ -27,13 +27,13 @@
     ]
   },
   {
-    "filePath": "coffee/classes/mds_file.coffee"
+    "filePath": "mds_file.coffee"
   },
   {
-    "filePath": "coffee/classes/mds_file_history.coffee"
+    "filePath": "mds_file_history.coffee"
   },
   {
-    "filePath": "coffee/classes/mds_main_menu.coffee",
+    "filePath": "mds_main_menu.coffee",
     "messages": [
       {
         "message": "Line exceeds maximum allowed length",
@@ -236,7 +236,7 @@
     ]
   },
   {
-    "filePath": "coffee/classes/mds_manager.coffee",
+    "filePath": "mds_manager.coffee",
     "messages": [
       {
         "message": "Line exceeds maximum allowed length",
@@ -272,7 +272,7 @@
     ]
   },
   {
-    "filePath": "coffee/classes/mds_markdown.coffee",
+    "filePath": "mds_markdown.coffee",
     "messages": [
       {
         "message": "Line exceeds maximum allowed length",
@@ -420,7 +420,7 @@
     ]
   },
   {
-    "filePath": "coffee/classes/mds_md_setting.coffee",
+    "filePath": "mds_md_setting.coffee",
     "messages": [
       {
         "message": "Line exceeds maximum allowed length",
@@ -485,7 +485,7 @@
     ]
   },
   {
-    "filePath": "coffee/classes/mds_menu.coffee",
+    "filePath": "mds_menu.coffee",
     "messages": [
       {
         "message": "Unnecessary fat arrow",
@@ -521,10 +521,10 @@
     ]
   },
   {
-    "filePath": "coffee/classes/mds_renderer.coffee"
+    "filePath": "mds_renderer.coffee"
   },
   {
-    "filePath": "coffee/classes/mds_window.coffee",
+    "filePath": "mds_window.coffee",
     "messages": [
       {
         "message": "Unnecessary fat arrow",
