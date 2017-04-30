@@ -241,7 +241,7 @@
       "*.css",
       "*.scss",
       "*.less",
-      ".sss"
+      "*.sss"
     ],
     "requirements": [
       {

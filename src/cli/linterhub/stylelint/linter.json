@@ -7,7 +7,7 @@
     "css"
   ],
   "extensions": [
-    "*.css", "*.scss", "*.less", ".sss"
+    "*.css", "*.scss", "*.less", "*.sss"
   ],
   "license": "MIT",
   "areas": [
@@ -30,7 +30,8 @@
     "manager": "7.10.1"
   },
   "defaults": {
-    "": "**/**/*.css",
-    "--custom-formatter": "file://{schema}/stylelint/reporter.js"
+    "": "**/**/*.*",
+    "--custom-formatter": "file://{schema}/stylelint/reporter.js",
+    "--config": "file://{schema}/stylelint/.stylelintrc"
   }
 }
