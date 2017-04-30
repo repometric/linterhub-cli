@@ -25,6 +25,8 @@ function processLine(line) {
         return;
     else {
         var data = JSON.parse(line);
+        if (data[1][data[1].length - 1] === null)
+            data[1].splice(data[1].length - 1, 1);
         result.push({
             filePath: data[0],
             messages: data[1].map(function (problem) {
@@ -32,7 +34,7 @@ function processLine(line) {
                     return {
                         message: problem.reason,
                         severity: problem.id === "(error)" ? "error" : "warning",
-                        source: problem.evidence,
+                        source: (problem.evidence == undefined ? "" : problem.evidence).trim(),
                         line: problem.line - 1,
                         lineEnd: problem.line - 1,
                         column: problem.character - 1,
