@@ -33,12 +33,12 @@ namespace Linterhub.Cli.Strategy
                 let specification = linterFactory.GetSpecification(linter)
                 let configOptions = config.Linters.FirstOrDefault(y => y.Name == linter)?.Config ?? specification.Schema.Defaults
                 let path = !string.IsNullOrEmpty(context.File) ? context.File : specification.Schema.Defaults.GetValueOrDefault("")
-                let runOptions = new LinterOptions 
-                { 
+                let runOptions = new LinterOptions
+                {
                     { "{path}", /*System.IO.Path.GetFullPath(path)*/ path },
                     { "file://{schema}", context.Linterhub }
                 }
-                let workingDirectory = context.Project
+                let workingDirectory = context.Directory ?? context.Project
                 select new LinterWrapper.Context
                 {
                     Specification = specification,

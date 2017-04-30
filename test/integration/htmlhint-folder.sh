@@ -1,0 +1,1 @@
+dotnet cli.dll --mode=Analyze --project=../../test/linterhub-tests/jquery --folder=test/data/core --linter=htmlhint

@@ -1,0 +1,32 @@
+[
+  {
+    "filePath": "cc_on.html",
+    "messages": [
+      {
+        "message": "<title> must be present in <head> tag.",
+        "source": "</head>",
+        "severity": 5,
+        "column": "0",
+        "columnEnd": "1000",
+        "line": "16",
+        "lineEnd": "16",
+        "ruleId": "htmlhint:title-require"
+      }
+    ]
+  },
+  {
+    "filePath": "dynamic_ready.html",
+    "messages": [
+      {
+        "message": "<title> must be present in <head> tag.",
+        "source": "</head>",
+        "severity": 5,
+        "column": "0",
+        "columnEnd": "1000",
+        "line": "7",
+        "lineEnd": "7",
+        "ruleId": "htmlhint:title-require"
+      }
+    ]
+  }
+]
