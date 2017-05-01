@@ -17,7 +17,7 @@ namespace Linterhub.Engine.Schema
             var valueSeparator = specification.Schema.OptionsDelimiter ?? " ";
             var options = MergeOptions(configOptions, specification);
             var args = options.Select(x => BuildArg(runtimeOptions, x, valueSeparator)).Where(x => !string.IsNullOrEmpty(x));
-            var command = string.Join(argSeparator, args);
+            var command = specification.Schema.Name + " " + string.Join(argSeparator, args);
             if (specification.Schema.Postfix != null || specification.Schema.Prefix != null)
             {
                 var postfix = specification.Schema.Postfix ?? "";
@@ -27,7 +27,7 @@ namespace Linterhub.Engine.Schema
                     postfix = postfix?.Replace(runtimeOption.Key, runtimeOption.Value);
                     prefix = prefix?.Replace(runtimeOption.Key, runtimeOption.Value);
                 }
-                command = prefix + specification.Schema.Name + " " + command + postfix;
+                command = prefix + command + postfix;
             }
 
             return command;
