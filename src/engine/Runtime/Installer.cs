@@ -21,26 +21,10 @@ namespace Linterhub.Engine.Runtime
             // hot fix
             var command = string.Format("{0} --version", requirement.Package);
 
-            switch(requirement.Manager)
+            return new InstallResult
             {
-                case "npm":
-                case "pip":
-                    command = "npm list -g --depth=0";
-                    if (requirement.Manager == "pip")
-                        command = "pip show " + requirement.Package;
-                    return new InstallResult
-                    {
-                        Installed = Terminal.RunTerminal(command)
-                                    .Output.ToString()
-                                    .Contains(requirement.Package)
-                    };
-                default:
-                    var result = Terminal.RunTerminal(command);
-                    return new InstallResult
-                    {
-                        Installed = result.ExitCode == 0
-                    };
-            }
+                Installed = Terminal.RunTerminal(command).ExitCode == 0
+            };
         }
 
         public InstallResult Install(LinterSpecification specification)
