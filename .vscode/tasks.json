@@ -1,15 +1,14 @@
 {
     "version": "0.1.0",
     "isShellCommand": true,
-    "command": "sh",
-    "args": ["-c"],
+    "command": "dotnet",
     "showOutput": "always",
     "echoCommand": true,
     "tasks": [
         {
             "taskName": "build-engine",
             "args": [
-                "dotnet build ${workspaceRoot}/src/cli/project.json"
+                "build",  "${workspaceRoot}/src/cli/project.json"
             ],
             "isBuildCommand": true,
             "problemMatcher": "$msCompile",
@@ -19,7 +18,7 @@
         {
             "taskName": "publish-cli",
             "args": [
-                "dotnet publish ${workspaceRoot}/src/cli/project.json --output bin/"
+                "publish", "${workspaceRoot}/src/cli/project.json", "--output", "bin/"
             ],
             "isBuildCommand": true,
             "problemMatcher": "$msCompile",

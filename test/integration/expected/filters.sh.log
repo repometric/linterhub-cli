@@ -62,6 +62,39 @@
     "active": false
   },
   {
+    "name": "jslint",
+    "description": "The JavaScript Code Quality Tool.",
+    "version": {
+      "local": "node-jslint version: 0.10.3  JSLint edition 2013-08-26"
+    },
+    "url": "http://jslint.com",
+    "languages": [
+      "javascript"
+    ],
+    "license": "MIT",
+    "areas": [
+      "syntax",
+      "formatting",
+      "complexity",
+      "unused code"
+    ],
+    "extensions": [
+      "*.js"
+    ],
+    "requirements": [
+      {
+        "manager": "system",
+        "package": "npm"
+      },
+      {
+        "manager": "npm",
+        "package": "jslint"
+      }
+    ],
+    "postfix": " | node file://{schema}/jslint/reporter.js",
+    "active": false
+  },
+  {
     "name": "standard",
     "description": "JavaScript Standard Style",
     "version": {
@@ -87,14 +120,9 @@
       {
         "manager": "npm",
         "package": "standard"
-      },
-      {
-        "manager": "npm",
-        "package": "standard-json"
       }
     ],
-    "successCode": 1,
-    "postfix": " | standard-json",
+    "postfix": " | node file://{schema}/standard/reporter.js",
     "active": false
   }
 ]

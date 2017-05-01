@@ -4,6 +4,7 @@ namespace Linterhub.Engine.Schema
     using System.Linq;
     using Linterhub.Engine.Extensions;
     using Option = System.Collections.Generic.KeyValuePair<string, string>;
+    using System;
 
     public class CommandFactory
     {
@@ -13,12 +14,20 @@ namespace Linterhub.Engine.Schema
             LinterOptions configOptions,
             string argSeparator = " ")
         {
+            var valueSeparator = specification.Schema.OptionsDelimiter ?? " ";
             var options = MergeOptions(configOptions, specification);
-            var args = options.Select(x => BuildArg(runtimeOptions, x)).Where(x => !string.IsNullOrEmpty(x));
-            var command = string.Join(argSeparator, args);
-            if (specification.Schema.Postfix != null)
+            var args = options.Select(x => BuildArg(runtimeOptions, x, valueSeparator)).Where(x => !string.IsNullOrEmpty(x));
+            var command = specification.Schema.Name + " " + string.Join(argSeparator, args);
+            if (specification.Schema.Postfix != null || specification.Schema.Prefix != null)
             {
-                command = command + specification.Schema.Postfix;
+                var postfix = specification.Schema.Postfix ?? "";
+                var prefix = specification.Schema.Prefix ?? "";
+                foreach (var runtimeOption in runtimeOptions)
+                {
+                    postfix = postfix?.Replace(runtimeOption.Key, runtimeOption.Value);
+                    prefix = prefix?.Replace(runtimeOption.Key, runtimeOption.Value);
+                }
+                command = prefix + command + postfix;
             }
 
             return command;

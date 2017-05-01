@@ -2,8 +2,18 @@ language: csharp
 dist: trusty
 sudo: required
 mono: none
-dotnet: 1.0.0-preview2-003121
+dotnet: 1.0.0-preview2.1-003177
+mono:
+  - latest
+os:
+  - linux
+node_js:
+- '6.10.2'
+before_install:
+- npm install -g json-diff fs path child_process
+- npm install -g eslint coffeelint csslint jshint standard htmlhint jslint stylelint tslint typescript
 install:
 - sh script/setup.sh
-script:
 - sh script/cibuild.sh
+script:
+- node test/integration.js

@@ -1,0 +1,25 @@
+[
+  {
+    "filePath": "all.css",
+    "messages": [
+      {
+        "message": "@import prevents parallel downloads, use <link> instead.",
+        "severity": 4,
+        "column": "1",
+        "columnEnd": "1000",
+        "line": "11",
+        "lineEnd": "11",
+        "ruleId": "csslint:import"
+      },
+      {
+        "message": "@import prevents parallel downloads, use <link> instead.",
+        "severity": 4,
+        "column": "1",
+        "columnEnd": "1000",
+        "line": "12",
+        "lineEnd": "12",
+        "ruleId": "csslint:import"
+      }
+    ]
+  }
+]

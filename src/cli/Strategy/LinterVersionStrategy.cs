@@ -34,7 +34,7 @@ namespace Linterhub.Cli.Strategy
             var results = 
                 from linterContext in contexts
                 let schema = linterContext.Specification.Schema
-                let installed = installer.IsInstalled(linterContext.Specification.Schema.Name)
+                let installed = installer.IsInstalled(linterContext.Specification.Schema.Requirements.Where(x => x.Package == linterContext.Specification.Schema.Name).FirstOrDefault())
                 let version = installed.Installed ? linterRunner.RunVersion(linterContext) : null
                 select new
                 {

@@ -99,8 +99,18 @@ namespace Linterhub.Engine.Schema
         public string Postfix { get; set; }
 
         /// <summary>
+        /// Gets or sets the preifx command.
+        /// </summary>
+        public string Prefix { get; set; }
+
+        /// <summary>
         /// Gets or sets a value indicating whether linter is active (special filter for Catalog).
         /// </summary>
         public bool? Active { get; set; }
+
+        /// <summary>
+        /// Delimiter for options (space by default)
+        /// </summary>
+        public string OptionsDelimiter { get; set; }
     }
 }

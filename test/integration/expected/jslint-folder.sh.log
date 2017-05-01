@@ -1,0 +1,127 @@
+[
+  {
+    "filePath": "rsingleTag.js",
+    "messages": [
+      {
+        "message": "'define' was used before it was defined.",
+        "source": "define( function() {",
+        "severity": 5,
+        "column": "0",
+        "columnEnd": "1000",
+        "line": "0",
+        "lineEnd": "0",
+        "ruleId": "used_before_a"
+      },
+      {
+        "message": "Unexpected space between '(' and 'function'.",
+        "source": "define( function() {",
+        "severity": 5,
+        "column": "8",
+        "columnEnd": "1000",
+        "line": "0",
+        "lineEnd": "0",
+        "ruleId": "unexpected_space_a_b"
+      },
+      {
+        "message": "Expected exactly one space between 'function' and '('.",
+        "source": "define( function() {",
+        "severity": 5,
+        "column": "16",
+        "columnEnd": "1000",
+        "line": "0",
+        "lineEnd": "0",
+        "ruleId": "expected_space_a_b"
+      },
+      {
+        "message": "Use spaces, not tabs.",
+        "source": "\"use strict\";",
+        "severity": 5,
+        "column": "0",
+        "columnEnd": "1000",
+        "line": "1",
+        "lineEnd": "1",
+        "ruleId": "use_spaces"
+      },
+      {
+        "message": "Expected 'use strict' at column 5, not column 2.",
+        "source": "\"use strict\";",
+        "severity": 5,
+        "column": "1",
+        "columnEnd": "1000",
+        "line": "1",
+        "lineEnd": "1",
+        "ruleId": "expected_a_at_b_c"
+      },
+      {
+        "message": "Use spaces, not tabs.",
+        "source": "// Match a standalone tag",
+        "severity": 5,
+        "column": "0",
+        "columnEnd": "1000",
+        "line": "3",
+        "lineEnd": "3",
+        "ruleId": "use_spaces"
+      },
+      {
+        "message": "Use spaces, not tabs.",
+        "source": "return ( /^<([a-z][^\\/\\0>:\\x20\\t\\r\\n\\f]*)[\\x20\\t\\r\\n\\f]*\\/?>(?:<\\/\\1>|)$/i );",
+        "severity": 5,
+        "column": "0",
+        "columnEnd": "1000",
+        "line": "4",
+        "lineEnd": "4",
+        "ruleId": "use_spaces"
+      },
+      {
+        "message": "Expected 'return' at column 5, not column 2.",
+        "source": "return ( /^<([a-z][^\\/\\0>:\\x20\\t\\r\\n\\f]*)[\\x20\\t\\r\\n\\f]*\\/?>(?:<\\/\\1>|)$/i );",
+        "severity": 5,
+        "column": "1",
+        "columnEnd": "1000",
+        "line": "4",
+        "lineEnd": "4",
+        "ruleId": "expected_a_at_b_c"
+      },
+      {
+        "message": "Insecure '^'.",
+        "source": "return ( /^<([a-z][^\\/\\0>:\\x20\\t\\r\\n\\f]*)[\\x20\\t\\r\\n\\f]*\\/?>(?:<\\/\\1>|)$/i );",
+        "severity": 5,
+        "column": "20",
+        "columnEnd": "1000",
+        "line": "4",
+        "lineEnd": "4",
+        "ruleId": "insecure_a"
+      },
+      {
+        "message": "Unexpected space between '(' and '^<([a-z][^\\/\\0>:\\x20\\t\\r\\n\\f]*)[\\x20\\t\\r\\n\\f]*\\/?>(?:<\\/\\1>|)$'.",
+        "source": "return ( /^<([a-z][^\\/\\0>:\\x20\\t\\r\\n\\f]*)[\\x20\\t\\r\\n\\f]*\\/?>(?:<\\/\\1>|)$/i );",
+        "severity": 5,
+        "column": "10",
+        "columnEnd": "1000",
+        "line": "4",
+        "lineEnd": "4",
+        "ruleId": "unexpected_space_a_b"
+      },
+      {
+        "message": "Unexpected space between '^<([a-z][^\\/\\0>:\\x20\\t\\r\\n\\f]*)[\\x20\\t\\r\\n\\f]*\\/?>(?:<\\/\\1>|)$' and ')'.",
+        "source": "return ( /^<([a-z][^\\/\\0>:\\x20\\t\\r\\n\\f]*)[\\x20\\t\\r\\n\\f]*\\/?>(?:<\\/\\1>|)$/i );",
+        "severity": 5,
+        "column": "76",
+        "columnEnd": "1000",
+        "line": "4",
+        "lineEnd": "4",
+        "ruleId": "unexpected_space_a_b"
+      },
+      {
+        "message": "Unexpected space between '}' and ')'.",
+        "source": "} );",
+        "severity": 5,
+        "column": "2",
+        "columnEnd": "1000",
+        "line": "5",
+        "lineEnd": "5",
+        "ruleId": "unexpected_space_a_b"
+      }
+    ]
+  }
+]

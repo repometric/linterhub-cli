@@ -1,6 +1,6 @@
 [
   {
-    "filePath": "include/styleguide.js",
+    "filePath": "include\\styleguide.js",
     "messages": [
       {
         "message": "'TocTypeEnum' is not defined.",
@@ -51,7 +51,7 @@
         "ruleId": "no-undef"
       },
       {
-        "message": "'firstHeading' is defined but never used.",
+        "message": "'firstHeading' is assigned a value but never used.",
         "source": "  var firstHeading = headings[0];",
         "severity": 2,
         "column": "7",
@@ -91,7 +91,7 @@
         "ruleId": "no-undef"
       },
       {
-        "message": "'link' is already defined",
+        "message": "'link' is already defined.",
         "source": "        var link = document.createElement('a');",
         "severity": 2,
         "column": "13",

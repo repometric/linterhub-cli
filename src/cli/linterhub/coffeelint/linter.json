@@ -17,6 +17,6 @@
     },
     "defaults": {
         "--reporter": "file://{schema}/coffeelint/reporter.coffee",
-        "": "*/**/*.coffee"
+        "": "./"
     }
 }

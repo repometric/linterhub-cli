@@ -1,6 +1,6 @@
 [
   {
-    "filePath": "coffee/classes/mds_main_menu.coffee",
+    "filePath": "coffee\\classes\\mds_main_menu.coffee",
     "messages": [
       {
         "message": "Line exceeds maximum allowed length",

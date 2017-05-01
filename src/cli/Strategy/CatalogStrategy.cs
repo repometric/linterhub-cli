@@ -20,14 +20,14 @@ namespace Linterhub.Cli.Strategy
             var projectConfig = locator.Get<LinterhubSchema>();
             
             // List all linters and detect active linters (active for the project)
-            var linters = factory.GetSpecifications().Select(x => x.Schema);
+            var linters = factory.GetSpecifications().Select(x => x.Schema).OrderBy(x => x.Name);
             var result = linters.Select(linter => 
             {
                 linter.Active = projectConfig.Linters.Any(projectLinter => projectLinter.Name == linter.Name && projectLinter.Active != false);
                 return linter;
             });
 
-            return result;
+            return result.OrderBy(x => x.Name);
         }
     }
 }

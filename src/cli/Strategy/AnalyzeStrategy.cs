@@ -33,12 +33,12 @@ namespace Linterhub.Cli.Strategy
                 let specification = linterFactory.GetSpecification(linter)
                 let configOptions = config.Linters.FirstOrDefault(y => y.Name == linter)?.Config ?? specification.Schema.Defaults
                 let path = !string.IsNullOrEmpty(context.File) ? context.File : specification.Schema.Defaults.GetValueOrDefault("")
-                let runOptions = new LinterOptions 
-                { 
+                let runOptions = new LinterOptions
+                {
                     { "{path}", /*System.IO.Path.GetFullPath(path)*/ path },
                     { "file://{schema}", context.Linterhub }
                 }
-                let workingDirectory = context.Project
+                let workingDirectory = context.Directory ?? context.Project
                 select new LinterWrapper.Context
                 {
                     Specification = specification,
@@ -49,7 +49,6 @@ namespace Linterhub.Cli.Strategy
 
             var r = linterRunner.RunAnalysis(contexts.First());
 
-            var zx = linterRunner.RunVersion(contexts.First());
             var t = r.DeserializeAsJson<LinterOutputSchema.File[]>();
 
             foreach (var file in t)
@@ -59,9 +58,11 @@ namespace Linterhub.Cli.Strategy
                     .Replace(context.Project, string.Empty)
                     .Replace(System.IO.Path.GetFullPath(context.Project), string.Empty)
                     .TrimStart('/')
-                    .TrimStart('\\');
+                    .TrimStart('\\')
+                    .Replace("/", "\\");
             }
 
+            t.ToList().Sort((a, b) => a.FilePath.CompareTo(b.FilePath));
             return t;
             /* 
             var linterResults = new List<RunResult>();

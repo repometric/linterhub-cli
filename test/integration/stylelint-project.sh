@@ -1,0 +1,1 @@
+dotnet cli.dll --mode=Analyze --project=../../test/linterhub-tests/bulma/sass/grid --linter=stylelint
