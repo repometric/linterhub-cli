@@ -22,6 +22,7 @@
     "manager": "1.0.3"
   },
   "postfix": " | node file://{schema}/csslint/reporter.js",
+  "prefix": "node file://{schema}/csslint/prefix.js ",
   "optionsDelimiter": "=",
   "defaults": {
     "": "./",
