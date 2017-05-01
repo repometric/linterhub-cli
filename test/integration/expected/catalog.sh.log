@@ -61,6 +61,7 @@
       }
     ],
     "postfix": " | node file://{schema}/csslint/reporter.js",
+    "prefix": "node file://{schema}/csslint/prefix.js ",
     "active": false,
     "optionsDelimiter": "="
   },
