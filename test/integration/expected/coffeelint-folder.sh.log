@@ -27,10 +27,10 @@
     ]
   },
   {
-    "filePath": "mds_file.coffee"
+    "filePath": "mds_file_history.coffee"
   },
   {
-    "filePath": "mds_file_history.coffee"
+    "filePath": "mds_file.coffee"
   },
   {
     "filePath": "mds_main_menu.coffee",

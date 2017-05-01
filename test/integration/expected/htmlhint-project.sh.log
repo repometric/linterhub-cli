@@ -15,6 +15,81 @@
     ]
   },
   {
+    "filePath": "iframe.html",
+    "messages": [
+      {
+        "message": "Doctype must be declared first.",
+        "source": "<html>",
+        "severity": 5,
+        "column": "0",
+        "columnEnd": "1000",
+        "line": "0",
+        "lineEnd": "0",
+        "ruleId": "htmlhint:doctype-first"
+      }
+    ]
+  },
+  {
+    "filePath": "name.html",
+    "messages": [
+      {
+        "message": "Doctype must be declared first.",
+        "source": "ERROR <script type=\"text/javascript\">ok( true, \"name.html retrieved\" );</script>",
+        "severity": 5,
+        "column": "0",
+        "columnEnd": "1000",
+        "line": "0",
+        "lineEnd": "0",
+        "ruleId": "htmlhint:doctype-first"
+      }
+    ]
+  },
+  {
+    "filePath": "test.html",
+    "messages": [
+      {
+        "message": "Doctype must be declared first.",
+        "source": "html text<br/>",
+        "severity": 5,
+        "column": "0",
+        "columnEnd": "1000",
+        "line": "0",
+        "lineEnd": "0",
+        "ruleId": "htmlhint:doctype-first"
+      }
+    ]
+  },
+  {
+    "filePath": "test2.html",
+    "messages": [
+      {
+        "message": "Doctype must be declared first.",
+        "source": "<script type=\"text/javascript\">",
+        "severity": 5,
+        "column": "0",
+        "columnEnd": "1000",
+        "line": "0",
+        "lineEnd": "0",
+        "ruleId": "htmlhint:doctype-first"
+      }
+    ]
+  },
+  {
+    "filePath": "test3.html",
+    "messages": [
+      {
+        "message": "Doctype must be declared first.",
+        "source": "<div class=\"user\">This is a user</div>",
+        "severity": 5,
+        "column": "0",
+        "columnEnd": "1000",
+        "line": "0",
+        "lineEnd": "0",
+        "ruleId": "htmlhint:doctype-first"
+      }
+    ]
+  },
+  {
     "filePath": "core\\cc_on.html",
     "messages": [
       {
@@ -75,21 +150,6 @@
     ]
   },
   {
-    "filePath": "iframe.html",
-    "messages": [
-      {
-        "message": "Doctype must be declared first.",
-        "source": "<html>",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "0",
-        "lineEnd": "0",
-        "ruleId": "htmlhint:doctype-first"
-      }
-    ]
-  },
-  {
     "filePath": "manipulation\\iframe-denied.html",
     "messages": [
       {
@@ -120,21 +180,6 @@
     ]
   },
   {
-    "filePath": "name.html",
-    "messages": [
-      {
-        "message": "Doctype must be declared first.",
-        "source": "ERROR <script type=\"text/javascript\">ok( true, \"name.html retrieved\" );</script>",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "0",
-        "lineEnd": "0",
-        "ruleId": "htmlhint:doctype-first"
-      }
-    ]
-  },
-  {
     "filePath": "support\\bodyBackground.html",
     "messages": [
       {
@@ -146,51 +191,6 @@
         "line": "16",
         "lineEnd": "16",
         "ruleId": "htmlhint:title-require"
-      }
-    ]
-  },
-  {
-    "filePath": "test.html",
-    "messages": [
-      {
-        "message": "Doctype must be declared first.",
-        "source": "html text<br/>",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "0",
-        "lineEnd": "0",
-        "ruleId": "htmlhint:doctype-first"
-      }
-    ]
-  },
-  {
-    "filePath": "test2.html",
-    "messages": [
-      {
-        "message": "Doctype must be declared first.",
-        "source": "<script type=\"text/javascript\">",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "0",
-        "lineEnd": "0",
-        "ruleId": "htmlhint:doctype-first"
-      }
-    ]
-  },
-  {
-    "filePath": "test3.html",
-    "messages": [
-      {
-        "message": "Doctype must be declared first.",
-        "source": "<div class=\"user\">This is a user</div>",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "0",
-        "lineEnd": "0",
-        "ruleId": "htmlhint:doctype-first"
       }
     ]
   }
