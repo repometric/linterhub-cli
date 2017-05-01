@@ -8,6 +8,30 @@
       "commandName": "Project",
       "commandLineArgs": "--mode=catalog"
     },
+    "coffeelint-file": {
+      "commandName": "Project",
+      "commandLineArgs": "--mode=Analyze --project=../../test/linterhub-tests/marp --file=coffee/classes/mds_main_menu.coffee --linter=coffeelint"
+    },
+    "coffeelint-folder": {
+      "commandName": "Project",
+      "commandLineArgs": "--mode=Analyze --project=../../test/linterhub-tests/marp --folder=coffee/classes --linter=coffeelint"
+    },
+    "coffeelint-project": {
+      "commandName": "Project",
+      "commandLineArgs": "--mode=Analyze --project=../../test/linterhub-tests/marp --linter=coffeelint"
+    },
+    "csslint-file": {
+      "commandName": "Project",
+      "commandLineArgs": "--mode=Analyze --project=../../test/linterhub-tests/jquery-ui/themes/base --file=all.css --linter=csslint"
+    },
+    "csslint-folder": {
+      "commandName": "Project",
+      "commandLineArgs": "--mode=Analyze --project=../../test/linterhub-tests/Font-Awesome --folder=css --linter=csslint"
+    },
+    "csslint-project": {
+      "commandName": "Project",
+      "commandLineArgs": "--mode=Analyze --project=../../test/linterhub-tests/Font-Awesome --linter=csslint"
+    },
     "eslint-file": {
       "commandName": "Project",
       "commandLineArgs": "--mode=Analyze --project=../../test/linterhub-tests/styleguide --file=include/styleguide.js --linter=eslint"
