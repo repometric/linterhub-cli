@@ -29,19 +29,6 @@ namespace Linterhub.Engine.Schema
             public string RuleId { get; set; }
         }
 
-        public class Rule
-        {
-            public string Name { get; set; }
-            public string Id { get; set; }
-            public string Namespace { get; set; }
-        }
-
-        public class Interval
-        {
-            public int Start { get; set; }
-            public int End { get; set; }
-        }
-
         public enum SeverityType
         {
             Unknown = 0,
