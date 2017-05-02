@@ -4,6 +4,7 @@ This document describes the structure of linterhub output
 Linterhub output is an array of engines results
 ### result
 The engine result
+
 |Key|Type|Required|Description|
 |-|:-:|:-:|-|
 |engine|string|+|The engine name that performed analysis|
@@ -11,6 +12,7 @@ The engine result
 |error|[error](#error)[]|-|The problem definition if analysis is not possible|
 ### error
 The problem definition if analysis is not possible
+
 |Key|Type|Required|Description|
 |-|:-:|:-:|-|
 |code|integer|+|The error code|

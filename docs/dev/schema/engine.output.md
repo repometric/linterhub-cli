@@ -4,16 +4,18 @@ This document describes the structure of engine output
 Engine output is an array of analysis results
 ### result
 Represents analysis result
+
 |Key|Type|Required|Description|
 |-|:-:|:-:|-|
 |path|string|+|The path relative to the analysis root|
 |messages|[message](#message)[]|+|List of messages in the path|
 ### message
 Represents analysis message
+
 |Key|Type|Required|Description|
 |-|:-:|:-:|-|
 |message|string|+|The short description of the message|
-|description|string|-|The explandatory text of the message|
+|description|string|-|The explanatory text of the message|
 |severity|string|+|The severity of the message. Possible values: `verbose`, `hint`, `information`, `warning`, `error`|
 |line|integer|+|The line where the message is located|
 |lineEnd|integer|-|The end line where the message is located (the same as line by default)|

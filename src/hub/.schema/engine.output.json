@@ -38,7 +38,7 @@
                 },
                 "description": {
                     "type": "string",
-                    "description": "The explandatory text of the message"
+                    "description": "The explanatory text of the message"
                 },
                 "severity": {
                     "type": "string",

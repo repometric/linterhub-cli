@@ -87,6 +87,7 @@ const tree = {
     }
     tree.doc.push(node.description);
     if (node.properties) {
+      tree.doc.push('');
       tree.doc.push(format.table.header());
       tree.doc.push(format.table.columns());
       Object.keys(node.properties).forEach((name) => {
