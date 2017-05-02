@@ -1,6 +1,6 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema",
-	"title": "This document describes the structure of engine output",
+    "title": "This document describes the structure of engine output",
     "description": "Engine output is an array of analysis results",
     "type": "array",
     "items": {
@@ -23,7 +23,7 @@
                     }
                 }
             },
-            "required": [ 
+            "required": [
                 "path",
                 "messages"
             ]

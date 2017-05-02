@@ -1,6 +1,6 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema",
-	"title": "This document describes the structure of linterhub output",
+    "title": "This document describes the structure of linterhub output",
     "description": "Linterhub output is an array of engines results",
     "type": "array",
     "items": {
