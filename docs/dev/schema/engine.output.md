@@ -20,7 +20,7 @@ Represents analysis message
 |line|integer|+|The line where the message is located|
 |lineEnd|integer|-|The end line where the message is located (the same as line by default)|
 |column|integer|+|The column where the message is located|
-|columnEnd|integer|-|The end column where the message is located. Default is 1000|
+|columnEnd|integer|-|The end column where the message is located. Default is `1000`|
 |ruleId|string|-|The id of the rule that produced the message|
 |ruleName|string|-|The name of the rule that produced the message|
 |ruleNs|string|-|The namespace of the rule that produced the message|

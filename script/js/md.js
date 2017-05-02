@@ -19,7 +19,9 @@ const format = {
     header: () => `|Key|Type|Required|Description|`,
     columns: () => `|-|:-:|:-:|-|`,
     array: (type) => {
-      if (type.indexOf('.json') < 0) {
+      if (format.isDefaultType(type)) {
+        return `${type}[]`;
+      } else if (type.indexOf('.json') < 0) {
         return `[${type}](#${type})[]`;
       } else { 
         const name = format.capitalize(format.title(type));
@@ -30,13 +32,15 @@ const format = {
   },
   title: (text) => text.replace('.json', '').replace('.', ' '),
   type: (name) => name.replace('#/definitions/', ''),
+  isDefaultType: (name) => name === 'string'
 };
 
 const describe = {
   description: (value) => {
     return value.description +
       (value.enum ? '. Possible values: ' + value.enum.map(v => `\`${v}\``).join(', ') : '') +
-      (value.default ? '. Default is ' + value.default : '');
+      (value.items && value.items.enum ? '. Possible values: ' + value.items.enum.map(v => `\`${v}\``).join(', ') : '') +
+      (value.default ? '. Default is `' + value.default + '`' : '');
   },
   type: (name, value) => {
     var type = value.type;
@@ -71,7 +75,7 @@ const tree = {
         tree.visit(name, node.properties[name]);
       });
     }
-    if (node.items) {
+    if (node.items && !format.isDefaultType(node.items.type)) {
       tree.types.push({ name: name, node: node });
       tree.visit(name, node.items);
     }
