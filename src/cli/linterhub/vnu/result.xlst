@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+	<xsl:output indent="yes" method="xml"/>
+
+	<xsl:key name="groups" match="*" use="@url"/>
+
+	<xsl:template match="*">
+		<files>
+			<xsl:for-each select="*[generate-id() = generate-id(key('groups', @url)[1])]">
+				<file>
+					<filePath><xsl:value-of select="@url"/></filePath>
+					<errors>
+						<xsl:for-each select="key('groups', @url)">
+							<error>
+								<lastLine><xsl:value-of select="@last-line"/></lastLine>
+								<firstLine><xsl:value-of select="@first-line"/></firstLine>
+								<firstColumn><xsl:value-of select="@first-column"/></firstColumn>
+								<lastColumn><xsl:value-of select="@last-column"/></lastColumn>
+								<type>
+									<xsl:choose>
+									<xsl:when test="@type != ''">
+										<xsl:value-of select="@type"/>
+									</xsl:when>
+									<xsl:otherwise>
+										<xsl:text>error</xsl:text>
+									</xsl:otherwise>
+								   </xsl:choose>
+								</type>
+								<message><xsl:value-of select="."/></message>
+							</error>
+						</xsl:for-each>
+					</errors>						
+				</file>   
+			</xsl:for-each>
+		</files>
+	</xsl:template>
+
+</xsl:stylesheet>
