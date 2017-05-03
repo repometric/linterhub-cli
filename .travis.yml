@@ -11,7 +11,7 @@ node_js:
 - '6.10.2'
 before_install:
 - npm install -g json-diff fs path child_process
-- npm install -g eslint coffeelint csslint jshint standard htmlhint jslint stylelint tslint typescript
+- npm install -g eslint coffeelint csslint jshint standard htmlhint jslint stylelint tslint typescript sass-lint
 install:
 - sh script/setup.sh
 - sh script/cibuild.sh
