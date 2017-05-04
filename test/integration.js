@@ -36,7 +36,8 @@ fs.readdir(integration, (err, files) => {
                         result = JSON.parse(stdout);
                     }
                     catch(e){
-                        printError(file, "can't parse command output");
+                        printError(file, "can't parse command output:");
+                        console.log(stdout);
                         process.exit(1);
                     }
                     if(JSON.stringify(result) == JSON.stringify(expected))
