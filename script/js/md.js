@@ -29,6 +29,7 @@ const format = {
         return `[${name}](${file})[]`;
       }
     },
+    type: (type) => `[${type}](#${type})`,
   },
   title: (text) => text.replace('.json', '').replace('.', ' '),
   type: (name) => name.replace('#/definitions/', ''),
@@ -49,7 +50,7 @@ const describe = {
       type = format.table.array(typeName);
     }
     if (type === 'object') {
-      type = format.table.array(name);
+      type = format.table.type(name);
     }
     return type;
   },
@@ -119,7 +120,9 @@ const tree = {
     }
     result += (nodeName ? `"${nodeName}":`: '');
     if (nodeName && !node.properties && !node.items) {
-      result += node.type === "integer" ? 0 : node.enum ? `"${node.enum[0]}"` : `"${node.type}"`;
+      result += node.type === 'integer' ? 0 :
+                node.enum ? `"${node.enum[0]}"` :
+                node.type === 'boolean' ? false : `"${node.type}"`;
     }
     if (node.properties) {
       const properties = Object.keys(node.properties).map((name) => tree.example(name, node.properties[name])).join(',');

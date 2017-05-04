@@ -9,7 +9,7 @@ The engine result
 |-|:-:|:-:|-|
 |engine|string|+|The engine name that performed analysis|
 |results|[Engine Output](engine.output.md)[]|+|The list of analysis results|
-|error|[error](#error)[]|-|The problem definition if analysis is not possible|
+|error|[error](#error)|-|The problem definition if analysis is not possible|
 ### error
 The problem definition if analysis is not possible
 

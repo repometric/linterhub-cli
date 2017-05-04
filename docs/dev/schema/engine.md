@@ -1,14 +1,14 @@
 # Engine
 This document describes the engine definition
 ## Structure
-The metainformation for engine
+The meta information of engine
 
 |Key|Type|Required|Description|
 |-|:-:|:-:|-|
 |name|string|+|The engine name|
 |description|string|+|The engine description|
 |url|string|-|The engine url or homepage|
-|version|[version](#version)[]|-|The engine version (expected)|
+|version|[version](#version)|-|The engine version (expected)|
 |languages|string[]|+|The list of supported languages. Possible values: `coffeescript`, `css`, `html`, `javascript`, `json`, `jsx`, `sass`, `typescript`|
 |extensions|string[]|-|Common file extensions parsed by engine|
 |license|string|+|The engine license. Possible values: `Unknown`, `AGPL-3.0`, `Apache-2.0`, `MIT`|
