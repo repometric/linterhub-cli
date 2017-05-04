@@ -1,7 +1,7 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema",
     "title": "This document describes the engine definition",
-    "description": "The metainformation for engine",
+    "description": "The meta information of engine",
     "type": "object",
     "properties": {
         "name": {
