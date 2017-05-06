@@ -18,6 +18,7 @@ The meta information of engine
 |postfix|string|-|Postfix in terminal (normaly post processor)|
 |optionsDelimiter|string|-|Delimiter for options (space by default). Default is ` `|
 |successCode|integer|-|Success exit code|
+|defaults|object|-|The default configuration of engine. This property is specific for each engine|
 ### version
 The engine version (expected)
 
@@ -30,7 +31,7 @@ The engine dependency
 
 |Key|Type|Required|Description|
 |-|:-:|:-:|-|
-|manager|string|-|The manager for dependency. Possible values: `system`, `composer`, `gem`, `npm`, `pip`|
+|manager|string|-|The manager for dependency. Possible values: `system`, `url`, `composer`, `gem`, `npm`, `pip`|
 |package|string|-|The package name|
 ## Example
 ```
@@ -55,6 +56,7 @@ The engine dependency
     "prefix": "string",
     "postfix": "string",
     "optionsDelimiter": "string",
-    "successCode": 0
+    "successCode": 0,
+    "defaults": {}
 }
 ```

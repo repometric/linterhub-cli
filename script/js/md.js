@@ -49,7 +49,7 @@ const describe = {
       const typeName = value.items.type ? value.items.type : format.type(value.items.$ref);
       type = format.table.array(typeName);
     }
-    if (type === 'object') {
+    if (type === 'object' && value.properties) {
       type = format.table.type(name);
     }
     return type;
@@ -115,14 +115,17 @@ const tree = {
   },
   example: (nodeName, node) => {
     var result = '';
+    const hasName = nodeName || nodeName == '';
     if (!node) {
       return result;
     }
-    result += (nodeName ? `"${nodeName}":`: '');
-    if (nodeName && !node.properties && !node.items) {
+    result += (hasName ? `"${nodeName}":`: '');
+    if (hasName && !node.properties && !node.items) {
       result += node.type === 'integer' ? 0 :
                 node.enum ? `"${node.enum[0]}"` :
-                node.type === 'boolean' ? false : `"${node.type}"`;
+                node.type === 'null' ? 'null' :
+                node.type === 'boolean' ? false : 
+                node.type ==='object' ? '{}' : `"${node.type}"`;
     }
     if (node.properties) {
       const properties = Object.keys(node.properties).map((name) => tree.example(name, node.properties[name])).join(',');

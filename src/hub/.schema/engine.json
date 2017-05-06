@@ -116,7 +116,7 @@
         },
         "defaults": {
             "type": "object",
-            "description": "The default configuration of engine"
+            "description": "The default configuration of engine. This property is specific for each engine"
         }
     },
     "required": [
