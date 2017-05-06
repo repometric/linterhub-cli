@@ -8,3 +8,4 @@ _/
 __/
 Linters/
 test/integration/actual/*.log
+node_modules

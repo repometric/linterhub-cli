@@ -1,22 +1,24 @@
 const fs = require('fs');
 const path = require('path');
 const _process = require('child_process');
+//const compareObj = require('compare-obj');
+const JsDiff = require('diff');
 
 var integration = path.join(__dirname, 'integration');
 
 function printError(f, s)
 {
-    console.error("\x1b[37m%s: \x1b[31m%s\x1b[37m", f, s);
+    console.log("\x1b[37m%s: \x1b[31m%s\x1b[37m", f, s);
 }
 
 function printSuccess(f, s)
 {
-    console.error("\x1b[37m%s: \x1b[32m%s\x1b[37m", f, s);
+    console.log("\x1b[37m%s: \x1b[32m%s\x1b[37m", f, s);
 }
 
 function printWarning(f, s)
 {
-    console.error("\x1b[37m%s: \x1b[33m%s\x1b[37m", f, s);
+    console.log("\x1b[37m%s: \x1b[33m%s\x1b[37m", f, s);
 }
 
 fs.readdir(integration, (err, files) => {
@@ -50,7 +52,15 @@ fs.readdir(integration, (err, files) => {
                             else
                             {
                                 printError(file, "FAILED!");
-                                _process.execSync('json-diff ' + path.join(integration, 'actual', file + ".log") + ' ' + path.join(integration, 'expected', file + ".log"), {stdio:[0,1,2]});
+                                var diff = JsDiff.diffLines(JSON.stringify(result), JSON.stringify(expected));
+                            
+                                diff.forEach(function(part){
+                                    if(part.removed)
+                                        console.log("\x1b[31m%s\x1b[37m", part.value);
+                                    if(part.added)
+                                        console.log("\x1b[32m%s\x1b[37m", part.value);
+                                });
+                                //console.log(compareObj(result, expected));
                                 process.exit(1);
                             }
                         }
@@ -69,7 +79,15 @@ fs.readdir(integration, (err, files) => {
                         else
                         {
                             printError(file, "FAILED!");
-                            _process.execSync('sh diff -a' + path.join(integration, 'actual', file + ".log") + ' ' + path.join(integration, 'expected', file + ".log"), {stdio:[0,1,2]});
+                            
+                            var diff = JsDiff.diffLines(result, expected);
+                            
+                            diff.forEach(function(part){
+                                if(part.removed)
+                                    console.log("\x1b[31m%s\x1b[37m", part.value);
+                                if(part.added)
+                                    console.log("\x1b[32m%s\x1b[37m", part.value);
+                            });
                             process.exit(1);
                         }
                     }
