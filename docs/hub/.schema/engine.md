@@ -30,7 +30,7 @@ The engine dependency
 
 |Key|Type|Required|Description|
 |-|:-:|:-:|-|
-|manager|string|-|The manager for dependency. Possible values: `composer`, `gem`, `npm`, `pip`|
+|manager|string|-|The manager for dependency. Possible values: `system`, `composer`, `gem`, `npm`, `pip`|
 |package|string|-|The package name|
 ## Example
 ```
@@ -47,7 +47,7 @@ The engine dependency
     "license": "Unknown",
     "requirements": [
         {
-            "manager": "composer",
+            "manager": "system",
             "package": "string"
         }
     ],

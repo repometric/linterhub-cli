@@ -113,6 +113,10 @@
         "successCode": {
             "type": "integer",
             "description": "Success exit code"
+        },
+        "defaults": {
+            "type": "object",
+            "description": "The default configuration of engine"
         }
     },
     "required": [
@@ -131,6 +135,8 @@
                     "type": "string",
                     "description": "The manager for dependency",
                     "enum": [
+                        "system",
+                        "url",
                         "composer",
                         "gem",
                         "npm",
