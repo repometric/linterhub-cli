@@ -10,8 +10,12 @@
             "items": {
                 "$ref": "#/definitions/configuration",
                 "anyOf": [
-                    { "$ref": "./../csslint/args.schema.json#/definitions/section" },
-                    { "$ref": "./../coffeelint/args.schema.json#/definitions/section" }
+                    {
+                        "$ref": "./../csslint/args.schema.json#/definitions/section"
+                    },
+                    {
+                        "$ref": "./../coffeelint/args.schema.json#/definitions/section"
+                    }
                 ]
             }
         },
