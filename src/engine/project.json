@@ -5,7 +5,6 @@
   },
   "description": "Linterhub engine.",
   "dependencies": {
-    "CsvHelper": "2.16.3",
     "NETStandard.Library": "1.6.1", 
     "Microsoft.NETCore.Runtime.CoreCLR": "1.1.1",
     "Microsoft.NETCore.DotNetHostPolicy":  "1.1.0",
