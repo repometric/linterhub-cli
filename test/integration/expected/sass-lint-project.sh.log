@@ -1,0 +1,407 @@
+[
+  {
+    "filePath": "_all.sass",
+    "messages": [
+      {
+        "message": "Strings must use single quotes",
+        "severity": 1,
+        "column": "10",
+        "line": "1",
+        "ruleId": "quotes"
+      },
+      {
+        "message": "File extensions are not allowed",
+        "severity": 1,
+        "column": "2",
+        "line": "3",
+        "ruleId": "clean-import-paths"
+      },
+      {
+        "message": "Strings must use single quotes",
+        "severity": 1,
+        "column": "9",
+        "line": "3",
+        "ruleId": "quotes"
+      },
+      {
+        "message": "File extensions are not allowed",
+        "severity": 1,
+        "column": "2",
+        "line": "4",
+        "ruleId": "clean-import-paths"
+      },
+      {
+        "message": "Strings must use single quotes",
+        "severity": 1,
+        "column": "9",
+        "line": "4",
+        "ruleId": "quotes"
+      },
+      {
+        "message": "File extensions are not allowed",
+        "severity": 1,
+        "column": "2",
+        "line": "5",
+        "ruleId": "clean-import-paths"
+      },
+      {
+        "message": "Strings must use single quotes",
+        "severity": 1,
+        "column": "9",
+        "line": "5",
+        "ruleId": "quotes"
+      }
+    ]
+  },
+  {
+    "filePath": "generic.sass",
+    "messages": [
+      {
+        "message": "Expected `-moz-osx-font-smoothing`, found `background-color`",
+        "severity": 1,
+        "column": "3",
+        "line": "4",
+        "ruleId": "property-sort-order"
+      },
+      {
+        "message": "Expected `-webkit-font-smoothing`, found `font-size`",
+        "severity": 1,
+        "column": "3",
+        "line": "5",
+        "ruleId": "property-sort-order"
+      },
+      {
+        "message": "Expected `background-color`, found `-moz-osx-font-smoothing`",
+        "severity": 1,
+        "column": "3",
+        "line": "6",
+        "ruleId": "property-sort-order"
+      },
+      {
+        "message": "Vendor prefixes should not be used",
+        "severity": 1,
+        "column": "3",
+        "line": "6",
+        "ruleId": "no-vendor-prefixes"
+      },
+      {
+        "message": "Expected `font-size`, found `-webkit-font-smoothing`",
+        "severity": 1,
+        "column": "3",
+        "line": "7",
+        "ruleId": "property-sort-order"
+      },
+      {
+        "message": "Vendor prefixes should not be used",
+        "severity": 1,
+        "column": "3",
+        "line": "7",
+        "ruleId": "no-vendor-prefixes"
+      },
+      {
+        "message": "Vendor prefixes should not be used",
+        "severity": 1,
+        "column": "3",
+        "line": "31",
+        "ruleId": "no-vendor-prefixes"
+      },
+      {
+        "message": "Vendor prefixes should not be used",
+        "severity": 1,
+        "column": "3",
+        "line": "32",
+        "ruleId": "no-vendor-prefixes"
+      },
+      {
+        "message": "Space expected between blocks",
+        "severity": 1,
+        "column": "1",
+        "line": "49",
+        "ruleId": "empty-line-between-blocks"
+      },
+      {
+        "message": "A value of `none` is not allowed. `0` must be used.",
+        "severity": 1,
+        "column": "11",
+        "line": "61",
+        "ruleId": "border-zero"
+      },
+      {
+        "message": "Attribute-selector should be nested within its parent Type-selector",
+        "severity": 1,
+        "column": "1",
+        "line": "69",
+        "ruleId": "force-attribute-nesting"
+      },
+      {
+        "message": "Qualifying elements are not allowed for attribute selectors",
+        "severity": 1,
+        "column": "6",
+        "line": "69",
+        "ruleId": "no-qualifying-elements"
+      },
+      {
+        "message": "Strings must use single quotes",
+        "severity": 1,
+        "column": "12",
+        "line": "69",
+        "ruleId": "quotes"
+      },
+      {
+        "message": "Attribute-selector should be nested within its parent Type-selector",
+        "severity": 1,
+        "column": "1",
+        "line": "70",
+        "ruleId": "force-attribute-nesting"
+      },
+      {
+        "message": "Qualifying elements are not allowed for attribute selectors",
+        "severity": 1,
+        "column": "6",
+        "line": "70",
+        "ruleId": "no-qualifying-elements"
+      },
+      {
+        "message": "Strings must use single quotes",
+        "severity": 1,
+        "column": "12",
+        "line": "70",
+        "ruleId": "quotes"
+      },
+      {
+        "message": "Space expected between blocks",
+        "severity": 1,
+        "column": "1",
+        "line": "91",
+        "ruleId": "empty-line-between-blocks"
+      },
+      {
+        "message": "Space expected between blocks",
+        "severity": 1,
+        "column": "1",
+        "line": "100",
+        "ruleId": "empty-line-between-blocks"
+      },
+      {
+        "message": "Space expected between blocks",
+        "severity": 1,
+        "column": "1",
+        "line": "104",
+        "ruleId": "empty-line-between-blocks"
+      }
+    ]
+  },
+  {
+    "filePath": "helpers.sass",
+    "messages": [
+      {
+        "message": "Space expected between blocks",
+        "severity": 1,
+        "column": "1",
+        "line": "8",
+        "ruleId": "empty-line-between-blocks"
+      },
+      {
+        "message": "!important not allowed",
+        "severity": 1,
+        "column": "28",
+        "line": "10",
+        "ruleId": "no-important"
+      },
+      {
+        "message": "Space expected between blocks",
+        "severity": 1,
+        "column": "1",
+        "line": "11",
+        "ruleId": "empty-line-between-blocks"
+      },
+      {
+        "message": "!important not allowed",
+        "severity": 1,
+        "column": "28",
+        "line": "13",
+        "ruleId": "no-important"
+      },
+      {
+        "message": "Space expected between blocks",
+        "severity": 1,
+        "column": "1",
+        "line": "14",
+        "ruleId": "empty-line-between-blocks"
+      },
+      {
+        "message": "!important not allowed",
+        "severity": 1,
+        "column": "28",
+        "line": "16",
+        "ruleId": "no-important"
+      },
+      {
+        "message": "Space expected between blocks",
+        "severity": 1,
+        "column": "1",
+        "line": "17",
+        "ruleId": "empty-line-between-blocks"
+      },
+      {
+        "message": "!important not allowed",
+        "severity": 1,
+        "column": "28",
+        "line": "19",
+        "ruleId": "no-important"
+      },
+      {
+        "message": "Space expected between blocks",
+        "severity": 1,
+        "column": "1",
+        "line": "20",
+        "ruleId": "empty-line-between-blocks"
+      },
+      {
+        "message": "!important not allowed",
+        "severity": 1,
+        "column": "28",
+        "line": "22",
+        "ruleId": "no-important"
+      },
+      {
+        "message": "Space expected between blocks",
+        "severity": 1,
+        "column": "1",
+        "line": "23",
+        "ruleId": "empty-line-between-blocks"
+      },
+      {
+        "message": "!important not allowed",
+        "severity": 1,
+        "column": "28",
+        "line": "25",
+        "ruleId": "no-important"
+      },
+      {
+        "message": "Space expected between blocks",
+        "severity": 1,
+        "column": "1",
+        "line": "26",
+        "ruleId": "empty-line-between-blocks"
+      },
+      {
+        "message": "!important not allowed",
+        "severity": 1,
+        "column": "28",
+        "line": "28",
+        "ruleId": "no-important"
+      },
+      {
+        "message": "Space expected between blocks",
+        "severity": 1,
+        "column": "1",
+        "line": "32",
+        "ruleId": "empty-line-between-blocks"
+      },
+      {
+        "message": "!important not allowed",
+        "severity": 1,
+        "column": "20",
+        "line": "44",
+        "ruleId": "no-important"
+      },
+      {
+        "message": "!important not allowed",
+        "severity": 1,
+        "column": "17",
+        "line": "65",
+        "ruleId": "no-important"
+      },
+      {
+        "message": "!important not allowed",
+        "severity": 1,
+        "column": "19",
+        "line": "69",
+        "ruleId": "no-important"
+      },
+      {
+        "message": "!important not allowed",
+        "severity": 1,
+        "column": "19",
+        "line": "73",
+        "ruleId": "no-important"
+      },
+      {
+        "message": "!important not allowed",
+        "severity": 1,
+        "column": "19",
+        "line": "77",
+        "ruleId": "no-important"
+      },
+      {
+        "message": "!important not allowed",
+        "severity": 1,
+        "column": "19",
+        "line": "81",
+        "ruleId": "no-important"
+      },
+      {
+        "message": "!important not allowed",
+        "severity": 1,
+        "column": "19",
+        "line": "85",
+        "ruleId": "no-important"
+      },
+      {
+        "message": "!important not allowed",
+        "severity": 1,
+        "column": "19",
+        "line": "89",
+        "ruleId": "no-important"
+      },
+      {
+        "message": "!important not allowed",
+        "severity": 1,
+        "column": "19",
+        "line": "93",
+        "ruleId": "no-important"
+      },
+      {
+        "message": "!important not allowed",
+        "severity": 1,
+        "column": "13",
+        "line": "101",
+        "ruleId": "no-important"
+      },
+      {
+        "message": "!important not allowed",
+        "severity": 1,
+        "column": "14",
+        "line": "104",
+        "ruleId": "no-important"
+      }
+    ]
+  },
+  {
+    "filePath": "minireset.sass",
+    "messages": [
+      {
+        "message": "Space expected between blocks",
+        "severity": 1,
+        "column": "1",
+        "line": "56",
+        "ruleId": "empty-line-between-blocks"
+      },
+      {
+        "message": "Pseudo-elements must start with double colons",
+        "severity": 1,
+        "column": "4",
+        "line": "56",
+        "ruleId": "pseudo-element"
+      },
+      {
+        "message": "Pseudo-elements must start with double colons",
+        "severity": 1,
+        "column": "4",
+        "line": "57",
+        "ruleId": "pseudo-element"
+      }
+    ]
+  }
+]

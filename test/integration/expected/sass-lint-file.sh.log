@@ -1,0 +1,189 @@
+[
+  {
+    "filePath": "helpers.sass",
+    "messages": [
+      {
+        "message": "Space expected between blocks",
+        "severity": 1,
+        "column": "1",
+        "line": "8",
+        "ruleId": "empty-line-between-blocks"
+      },
+      {
+        "message": "!important not allowed",
+        "severity": 1,
+        "column": "28",
+        "line": "10",
+        "ruleId": "no-important"
+      },
+      {
+        "message": "Space expected between blocks",
+        "severity": 1,
+        "column": "1",
+        "line": "11",
+        "ruleId": "empty-line-between-blocks"
+      },
+      {
+        "message": "!important not allowed",
+        "severity": 1,
+        "column": "28",
+        "line": "13",
+        "ruleId": "no-important"
+      },
+      {
+        "message": "Space expected between blocks",
+        "severity": 1,
+        "column": "1",
+        "line": "14",
+        "ruleId": "empty-line-between-blocks"
+      },
+      {
+        "message": "!important not allowed",
+        "severity": 1,
+        "column": "28",
+        "line": "16",
+        "ruleId": "no-important"
+      },
+      {
+        "message": "Space expected between blocks",
+        "severity": 1,
+        "column": "1",
+        "line": "17",
+        "ruleId": "empty-line-between-blocks"
+      },
+      {
+        "message": "!important not allowed",
+        "severity": 1,
+        "column": "28",
+        "line": "19",
+        "ruleId": "no-important"
+      },
+      {
+        "message": "Space expected between blocks",
+        "severity": 1,
+        "column": "1",
+        "line": "20",
+        "ruleId": "empty-line-between-blocks"
+      },
+      {
+        "message": "!important not allowed",
+        "severity": 1,
+        "column": "28",
+        "line": "22",
+        "ruleId": "no-important"
+      },
+      {
+        "message": "Space expected between blocks",
+        "severity": 1,
+        "column": "1",
+        "line": "23",
+        "ruleId": "empty-line-between-blocks"
+      },
+      {
+        "message": "!important not allowed",
+        "severity": 1,
+        "column": "28",
+        "line": "25",
+        "ruleId": "no-important"
+      },
+      {
+        "message": "Space expected between blocks",
+        "severity": 1,
+        "column": "1",
+        "line": "26",
+        "ruleId": "empty-line-between-blocks"
+      },
+      {
+        "message": "!important not allowed",
+        "severity": 1,
+        "column": "28",
+        "line": "28",
+        "ruleId": "no-important"
+      },
+      {
+        "message": "Space expected between blocks",
+        "severity": 1,
+        "column": "1",
+        "line": "32",
+        "ruleId": "empty-line-between-blocks"
+      },
+      {
+        "message": "!important not allowed",
+        "severity": 1,
+        "column": "20",
+        "line": "44",
+        "ruleId": "no-important"
+      },
+      {
+        "message": "!important not allowed",
+        "severity": 1,
+        "column": "17",
+        "line": "65",
+        "ruleId": "no-important"
+      },
+      {
+        "message": "!important not allowed",
+        "severity": 1,
+        "column": "19",
+        "line": "69",
+        "ruleId": "no-important"
+      },
+      {
+        "message": "!important not allowed",
+        "severity": 1,
+        "column": "19",
+        "line": "73",
+        "ruleId": "no-important"
+      },
+      {
+        "message": "!important not allowed",
+        "severity": 1,
+        "column": "19",
+        "line": "77",
+        "ruleId": "no-important"
+      },
+      {
+        "message": "!important not allowed",
+        "severity": 1,
+        "column": "19",
+        "line": "81",
+        "ruleId": "no-important"
+      },
+      {
+        "message": "!important not allowed",
+        "severity": 1,
+        "column": "19",
+        "line": "85",
+        "ruleId": "no-important"
+      },
+      {
+        "message": "!important not allowed",
+        "severity": 1,
+        "column": "19",
+        "line": "89",
+        "ruleId": "no-important"
+      },
+      {
+        "message": "!important not allowed",
+        "severity": 1,
+        "column": "19",
+        "line": "93",
+        "ruleId": "no-important"
+      },
+      {
+        "message": "!important not allowed",
+        "severity": 1,
+        "column": "13",
+        "line": "101",
+        "ruleId": "no-important"
+      },
+      {
+        "message": "!important not allowed",
+        "severity": 1,
+        "column": "14",
+        "line": "104",
+        "ruleId": "no-important"
+      }
+    ]
+  }
+]

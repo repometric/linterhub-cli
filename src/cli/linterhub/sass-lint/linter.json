@@ -1,0 +1,29 @@
+{
+  "$schema": "./../linter.schema.json",
+  "name": "sass-lint",
+  "description": "A Node-only Sass linter for both sass and scss syntax!",
+  "url": "https://github.com/sasstools/sass-lint",
+  "languages": [ "sass" ],
+  "extensions": [ "*.sass", "*.scss" ],
+  "license": "MIT",
+  "areas": [ "syntax", "formatting" ],
+  "requirements": [
+    {
+      "manager": "system",
+      "package": "npm"
+    },
+    {
+      "manager": "npm",
+      "package": "sass-lint"
+    }
+  ],
+  "version": {
+    "local": "1.10.2",
+    "manager": "1.10.2"
+  },
+  "defaults": {
+    "": "*",
+    "--verbose": null,
+    "--format": "json"
+  }
+}

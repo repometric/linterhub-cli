@@ -1,0 +1,540 @@
+[
+  {
+    "filePath": "_all.sass",
+    "messages": [
+      {
+        "message": "Strings must use single quotes",
+        "severity": 1,
+        "column": "10",
+        "line": "1",
+        "ruleId": "quotes"
+      },
+      {
+        "message": "File extensions are not allowed",
+        "severity": 1,
+        "column": "2",
+        "line": "3",
+        "ruleId": "clean-import-paths"
+      },
+      {
+        "message": "Strings must use single quotes",
+        "severity": 1,
+        "column": "9",
+        "line": "3",
+        "ruleId": "quotes"
+      },
+      {
+        "message": "File extensions are not allowed",
+        "severity": 1,
+        "column": "2",
+        "line": "4",
+        "ruleId": "clean-import-paths"
+      },
+      {
+        "message": "Strings must use single quotes",
+        "severity": 1,
+        "column": "9",
+        "line": "4",
+        "ruleId": "quotes"
+      },
+      {
+        "message": "File extensions are not allowed",
+        "severity": 1,
+        "column": "2",
+        "line": "5",
+        "ruleId": "clean-import-paths"
+      },
+      {
+        "message": "Strings must use single quotes",
+        "severity": 1,
+        "column": "9",
+        "line": "5",
+        "ruleId": "quotes"
+      }
+    ]
+  },
+  {
+    "filePath": "footer.sass",
+    "messages": [
+      {
+        "message": "Space expected between blocks",
+        "severity": 1,
+        "column": "1",
+        "line": "4",
+        "ruleId": "empty-line-between-blocks"
+      },
+      {
+        "message": "Space expected between blocks",
+        "severity": 1,
+        "column": "1",
+        "line": "8",
+        "ruleId": "empty-line-between-blocks"
+      },
+      {
+        "message": "Nesting depth 3 greater than max of 2",
+        "severity": 1,
+        "column": "7",
+        "line": "8",
+        "ruleId": "nesting-depth"
+      },
+      {
+        "message": "Space expected between blocks",
+        "severity": 1,
+        "column": "1",
+        "line": "10",
+        "ruleId": "empty-line-between-blocks"
+      },
+      {
+        "message": "Nesting depth 3 greater than max of 2",
+        "severity": 1,
+        "column": "7",
+        "line": "10",
+        "ruleId": "nesting-depth"
+      },
+      {
+        "message": "Space expected between blocks",
+        "severity": 1,
+        "column": "1",
+        "line": "12",
+        "ruleId": "empty-line-between-blocks"
+      }
+    ]
+  },
+  {
+    "filePath": "hero.sass",
+    "messages": [
+      {
+        "message": "Space expected between blocks",
+        "severity": 1,
+        "column": "1",
+        "line": "6",
+        "ruleId": "empty-line-between-blocks"
+      },
+      {
+        "message": "Space expected between blocks",
+        "severity": 1,
+        "column": "1",
+        "line": "13",
+        "ruleId": "empty-line-between-blocks"
+      },
+      {
+        "message": "Don't include leading zeros on numbers",
+        "severity": 1,
+        "column": "14",
+        "line": "15",
+        "ruleId": "leading-zero"
+      },
+      {
+        "message": "Mixins should come before declarations",
+        "severity": 1,
+        "column": "3",
+        "line": "23",
+        "ruleId": "mixins-before-declarations"
+      },
+      {
+        "message": "Space expected between blocks",
+        "severity": 1,
+        "column": "1",
+        "line": "26",
+        "ruleId": "empty-line-between-blocks"
+      },
+      {
+        "message": "Mixins should come before declarations",
+        "severity": 1,
+        "column": "3",
+        "line": "28",
+        "ruleId": "mixins-before-declarations"
+      },
+      {
+        "message": "Space expected between blocks",
+        "severity": 1,
+        "column": "1",
+        "line": "31",
+        "ruleId": "empty-line-between-blocks"
+      },
+      {
+        "message": "Pseudo-class should be nested within its parent Class",
+        "severity": 1,
+        "column": "5",
+        "line": "31",
+        "ruleId": "force-pseudo-nesting"
+      },
+      {
+        "message": "Mixins should come before declarations",
+        "severity": 1,
+        "column": "3",
+        "line": "45",
+        "ruleId": "mixins-before-declarations"
+      },
+      {
+        "message": "Space expected between blocks",
+        "severity": 1,
+        "column": "1",
+        "line": "57",
+        "ruleId": "empty-line-between-blocks"
+      },
+      {
+        "message": "Color functions such as 'rgba' should only be used in variable declarations",
+        "severity": 1,
+        "column": "25",
+        "line": "59",
+        "ruleId": "no-color-literals"
+      },
+      {
+        "message": "Don't include leading zeros on numbers",
+        "severity": 1,
+        "column": "39",
+        "line": "59",
+        "ruleId": "leading-zero"
+      },
+      {
+        "message": "Space expected between blocks",
+        "severity": 1,
+        "column": "1",
+        "line": "60",
+        "ruleId": "empty-line-between-blocks"
+      },
+      {
+        "message": "A value of `none` is not allowed. `0` must be used.",
+        "severity": 1,
+        "column": "22",
+        "line": "62",
+        "ruleId": "border-zero"
+      },
+      {
+        "message": "Space expected between blocks",
+        "severity": 1,
+        "column": "1",
+        "line": "67",
+        "ruleId": "empty-line-between-blocks"
+      },
+      {
+        "message": "Space expected between blocks",
+        "severity": 1,
+        "column": "1",
+        "line": "70",
+        "ruleId": "empty-line-between-blocks"
+      },
+      {
+        "message": "Space expected between blocks",
+        "severity": 1,
+        "column": "1",
+        "line": "72",
+        "ruleId": "empty-line-between-blocks"
+      },
+      {
+        "message": "Space expected between blocks",
+        "severity": 1,
+        "column": "1",
+        "line": "75",
+        "ruleId": "empty-line-between-blocks"
+      },
+      {
+        "message": "Color functions such as 'rgba' should only be used in variable declarations",
+        "severity": 1,
+        "column": "16",
+        "line": "76",
+        "ruleId": "no-color-literals"
+      },
+      {
+        "message": "Don't include leading zeros on numbers",
+        "severity": 1,
+        "column": "36",
+        "line": "76",
+        "ruleId": "leading-zero"
+      },
+      {
+        "message": "Space expected between blocks",
+        "severity": 1,
+        "column": "1",
+        "line": "77",
+        "ruleId": "empty-line-between-blocks"
+      },
+      {
+        "message": "Space expected between blocks",
+        "severity": 1,
+        "column": "1",
+        "line": "80",
+        "ruleId": "empty-line-between-blocks"
+      },
+      {
+        "message": "Color functions such as 'rgba' should only be used in variable declarations",
+        "severity": 1,
+        "column": "29",
+        "line": "81",
+        "ruleId": "no-color-literals"
+      },
+      {
+        "message": "Don't include leading zeros on numbers",
+        "severity": 1,
+        "column": "49",
+        "line": "81",
+        "ruleId": "leading-zero"
+      },
+      {
+        "message": "Space expected between blocks",
+        "severity": 1,
+        "column": "1",
+        "line": "82",
+        "ruleId": "empty-line-between-blocks"
+      },
+      {
+        "message": "Space expected between blocks",
+        "severity": 1,
+        "column": "1",
+        "line": "85",
+        "ruleId": "empty-line-between-blocks"
+      },
+      {
+        "message": "Class should be nested within its parent Type-selector",
+        "severity": 1,
+        "column": "7",
+        "line": "85",
+        "ruleId": "force-element-nesting"
+      },
+      {
+        "message": "Qualifying elements are not allowed for class selectors",
+        "severity": 1,
+        "column": "8",
+        "line": "85",
+        "ruleId": "no-qualifying-elements"
+      },
+      {
+        "message": "Pseudo-class should be nested within its parent Type-selector",
+        "severity": 1,
+        "column": "7",
+        "line": "86",
+        "ruleId": "force-pseudo-nesting"
+      },
+      {
+        "message": "Type-selector should be nested within its parent Class",
+        "severity": 1,
+        "column": "7",
+        "line": "86",
+        "ruleId": "force-element-nesting"
+      },
+      {
+        "message": "Color functions such as 'rgba' should only be used in variable declarations",
+        "severity": 1,
+        "column": "16",
+        "line": "87",
+        "ruleId": "no-color-literals"
+      },
+      {
+        "message": "Don't include leading zeros on numbers",
+        "severity": 1,
+        "column": "36",
+        "line": "87",
+        "ruleId": "leading-zero"
+      },
+      {
+        "message": "Space expected between blocks",
+        "severity": 1,
+        "column": "1",
+        "line": "88",
+        "ruleId": "empty-line-between-blocks"
+      },
+      {
+        "message": "Space expected between blocks",
+        "severity": 1,
+        "column": "1",
+        "line": "91",
+        "ruleId": "empty-line-between-blocks"
+      },
+      {
+        "message": "Don't include leading zeros on numbers",
+        "severity": 1,
+        "column": "20",
+        "line": "94",
+        "ruleId": "leading-zero"
+      },
+      {
+        "message": "Space expected between blocks",
+        "severity": 1,
+        "column": "1",
+        "line": "95",
+        "ruleId": "empty-line-between-blocks"
+      },
+      {
+        "message": "Space expected between blocks",
+        "severity": 1,
+        "column": "1",
+        "line": "97",
+        "ruleId": "empty-line-between-blocks"
+      },
+      {
+        "message": "Type-selector should be nested within its parent Class",
+        "severity": 1,
+        "column": "11",
+        "line": "98",
+        "ruleId": "force-element-nesting"
+      },
+      {
+        "message": "Space expected between blocks",
+        "severity": 1,
+        "column": "1",
+        "line": "100",
+        "ruleId": "empty-line-between-blocks"
+      },
+      {
+        "message": "Space expected between blocks",
+        "severity": 1,
+        "column": "1",
+        "line": "104",
+        "ruleId": "empty-line-between-blocks"
+      },
+      {
+        "message": "Color functions such as 'rgba' should only be used in variable declarations",
+        "severity": 1,
+        "column": "33",
+        "line": "105",
+        "ruleId": "no-color-literals"
+      },
+      {
+        "message": "Don't include leading zeros on numbers",
+        "severity": 1,
+        "column": "46",
+        "line": "105",
+        "ruleId": "leading-zero"
+      },
+      {
+        "message": "Space expected between blocks",
+        "severity": 1,
+        "column": "1",
+        "line": "106",
+        "ruleId": "empty-line-between-blocks"
+      },
+      {
+        "message": "Class should be nested within its parent Type-selector",
+        "severity": 1,
+        "column": "11",
+        "line": "106",
+        "ruleId": "force-element-nesting"
+      },
+      {
+        "message": "Type-selector should be nested within its parent Class",
+        "severity": 1,
+        "column": "11",
+        "line": "106",
+        "ruleId": "force-element-nesting"
+      },
+      {
+        "message": "Qualifying elements are not allowed for class selectors",
+        "severity": 1,
+        "column": "13",
+        "line": "106",
+        "ruleId": "no-qualifying-elements"
+      },
+      {
+        "message": "Space expected between blocks",
+        "severity": 1,
+        "column": "1",
+        "line": "112",
+        "ruleId": "empty-line-between-blocks"
+      },
+      {
+        "message": "Space expected between blocks",
+        "severity": 1,
+        "column": "1",
+        "line": "122",
+        "ruleId": "empty-line-between-blocks"
+      },
+      {
+        "message": "Color functions such as 'rgba' should only be used in variable declarations",
+        "severity": 1,
+        "column": "31",
+        "line": "123",
+        "ruleId": "no-color-literals"
+      },
+      {
+        "message": "Don't include leading zeros on numbers",
+        "severity": 1,
+        "column": "44",
+        "line": "123",
+        "ruleId": "leading-zero"
+      },
+      {
+        "message": "Space expected between blocks",
+        "severity": 1,
+        "column": "1",
+        "line": "124",
+        "ruleId": "empty-line-between-blocks"
+      },
+      {
+        "message": "Space expected between blocks",
+        "severity": 1,
+        "column": "1",
+        "line": "127",
+        "ruleId": "empty-line-between-blocks"
+      },
+      {
+        "message": "Color functions such as 'rgba' should only be used in variable declarations",
+        "severity": 1,
+        "column": "31",
+        "line": "129",
+        "ruleId": "no-color-literals"
+      },
+      {
+        "message": "Don't include leading zeros on numbers",
+        "severity": 1,
+        "column": "51",
+        "line": "129",
+        "ruleId": "leading-zero"
+      },
+      {
+        "message": "Space expected between blocks",
+        "severity": 1,
+        "column": "1",
+        "line": "132",
+        "ruleId": "empty-line-between-blocks"
+      },
+      {
+        "message": "Space expected between blocks",
+        "severity": 1,
+        "column": "1",
+        "line": "136",
+        "ruleId": "empty-line-between-blocks"
+      },
+      {
+        "message": "Space expected between blocks",
+        "severity": 1,
+        "column": "1",
+        "line": "141",
+        "ruleId": "empty-line-between-blocks"
+      },
+      {
+        "message": "Space expected between blocks",
+        "severity": 1,
+        "column": "1",
+        "line": "143",
+        "ruleId": "empty-line-between-blocks"
+      },
+      {
+        "message": "Space expected between blocks",
+        "severity": 1,
+        "column": "1",
+        "line": "146",
+        "ruleId": "empty-line-between-blocks"
+      }
+    ]
+  },
+  {
+    "filePath": "section.sass",
+    "messages": [
+      {
+        "message": "Mixins should come before declarations",
+        "severity": 1,
+        "column": "3",
+        "line": "5",
+        "ruleId": "mixins-before-declarations"
+      },
+      {
+        "message": "Space expected between blocks",
+        "severity": 1,
+        "column": "1",
+        "line": "9",
+        "ruleId": "empty-line-between-blocks"
+      }
+    ]
+  }
+]
