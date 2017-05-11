@@ -1,1 +1,1 @@
-node script/js/find.js
+node script/js/format.js

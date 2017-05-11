@@ -1,6 +1,5 @@
 const path = require('path');
 const fs = require('fs');
-const cp = require('child_process');
 
 function find(folder, filter, callback) {
     if (!fs.existsSync(folder)) {
@@ -20,10 +19,6 @@ function find(folder, filter, callback) {
     };
 };
 
-const folder = path.join('src', 'hub');
-const formatter = path.join('script', 'js', 'format.js');
-const mask = '.json';
-find(folder, mask, function(fileName) {
-    console.log('Format: ' + fileName);
-    cp.fork(formatter, [fileName]);
-});
+module.exports = {
+    find: find
+};
