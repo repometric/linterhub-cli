@@ -1,3 +1,13 @@
+[
+  {
+    "filePath": "main.ts",
+    "messages": [
+      {
+        "message": "' should be \"",
+        "severity": 5,
+        "column": "30",
+        "columnEnd": "1000",
+        "line": "0",
         "lineEnd": "0",
         "ruleId": "tslint:quotemark"
       },
