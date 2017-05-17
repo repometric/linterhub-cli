@@ -4,6 +4,10 @@
     "url": "http://www.coffeelint.org"
   },
   {
+    "name": "colorguard",
+    "url": "https://github.com/SlexAxton/css-colorguard"
+  },
+  {
     "name": "csslint",
     "url": "http://csslint.net"
   },

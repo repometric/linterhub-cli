@@ -35,7 +35,7 @@ function processLine(line) {
         lineEnd: match[4] - 1,
         column: match[5] - 1,
         columnEnd: 1000,
-        ruleId: "standard:" + match[2],
+        ruleId: "tslint:" + match[2],
         ruleName: match[2]
     }
 
