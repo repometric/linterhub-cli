@@ -9,7 +9,7 @@
         "columnEnd": "1000",
         "line": "2",
         "lineEnd": "2",
-        "ruleId": "standard:only-arrow-functions"
+        "ruleId": "tslint:only-arrow-functions"
       },
       {
         "message": "non-arrow functions are forbidden",
@@ -18,7 +18,7 @@
         "columnEnd": "1000",
         "line": "3",
         "lineEnd": "3",
-        "ruleId": "standard:only-arrow-functions"
+        "ruleId": "tslint:only-arrow-functions"
       },
       {
         "message": "Named imports must be alphabetized.",
@@ -27,7 +27,7 @@
         "columnEnd": "1000",
         "line": "0",
         "lineEnd": "0",
-        "ruleId": "standard:ordered-imports"
+        "ruleId": "tslint:ordered-imports"
       },
       {
         "message": "' should be \"",
@@ -36,7 +36,7 @@
         "columnEnd": "1000",
         "line": "0",
         "lineEnd": "0",
-        "ruleId": "standard:quotemark"
+        "ruleId": "tslint:quotemark"
       },
       {
         "message": "' should be \"",
@@ -45,7 +45,7 @@
         "columnEnd": "1000",
         "line": "2",
         "lineEnd": "2",
-        "ruleId": "standard:quotemark"
+        "ruleId": "tslint:quotemark"
       },
       {
         "message": "' should be \"",
@@ -54,7 +54,7 @@
         "columnEnd": "1000",
         "line": "3",
         "lineEnd": "3",
-        "ruleId": "standard:quotemark"
+        "ruleId": "tslint:quotemark"
       },
       {
         "message": "' should be \"",
@@ -63,7 +63,7 @@
         "columnEnd": "1000",
         "line": "4",
         "lineEnd": "4",
-        "ruleId": "standard:quotemark"
+        "ruleId": "tslint:quotemark"
       },
       {
         "message": "' should be \"",
@@ -72,7 +72,7 @@
         "columnEnd": "1000",
         "line": "5",
         "lineEnd": "5",
-        "ruleId": "standard:quotemark"
+        "ruleId": "tslint:quotemark"
       },
       {
         "message": "' should be \"",
@@ -81,7 +81,7 @@
         "columnEnd": "1000",
         "line": "6",
         "lineEnd": "6",
-        "ruleId": "standard:quotemark"
+        "ruleId": "tslint:quotemark"
       },
       {
         "message": "' should be \"",
@@ -90,7 +90,7 @@
         "columnEnd": "1000",
         "line": "7",
         "lineEnd": "7",
-        "ruleId": "standard:quotemark"
+        "ruleId": "tslint:quotemark"
       },
       {
         "message": "' should be \"",
@@ -99,7 +99,7 @@
         "columnEnd": "1000",
         "line": "7",
         "lineEnd": "7",
-        "ruleId": "standard:quotemark"
+        "ruleId": "tslint:quotemark"
       },
       {
         "message": "' should be \"",
@@ -108,7 +108,7 @@
         "columnEnd": "1000",
         "line": "8",
         "lineEnd": "8",
-        "ruleId": "standard:quotemark"
+        "ruleId": "tslint:quotemark"
       },
       {
         "message": "Spaces before function parens are disallowed",
@@ -117,7 +117,7 @@
         "columnEnd": "1000",
         "line": "2",
         "lineEnd": "2",
-        "ruleId": "standard:space-before-function-paren"
+        "ruleId": "tslint:space-before-function-paren"
       },
       {
         "message": "Spaces before function parens are disallowed",
@@ -126,7 +126,7 @@
         "columnEnd": "1000",
         "line": "3",
         "lineEnd": "3",
-        "ruleId": "standard:space-before-function-paren"
+        "ruleId": "tslint:space-before-function-paren"
       }
     ]
   },
@@ -140,7 +140,7 @@
         "columnEnd": "1000",
         "line": "7",
         "lineEnd": "7",
-        "ruleId": "standard:object-literal-sort-keys"
+        "ruleId": "tslint:object-literal-sort-keys"
       },
       {
         "message": "' should be \"",
@@ -149,7 +149,7 @@
         "columnEnd": "1000",
         "line": "0",
         "lineEnd": "0",
-        "ruleId": "standard:quotemark"
+        "ruleId": "tslint:quotemark"
       },
       {
         "message": "' should be \"",
@@ -158,7 +158,7 @@
         "columnEnd": "1000",
         "line": "2",
         "lineEnd": "2",
-        "ruleId": "standard:quotemark"
+        "ruleId": "tslint:quotemark"
       },
       {
         "message": "' should be \"",
@@ -167,7 +167,7 @@
         "columnEnd": "1000",
         "line": "3",
         "lineEnd": "3",
-        "ruleId": "standard:quotemark"
+        "ruleId": "tslint:quotemark"
       }
     ]
   },
@@ -181,7 +181,7 @@
         "columnEnd": "1000",
         "line": "10",
         "lineEnd": "10",
-        "ruleId": "standard:member-access"
+        "ruleId": "tslint:member-access"
       },
       {
         "message": "' should be \"",
@@ -190,7 +190,7 @@
         "columnEnd": "1000",
         "line": "0",
         "lineEnd": "0",
-        "ruleId": "standard:quotemark"
+        "ruleId": "tslint:quotemark"
       },
       {
         "message": "' should be \"",
@@ -199,7 +199,7 @@
         "columnEnd": "1000",
         "line": "3",
         "lineEnd": "3",
-        "ruleId": "standard:quotemark"
+        "ruleId": "tslint:quotemark"
       },
       {
         "message": "' should be \"",
@@ -208,7 +208,7 @@
         "columnEnd": "1000",
         "line": "10",
         "lineEnd": "10",
-        "ruleId": "standard:quotemark"
+        "ruleId": "tslint:quotemark"
       }
     ]
   },
@@ -222,7 +222,7 @@
         "columnEnd": "1000",
         "line": "0",
         "lineEnd": "0",
-        "ruleId": "standard:quotemark"
+        "ruleId": "tslint:quotemark"
       },
       {
         "message": "' should be \"",
@@ -231,7 +231,7 @@
         "columnEnd": "1000",
         "line": "1",
         "lineEnd": "1",
-        "ruleId": "standard:quotemark"
+        "ruleId": "tslint:quotemark"
       }
     ]
   }

@@ -9,7 +9,7 @@
         "columnEnd": "1000",
         "line": "0",
         "lineEnd": "0",
-        "ruleId": "standard:quotemark"
+        "ruleId": "tslint:quotemark"
       },
       {
         "message": "' should be \"",
@@ -18,7 +18,7 @@
         "columnEnd": "1000",
         "line": "1",
         "lineEnd": "1",
-        "ruleId": "standard:quotemark"
+        "ruleId": "tslint:quotemark"
       }
     ]
   }
