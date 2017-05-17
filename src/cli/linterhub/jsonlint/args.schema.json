@@ -1,7 +1,7 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema",
-    "title": "jslint args schema",
-    "description": "jslint configuration",
+    "title": "jsonlint args schema",
+    "description": "jsonlint configuration",
     "type": "object",
     "allOf": [
         {
