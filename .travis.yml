@@ -8,13 +8,13 @@ mono:
 os:
   - linux
 node_js:
-- '6.10.2'
+  - '6.9.1'
 before_install:
+  - npm install compare-obj diff fs path child_process
 - npm install -g z-schema
-- npm install compare-obj diff fs path child_process
 install:
-- sh script/setup.sh
-- sh script/cibuild.sh
-- sh script/linters.sh
+  - sh script/setup.sh
+  - sh script/cibuild.sh
+  - sh script/linters.sh
 script:
-- node test/integration.js
+  - node test/integration.js
