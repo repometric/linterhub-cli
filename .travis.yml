@@ -13,6 +13,7 @@ before_install:
   - npm install compare-obj diff fs path child_process
 - npm install -g z-schema
 install:
+  - nvm install 6.9.1
   - nvm use 6.9.1
   - sh script/setup.sh
   - sh script/cibuild.sh
