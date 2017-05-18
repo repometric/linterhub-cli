@@ -11,7 +11,7 @@ node_js:
   - '6.9.1'
 before_install:
   - npm install compare-obj diff fs path child_process
-- npm install -g z-schema
+  - npm install -g z-schema
 install:
   - nvm install 6.9.1
   - nvm use 6.9.1
