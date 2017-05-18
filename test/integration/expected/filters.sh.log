@@ -25,6 +25,7 @@
     "url": "http://www.coffeelint.org",
     "version": {
 <<<<<<< master
+<<<<<<< master
       "local": "1.16.0"
     }
   },
@@ -38,6 +39,10 @@
 =======
       "manager": "3.2.0",
       "local": "v3.2.0"
+=======
+      "manager": "3.19.0",
+      "local": "v3.19.0"
+>>>>>>> Update versions of linters
     },
     "url": "http://eslint.org",
     "languages": [
@@ -245,6 +250,7 @@
     "url": "https://github.com/zaach/jsonlint",
     "version": {
 <<<<<<< master
+<<<<<<< master
       "local": "1.6.2"
     }
   },
@@ -260,6 +266,10 @@
 =======
       "manager": "9.0.1",
       "local": "9.0.1"
+=======
+      "manager": "10.0.2",
+      "local": "10.0.2"
+>>>>>>> Update versions of linters
     },
     "url": "http://standardjs.com",
     "languages": [

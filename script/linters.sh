@@ -10,4 +10,5 @@ dotnet cli.dll --mode=LinterInstall --linter=stylelint
 dotnet cli.dll --mode=LinterInstall --linter=tslint
 dotnet cli.dll --mode=LinterInstall --linter=sass-lint
 dotnet cli.dll --mode=LinterInstall --linter=jsonlint
+dotnet cli.dll --mode=LinterInstall --linter=colorguard
 cd ../../

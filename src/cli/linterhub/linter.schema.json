@@ -41,9 +41,9 @@
             {
               "type": "object",
               "properties": {
-                "package": {
+                "manager": {
                   "type": "string",
-                  "description": "Package version"
+                  "description": "Manager version"
                 },
                 "local": {
                   "type": "string",
