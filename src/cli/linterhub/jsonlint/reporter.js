@@ -1,5 +1,7 @@
 'use strict';
 
+var md5 = require("./md5.min")
+
 process.stdin.resume();
 process.stdin.setEncoding('utf8');
 
@@ -15,13 +17,13 @@ process.stdin.on('data', function (chunk) {
 });
 
 process.stdin.on('end', function () {
-    console.log(JSON.stringify(result));
+    print_result();
 });
 
 var result = [];
 
 function processLine(line) {
-    var regex = /(.*): \((.*)\) (.*)\[([0-9]+), ([0-9]+)\]\: (.*)/g;
+    var regex = /(.*): line ([0-9]+), col ([0-9]+), (.*)/g;
     var match = regex.exec(line);
 
     if (match == null) {
@@ -29,17 +31,16 @@ function processLine(line) {
     }
 
     var problem = {
-        message: match[6],
-        severity: match[1] === "ERROR" ? "error" : "warning",
-        line: match[4] - 1,
-        lineEnd: match[4] - 1,
-        column: match[5] - 1,
+        message: match[4],
+        severity: "warning",
+        line: match[2] - 1,
+        lineEnd: match[2] - 1,
+        column: match[3] - 1,
         columnEnd: 1000,
-        ruleId: "tslint:" + match[2],
-        ruleName: match[2]
+        ruleId: "jsonlint:" + md5(match[4]).substr(0,6),
     }
 
-    var filePath = match[3].trim();
+    var filePath = match[1].trim();
 
     var obj = result.find(function (element, index, array) {
         return filePath === element.filePath;

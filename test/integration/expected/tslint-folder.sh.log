@@ -9,7 +9,7 @@
         "columnEnd": "1000",
         "line": "7",
         "lineEnd": "7",
-        "ruleId": "standard:object-literal-sort-keys"
+        "ruleId": "tslint:object-literal-sort-keys"
       },
       {
         "message": "' should be \"",
@@ -18,7 +18,7 @@
         "columnEnd": "1000",
         "line": "0",
         "lineEnd": "0",
-        "ruleId": "standard:quotemark"
+        "ruleId": "tslint:quotemark"
       },
       {
         "message": "' should be \"",
@@ -27,7 +27,7 @@
         "columnEnd": "1000",
         "line": "2",
         "lineEnd": "2",
-        "ruleId": "standard:quotemark"
+        "ruleId": "tslint:quotemark"
       },
       {
         "message": "' should be \"",
@@ -36,7 +36,7 @@
         "columnEnd": "1000",
         "line": "3",
         "lineEnd": "3",
-        "ruleId": "standard:quotemark"
+        "ruleId": "tslint:quotemark"
       }
     ]
   },
@@ -50,7 +50,7 @@
         "columnEnd": "1000",
         "line": "10",
         "lineEnd": "10",
-        "ruleId": "standard:member-access"
+        "ruleId": "tslint:member-access"
       },
       {
         "message": "' should be \"",
@@ -59,7 +59,7 @@
         "columnEnd": "1000",
         "line": "0",
         "lineEnd": "0",
-        "ruleId": "standard:quotemark"
+        "ruleId": "tslint:quotemark"
       },
       {
         "message": "' should be \"",
@@ -68,7 +68,7 @@
         "columnEnd": "1000",
         "line": "3",
         "lineEnd": "3",
-        "ruleId": "standard:quotemark"
+        "ruleId": "tslint:quotemark"
       },
       {
         "message": "' should be \"",
@@ -77,7 +77,7 @@
         "columnEnd": "1000",
         "line": "10",
         "lineEnd": "10",
-        "ruleId": "standard:quotemark"
+        "ruleId": "tslint:quotemark"
       }
     ]
   },
@@ -91,7 +91,7 @@
         "columnEnd": "1000",
         "line": "0",
         "lineEnd": "0",
-        "ruleId": "standard:quotemark"
+        "ruleId": "tslint:quotemark"
       },
       {
         "message": "' should be \"",
@@ -100,7 +100,7 @@
         "columnEnd": "1000",
         "line": "1",
         "lineEnd": "1",
-        "ruleId": "standard:quotemark"
+        "ruleId": "tslint:quotemark"
       }
     ]
   }

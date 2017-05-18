@@ -11,6 +11,7 @@ sh script/package.sh win8-x64 $Version
 sh script/package.sh win10-x64 $Version
 sh script/package.sh debian.8-x64 $Version
 sh script/package.sh ubuntu.16.04-x64 $Version
+sh script/package.sh win10-x86 $Version
 exit 0
 
 docker build -t linterhub-cli-dev -f Dev.Dockerfile . && \
