@@ -28,6 +28,10 @@
     "url": "http://jslint.com"
   },
   {
+    "name": "jsonlint",
+    "url": "https://github.com/zaach/jsonlint"
+  },
+  {
     "name": "sass-lint",
     "url": "https://github.com/sasstools/sass-lint"
   },
