@@ -12,10 +12,9 @@ node_js:
 before_install:
 - npm install -g z-schema
 - npm install compare-obj diff fs path child_process
-- npm install -g eslint coffeelint csslint jshint standard htmlhint jslint stylelint tslint typescript sass-lint
-- npm install -g jsonlint
 install:
 - sh script/setup.sh
 - sh script/cibuild.sh
+- sh script/linters.sh
 script:
 - node test/integration.js
