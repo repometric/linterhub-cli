@@ -19,7 +19,7 @@
   ],
   "version": {
     "local": "9.0.1",
-    "package": "9.0.1"
+    "manager": "9.0.1"
   },
   "postfix": " | node file://{schema}/standard/reporter.js",
   "defaults": {

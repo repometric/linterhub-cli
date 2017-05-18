@@ -24,6 +24,7 @@
     ],
     "url": "http://www.coffeelint.org",
     "version": {
+<<<<<<< master
       "local": "1.16.0"
     }
   },
@@ -34,6 +35,15 @@
     "description": "CSS Colorguard helps you maintain the color set that you want, and warns you when colors you've added are too similar to ones that already exist.",
     "extensions": [
       "*.css"
+=======
+      "manager": "3.2.0",
+      "local": "v3.2.0"
+    },
+    "url": "http://eslint.org",
+    "languages": [
+      "javascript",
+      "jsx"
+>>>>>>> Fix tests and linter configs
     ],
     "license": "MIT",
     "name": "colorguard",
@@ -104,12 +114,24 @@
     }
   },
   {
+<<<<<<< master
     "areas": [
       "syntax"
     ],
     "description": "HTMLHint is a Static Code Analysis Tool for HTML",
     "extensions": [
       "*.html"
+=======
+    "name": "jshint",
+    "description": "JSHint is a tool that helps to detect errors and potential problems in your JavaScript code",
+    "version": {
+      "manager": "2.9.4",
+      "local": "jshint v2.9.4"
+    },
+    "url": "http://jshint.com",
+    "languages": [
+      "javascript"
+>>>>>>> Fix tests and linter configs
     ],
     "license": "MIT",
     "name": "htmlhint",
@@ -157,6 +179,20 @@
     }
   },
   {
+<<<<<<< master
+=======
+    "name": "jslint",
+    "description": "The JavaScript Code Quality Tool.",
+    "version": {
+      "manager": "0.10.3",
+      "local": "node-jslint version: 0.10.3  JSLint edition 2013-08-26"
+    },
+    "url": "http://jslint.com",
+    "languages": [
+      "javascript"
+    ],
+    "license": "MIT",
+>>>>>>> Fix tests and linter configs
     "areas": [
       "syntax",
       "formatting",
@@ -208,6 +244,7 @@
     ],
     "url": "https://github.com/zaach/jsonlint",
     "version": {
+<<<<<<< master
       "local": "1.6.2"
     }
   },
@@ -220,6 +257,14 @@
     "extensions": [
       "*.sass",
       "*.scss"
+=======
+      "manager": "9.0.1",
+      "local": "9.0.1"
+    },
+    "url": "http://standardjs.com",
+    "languages": [
+      "javascript"
+>>>>>>> Fix tests and linter configs
     ],
     "license": "MIT",
     "name": "sass-lint",
