@@ -14,61 +14,6 @@
     "messages": [
       {
         "columnEnd": 1000,
-        "message": "Doctype must be declared first.",
-        "ruleId": "htmlhint:doctype-first",
-        "severity": 4
-      }
-    ],
-    "path": "iframe.html"
-  },
-  {
-    "messages": [
-      {
-        "columnEnd": 1000,
-        "message": "Doctype must be declared first.",
-        "ruleId": "htmlhint:doctype-first",
-        "severity": 4
-      }
-    ],
-    "path": "name.html"
-  },
-  {
-    "messages": [
-      {
-        "columnEnd": 1000,
-        "message": "Doctype must be declared first.",
-        "ruleId": "htmlhint:doctype-first",
-        "severity": 4
-      }
-    ],
-    "path": "test.html"
-  },
-  {
-    "messages": [
-      {
-        "columnEnd": 1000,
-        "message": "Doctype must be declared first.",
-        "ruleId": "htmlhint:doctype-first",
-        "severity": 4
-      }
-    ],
-    "path": "test2.html"
-  },
-  {
-    "messages": [
-      {
-        "columnEnd": 1000,
-        "message": "Doctype must be declared first.",
-        "ruleId": "htmlhint:doctype-first",
-        "severity": 4
-      }
-    ],
-    "path": "test3.html"
-  },
-  {
-    "messages": [
-      {
-        "columnEnd": 1000,
         "line": 16,
         "lineEnd": 16,
         "message": "<title> must be present in <head> tag.",
@@ -120,6 +65,17 @@
   {
     "messages": [
       {
+        "columnEnd": 1000,
+        "message": "Doctype must be declared first.",
+        "ruleId": "htmlhint:doctype-first",
+        "severity": 4
+      }
+    ],
+    "path": "iframe.html"
+  },
+  {
+    "messages": [
+      {
         "column": 7,
         "columnEnd": 1000,
         "line": 3,
@@ -149,6 +105,17 @@
     "messages": [
       {
         "columnEnd": 1000,
+        "message": "Doctype must be declared first.",
+        "ruleId": "htmlhint:doctype-first",
+        "severity": 4
+      }
+    ],
+    "path": "name.html"
+  },
+  {
+    "messages": [
+      {
+        "columnEnd": 1000,
         "line": 16,
         "lineEnd": 16,
         "message": "<title> must be present in <head> tag.",
@@ -157,5 +124,38 @@
       }
     ],
     "path": "support\\bodyBackground.html"
+  },
+  {
+    "messages": [
+      {
+        "columnEnd": 1000,
+        "message": "Doctype must be declared first.",
+        "ruleId": "htmlhint:doctype-first",
+        "severity": 4
+      }
+    ],
+    "path": "test.html"
+  },
+  {
+    "messages": [
+      {
+        "columnEnd": 1000,
+        "message": "Doctype must be declared first.",
+        "ruleId": "htmlhint:doctype-first",
+        "severity": 4
+      }
+    ],
+    "path": "test2.html"
+  },
+  {
+    "messages": [
+      {
+        "columnEnd": 1000,
+        "message": "Doctype must be declared first.",
+        "ruleId": "htmlhint:doctype-first",
+        "severity": 4
+      }
+    ],
+    "path": "test3.html"
   }
 ]

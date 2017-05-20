@@ -61,8 +61,9 @@ namespace Linterhub.Cli.Strategy
                     .Replace("/", "\\");
             }
 
-            t.ToList().Sort((a, b) => a.Path.CompareTo(b.Path));
-            return t;
+            var tl = t.ToList();
+            tl.Sort((a, b) => a.Path.CompareTo(b.Path));
+            return tl;
             /* 
             var linterResults = new List<RunResult>();
             try

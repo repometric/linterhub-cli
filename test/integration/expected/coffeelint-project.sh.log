@@ -25,10 +25,10 @@
     "path": "coffee\\classes\\mds_config.coffee"
   },
   {
-    "path": "coffee\\classes\\mds_file_history.coffee"
+    "path": "coffee\\classes\\mds_file.coffee"
   },
   {
-    "path": "coffee\\classes\\mds_file.coffee"
+    "path": "coffee\\classes\\mds_file_history.coffee"
   },
   {
     "messages": [
