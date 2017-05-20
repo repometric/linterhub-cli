@@ -13,7 +13,7 @@
     ],
     "version": {
         "local": "v3.19.0",
-        "manager": "3.19.0"
+        "package": "3.19.0"
     },
     "defaults": {
         "--format": "file://{schema}/eslint/reporter.js",

@@ -19,7 +19,7 @@
   ],
   "version": {
     "local": "1.10.2",
-    "manager": "1.10.2"
+    "package": "1.10.2"
   },
   "postfix": " | node file://{schema}/sass-lint/reporter.js",
   "defaults": {

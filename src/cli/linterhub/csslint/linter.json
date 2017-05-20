@@ -19,7 +19,7 @@
   ],
   "version": {
     "local": "v1.0.4",
-    "manager": "1.0.4"
+    "package": "1.0.4"
   },
   "postfix": " | node file://{schema}/csslint/reporter.js",
   "prefix": "node file://{schema}/csslint/prefix.js ",

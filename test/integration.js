@@ -26,6 +26,10 @@ fs.readdir(integration, (err, files) => {
         var filePath = path.join(integration, file);
         if(!fs.lstatSync(filePath).isDirectory() && path.extname(filePath) === ".sh")
         {
+            var actualDir = path.join(integration, 'actual');
+            if (!fs.existsSync(actualDir)){
+                fs.mkdirSync(actualDir);
+            }
             _process.exec('sh ' + filePath, {
                     cwd: path.join(__dirname, '../bin/dotnet')
                 }, function(error, stdout, stderr) {
@@ -38,10 +42,6 @@ fs.readdir(integration, (err, files) => {
                         printWarning(file, "can't parse expected output as json");
                         is_json = false;
                         //process.exit(1);
-                    }
-                    var actualDir = path.join(integration, 'actual');
-                    if (!fs.existsSync(actualDir)){
-                        fs.mkdirSync(actualDir);
                     }
                     fs.writeFileSync(path.join(actualDir, file + ".log"), stdout);
                     var result = stdout;
