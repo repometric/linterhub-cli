@@ -1,25 +1,27 @@
 [
   {
-    "filePath": "all.css",
     "messages": [
       {
+        "column": 1,
+        "columnEnd": 1000,
+        "line": 11,
+        "lineEnd": 11,
         "message": "@import prevents parallel downloads, use <link> instead.",
-        "severity": 4,
-        "column": "1",
-        "columnEnd": "1000",
-        "line": "11",
-        "lineEnd": "11",
-        "ruleId": "csslint:import"
+        "ruleId": "csslint:import",
+        "ruleName": "import",
+        "severity": 3
       },
       {
+        "column": 1,
+        "columnEnd": 1000,
+        "line": 12,
+        "lineEnd": 12,
         "message": "@import prevents parallel downloads, use <link> instead.",
-        "severity": 4,
-        "column": "1",
-        "columnEnd": "1000",
-        "line": "12",
-        "lineEnd": "12",
-        "ruleId": "csslint:import"
+        "ruleId": "csslint:import",
+        "ruleName": "import",
+        "severity": 3
       }
-    ]
+    ],
+    "path": "all.css"
   }
 ]

@@ -1,111 +1,98 @@
 [
   {
-    "filePath": "include\\styleguide.js",
     "messages": [
       {
+        "column": 1,
+        "line": 1,
         "message": "'TocTypeEnum' is not defined.",
-        "source": "TocTypeEnum = {",
-        "severity": 2,
-        "column": "1",
-        "line": "1",
-        "ruleId": "no-undef"
+        "ruleId": "no-undef",
+        "severity": 2
       },
       {
+        "column": 19,
+        "line": 16,
         "message": "'TocTypeEnum' is not defined.",
-        "source": "        tocType = TocTypeEnum.HORIZONTAL;",
-        "severity": 2,
-        "column": "19",
-        "line": "16",
-        "ruleId": "no-undef"
+        "ruleId": "no-undef",
+        "severity": 2
       },
       {
+        "column": 19,
+        "line": 19,
         "message": "'TocTypeEnum' is not defined.",
-        "source": "        tocType = TocTypeEnum.VERTICAL;",
-        "severity": 2,
-        "column": "19",
-        "line": "19",
-        "ruleId": "no-undef"
+        "ruleId": "no-undef",
+        "severity": 2
       },
       {
+        "column": 19,
+        "line": 22,
         "message": "'TocTypeEnum' is not defined.",
-        "source": "        tocType = TocTypeEnum.VERTICAL;",
-        "severity": 2,
-        "column": "19",
-        "line": "22",
-        "ruleId": "no-undef"
+        "ruleId": "no-undef",
+        "severity": 2
       },
       {
+        "column": 10,
+        "line": 31,
         "message": "Empty block statement.",
-        "source": "  } else {",
-        "severity": 2,
-        "column": "10",
-        "line": "31",
-        "ruleId": "no-empty"
+        "ruleId": "no-empty",
+        "severity": 2
       },
       {
+        "column": 18,
+        "line": 51,
         "message": "'TocTypeEnum' is not defined.",
-        "source": "  if (tocType == TocTypeEnum.VERTICAL) {",
-        "severity": 2,
-        "column": "18",
-        "line": "51",
-        "ruleId": "no-undef"
+        "ruleId": "no-undef",
+        "severity": 2
       },
       {
+        "column": 7,
+        "line": 62,
         "message": "'firstHeading' is assigned a value but never used.",
-        "source": "  var firstHeading = headings[0];",
-        "severity": 2,
-        "column": "7",
-        "line": "62",
-        "ruleId": "no-unused-vars"
+        "ruleId": "no-unused-vars",
+        "severity": 2
       },
       {
+        "column": 10,
+        "line": 69,
         "message": "'TocTypeEnum' is not defined.",
-        "source": "    case TocTypeEnum.HORIZONTAL:",
-        "severity": 2,
-        "column": "10",
-        "line": "69",
-        "ruleId": "no-undef"
+        "ruleId": "no-undef",
+        "severity": 2
       },
       {
+        "column": 10,
+        "line": 72,
         "message": "'TocTypeEnum' is not defined.",
-        "source": "    case TocTypeEnum.VERTICAL:",
-        "severity": 2,
-        "column": "10",
-        "line": "72",
-        "ruleId": "no-undef"
+        "ruleId": "no-undef",
+        "severity": 2
       },
       {
+        "column": 7,
+        "line": 97,
         "message": "'toc_current_row' is not defined.",
-        "source": "      toc_current_row = AddTOCMaster(tbody_element, heading);",
-        "severity": 2,
-        "column": "7",
-        "line": "97",
-        "ruleId": "no-undef"
+        "ruleId": "no-undef",
+        "severity": 2
       },
       {
+        "column": 22,
+        "line": 106,
         "message": "'toc_current_row' is not defined.",
-        "source": "      AddTOCElements(toc_current_row, heading);",
-        "severity": 2,
-        "column": "22",
-        "line": "106",
-        "ruleId": "no-undef"
+        "ruleId": "no-undef",
+        "severity": 2
       },
       {
+        "column": 13,
+        "line": 219,
         "message": "'link' is already defined.",
-        "source": "        var link = document.createElement('a');",
-        "severity": 2,
-        "column": "13",
-        "line": "219",
-        "ruleId": "no-redeclare"
+        "ruleId": "no-redeclare",
+        "severity": 2
       },
       {
+        "column": 10,
+        "line": 286,
         "message": "'initStyleGuide' is defined but never used.",
-        "source": "function initStyleGuide() {",
-        "severity": 2,
-        "column": "10",
-        "line": "286",
-        "ruleId": "no-unused-vars"
+        "ruleId": "no-unused-vars",
+        "severity": 2
       }
-    ]
+    ],
+    "path": "include\\styleguide.js"
   }
 ]

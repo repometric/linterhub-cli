@@ -1,53 +1,51 @@
 [
   {
-    "filePath": "_all.sass",
     "messages": [
       {
+        "columnEnd": 1000,
+        "line": 2,
+        "lineEnd": 2,
         "message": "Expected indentation of 1 tab (indentation)",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "2",
-        "lineEnd": "2",
-        "ruleId": "indentation"
+        "ruleId": "indentation",
+        "severity": 4
       },
       {
+        "columnEnd": 1000,
+        "line": 3,
+        "lineEnd": 3,
         "message": "Expected indentation of 1 tab (indentation)",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "3",
-        "lineEnd": "3",
-        "ruleId": "indentation"
+        "ruleId": "indentation",
+        "severity": 4
       }
-    ]
+    ],
+    "path": "_all.sass"
   },
   {
-    "filePath": "columns.sass",
     "messages": [
       {
+        "column": 32,
+        "columnEnd": 1000,
+        "line": 37,
+        "lineEnd": 37,
         "message": "Unknown word (CssSyntaxError)",
-        "severity": 5,
-        "column": "32",
-        "columnEnd": "1000",
-        "line": "37",
-        "lineEnd": "37",
-        "ruleId": "CssSyntaxError"
+        "ruleId": "CssSyntaxError",
+        "severity": 4
       }
-    ]
+    ],
+    "path": "columns.sass"
   },
   {
-    "filePath": "tiles.sass",
     "messages": [
       {
+        "column": 13,
+        "columnEnd": 1000,
+        "line": 29,
+        "lineEnd": 29,
         "message": "Unknown word (CssSyntaxError)",
-        "severity": 5,
-        "column": "13",
-        "columnEnd": "1000",
-        "line": "29",
-        "lineEnd": "29",
-        "ruleId": "CssSyntaxError"
+        "ruleId": "CssSyntaxError",
+        "severity": 4
       }
-    ]
+    ],
+    "path": "tiles.sass"
   }
 ]

@@ -1,61 +1,61 @@
 [
   {
-    "filePath": "less\\core.less",
     "messages": [
       {
+        "column": 2,
+        "columnEnd": 1000,
+        "line": 4,
+        "lineEnd": 4,
         "message": "Expected indentation of 1 tab (indentation)",
-        "severity": 5,
-        "column": "2",
-        "columnEnd": "1000",
-        "line": "4",
-        "lineEnd": "4",
-        "ruleId": "indentation"
+        "ruleId": "indentation",
+        "severity": 4
       },
       {
+        "column": 2,
+        "columnEnd": 1000,
+        "line": 5,
+        "lineEnd": 5,
         "message": "Expected indentation of 1 tab (indentation)",
-        "severity": 5,
-        "column": "2",
-        "columnEnd": "1000",
-        "line": "5",
-        "lineEnd": "5",
-        "ruleId": "indentation"
+        "ruleId": "indentation",
+        "severity": 4
       },
       {
+        "column": 2,
+        "columnEnd": 1000,
+        "line": 6,
+        "lineEnd": 6,
         "message": "Expected indentation of 1 tab (indentation)",
-        "severity": 5,
-        "column": "2",
-        "columnEnd": "1000",
-        "line": "6",
-        "lineEnd": "6",
-        "ruleId": "indentation"
+        "ruleId": "indentation",
+        "severity": 4
       },
       {
+        "column": 2,
+        "columnEnd": 1000,
+        "line": 7,
+        "lineEnd": 7,
         "message": "Expected indentation of 1 tab (indentation)",
-        "severity": 5,
-        "column": "2",
-        "columnEnd": "1000",
-        "line": "7",
-        "lineEnd": "7",
-        "ruleId": "indentation"
+        "ruleId": "indentation",
+        "severity": 4
       },
       {
+        "column": 2,
+        "columnEnd": 1000,
+        "line": 8,
+        "lineEnd": 8,
         "message": "Expected indentation of 1 tab (indentation)",
-        "severity": 5,
-        "column": "2",
-        "columnEnd": "1000",
-        "line": "8",
-        "lineEnd": "8",
-        "ruleId": "indentation"
+        "ruleId": "indentation",
+        "severity": 4
       },
       {
+        "column": 2,
+        "columnEnd": 1000,
+        "line": 9,
+        "lineEnd": 9,
         "message": "Expected indentation of 1 tab (indentation)",
-        "severity": 5,
-        "column": "2",
-        "columnEnd": "1000",
-        "line": "9",
-        "lineEnd": "9",
-        "ruleId": "indentation"
+        "ruleId": "indentation",
+        "severity": 4
       }
-    ]
+    ],
+    "path": "less\\core.less"
   }
 ]

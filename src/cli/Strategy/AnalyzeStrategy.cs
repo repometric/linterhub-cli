@@ -10,7 +10,7 @@ namespace Linterhub.Cli.Strategy
 
     public class AnalyzeStrategy : IStrategy
     {
-        private IEnumerable<string> MergeLinters(IEnumerable<string> lintersFromCommand, IEnumerable<LinterhubSchema.Linter> lintersFromConfig)
+        private IEnumerable<string> MergeLinters(IEnumerable<string> lintersFromCommand, IEnumerable<LinterhubConfigSchema.ConfigurationType> lintersFromConfig)
         {
             var linters = lintersFromConfig
                 .Where(x => x.Active != false)
@@ -23,15 +23,15 @@ namespace Linterhub.Cli.Strategy
         public object Run(ServiceLocator locator)
         {
             var context = locator.Get<RunContext>();
-            var config = locator.Get<LinterhubSchema>();
+            var config = locator.Get<LinterhubConfigSchema>();
             var linterRunner = locator.Get<LinterWrapper>();
             var linterFactory = locator.Get<ILinterFactory>();
+            var linters = MergeLinters(context.Linters, config.Engines);
 
-            var linters = MergeLinters(context.Linters, config.Linters);
             var contexts =
                 from linter in linters
                 let specification = linterFactory.GetSpecification(linter)
-                let configOptions = config.Linters.FirstOrDefault(y => y.Name == linter)?.Config ?? specification.Schema.Defaults
+                let configOptions = config.Engines.FirstOrDefault(y => y.Name == linter)?.Config ?? specification.Schema.Defaults
                 let path = !string.IsNullOrEmpty(context.File) ? context.File : specification.Schema.Defaults.GetValueOrDefault("")
                 let runOptions = new LinterOptions
                 {
@@ -48,13 +48,12 @@ namespace Linterhub.Cli.Strategy
                 };
 
             var r = linterRunner.RunAnalysis(contexts.First());
-
-            var t = r.DeserializeAsJson<LinterOutputSchema.File[]>();
+            var t = r.DeserializeAsJson<EngineOutputSchema.ResultType[]>();
 
             foreach (var file in t)
             {
-                file.FilePath = file
-                    .FilePath
+                file.Path = file
+                    .Path
                     .Replace(context.Project, string.Empty)
                     .Replace(System.IO.Path.GetFullPath(context.Project), string.Empty)
                     .TrimStart('/')
@@ -62,8 +61,9 @@ namespace Linterhub.Cli.Strategy
                     .Replace("/", "\\");
             }
 
-            t.ToList().Sort((a, b) => a.FilePath.CompareTo(b.FilePath));
-            return t;
+            var tl = t.ToList();
+            tl.Sort((a, b) => a.Path.CompareTo(b.Path));
+            return tl;
             /* 
             var linterResults = new List<RunResult>();
             try

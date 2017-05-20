@@ -27,6 +27,11 @@ namespace Linterhub.Engine.Utils
             Keys = keys?.Select(x => x.ToLower()) ?? new List<string>();
         }
 
+        protected override System.Collections.Generic.IList<JsonProperty> CreateProperties(System.Type type, MemberSerialization memberSerialization)
+        {
+            return base.CreateProperties(type, memberSerialization).OrderBy(p => p.PropertyName).ToList();
+        }
+
         /// <summary>
         /// Creates a <seealso cref="JsonProperty"/> for the given <seealso cref="MemberInfo"/>.
         /// </summary>

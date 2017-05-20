@@ -50,7 +50,7 @@ function processLine(line) {
 
 function print_result() {
     var ret = {
-        filePath: filePath,
+        path: filePath,
         messages: result
     };
     console.log(JSON.stringify(ret));

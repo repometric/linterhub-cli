@@ -1,107 +1,111 @@
 [
   {
-    "filePath": "app.ts",
     "messages": [
       {
+        "column": 2,
+        "columnEnd": 1000,
+        "line": 7,
+        "lineEnd": 7,
         "message": "The key 'bootstrap' is not sorted alphabetically",
-        "severity": 5,
-        "column": "2",
-        "columnEnd": "1000",
-        "line": "7",
-        "lineEnd": "7",
-        "ruleId": "tslint:object-literal-sort-keys"
+        "ruleId": "tslint:object-literal-sort-keys",
+        "ruleName": "object-literal-sort-keys",
+        "severity": 4
       },
       {
+        "column": 34,
+        "columnEnd": 1000,
         "message": "' should be \"",
-        "severity": 5,
-        "column": "34",
-        "columnEnd": "1000",
-        "line": "0",
-        "lineEnd": "0",
-        "ruleId": "tslint:quotemark"
+        "ruleId": "tslint:quotemark",
+        "ruleName": "quotemark",
+        "severity": 4
       },
       {
+        "column": 23,
+        "columnEnd": 1000,
+        "line": 2,
+        "lineEnd": 2,
         "message": "' should be \"",
-        "severity": 5,
-        "column": "23",
-        "columnEnd": "1000",
-        "line": "2",
-        "lineEnd": "2",
-        "ruleId": "tslint:quotemark"
+        "ruleId": "tslint:quotemark",
+        "ruleName": "quotemark",
+        "severity": 4
       },
       {
+        "column": 28,
+        "columnEnd": 1000,
+        "line": 3,
+        "lineEnd": 3,
         "message": "' should be \"",
-        "severity": 5,
-        "column": "28",
-        "columnEnd": "1000",
-        "line": "3",
-        "lineEnd": "3",
-        "ruleId": "tslint:quotemark"
+        "ruleId": "tslint:quotemark",
+        "ruleName": "quotemark",
+        "severity": 4
       }
-    ]
+    ],
+    "path": "app.ts"
   },
   {
-    "filePath": "hello-world.component.ts",
     "messages": [
       {
+        "column": 2,
+        "columnEnd": 1000,
+        "line": 10,
+        "lineEnd": 10,
         "message": "The class property 'name' must be marked either 'private', 'public', or 'protected'",
-        "severity": 5,
-        "column": "2",
-        "columnEnd": "1000",
-        "line": "10",
-        "lineEnd": "10",
-        "ruleId": "tslint:member-access"
+        "ruleId": "tslint:member-access",
+        "ruleName": "member-access",
+        "severity": 4
       },
       {
+        "column": 24,
+        "columnEnd": 1000,
         "message": "' should be \"",
-        "severity": 5,
-        "column": "24",
-        "columnEnd": "1000",
-        "line": "0",
-        "lineEnd": "0",
-        "ruleId": "tslint:quotemark"
+        "ruleId": "tslint:quotemark",
+        "ruleName": "quotemark",
+        "severity": 4
       },
       {
+        "column": 12,
+        "columnEnd": 1000,
+        "line": 3,
+        "lineEnd": 3,
         "message": "' should be \"",
-        "severity": 5,
-        "column": "12",
-        "columnEnd": "1000",
-        "line": "3",
-        "lineEnd": "3",
-        "ruleId": "tslint:quotemark"
+        "ruleId": "tslint:quotemark",
+        "ruleName": "quotemark",
+        "severity": 4
       },
       {
+        "column": 17,
+        "columnEnd": 1000,
+        "line": 10,
+        "lineEnd": 10,
         "message": "' should be \"",
-        "severity": 5,
-        "column": "17",
-        "columnEnd": "1000",
-        "line": "10",
-        "lineEnd": "10",
-        "ruleId": "tslint:quotemark"
+        "ruleId": "tslint:quotemark",
+        "ruleName": "quotemark",
+        "severity": 4
       }
-    ]
+    ],
+    "path": "hello-world.component.ts"
   },
   {
-    "filePath": "main.ts",
     "messages": [
       {
+        "column": 30,
+        "columnEnd": 1000,
         "message": "' should be \"",
-        "severity": 5,
-        "column": "30",
-        "columnEnd": "1000",
-        "line": "0",
-        "lineEnd": "0",
-        "ruleId": "tslint:quotemark"
+        "ruleId": "tslint:quotemark",
+        "ruleName": "quotemark",
+        "severity": 4
       },
       {
+        "column": 33,
+        "columnEnd": 1000,
+        "line": 1,
+        "lineEnd": 1,
         "message": "' should be \"",
-        "severity": 5,
-        "column": "33",
-        "columnEnd": "1000",
-        "line": "1",
-        "lineEnd": "1",
-        "ruleId": "tslint:quotemark"
+        "ruleId": "tslint:quotemark",
+        "ruleName": "quotemark",
+        "severity": 4
       }
-    ]
+    ],
+    "path": "main.ts"
   }
 ]

@@ -11,7 +11,7 @@ namespace Linterhub.Cli.Runtime
 
         protected RunContext Context { get; }
 
-        protected LinterhubSchema Schema { get; }
+        protected LinterhubConfigSchema Schema { get; }
 
         public Ensure(ServiceLocator locator)
         {
@@ -32,7 +32,7 @@ namespace Linterhub.Cli.Runtime
         {
             foreach (var linter in Context.Linters)
             {
-                if (!Locator.Get<LinterhubSchema>().Linters.Any(x => x.Name == linter))
+                if (!Locator.Get<LinterhubConfigSchema>().Engines.Any(x => x.Name == linter))
                 {
                     //throw new LinterEngineException("Linter is not exist: " + linter);
                 }

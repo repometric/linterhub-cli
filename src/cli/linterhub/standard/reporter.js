@@ -42,12 +42,12 @@ function processLine(line) {
     var filePath = match[1].trim();
 
     var obj = result.find(function (element, index, array) {
-        return filePath === element.filePath;
+        return filePath === element.path;
     });
 
     if (obj === undefined) {
         obj = {
-            filePath: filePath,
+            path: path,
             messages: []
         };
         result.push(obj);

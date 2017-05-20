@@ -1,979 +1,890 @@
 [
   {
-    "filePath": "coffee\\classes\\mds_config.coffee",
     "messages": [
       {
-        "message": "Line exceeds maximum allowed length",
+        "columnEnd": 1000,
         "description": "This rule imposes a maximum line length on your code. <a\nhref=\"http://www.python.org/dev/peps/pep-0008/\">Python's style\nguide</a> does a good job explaining why you might want to limit the\nlength of your lines, though this is a matter of taste.\n\nLines can be no longer than eighty characters by default.",
-        "context": "Length is 103, max is 80",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "37",
-        "lineEnd": "37",
-        "ruleId": "80"
+        "line": 37,
+        "lineEnd": 37,
+        "message": "Line exceeds maximum allowed length",
+        "ruleId": "80",
+        "ruleName": "max_line_length",
+        "severity": 4
       },
       {
-        "message": "Line exceeds maximum allowed length",
+        "columnEnd": 1000,
         "description": "This rule imposes a maximum line length on your code. <a\nhref=\"http://www.python.org/dev/peps/pep-0008/\">Python's style\nguide</a> does a good job explaining why you might want to limit the\nlength of your lines, though this is a matter of taste.\n\nLines can be no longer than eighty characters by default.",
-        "context": "Length is 114, max is 80",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "69",
-        "lineEnd": "69",
-        "ruleId": "80"
+        "line": 69,
+        "lineEnd": 69,
+        "message": "Line exceeds maximum allowed length",
+        "ruleId": "80",
+        "ruleName": "max_line_length",
+        "severity": 4
       }
-    ]
+    ],
+    "path": "coffee\\classes\\mds_config.coffee"
   },
   {
-    "filePath": "coffee\\classes\\mds_file_history.coffee"
-  },
-  {
-    "filePath": "coffee\\classes\\mds_file.coffee"
-  },
-  {
-    "filePath": "coffee\\classes\\mds_main_menu.coffee",
     "messages": [
       {
-        "message": "Line exceeds maximum allowed length",
+        "columnEnd": 1000,
         "description": "This rule imposes a maximum line length on your code. <a\nhref=\"http://www.python.org/dev/peps/pep-0008/\">Python's style\nguide</a> does a good job explaining why you might want to limit the\nlength of your lines, though this is a matter of taste.\n\nLines can be no longer than eighty characters by default.",
-        "context": "Length is 86, max is 80",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "64",
-        "lineEnd": "64",
-        "ruleId": "80"
+        "line": 64,
+        "lineEnd": 64,
+        "message": "Line exceeds maximum allowed length",
+        "ruleId": "80",
+        "ruleName": "max_line_length",
+        "severity": 4
       },
       {
-        "message": "Line exceeds maximum allowed length",
+        "columnEnd": 1000,
         "description": "This rule imposes a maximum line length on your code. <a\nhref=\"http://www.python.org/dev/peps/pep-0008/\">Python's style\nguide</a> does a good job explaining why you might want to limit the\nlength of your lines, though this is a matter of taste.\n\nLines can be no longer than eighty characters by default.",
-        "context": "Length is 87, max is 80",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "73",
-        "lineEnd": "73",
-        "ruleId": "80"
+        "line": 73,
+        "lineEnd": 73,
+        "message": "Line exceeds maximum allowed length",
+        "ruleId": "80",
+        "ruleName": "max_line_length",
+        "severity": 4
       },
       {
-        "message": "Line exceeds maximum allowed length",
+        "columnEnd": 1000,
         "description": "This rule imposes a maximum line length on your code. <a\nhref=\"http://www.python.org/dev/peps/pep-0008/\">Python's style\nguide</a> does a good job explaining why you might want to limit the\nlength of your lines, though this is a matter of taste.\n\nLines can be no longer than eighty characters by default.",
-        "context": "Length is 86, max is 80",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "93",
-        "lineEnd": "93",
-        "ruleId": "80"
+        "line": 93,
+        "lineEnd": 93,
+        "message": "Line exceeds maximum allowed length",
+        "ruleId": "80",
+        "ruleName": "max_line_length",
+        "severity": 4
       },
       {
-        "message": "Line exceeds maximum allowed length",
+        "columnEnd": 1000,
         "description": "This rule imposes a maximum line length on your code. <a\nhref=\"http://www.python.org/dev/peps/pep-0008/\">Python's style\nguide</a> does a good job explaining why you might want to limit the\nlength of your lines, though this is a matter of taste.\n\nLines can be no longer than eighty characters by default.",
-        "context": "Length is 121, max is 80",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "105",
-        "lineEnd": "105",
-        "ruleId": "80"
+        "line": 105,
+        "lineEnd": 105,
+        "message": "Line exceeds maximum allowed length",
+        "ruleId": "80",
+        "ruleName": "max_line_length",
+        "severity": 4
       },
       {
-        "message": "Line exceeds maximum allowed length",
+        "columnEnd": 1000,
         "description": "This rule imposes a maximum line length on your code. <a\nhref=\"http://www.python.org/dev/peps/pep-0008/\">Python's style\nguide</a> does a good job explaining why you might want to limit the\nlength of your lines, though this is a matter of taste.\n\nLines can be no longer than eighty characters by default.",
-        "context": "Length is 101, max is 80",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "106",
-        "lineEnd": "106",
-        "ruleId": "80"
+        "line": 106,
+        "lineEnd": 106,
+        "message": "Line exceeds maximum allowed length",
+        "ruleId": "80",
+        "ruleName": "max_line_length",
+        "severity": 4
       },
       {
-        "message": "Line exceeds maximum allowed length",
+        "columnEnd": 1000,
         "description": "This rule imposes a maximum line length on your code. <a\nhref=\"http://www.python.org/dev/peps/pep-0008/\">Python's style\nguide</a> does a good job explaining why you might want to limit the\nlength of your lines, though this is a matter of taste.\n\nLines can be no longer than eighty characters by default.",
-        "context": "Length is 157, max is 80",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "108",
-        "lineEnd": "108",
-        "ruleId": "80"
+        "line": 108,
+        "lineEnd": 108,
+        "message": "Line exceeds maximum allowed length",
+        "ruleId": "80",
+        "ruleName": "max_line_length",
+        "severity": 4
       },
       {
-        "message": "Line exceeds maximum allowed length",
+        "columnEnd": 1000,
         "description": "This rule imposes a maximum line length on your code. <a\nhref=\"http://www.python.org/dev/peps/pep-0008/\">Python's style\nguide</a> does a good job explaining why you might want to limit the\nlength of your lines, though this is a matter of taste.\n\nLines can be no longer than eighty characters by default.",
-        "context": "Length is 100, max is 80",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "120",
-        "lineEnd": "120",
-        "ruleId": "80"
+        "line": 120,
+        "lineEnd": 120,
+        "message": "Line exceeds maximum allowed length",
+        "ruleId": "80",
+        "ruleName": "max_line_length",
+        "severity": 4
       },
       {
-        "message": "Line exceeds maximum allowed length",
+        "columnEnd": 1000,
         "description": "This rule imposes a maximum line length on your code. <a\nhref=\"http://www.python.org/dev/peps/pep-0008/\">Python's style\nguide</a> does a good job explaining why you might want to limit the\nlength of your lines, though this is a matter of taste.\n\nLines can be no longer than eighty characters by default.",
-        "context": "Length is 105, max is 80",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "125",
-        "lineEnd": "125",
-        "ruleId": "80"
+        "line": 125,
+        "lineEnd": 125,
+        "message": "Line exceeds maximum allowed length",
+        "ruleId": "80",
+        "ruleName": "max_line_length",
+        "severity": 4
       },
       {
-        "message": "Line exceeds maximum allowed length",
+        "columnEnd": 1000,
         "description": "This rule imposes a maximum line length on your code. <a\nhref=\"http://www.python.org/dev/peps/pep-0008/\">Python's style\nguide</a> does a good job explaining why you might want to limit the\nlength of your lines, though this is a matter of taste.\n\nLines can be no longer than eighty characters by default.",
-        "context": "Length is 100, max is 80",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "126",
-        "lineEnd": "126",
-        "ruleId": "80"
+        "line": 126,
+        "lineEnd": 126,
+        "message": "Line exceeds maximum allowed length",
+        "ruleId": "80",
+        "ruleName": "max_line_length",
+        "severity": 4
       },
       {
-        "message": "Line exceeds maximum allowed length",
+        "columnEnd": 1000,
         "description": "This rule imposes a maximum line length on your code. <a\nhref=\"http://www.python.org/dev/peps/pep-0008/\">Python's style\nguide</a> does a good job explaining why you might want to limit the\nlength of your lines, though this is a matter of taste.\n\nLines can be no longer than eighty characters by default.",
-        "context": "Length is 105, max is 80",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "137",
-        "lineEnd": "137",
-        "ruleId": "80"
+        "line": 137,
+        "lineEnd": 137,
+        "message": "Line exceeds maximum allowed length",
+        "ruleId": "80",
+        "ruleName": "max_line_length",
+        "severity": 4
       },
       {
-        "message": "Line exceeds maximum allowed length",
+        "columnEnd": 1000,
         "description": "This rule imposes a maximum line length on your code. <a\nhref=\"http://www.python.org/dev/peps/pep-0008/\">Python's style\nguide</a> does a good job explaining why you might want to limit the\nlength of your lines, though this is a matter of taste.\n\nLines can be no longer than eighty characters by default.",
-        "context": "Length is 97, max is 80",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "157",
-        "lineEnd": "157",
-        "ruleId": "80"
+        "line": 157,
+        "lineEnd": 157,
+        "message": "Line exceeds maximum allowed length",
+        "ruleId": "80",
+        "ruleName": "max_line_length",
+        "severity": 4
       },
       {
-        "message": "Line exceeds maximum allowed length",
+        "columnEnd": 1000,
         "description": "This rule imposes a maximum line length on your code. <a\nhref=\"http://www.python.org/dev/peps/pep-0008/\">Python's style\nguide</a> does a good job explaining why you might want to limit the\nlength of your lines, though this is a matter of taste.\n\nLines can be no longer than eighty characters by default.",
-        "context": "Length is 107, max is 80",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "177",
-        "lineEnd": "177",
-        "ruleId": "80"
+        "line": 177,
+        "lineEnd": 177,
+        "message": "Line exceeds maximum allowed length",
+        "ruleId": "80",
+        "ruleName": "max_line_length",
+        "severity": 4
       },
       {
-        "message": "Line exceeds maximum allowed length",
+        "columnEnd": 1000,
         "description": "This rule imposes a maximum line length on your code. <a\nhref=\"http://www.python.org/dev/peps/pep-0008/\">Python's style\nguide</a> does a good job explaining why you might want to limit the\nlength of your lines, though this is a matter of taste.\n\nLines can be no longer than eighty characters by default.",
-        "context": "Length is 111, max is 80",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "178",
-        "lineEnd": "178",
-        "ruleId": "80"
+        "line": 178,
+        "lineEnd": 178,
+        "message": "Line exceeds maximum allowed length",
+        "ruleId": "80",
+        "ruleName": "max_line_length",
+        "severity": 4
       },
       {
-        "message": "Line exceeds maximum allowed length",
+        "columnEnd": 1000,
         "description": "This rule imposes a maximum line length on your code. <a\nhref=\"http://www.python.org/dev/peps/pep-0008/\">Python's style\nguide</a> does a good job explaining why you might want to limit the\nlength of your lines, though this is a matter of taste.\n\nLines can be no longer than eighty characters by default.",
-        "context": "Length is 124, max is 80",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "208",
-        "lineEnd": "208",
-        "ruleId": "80"
+        "line": 208,
+        "lineEnd": 208,
+        "message": "Line exceeds maximum allowed length",
+        "ruleId": "80",
+        "ruleName": "max_line_length",
+        "severity": 4
       },
       {
-        "message": "Line exceeds maximum allowed length",
+        "columnEnd": 1000,
         "description": "This rule imposes a maximum line length on your code. <a\nhref=\"http://www.python.org/dev/peps/pep-0008/\">Python's style\nguide</a> does a good job explaining why you might want to limit the\nlength of your lines, though this is a matter of taste.\n\nLines can be no longer than eighty characters by default.",
-        "context": "Length is 151, max is 80",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "209",
-        "lineEnd": "209",
-        "ruleId": "80"
+        "line": 209,
+        "lineEnd": 209,
+        "message": "Line exceeds maximum allowed length",
+        "ruleId": "80",
+        "ruleName": "max_line_length",
+        "severity": 4
       },
       {
-        "message": "Line exceeds maximum allowed length",
+        "columnEnd": 1000,
         "description": "This rule imposes a maximum line length on your code. <a\nhref=\"http://www.python.org/dev/peps/pep-0008/\">Python's style\nguide</a> does a good job explaining why you might want to limit the\nlength of your lines, though this is a matter of taste.\n\nLines can be no longer than eighty characters by default.",
-        "context": "Length is 100, max is 80",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "259",
-        "lineEnd": "259",
-        "ruleId": "80"
+        "line": 259,
+        "lineEnd": 259,
+        "message": "Line exceeds maximum allowed length",
+        "ruleId": "80",
+        "ruleName": "max_line_length",
+        "severity": 4
       },
       {
-        "message": "Line exceeds maximum allowed length",
+        "columnEnd": 1000,
         "description": "This rule imposes a maximum line length on your code. <a\nhref=\"http://www.python.org/dev/peps/pep-0008/\">Python's style\nguide</a> does a good job explaining why you might want to limit the\nlength of your lines, though this is a matter of taste.\n\nLines can be no longer than eighty characters by default.",
-        "context": "Length is 97, max is 80",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "266",
-        "lineEnd": "266",
-        "ruleId": "80"
+        "line": 266,
+        "lineEnd": 266,
+        "message": "Line exceeds maximum allowed length",
+        "ruleId": "80",
+        "ruleName": "max_line_length",
+        "severity": 4
       },
       {
-        "message": "Line exceeds maximum allowed length",
+        "columnEnd": 1000,
         "description": "This rule imposes a maximum line length on your code. <a\nhref=\"http://www.python.org/dev/peps/pep-0008/\">Python's style\nguide</a> does a good job explaining why you might want to limit the\nlength of your lines, though this is a matter of taste.\n\nLines can be no longer than eighty characters by default.",
-        "context": "Length is 97, max is 80",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "276",
-        "lineEnd": "276",
-        "ruleId": "80"
+        "line": 276,
+        "lineEnd": 276,
+        "message": "Line exceeds maximum allowed length",
+        "ruleId": "80",
+        "ruleName": "max_line_length",
+        "severity": 4
       }
-    ]
+    ],
+    "path": "coffee\\classes\\mds_main_menu.coffee"
   },
   {
-    "filePath": "coffee\\classes\\mds_manager.coffee",
     "messages": [
       {
-        "message": "Line exceeds maximum allowed length",
+        "columnEnd": 1000,
         "description": "This rule imposes a maximum line length on your code. <a\nhref=\"http://www.python.org/dev/peps/pep-0008/\">Python's style\nguide</a> does a good job explaining why you might want to limit the\nlength of your lines, though this is a matter of taste.\n\nLines can be no longer than eighty characters by default.",
-        "context": "Length is 90, max is 80",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "0",
-        "lineEnd": "0",
-        "ruleId": "80"
+        "message": "Line exceeds maximum allowed length",
+        "ruleId": "80",
+        "ruleName": "max_line_length",
+        "severity": 4
       },
       {
-        "message": "Line contains a trailing semicolon",
+        "columnEnd": 1000,
         "description": "This rule prohibits trailing semicolons, since they are needless\ncruft in CoffeeScript.\n<pre>\n<code># This semicolon is meaningful.\nx = '1234'; console.log(x)\n\n# This semicolon is redundant.\nalert('end of line');\n</code>\n</pre>\nTrailing semicolons are forbidden by default.",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "2",
-        "lineEnd": "2"
+        "line": 2,
+        "lineEnd": 2,
+        "message": "Line contains a trailing semicolon",
+        "ruleName": "no_trailing_semicolons",
+        "severity": 4
       },
       {
-        "message": "Line exceeds maximum allowed length",
+        "columnEnd": 1000,
         "description": "This rule imposes a maximum line length on your code. <a\nhref=\"http://www.python.org/dev/peps/pep-0008/\">Python's style\nguide</a> does a good job explaining why you might want to limit the\nlength of your lines, though this is a matter of taste.\n\nLines can be no longer than eighty characters by default.",
-        "context": "Length is 87, max is 80",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "48",
-        "lineEnd": "48",
-        "ruleId": "80"
+        "line": 48,
+        "lineEnd": 48,
+        "message": "Line exceeds maximum allowed length",
+        "ruleId": "80",
+        "ruleName": "max_line_length",
+        "severity": 4
       }
-    ]
+    ],
+    "path": "coffee\\classes\\mds_manager.coffee"
   },
   {
-    "filePath": "coffee\\classes\\mds_markdown.coffee",
     "messages": [
       {
-        "message": "Line exceeds maximum allowed length",
+        "columnEnd": 1000,
         "description": "This rule imposes a maximum line length on your code. <a\nhref=\"http://www.python.org/dev/peps/pep-0008/\">Python's style\nguide</a> does a good job explaining why you might want to limit the\nlength of your lines, though this is a matter of taste.\n\nLines can be no longer than eighty characters by default.",
-        "context": "Length is 147, max is 80",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "9",
-        "lineEnd": "9",
-        "ruleId": "80"
+        "line": 9,
+        "lineEnd": 9,
+        "message": "Line exceeds maximum allowed length",
+        "ruleId": "80",
+        "ruleName": "max_line_length",
+        "severity": 4
       },
       {
-        "message": "Line exceeds maximum allowed length",
+        "columnEnd": 1000,
         "description": "This rule imposes a maximum line length on your code. <a\nhref=\"http://www.python.org/dev/peps/pep-0008/\">Python's style\nguide</a> does a good job explaining why you might want to limit the\nlength of your lines, though this is a matter of taste.\n\nLines can be no longer than eighty characters by default.",
-        "context": "Length is 155, max is 80",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "10",
-        "lineEnd": "10",
-        "ruleId": "80"
+        "line": 10,
+        "lineEnd": 10,
+        "message": "Line exceeds maximum allowed length",
+        "ruleId": "80",
+        "ruleName": "max_line_length",
+        "severity": 4
       },
       {
-        "message": "Line exceeds maximum allowed length",
+        "columnEnd": 1000,
         "description": "This rule imposes a maximum line length on your code. <a\nhref=\"http://www.python.org/dev/peps/pep-0008/\">Python's style\nguide</a> does a good job explaining why you might want to limit the\nlength of your lines, though this is a matter of taste.\n\nLines can be no longer than eighty characters by default.",
-        "context": "Length is 111, max is 80",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "56",
-        "lineEnd": "56",
-        "ruleId": "80"
+        "line": 56,
+        "lineEnd": 56,
+        "message": "Line exceeds maximum allowed length",
+        "ruleId": "80",
+        "ruleName": "max_line_length",
+        "severity": 4
       },
       {
-        "message": "Line exceeds maximum allowed length",
+        "columnEnd": 1000,
         "description": "This rule imposes a maximum line length on your code. <a\nhref=\"http://www.python.org/dev/peps/pep-0008/\">Python's style\nguide</a> does a good job explaining why you might want to limit the\nlength of your lines, though this is a matter of taste.\n\nLines can be no longer than eighty characters by default.",
-        "context": "Length is 86, max is 80",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "59",
-        "lineEnd": "59",
-        "ruleId": "80"
+        "line": 59,
+        "lineEnd": 59,
+        "message": "Line exceeds maximum allowed length",
+        "ruleId": "80",
+        "ruleName": "max_line_length",
+        "severity": 4
       },
       {
-        "message": "Line exceeds maximum allowed length",
+        "columnEnd": 1000,
         "description": "This rule imposes a maximum line length on your code. <a\nhref=\"http://www.python.org/dev/peps/pep-0008/\">Python's style\nguide</a> does a good job explaining why you might want to limit the\nlength of your lines, though this is a matter of taste.\n\nLines can be no longer than eighty characters by default.",
-        "context": "Length is 82, max is 80",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "63",
-        "lineEnd": "63",
-        "ruleId": "80"
+        "line": 63,
+        "lineEnd": 63,
+        "message": "Line exceeds maximum allowed length",
+        "ruleId": "80",
+        "ruleName": "max_line_length",
+        "severity": 4
       },
       {
-        "message": "Line exceeds maximum allowed length",
+        "columnEnd": 1000,
         "description": "This rule imposes a maximum line length on your code. <a\nhref=\"http://www.python.org/dev/peps/pep-0008/\">Python's style\nguide</a> does a good job explaining why you might want to limit the\nlength of your lines, though this is a matter of taste.\n\nLines can be no longer than eighty characters by default.",
-        "context": "Length is 117, max is 80",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "83",
-        "lineEnd": "83",
-        "ruleId": "80"
+        "line": 83,
+        "lineEnd": 83,
+        "message": "Line exceeds maximum allowed length",
+        "ruleId": "80",
+        "ruleName": "max_line_length",
+        "severity": 4
       },
       {
-        "message": "Line exceeds maximum allowed length",
+        "columnEnd": 1000,
         "description": "This rule imposes a maximum line length on your code. <a\nhref=\"http://www.python.org/dev/peps/pep-0008/\">Python's style\nguide</a> does a good job explaining why you might want to limit the\nlength of your lines, though this is a matter of taste.\n\nLines can be no longer than eighty characters by default.",
-        "context": "Length is 96, max is 80",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "86",
-        "lineEnd": "86",
-        "ruleId": "80"
+        "line": 86,
+        "lineEnd": 86,
+        "message": "Line exceeds maximum allowed length",
+        "ruleId": "80",
+        "ruleName": "max_line_length",
+        "severity": 4
       },
       {
-        "message": "Line exceeds maximum allowed length",
+        "columnEnd": 1000,
         "description": "This rule imposes a maximum line length on your code. <a\nhref=\"http://www.python.org/dev/peps/pep-0008/\">Python's style\nguide</a> does a good job explaining why you might want to limit the\nlength of your lines, though this is a matter of taste.\n\nLines can be no longer than eighty characters by default.",
-        "context": "Length is 101, max is 80",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "89",
-        "lineEnd": "89",
-        "ruleId": "80"
+        "line": 89,
+        "lineEnd": 89,
+        "message": "Line exceeds maximum allowed length",
+        "ruleId": "80",
+        "ruleName": "max_line_length",
+        "severity": 4
       },
       {
-        "message": "Line exceeds maximum allowed length",
+        "columnEnd": 1000,
         "description": "This rule imposes a maximum line length on your code. <a\nhref=\"http://www.python.org/dev/peps/pep-0008/\">Python's style\nguide</a> does a good job explaining why you might want to limit the\nlength of your lines, though this is a matter of taste.\n\nLines can be no longer than eighty characters by default.",
-        "context": "Length is 83, max is 80",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "99",
-        "lineEnd": "99",
-        "ruleId": "80"
+        "line": 99,
+        "lineEnd": 99,
+        "message": "Line exceeds maximum allowed length",
+        "ruleId": "80",
+        "ruleName": "max_line_length",
+        "severity": 4
       },
       {
-        "message": "Line exceeds maximum allowed length",
+        "columnEnd": 1000,
         "description": "This rule imposes a maximum line length on your code. <a\nhref=\"http://www.python.org/dev/peps/pep-0008/\">Python's style\nguide</a> does a good job explaining why you might want to limit the\nlength of your lines, though this is a matter of taste.\n\nLines can be no longer than eighty characters by default.",
-        "context": "Length is 83, max is 80",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "100",
-        "lineEnd": "100",
-        "ruleId": "80"
+        "line": 100,
+        "lineEnd": 100,
+        "message": "Line exceeds maximum allowed length",
+        "ruleId": "80",
+        "ruleName": "max_line_length",
+        "severity": 4
       },
       {
-        "message": "Line exceeds maximum allowed length",
+        "columnEnd": 1000,
         "description": "This rule imposes a maximum line length on your code. <a\nhref=\"http://www.python.org/dev/peps/pep-0008/\">Python's style\nguide</a> does a good job explaining why you might want to limit the\nlength of your lines, though this is a matter of taste.\n\nLines can be no longer than eighty characters by default.",
-        "context": "Length is 83, max is 80",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "101",
-        "lineEnd": "101",
-        "ruleId": "80"
+        "line": 101,
+        "lineEnd": 101,
+        "message": "Line exceeds maximum allowed length",
+        "ruleId": "80",
+        "ruleName": "max_line_length",
+        "severity": 4
       },
       {
-        "message": "Line exceeds maximum allowed length",
+        "columnEnd": 1000,
         "description": "This rule imposes a maximum line length on your code. <a\nhref=\"http://www.python.org/dev/peps/pep-0008/\">Python's style\nguide</a> does a good job explaining why you might want to limit the\nlength of your lines, though this is a matter of taste.\n\nLines can be no longer than eighty characters by default.",
-        "context": "Length is 125, max is 80",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "120",
-        "lineEnd": "120",
-        "ruleId": "80"
+        "line": 120,
+        "lineEnd": 120,
+        "message": "Line exceeds maximum allowed length",
+        "ruleId": "80",
+        "ruleName": "max_line_length",
+        "severity": 4
       },
       {
-        "message": "Line exceeds maximum allowed length",
+        "columnEnd": 1000,
         "description": "This rule imposes a maximum line length on your code. <a\nhref=\"http://www.python.org/dev/peps/pep-0008/\">Python's style\nguide</a> does a good job explaining why you might want to limit the\nlength of your lines, though this is a matter of taste.\n\nLines can be no longer than eighty characters by default.",
-        "context": "Length is 82, max is 80",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "152",
-        "lineEnd": "152",
-        "ruleId": "80"
+        "line": 152,
+        "lineEnd": 152,
+        "message": "Line exceeds maximum allowed length",
+        "ruleId": "80",
+        "ruleName": "max_line_length",
+        "severity": 4
       }
-    ]
+    ],
+    "path": "coffee\\classes\\mds_markdown.coffee"
   },
   {
-    "filePath": "coffee\\classes\\mds_md_setting.coffee",
     "messages": [
       {
-        "message": "Line exceeds maximum allowed length",
+        "columnEnd": 1000,
         "description": "This rule imposes a maximum line length on your code. <a\nhref=\"http://www.python.org/dev/peps/pep-0008/\">Python's style\nguide</a> does a good job explaining why you might want to limit the\nlength of your lines, though this is a matter of taste.\n\nLines can be no longer than eighty characters by default.",
-        "context": "Length is 91, max is 80",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "31",
-        "lineEnd": "31",
-        "ruleId": "80"
-      },
-      {
-        "message": "Unnecessary fat arrow",
-        "description": "Disallows defining functions with fat arrows when `this`\nis not used within the function.",
-        "severity": 4,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "36",
-        "lineEnd": "36"
-      },
-      {
-        "message": "Unnecessary fat arrow",
-        "description": "Disallows defining functions with fat arrows when `this`\nis not used within the function.",
-        "severity": 4,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "94",
-        "lineEnd": "94"
-      },
-      {
-        "message": "Unnecessary fat arrow",
-        "description": "Disallows defining functions with fat arrows when `this`\nis not used within the function.",
-        "severity": 4,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "103",
-        "lineEnd": "103"
-      },
-      {
+        "line": 31,
+        "lineEnd": 31,
         "message": "Line exceeds maximum allowed length",
-        "description": "This rule imposes a maximum line length on your code. <a\nhref=\"http://www.python.org/dev/peps/pep-0008/\">Python's style\nguide</a> does a good job explaining why you might want to limit the\nlength of your lines, though this is a matter of taste.\n\nLines can be no longer than eighty characters by default.",
-        "context": "Length is 93, max is 80",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "138",
-        "lineEnd": "138",
-        "ruleId": "80"
+        "ruleId": "80",
+        "ruleName": "max_line_length",
+        "severity": 4
       },
       {
-        "message": "Line exceeds maximum allowed length",
+        "columnEnd": 1000,
+        "description": "Disallows defining functions with fat arrows when `this`\nis not used within the function.",
+        "line": 36,
+        "lineEnd": 36,
+        "message": "Unnecessary fat arrow",
+        "ruleName": "no_unnecessary_fat_arrows",
+        "severity": 3
+      },
+      {
+        "columnEnd": 1000,
+        "description": "Disallows defining functions with fat arrows when `this`\nis not used within the function.",
+        "line": 94,
+        "lineEnd": 94,
+        "message": "Unnecessary fat arrow",
+        "ruleName": "no_unnecessary_fat_arrows",
+        "severity": 3
+      },
+      {
+        "columnEnd": 1000,
+        "description": "Disallows defining functions with fat arrows when `this`\nis not used within the function.",
+        "line": 103,
+        "lineEnd": 103,
+        "message": "Unnecessary fat arrow",
+        "ruleName": "no_unnecessary_fat_arrows",
+        "severity": 3
+      },
+      {
+        "columnEnd": 1000,
         "description": "This rule imposes a maximum line length on your code. <a\nhref=\"http://www.python.org/dev/peps/pep-0008/\">Python's style\nguide</a> does a good job explaining why you might want to limit the\nlength of your lines, though this is a matter of taste.\n\nLines can be no longer than eighty characters by default.",
-        "context": "Length is 97, max is 80",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "157",
-        "lineEnd": "157",
-        "ruleId": "80"
+        "line": 138,
+        "lineEnd": 138,
+        "message": "Line exceeds maximum allowed length",
+        "ruleId": "80",
+        "ruleName": "max_line_length",
+        "severity": 4
+      },
+      {
+        "columnEnd": 1000,
+        "description": "This rule imposes a maximum line length on your code. <a\nhref=\"http://www.python.org/dev/peps/pep-0008/\">Python's style\nguide</a> does a good job explaining why you might want to limit the\nlength of your lines, though this is a matter of taste.\n\nLines can be no longer than eighty characters by default.",
+        "line": 157,
+        "lineEnd": 157,
+        "message": "Line exceeds maximum allowed length",
+        "ruleId": "80",
+        "ruleName": "max_line_length",
+        "severity": 4
       }
-    ]
+    ],
+    "path": "coffee\\classes\\mds_md_setting.coffee"
   },
   {
-    "filePath": "coffee\\classes\\mds_menu.coffee",
     "messages": [
       {
-        "message": "Unnecessary fat arrow",
+        "columnEnd": 1000,
         "description": "Disallows defining functions with fat arrows when `this`\nis not used within the function.",
-        "severity": 4,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "11",
-        "lineEnd": "11"
+        "line": 11,
+        "lineEnd": 11,
+        "message": "Unnecessary fat arrow",
+        "ruleName": "no_unnecessary_fat_arrows",
+        "severity": 3
       },
       {
-        "message": "Line exceeds maximum allowed length",
+        "columnEnd": 1000,
         "description": "This rule imposes a maximum line length on your code. <a\nhref=\"http://www.python.org/dev/peps/pep-0008/\">Python's style\nguide</a> does a good job explaining why you might want to limit the\nlength of your lines, though this is a matter of taste.\n\nLines can be no longer than eighty characters by default.",
-        "context": "Length is 111, max is 80",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "39",
-        "lineEnd": "39",
-        "ruleId": "80"
+        "line": 39,
+        "lineEnd": 39,
+        "message": "Line exceeds maximum allowed length",
+        "ruleId": "80",
+        "ruleName": "max_line_length",
+        "severity": 4
       },
       {
-        "message": "Line exceeds maximum allowed length",
+        "columnEnd": 1000,
         "description": "This rule imposes a maximum line length on your code. <a\nhref=\"http://www.python.org/dev/peps/pep-0008/\">Python's style\nguide</a> does a good job explaining why you might want to limit the\nlength of your lines, though this is a matter of taste.\n\nLines can be no longer than eighty characters by default.",
-        "context": "Length is 93, max is 80",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "45",
-        "lineEnd": "45",
-        "ruleId": "80"
+        "line": 45,
+        "lineEnd": 45,
+        "message": "Line exceeds maximum allowed length",
+        "ruleId": "80",
+        "ruleName": "max_line_length",
+        "severity": 4
       }
-    ]
+    ],
+    "path": "coffee\\classes\\mds_menu.coffee"
   },
   {
-    "filePath": "coffee\\classes\\mds_renderer.coffee"
-  },
-  {
-    "filePath": "coffee\\classes\\mds_window.coffee",
     "messages": [
       {
-        "message": "Unnecessary fat arrow",
+        "columnEnd": 1000,
         "description": "Disallows defining functions with fat arrows when `this`\nis not used within the function.",
-        "severity": 4,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "71",
-        "lineEnd": "71"
-      },
-      {
-        "message": "Line exceeds maximum allowed length",
-        "description": "This rule imposes a maximum line length on your code. <a\nhref=\"http://www.python.org/dev/peps/pep-0008/\">Python's style\nguide</a> does a good job explaining why you might want to limit the\nlength of your lines, though this is a matter of taste.\n\nLines can be no longer than eighty characters by default.",
-        "context": "Length is 92, max is 80",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "86",
-        "lineEnd": "86",
-        "ruleId": "80"
-      },
-      {
+        "line": 71,
+        "lineEnd": 71,
         "message": "Unnecessary fat arrow",
-        "description": "Disallows defining functions with fat arrows when `this`\nis not used within the function.",
-        "severity": 4,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "98",
-        "lineEnd": "98"
+        "ruleName": "no_unnecessary_fat_arrows",
+        "severity": 3
       },
       {
-        "message": "Line exceeds maximum allowed length",
+        "columnEnd": 1000,
         "description": "This rule imposes a maximum line length on your code. <a\nhref=\"http://www.python.org/dev/peps/pep-0008/\">Python's style\nguide</a> does a good job explaining why you might want to limit the\nlength of your lines, though this is a matter of taste.\n\nLines can be no longer than eighty characters by default.",
-        "context": "Length is 83, max is 80",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "99",
-        "lineEnd": "99",
-        "ruleId": "80"
+        "line": 86,
+        "lineEnd": 86,
+        "message": "Line exceeds maximum allowed length",
+        "ruleId": "80",
+        "ruleName": "max_line_length",
+        "severity": 4
       },
       {
+        "columnEnd": 1000,
+        "description": "Disallows defining functions with fat arrows when `this`\nis not used within the function.",
+        "line": 98,
+        "lineEnd": 98,
         "message": "Unnecessary fat arrow",
+        "ruleName": "no_unnecessary_fat_arrows",
+        "severity": 3
+      },
+      {
+        "columnEnd": 1000,
+        "description": "This rule imposes a maximum line length on your code. <a\nhref=\"http://www.python.org/dev/peps/pep-0008/\">Python's style\nguide</a> does a good job explaining why you might want to limit the\nlength of your lines, though this is a matter of taste.\n\nLines can be no longer than eighty characters by default.",
+        "line": 99,
+        "lineEnd": 99,
+        "message": "Line exceeds maximum allowed length",
+        "ruleId": "80",
+        "ruleName": "max_line_length",
+        "severity": 4
+      },
+      {
+        "columnEnd": 1000,
         "description": "Disallows defining functions with fat arrows when `this`\nis not used within the function.",
-        "severity": 4,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "113",
-        "lineEnd": "113"
+        "line": 113,
+        "lineEnd": 113,
+        "message": "Unnecessary fat arrow",
+        "ruleName": "no_unnecessary_fat_arrows",
+        "severity": 3
       },
       {
-        "message": "Line exceeds maximum allowed length",
+        "columnEnd": 1000,
         "description": "This rule imposes a maximum line length on your code. <a\nhref=\"http://www.python.org/dev/peps/pep-0008/\">Python's style\nguide</a> does a good job explaining why you might want to limit the\nlength of your lines, though this is a matter of taste.\n\nLines can be no longer than eighty characters by default.",
-        "context": "Length is 102, max is 80",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "117",
-        "lineEnd": "117",
-        "ruleId": "80"
+        "line": 117,
+        "lineEnd": 117,
+        "message": "Line exceeds maximum allowed length",
+        "ruleId": "80",
+        "ruleName": "max_line_length",
+        "severity": 4
       },
       {
-        "message": "Line exceeds maximum allowed length",
+        "columnEnd": 1000,
         "description": "This rule imposes a maximum line length on your code. <a\nhref=\"http://www.python.org/dev/peps/pep-0008/\">Python's style\nguide</a> does a good job explaining why you might want to limit the\nlength of your lines, though this is a matter of taste.\n\nLines can be no longer than eighty characters by default.",
-        "context": "Length is 81, max is 80",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "131",
-        "lineEnd": "131",
-        "ruleId": "80"
+        "line": 131,
+        "lineEnd": 131,
+        "message": "Line exceeds maximum allowed length",
+        "ruleId": "80",
+        "ruleName": "max_line_length",
+        "severity": 4
       },
       {
-        "message": "Line exceeds maximum allowed length",
+        "columnEnd": 1000,
         "description": "This rule imposes a maximum line length on your code. <a\nhref=\"http://www.python.org/dev/peps/pep-0008/\">Python's style\nguide</a> does a good job explaining why you might want to limit the\nlength of your lines, though this is a matter of taste.\n\nLines can be no longer than eighty characters by default.",
-        "context": "Length is 104, max is 80",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "162",
-        "lineEnd": "162",
-        "ruleId": "80"
+        "line": 162,
+        "lineEnd": 162,
+        "message": "Line exceeds maximum allowed length",
+        "ruleId": "80",
+        "ruleName": "max_line_length",
+        "severity": 4
       },
       {
-        "message": "Line exceeds maximum allowed length",
+        "columnEnd": 1000,
         "description": "This rule imposes a maximum line length on your code. <a\nhref=\"http://www.python.org/dev/peps/pep-0008/\">Python's style\nguide</a> does a good job explaining why you might want to limit the\nlength of your lines, though this is a matter of taste.\n\nLines can be no longer than eighty characters by default.",
-        "context": "Length is 83, max is 80",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "226",
-        "lineEnd": "226",
-        "ruleId": "80"
+        "line": 226,
+        "lineEnd": 226,
+        "message": "Line exceeds maximum allowed length",
+        "ruleId": "80",
+        "ruleName": "max_line_length",
+        "severity": 4
       },
       {
-        "message": "Line exceeds maximum allowed length",
+        "columnEnd": 1000,
         "description": "This rule imposes a maximum line length on your code. <a\nhref=\"http://www.python.org/dev/peps/pep-0008/\">Python's style\nguide</a> does a good job explaining why you might want to limit the\nlength of your lines, though this is a matter of taste.\n\nLines can be no longer than eighty characters by default.",
-        "context": "Length is 114, max is 80",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "230",
-        "lineEnd": "230",
-        "ruleId": "80"
+        "line": 230,
+        "lineEnd": 230,
+        "message": "Line exceeds maximum allowed length",
+        "ruleId": "80",
+        "ruleName": "max_line_length",
+        "severity": 4
       },
       {
-        "message": "Line exceeds maximum allowed length",
+        "columnEnd": 1000,
         "description": "This rule imposes a maximum line length on your code. <a\nhref=\"http://www.python.org/dev/peps/pep-0008/\">Python's style\nguide</a> does a good job explaining why you might want to limit the\nlength of your lines, though this is a matter of taste.\n\nLines can be no longer than eighty characters by default.",
-        "context": "Length is 101, max is 80",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "257",
-        "lineEnd": "257",
-        "ruleId": "80"
+        "line": 257,
+        "lineEnd": 257,
+        "message": "Line exceeds maximum allowed length",
+        "ruleId": "80",
+        "ruleName": "max_line_length",
+        "severity": 4
       }
-    ]
+    ],
+    "path": "coffee\\classes\\mds_window.coffee"
   },
   {
-    "filePath": "coffee\\index.coffee",
     "messages": [
       {
-        "message": "Line exceeds maximum allowed length",
+        "columnEnd": 1000,
         "description": "This rule imposes a maximum line length on your code. <a\nhref=\"http://www.python.org/dev/peps/pep-0008/\">Python's style\nguide</a> does a good job explaining why you might want to limit the\nlength of your lines, though this is a matter of taste.\n\nLines can be no longer than eighty characters by default.",
-        "context": "Length is 130, max is 80",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "28",
-        "lineEnd": "28",
-        "ruleId": "80"
+        "line": 28,
+        "lineEnd": 28,
+        "message": "Line exceeds maximum allowed length",
+        "ruleId": "80",
+        "ruleName": "max_line_length",
+        "severity": 4
       },
       {
-        "message": "Line exceeds maximum allowed length",
+        "columnEnd": 1000,
         "description": "This rule imposes a maximum line length on your code. <a\nhref=\"http://www.python.org/dev/peps/pep-0008/\">Python's style\nguide</a> does a good job explaining why you might want to limit the\nlength of your lines, though this is a matter of taste.\n\nLines can be no longer than eighty characters by default.",
-        "context": "Length is 99, max is 80",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "31",
-        "lineEnd": "31",
-        "ruleId": "80"
+        "line": 31,
+        "lineEnd": 31,
+        "message": "Line exceeds maximum allowed length",
+        "ruleId": "80",
+        "ruleName": "max_line_length",
+        "severity": 4
       },
       {
-        "message": "Line exceeds maximum allowed length",
+        "columnEnd": 1000,
         "description": "This rule imposes a maximum line length on your code. <a\nhref=\"http://www.python.org/dev/peps/pep-0008/\">Python's style\nguide</a> does a good job explaining why you might want to limit the\nlength of your lines, though this is a matter of taste.\n\nLines can be no longer than eighty characters by default.",
-        "context": "Length is 84, max is 80",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "32",
-        "lineEnd": "32",
-        "ruleId": "80"
+        "line": 32,
+        "lineEnd": 32,
+        "message": "Line exceeds maximum allowed length",
+        "ruleId": "80",
+        "ruleName": "max_line_length",
+        "severity": 4
       },
       {
-        "message": "Line exceeds maximum allowed length",
+        "columnEnd": 1000,
         "description": "This rule imposes a maximum line length on your code. <a\nhref=\"http://www.python.org/dev/peps/pep-0008/\">Python's style\nguide</a> does a good job explaining why you might want to limit the\nlength of your lines, though this is a matter of taste.\n\nLines can be no longer than eighty characters by default.",
-        "context": "Length is 141, max is 80",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "39",
-        "lineEnd": "39",
-        "ruleId": "80"
+        "line": 39,
+        "lineEnd": 39,
+        "message": "Line exceeds maximum allowed length",
+        "ruleId": "80",
+        "ruleName": "max_line_length",
+        "severity": 4
       },
       {
-        "message": "Line exceeds maximum allowed length",
+        "columnEnd": 1000,
         "description": "This rule imposes a maximum line length on your code. <a\nhref=\"http://www.python.org/dev/peps/pep-0008/\">Python's style\nguide</a> does a good job explaining why you might want to limit the\nlength of your lines, though this is a matter of taste.\n\nLines can be no longer than eighty characters by default.",
-        "context": "Length is 89, max is 80",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "63",
-        "lineEnd": "63",
-        "ruleId": "80"
+        "line": 63,
+        "lineEnd": 63,
+        "message": "Line exceeds maximum allowed length",
+        "ruleId": "80",
+        "ruleName": "max_line_length",
+        "severity": 4
       },
       {
-        "message": "Unnecessary fat arrow",
+        "columnEnd": 1000,
         "description": "Disallows defining functions with fat arrows when `this`\nis not used within the function.",
-        "severity": 4,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "92",
-        "lineEnd": "92"
-      },
-      {
-        "message": "Line exceeds maximum allowed length",
-        "description": "This rule imposes a maximum line length on your code. <a\nhref=\"http://www.python.org/dev/peps/pep-0008/\">Python's style\nguide</a> does a good job explaining why you might want to limit the\nlength of your lines, though this is a matter of taste.\n\nLines can be no longer than eighty characters by default.",
-        "context": "Length is 85, max is 80",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "106",
-        "lineEnd": "106",
-        "ruleId": "80"
-      },
-      {
-        "message": "Line exceeds maximum allowed length",
-        "description": "This rule imposes a maximum line length on your code. <a\nhref=\"http://www.python.org/dev/peps/pep-0008/\">Python's style\nguide</a> does a good job explaining why you might want to limit the\nlength of your lines, though this is a matter of taste.\n\nLines can be no longer than eighty characters by default.",
-        "context": "Length is 100, max is 80",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "115",
-        "lineEnd": "115",
-        "ruleId": "80"
-      },
-      {
-        "message": "Line exceeds maximum allowed length",
-        "description": "This rule imposes a maximum line length on your code. <a\nhref=\"http://www.python.org/dev/peps/pep-0008/\">Python's style\nguide</a> does a good job explaining why you might want to limit the\nlength of your lines, though this is a matter of taste.\n\nLines can be no longer than eighty characters by default.",
-        "context": "Length is 110, max is 80",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "152",
-        "lineEnd": "152",
-        "ruleId": "80"
-      },
-      {
+        "line": 92,
+        "lineEnd": 92,
         "message": "Unnecessary fat arrow",
+        "ruleName": "no_unnecessary_fat_arrows",
+        "severity": 3
+      },
+      {
+        "columnEnd": 1000,
+        "description": "This rule imposes a maximum line length on your code. <a\nhref=\"http://www.python.org/dev/peps/pep-0008/\">Python's style\nguide</a> does a good job explaining why you might want to limit the\nlength of your lines, though this is a matter of taste.\n\nLines can be no longer than eighty characters by default.",
+        "line": 106,
+        "lineEnd": 106,
+        "message": "Line exceeds maximum allowed length",
+        "ruleId": "80",
+        "ruleName": "max_line_length",
+        "severity": 4
+      },
+      {
+        "columnEnd": 1000,
+        "description": "This rule imposes a maximum line length on your code. <a\nhref=\"http://www.python.org/dev/peps/pep-0008/\">Python's style\nguide</a> does a good job explaining why you might want to limit the\nlength of your lines, though this is a matter of taste.\n\nLines can be no longer than eighty characters by default.",
+        "line": 115,
+        "lineEnd": 115,
+        "message": "Line exceeds maximum allowed length",
+        "ruleId": "80",
+        "ruleName": "max_line_length",
+        "severity": 4
+      },
+      {
+        "columnEnd": 1000,
+        "description": "This rule imposes a maximum line length on your code. <a\nhref=\"http://www.python.org/dev/peps/pep-0008/\">Python's style\nguide</a> does a good job explaining why you might want to limit the\nlength of your lines, though this is a matter of taste.\n\nLines can be no longer than eighty characters by default.",
+        "line": 152,
+        "lineEnd": 152,
+        "message": "Line exceeds maximum allowed length",
+        "ruleId": "80",
+        "ruleName": "max_line_length",
+        "severity": 4
+      },
+      {
+        "columnEnd": 1000,
         "description": "Disallows defining functions with fat arrows when `this`\nis not used within the function.",
-        "severity": 4,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "159",
-        "lineEnd": "159"
+        "line": 159,
+        "lineEnd": 159,
+        "message": "Unnecessary fat arrow",
+        "ruleName": "no_unnecessary_fat_arrows",
+        "severity": 3
       },
       {
-        "message": "Line exceeds maximum allowed length",
+        "columnEnd": 1000,
         "description": "This rule imposes a maximum line length on your code. <a\nhref=\"http://www.python.org/dev/peps/pep-0008/\">Python's style\nguide</a> does a good job explaining why you might want to limit the\nlength of your lines, though this is a matter of taste.\n\nLines can be no longer than eighty characters by default.",
-        "context": "Length is 129, max is 80",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "196",
-        "lineEnd": "196",
-        "ruleId": "80"
+        "line": 196,
+        "lineEnd": 196,
+        "message": "Line exceeds maximum allowed length",
+        "ruleId": "80",
+        "ruleName": "max_line_length",
+        "severity": 4
       },
       {
-        "message": "Line exceeds maximum allowed length",
+        "columnEnd": 1000,
         "description": "This rule imposes a maximum line length on your code. <a\nhref=\"http://www.python.org/dev/peps/pep-0008/\">Python's style\nguide</a> does a good job explaining why you might want to limit the\nlength of your lines, though this is a matter of taste.\n\nLines can be no longer than eighty characters by default.",
-        "context": "Length is 107, max is 80",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "201",
-        "lineEnd": "201",
-        "ruleId": "80"
+        "line": 201,
+        "lineEnd": 201,
+        "message": "Line exceeds maximum allowed length",
+        "ruleId": "80",
+        "ruleName": "max_line_length",
+        "severity": 4
       },
       {
-        "message": "Line exceeds maximum allowed length",
+        "columnEnd": 1000,
         "description": "This rule imposes a maximum line length on your code. <a\nhref=\"http://www.python.org/dev/peps/pep-0008/\">Python's style\nguide</a> does a good job explaining why you might want to limit the\nlength of your lines, though this is a matter of taste.\n\nLines can be no longer than eighty characters by default.",
-        "context": "Length is 81, max is 80",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "226",
-        "lineEnd": "226",
-        "ruleId": "80"
+        "line": 226,
+        "lineEnd": 226,
+        "message": "Line exceeds maximum allowed length",
+        "ruleId": "80",
+        "ruleName": "max_line_length",
+        "severity": 4
       },
       {
-        "message": "Line exceeds maximum allowed length",
+        "columnEnd": 1000,
         "description": "This rule imposes a maximum line length on your code. <a\nhref=\"http://www.python.org/dev/peps/pep-0008/\">Python's style\nguide</a> does a good job explaining why you might want to limit the\nlength of your lines, though this is a matter of taste.\n\nLines can be no longer than eighty characters by default.",
-        "context": "Length is 88, max is 80",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "242",
-        "lineEnd": "242",
-        "ruleId": "80"
+        "line": 242,
+        "lineEnd": 242,
+        "message": "Line exceeds maximum allowed length",
+        "ruleId": "80",
+        "ruleName": "max_line_length",
+        "severity": 4
       },
       {
-        "message": "Line exceeds maximum allowed length",
+        "columnEnd": 1000,
         "description": "This rule imposes a maximum line length on your code. <a\nhref=\"http://www.python.org/dev/peps/pep-0008/\">Python's style\nguide</a> does a good job explaining why you might want to limit the\nlength of your lines, though this is a matter of taste.\n\nLines can be no longer than eighty characters by default.",
-        "context": "Length is 103, max is 80",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "245",
-        "lineEnd": "245",
-        "ruleId": "80"
+        "line": 245,
+        "lineEnd": 245,
+        "message": "Line exceeds maximum allowed length",
+        "ruleId": "80",
+        "ruleName": "max_line_length",
+        "severity": 4
       }
-    ]
+    ],
+    "path": "coffee\\index.coffee"
   },
   {
-    "filePath": "coffee\\main.coffee"
-  },
-  {
-    "filePath": "coffee\\slide.coffee",
     "messages": [
       {
-        "message": "Line exceeds maximum allowed length",
+        "columnEnd": 1000,
         "description": "This rule imposes a maximum line length on your code. <a\nhref=\"http://www.python.org/dev/peps/pep-0008/\">Python's style\nguide</a> does a good job explaining why you might want to limit the\nlength of your lines, though this is a matter of taste.\n\nLines can be no longer than eighty characters by default.",
-        "context": "Length is 83, max is 80",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "15",
-        "lineEnd": "15",
-        "ruleId": "80"
+        "line": 15,
+        "lineEnd": 15,
+        "message": "Line exceeds maximum allowed length",
+        "ruleId": "80",
+        "ruleName": "max_line_length",
+        "severity": 4
       },
       {
-        "message": "Line exceeds maximum allowed length",
+        "columnEnd": 1000,
         "description": "This rule imposes a maximum line length on your code. <a\nhref=\"http://www.python.org/dev/peps/pep-0008/\">Python's style\nguide</a> does a good job explaining why you might want to limit the\nlength of your lines, though this is a matter of taste.\n\nLines can be no longer than eighty characters by default.",
-        "context": "Length is 88, max is 80",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "33",
-        "lineEnd": "33",
-        "ruleId": "80"
+        "line": 33,
+        "lineEnd": 33,
+        "message": "Line exceeds maximum allowed length",
+        "ruleId": "80",
+        "ruleName": "max_line_length",
+        "severity": 4
       },
       {
-        "message": "Line exceeds maximum allowed length",
+        "columnEnd": 1000,
         "description": "This rule imposes a maximum line length on your code. <a\nhref=\"http://www.python.org/dev/peps/pep-0008/\">Python's style\nguide</a> does a good job explaining why you might want to limit the\nlength of your lines, though this is a matter of taste.\n\nLines can be no longer than eighty characters by default.",
-        "context": "Length is 101, max is 80",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "36",
-        "lineEnd": "36",
-        "ruleId": "80"
+        "line": 36,
+        "lineEnd": 36,
+        "message": "Line exceeds maximum allowed length",
+        "ruleId": "80",
+        "ruleName": "max_line_length",
+        "severity": 4
       },
       {
-        "message": "Line exceeds maximum allowed length",
+        "columnEnd": 1000,
         "description": "This rule imposes a maximum line length on your code. <a\nhref=\"http://www.python.org/dev/peps/pep-0008/\">Python's style\nguide</a> does a good job explaining why you might want to limit the\nlength of your lines, though this is a matter of taste.\n\nLines can be no longer than eighty characters by default.",
-        "context": "Length is 94, max is 80",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "67",
-        "lineEnd": "67",
-        "ruleId": "80"
+        "line": 67,
+        "lineEnd": 67,
+        "message": "Line exceeds maximum allowed length",
+        "ruleId": "80",
+        "ruleName": "max_line_length",
+        "severity": 4
       },
       {
-        "message": "Line exceeds maximum allowed length",
+        "columnEnd": 1000,
         "description": "This rule imposes a maximum line length on your code. <a\nhref=\"http://www.python.org/dev/peps/pep-0008/\">Python's style\nguide</a> does a good job explaining why you might want to limit the\nlength of your lines, though this is a matter of taste.\n\nLines can be no longer than eighty characters by default.",
-        "context": "Length is 82, max is 80",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "68",
-        "lineEnd": "68",
-        "ruleId": "80"
+        "line": 68,
+        "lineEnd": 68,
+        "message": "Line exceeds maximum allowed length",
+        "ruleId": "80",
+        "ruleName": "max_line_length",
+        "severity": 4
       },
       {
-        "message": "Line exceeds maximum allowed length",
+        "columnEnd": 1000,
         "description": "This rule imposes a maximum line length on your code. <a\nhref=\"http://www.python.org/dev/peps/pep-0008/\">Python's style\nguide</a> does a good job explaining why you might want to limit the\nlength of your lines, though this is a matter of taste.\n\nLines can be no longer than eighty characters by default.",
-        "context": "Length is 84, max is 80",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "84",
-        "lineEnd": "84",
-        "ruleId": "80"
+        "line": 84,
+        "lineEnd": 84,
+        "message": "Line exceeds maximum allowed length",
+        "ruleId": "80",
+        "ruleName": "max_line_length",
+        "severity": 4
       }
-    ]
+    ],
+    "path": "coffee\\slide.coffee"
   },
   {
-    "filePath": "gulpfile.coffee",
     "messages": [
       {
-        "message": "Line exceeds maximum allowed length",
+        "columnEnd": 1000,
         "description": "This rule imposes a maximum line length on your code. <a\nhref=\"http://www.python.org/dev/peps/pep-0008/\">Python's style\nguide</a> does a good job explaining why you might want to limit the\nlength of your lines, though this is a matter of taste.\n\nLines can be no longer than eighty characters by default.",
-        "context": "Length is 88, max is 80",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "60",
-        "lineEnd": "60",
-        "ruleId": "80"
+        "line": 60,
+        "lineEnd": 60,
+        "message": "Line exceeds maximum allowed length",
+        "ruleId": "80",
+        "ruleName": "max_line_length",
+        "severity": 4
       },
       {
-        "message": "Line exceeds maximum allowed length",
+        "columnEnd": 1000,
         "description": "This rule imposes a maximum line length on your code. <a\nhref=\"http://www.python.org/dev/peps/pep-0008/\">Python's style\nguide</a> does a good job explaining why you might want to limit the\nlength of your lines, though this is a matter of taste.\n\nLines can be no longer than eighty characters by default.",
-        "context": "Length is 90, max is 80",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "135",
-        "lineEnd": "135",
-        "ruleId": "80"
+        "line": 135,
+        "lineEnd": 135,
+        "message": "Line exceeds maximum allowed length",
+        "ruleId": "80",
+        "ruleName": "max_line_length",
+        "severity": 4
       },
       {
-        "message": "Line exceeds maximum allowed length",
+        "columnEnd": 1000,
         "description": "This rule imposes a maximum line length on your code. <a\nhref=\"http://www.python.org/dev/peps/pep-0008/\">Python's style\nguide</a> does a good job explaining why you might want to limit the\nlength of your lines, though this is a matter of taste.\n\nLines can be no longer than eighty characters by default.",
-        "context": "Length is 85, max is 80",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "149",
-        "lineEnd": "149",
-        "ruleId": "80"
+        "line": 149,
+        "lineEnd": 149,
+        "message": "Line exceeds maximum allowed length",
+        "ruleId": "80",
+        "ruleName": "max_line_length",
+        "severity": 4
       },
       {
-        "message": "Line exceeds maximum allowed length",
+        "columnEnd": 1000,
         "description": "This rule imposes a maximum line length on your code. <a\nhref=\"http://www.python.org/dev/peps/pep-0008/\">Python's style\nguide</a> does a good job explaining why you might want to limit the\nlength of your lines, though this is a matter of taste.\n\nLines can be no longer than eighty characters by default.",
-        "context": "Length is 99, max is 80",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "150",
-        "lineEnd": "150",
-        "ruleId": "80"
+        "line": 150,
+        "lineEnd": 150,
+        "message": "Line exceeds maximum allowed length",
+        "ruleId": "80",
+        "ruleName": "max_line_length",
+        "severity": 4
       },
       {
-        "message": "Line exceeds maximum allowed length",
+        "columnEnd": 1000,
         "description": "This rule imposes a maximum line length on your code. <a\nhref=\"http://www.python.org/dev/peps/pep-0008/\">Python's style\nguide</a> does a good job explaining why you might want to limit the\nlength of your lines, though this is a matter of taste.\n\nLines can be no longer than eighty characters by default.",
-        "context": "Length is 99, max is 80",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "151",
-        "lineEnd": "151",
-        "ruleId": "80"
+        "line": 151,
+        "lineEnd": 151,
+        "message": "Line exceeds maximum allowed length",
+        "ruleId": "80",
+        "ruleName": "max_line_length",
+        "severity": 4
       },
       {
-        "message": "Line exceeds maximum allowed length",
+        "columnEnd": 1000,
         "description": "This rule imposes a maximum line length on your code. <a\nhref=\"http://www.python.org/dev/peps/pep-0008/\">Python's style\nguide</a> does a good job explaining why you might want to limit the\nlength of your lines, though this is a matter of taste.\n\nLines can be no longer than eighty characters by default.",
-        "context": "Length is 100, max is 80",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "152",
-        "lineEnd": "152",
-        "ruleId": "80"
+        "line": 152,
+        "lineEnd": 152,
+        "message": "Line exceeds maximum allowed length",
+        "ruleId": "80",
+        "ruleName": "max_line_length",
+        "severity": 4
       },
       {
-        "message": "Line exceeds maximum allowed length",
+        "columnEnd": 1000,
         "description": "This rule imposes a maximum line length on your code. <a\nhref=\"http://www.python.org/dev/peps/pep-0008/\">Python's style\nguide</a> does a good job explaining why you might want to limit the\nlength of your lines, though this is a matter of taste.\n\nLines can be no longer than eighty characters by default.",
-        "context": "Length is 100, max is 80",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "176",
-        "lineEnd": "176",
-        "ruleId": "80"
+        "line": 176,
+        "lineEnd": 176,
+        "message": "Line exceeds maximum allowed length",
+        "ruleId": "80",
+        "ruleName": "max_line_length",
+        "severity": 4
       },
       {
-        "message": "Line exceeds maximum allowed length",
+        "columnEnd": 1000,
         "description": "This rule imposes a maximum line length on your code. <a\nhref=\"http://www.python.org/dev/peps/pep-0008/\">Python's style\nguide</a> does a good job explaining why you might want to limit the\nlength of your lines, though this is a matter of taste.\n\nLines can be no longer than eighty characters by default.",
-        "context": "Length is 85, max is 80",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "186",
-        "lineEnd": "186",
-        "ruleId": "80"
+        "line": 186,
+        "lineEnd": 186,
+        "message": "Line exceeds maximum allowed length",
+        "ruleId": "80",
+        "ruleName": "max_line_length",
+        "severity": 4
       }
-    ]
+    ],
+    "path": "gulpfile.coffee"
   }
 ]

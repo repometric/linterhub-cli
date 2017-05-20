@@ -27,7 +27,7 @@ function processLine(line) {
     var data = JSON.parse(line);
     result = data.map(function (file) {
         return {
-            filePath: file.file,
+            path: file.file,
             messages: file.messages.map(function (problem) {
                 return {
                     message: problem.message,

@@ -14,10 +14,10 @@ namespace Linterhub.Engine.Factory
             Factory = factory;
         }
 
-        public LinterWrapper.Context GetContext(string name, string project, LinterhubSchema projectConfig)
+        public LinterWrapper.Context GetContext(string name, string project, LinterhubConfigSchema projectConfig)
         {
             var specification = Factory.GetSpecification(name);
-            var configOptions = projectConfig.Linters.FirstOrDefault(y => y.Name == name)?.Config ?? specification.Schema.Defaults;
+            var configOptions = projectConfig.Engines.FirstOrDefault(y => y.Name == name)?.Config ?? specification.Schema.Defaults;
             var runOptions = new LinterOptions { { "{path}", "" } };
             var workingDirectory = project;
             return new LinterWrapper.Context
@@ -29,7 +29,7 @@ namespace Linterhub.Engine.Factory
             };
         }
 
-        public IEnumerable<LinterWrapper.Context> GetContexts(IEnumerable<string> names, string project, LinterhubSchema projectConfig)
+        public IEnumerable<LinterWrapper.Context> GetContexts(IEnumerable<string> names, string project, LinterhubConfigSchema projectConfig)
         {
             return names.Select(x => GetContext(x, project, projectConfig));
         }

@@ -38,7 +38,7 @@ module.exports = {
         });
         process.stdout.write(JSON.stringify(Object.keys(files).map(function (key) {
             return {
-                filePath: key,
+                path: key,
                 messages: files[key]
             }
         })));

@@ -12,7 +12,7 @@ module.exports = class Reporter
         filesResult = []
         for path, errors of @errorReport.paths
             fileResult = {
-                filePath: path
+                path: path
                 messages: []
             }
             for e in errors when not @quiet or e.level is 'error'
@@ -30,6 +30,7 @@ module.exports = class Reporter
                     ruleName: e.name,
                     ruleNamespace: e.rule
                 })
-            filesResult.push(fileResult)
+            if Object.keys(fileResult.messages).length > 0
+                filesResult.push(fileResult)
 
         @print JSON.stringify(filesResult, undefined, 0)

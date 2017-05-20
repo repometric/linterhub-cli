@@ -1,76 +1,72 @@
 [
   {
-    "filePath": "sass\\base\\_all.sass",
     "messages": [
       {
+        "columnEnd": 1000,
+        "line": 2,
+        "lineEnd": 2,
         "message": "Expected indentation of 1 tab (indentation)",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "2",
-        "lineEnd": "2",
-        "ruleId": "indentation"
+        "ruleId": "indentation",
+        "severity": 4
       },
       {
+        "columnEnd": 1000,
+        "line": 3,
+        "lineEnd": 3,
         "message": "Expected indentation of 1 tab (indentation)",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "3",
-        "lineEnd": "3",
-        "ruleId": "indentation"
+        "ruleId": "indentation",
+        "severity": 4
       },
       {
+        "columnEnd": 1000,
+        "line": 4,
+        "lineEnd": 4,
         "message": "Expected indentation of 1 tab (indentation)",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "4",
-        "lineEnd": "4",
-        "ruleId": "indentation"
+        "ruleId": "indentation",
+        "severity": 4
       }
-    ]
+    ],
+    "path": "sass\\base\\_all.sass"
   },
   {
-    "filePath": "sass\\base\\generic.sass",
     "messages": [
       {
+        "columnEnd": 1000,
+        "line": 2,
+        "lineEnd": 2,
         "message": "Missed semicolon (CssSyntaxError)",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "2",
-        "lineEnd": "2",
-        "ruleId": "CssSyntaxError"
+        "ruleId": "CssSyntaxError",
+        "severity": 4
       }
-    ]
+    ],
+    "path": "sass\\base\\generic.sass"
   },
   {
-    "filePath": "sass\\base\\helpers.sass",
     "messages": [
       {
+        "column": 8,
+        "columnEnd": 1000,
+        "line": 5,
+        "lineEnd": 5,
         "message": "Unknown word (CssSyntaxError)",
-        "severity": 5,
-        "column": "8",
-        "columnEnd": "1000",
-        "line": "5",
-        "lineEnd": "5",
-        "ruleId": "CssSyntaxError"
+        "ruleId": "CssSyntaxError",
+        "severity": 4
       }
-    ]
+    ],
+    "path": "sass\\base\\helpers.sass"
   },
   {
-    "filePath": "sass\\base\\minireset.sass",
     "messages": [
       {
+        "column": 10,
+        "columnEnd": 1000,
+        "line": 25,
+        "lineEnd": 25,
         "message": "Missed semicolon (CssSyntaxError)",
-        "severity": 5,
-        "column": "10",
-        "columnEnd": "1000",
-        "line": "25",
-        "lineEnd": "25",
-        "ruleId": "CssSyntaxError"
+        "ruleId": "CssSyntaxError",
+        "severity": 4
       }
-    ]
+    ],
+    "path": "sass\\base\\minireset.sass"
   }
 ]

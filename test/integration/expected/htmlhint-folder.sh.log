@@ -1,32 +1,28 @@
 [
   {
-    "filePath": "cc_on.html",
     "messages": [
       {
+        "columnEnd": 1000,
+        "line": 16,
+        "lineEnd": 16,
         "message": "<title> must be present in <head> tag.",
-        "source": "</head>",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "16",
-        "lineEnd": "16",
-        "ruleId": "htmlhint:title-require"
+        "ruleId": "htmlhint:title-require",
+        "severity": 4
       }
-    ]
+    ],
+    "path": "cc_on.html"
   },
   {
-    "filePath": "dynamic_ready.html",
     "messages": [
       {
+        "columnEnd": 1000,
+        "line": 7,
+        "lineEnd": 7,
         "message": "<title> must be present in <head> tag.",
-        "source": "</head>",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "7",
-        "lineEnd": "7",
-        "ruleId": "htmlhint:title-require"
+        "ruleId": "htmlhint:title-require",
+        "severity": 4
       }
-    ]
+    ],
+    "path": "dynamic_ready.html"
   }
 ]

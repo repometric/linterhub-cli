@@ -1,197 +1,161 @@
 [
   {
-    "filePath": "cleanScript.html",
     "messages": [
       {
+        "columnEnd": 1000,
         "message": "Doctype must be declared first.",
-        "source": "<script>",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "0",
-        "lineEnd": "0",
-        "ruleId": "htmlhint:doctype-first"
+        "ruleId": "htmlhint:doctype-first",
+        "severity": 4
       }
-    ]
+    ],
+    "path": "cleanScript.html"
   },
   {
-    "filePath": "iframe.html",
     "messages": [
       {
-        "message": "Doctype must be declared first.",
-        "source": "<html>",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "0",
-        "lineEnd": "0",
-        "ruleId": "htmlhint:doctype-first"
-      }
-    ]
-  },
-  {
-    "filePath": "name.html",
-    "messages": [
-      {
-        "message": "Doctype must be declared first.",
-        "source": "ERROR <script type=\"text/javascript\">ok( true, \"name.html retrieved\" );</script>",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "0",
-        "lineEnd": "0",
-        "ruleId": "htmlhint:doctype-first"
-      }
-    ]
-  },
-  {
-    "filePath": "test.html",
-    "messages": [
-      {
-        "message": "Doctype must be declared first.",
-        "source": "html text<br/>",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "0",
-        "lineEnd": "0",
-        "ruleId": "htmlhint:doctype-first"
-      }
-    ]
-  },
-  {
-    "filePath": "test2.html",
-    "messages": [
-      {
-        "message": "Doctype must be declared first.",
-        "source": "<script type=\"text/javascript\">",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "0",
-        "lineEnd": "0",
-        "ruleId": "htmlhint:doctype-first"
-      }
-    ]
-  },
-  {
-    "filePath": "test3.html",
-    "messages": [
-      {
-        "message": "Doctype must be declared first.",
-        "source": "<div class=\"user\">This is a user</div>",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "0",
-        "lineEnd": "0",
-        "ruleId": "htmlhint:doctype-first"
-      }
-    ]
-  },
-  {
-    "filePath": "core\\cc_on.html",
-    "messages": [
-      {
+        "columnEnd": 1000,
+        "line": 16,
+        "lineEnd": 16,
         "message": "<title> must be present in <head> tag.",
-        "source": "</head>",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "16",
-        "lineEnd": "16",
-        "ruleId": "htmlhint:title-require"
+        "ruleId": "htmlhint:title-require",
+        "severity": 4
       }
-    ]
+    ],
+    "path": "core\\cc_on.html"
   },
   {
-    "filePath": "core\\dynamic_ready.html",
     "messages": [
       {
+        "columnEnd": 1000,
+        "line": 7,
+        "lineEnd": 7,
         "message": "<title> must be present in <head> tag.",
-        "source": "</head>",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "7",
-        "lineEnd": "7",
-        "ruleId": "htmlhint:title-require"
+        "ruleId": "htmlhint:title-require",
+        "severity": 4
       }
-    ]
+    ],
+    "path": "core\\dynamic_ready.html"
   },
   {
-    "filePath": "css\\cssWidthBeforeDocReady.html",
     "messages": [
       {
+        "columnEnd": 1000,
+        "line": 12,
+        "lineEnd": 12,
         "message": "<title> must be present in <head> tag.",
-        "source": "</head>",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "12",
-        "lineEnd": "12",
-        "ruleId": "htmlhint:title-require"
+        "ruleId": "htmlhint:title-require",
+        "severity": 4
       }
-    ]
+    ],
+    "path": "css\\cssWidthBeforeDocReady.html"
   },
   {
-    "filePath": "dimensions\\documentLarge.html",
     "messages": [
       {
+        "columnEnd": 1000,
+        "line": 11,
+        "lineEnd": 11,
         "message": "<title> must be present in <head> tag.",
-        "source": "</head>",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "11",
-        "lineEnd": "11",
-        "ruleId": "htmlhint:title-require"
+        "ruleId": "htmlhint:title-require",
+        "severity": 4
       }
-    ]
+    ],
+    "path": "dimensions\\documentLarge.html"
   },
   {
-    "filePath": "manipulation\\iframe-denied.html",
     "messages": [
       {
+        "columnEnd": 1000,
+        "message": "Doctype must be declared first.",
+        "ruleId": "htmlhint:doctype-first",
+        "severity": 4
+      }
+    ],
+    "path": "iframe.html"
+  },
+  {
+    "messages": [
+      {
+        "column": 7,
+        "columnEnd": 1000,
+        "line": 3,
+        "lineEnd": 3,
         "message": "The value of attribute [ charset ] must be in double quotes.",
-        "source": "<meta charset=utf-8 />",
-        "severity": 5,
-        "column": "7",
-        "columnEnd": "1000",
-        "line": "3",
-        "lineEnd": "3",
-        "ruleId": "htmlhint:attr-value-double-quotes"
+        "ruleId": "htmlhint:attr-value-double-quotes",
+        "severity": 4
       }
-    ]
+    ],
+    "path": "manipulation\\iframe-denied.html"
   },
   {
-    "filePath": "manipulation\\scripts-context.html",
     "messages": [
       {
+        "column": 7,
+        "columnEnd": 1000,
+        "line": 3,
+        "lineEnd": 3,
         "message": "The value of attribute [ charset ] must be in double quotes.",
-        "source": "<meta charset=utf-8 />",
-        "severity": 5,
-        "column": "7",
-        "columnEnd": "1000",
-        "line": "3",
-        "lineEnd": "3",
-        "ruleId": "htmlhint:attr-value-double-quotes"
+        "ruleId": "htmlhint:attr-value-double-quotes",
+        "severity": 4
       }
-    ]
+    ],
+    "path": "manipulation\\scripts-context.html"
   },
   {
-    "filePath": "support\\bodyBackground.html",
     "messages": [
       {
-        "message": "<title> must be present in <head> tag.",
-        "source": "</head>",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "16",
-        "lineEnd": "16",
-        "ruleId": "htmlhint:title-require"
+        "columnEnd": 1000,
+        "message": "Doctype must be declared first.",
+        "ruleId": "htmlhint:doctype-first",
+        "severity": 4
       }
-    ]
+    ],
+    "path": "name.html"
+  },
+  {
+    "messages": [
+      {
+        "columnEnd": 1000,
+        "line": 16,
+        "lineEnd": 16,
+        "message": "<title> must be present in <head> tag.",
+        "ruleId": "htmlhint:title-require",
+        "severity": 4
+      }
+    ],
+    "path": "support\\bodyBackground.html"
+  },
+  {
+    "messages": [
+      {
+        "columnEnd": 1000,
+        "message": "Doctype must be declared first.",
+        "ruleId": "htmlhint:doctype-first",
+        "severity": 4
+      }
+    ],
+    "path": "test.html"
+  },
+  {
+    "messages": [
+      {
+        "columnEnd": 1000,
+        "message": "Doctype must be declared first.",
+        "ruleId": "htmlhint:doctype-first",
+        "severity": 4
+      }
+    ],
+    "path": "test2.html"
+  },
+  {
+    "messages": [
+      {
+        "columnEnd": 1000,
+        "message": "Doctype must be declared first.",
+        "ruleId": "htmlhint:doctype-first",
+        "severity": 4
+      }
+    ],
+    "path": "test3.html"
   }
 ]

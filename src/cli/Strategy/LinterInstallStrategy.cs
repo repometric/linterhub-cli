@@ -19,12 +19,12 @@ namespace Linterhub.Cli.Strategy
         public object Run(ServiceLocator locator)
         {
             var context = locator.Get<RunContext>();
-            var projectConfig = locator.Get<LinterhubSchema>();
+            var projectConfig = locator.Get<LinterhubConfigSchema>();
             var linterFactory = locator.Get<ILinterFactory>();
             var installer = locator.Get<Installer>();
 
             // Select linters from context or config
-            var linters = context.Linters.Any() ? context.Linters : projectConfig.Linters.Select(x => x.Name);
+            var linters = context.Linters.Any() ? context.Linters : projectConfig.Engines.Select(x => x.Name);
 
             var result = linters.Select(linter => 
             {

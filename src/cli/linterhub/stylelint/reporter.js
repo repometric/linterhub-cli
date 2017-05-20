@@ -1,7 +1,7 @@
 module.exports = function (stylelintResults) {
     var result = stylelintResults.map(function (file) {
         return {
-            filePath: file.source,
+            path: file.source,
             messages: file.warnings.map(function (problem) {
                 return {
                     message: problem.text,

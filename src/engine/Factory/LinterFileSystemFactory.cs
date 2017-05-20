@@ -9,7 +9,7 @@ namespace Linterhub.Engine.Factory
 
     public interface ILinterFactory
     {
-        LinterSchema GetSchema(string name);
+        EngineSchema GetSchema(string name);
         LinterOptionsSchema GetOptionsSchema(string name);
         LinterSpecification GetSpecification(string name);
         IEnumerable<string> GetNames();
@@ -40,11 +40,11 @@ namespace Linterhub.Engine.Factory
             return Path.Combine(Folder, name, LinterArgsSchema);
         }
 
-        public LinterSchema GetSchema(string name)
+        public EngineSchema GetSchema(string name)
         {
             var path = GetSchemaPath(name);
             var content = File.ReadAllText(path);
-            return content.DeserializeAsJson<LinterSchema>();
+            return content.DeserializeAsJson<EngineSchema>();
         }
 
         public LinterOptionsSchema GetOptionsSchema(string name)

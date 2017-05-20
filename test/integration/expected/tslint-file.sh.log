@@ -1,25 +1,25 @@
 [
   {
-    "filePath": "main.ts",
     "messages": [
       {
+        "column": 30,
+        "columnEnd": 1000,
         "message": "' should be \"",
-        "severity": 5,
-        "column": "30",
-        "columnEnd": "1000",
-        "line": "0",
-        "lineEnd": "0",
-        "ruleId": "tslint:quotemark"
+        "ruleId": "tslint:quotemark",
+        "ruleName": "quotemark",
+        "severity": 4
       },
       {
+        "column": 33,
+        "columnEnd": 1000,
+        "line": 1,
+        "lineEnd": 1,
         "message": "' should be \"",
-        "severity": 5,
-        "column": "33",
-        "columnEnd": "1000",
-        "line": "1",
-        "lineEnd": "1",
-        "ruleId": "tslint:quotemark"
+        "ruleId": "tslint:quotemark",
+        "ruleName": "quotemark",
+        "severity": 4
       }
-    ]
+    ],
+    "path": "main.ts"
   }
 ]

@@ -8,7 +8,7 @@ namespace Linterhub.Engine.Schema
         /// <summary>
         /// Gets the linter schema.
         /// </summary>
-        public LinterSchema Schema { get; }
+        public EngineSchema Schema { get; }
 
         /// <summary>
         /// Gets the linter options schema.
@@ -20,7 +20,7 @@ namespace Linterhub.Engine.Schema
         /// </summary>
         /// <param name="schema">The linter schema.</param>
         /// <param name="optionsSchema">The linter options schema.</param>
-        public LinterSpecification(LinterSchema schema, LinterOptionsSchema optionsSchema)
+        public LinterSpecification(EngineSchema schema, LinterOptionsSchema optionsSchema)
         {
             Schema = schema;
             OptionsSchema = optionsSchema;

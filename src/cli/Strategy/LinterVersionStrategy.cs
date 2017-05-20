@@ -20,7 +20,7 @@ namespace Linterhub.Cli.Strategy
         {
             var ensure = locator.Get<Ensure>();
             var context = locator.Get<RunContext>();
-            var projectConfig = locator.Get<LinterhubSchema>();
+            var projectConfig = locator.Get<LinterhubConfigSchema>();
             var linterRunner = locator.Get<LinterWrapper>();
             var contextFactory = locator.Get<LinterContextFactory>();
             var installer = locator.Get<Installer>();

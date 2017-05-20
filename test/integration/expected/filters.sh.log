@@ -1,128 +1,329 @@
 [
   {
-    "name": "eslint",
-    "description": "A fully pluggable tool for identifying and reporting on patterns in JavaScript",
-    "version": {
-      "local": "v3.2.0"
-    },
-    "url": "http://eslint.org",
-    "languages": [
-      "javascript",
-      "jsx"
+    "areas": [
+      "syntax",
+      "formatting",
+      "smell",
+      "complexity",
+      "duplication"
+    ],
+    "description": "CoffeeLint is a style checker that helps keep CoffeeScript code clean and consistent",
+    "extensions": [
+      "*.coffee"
     ],
     "license": "MIT",
-    "areas": [
-      "syntax"
-    ],
-    "extensions": [
-      "*.js"
-    ],
+    "name": "coffeelint",
     "requirements": [
       {
-        "manager": "system",
         "package": "npm"
       },
       {
-        "manager": "npm",
+        "manager": 4,
+        "package": "coffeelint"
+      }
+    ],
+    "url": "http://www.coffeelint.org",
+    "version": {
+      "local": "1.16.0"
+    }
+  },
+  {
+    "areas": [
+      "formatting"
+    ],
+    "description": "CSS Colorguard helps you maintain the color set that you want, and warns you when colors you've added are too similar to ones that already exist.",
+    "extensions": [
+      "*.css"
+    ],
+    "license": "MIT",
+    "name": "colorguard",
+    "postfix": " node file://{schema}/colorguard/reporter.js",
+    "prefix": "node file://{schema}/colorguard/prefix.js ",
+    "requirements": [
+      {
+        "package": "npm"
+      },
+      {
+        "manager": 4,
+        "package": "colorguard"
+      }
+    ],
+    "url": "https://github.com/SlexAxton/css-colorguard",
+    "version": {}
+  },
+  {
+    "areas": [
+      "syntax",
+      "code simplification"
+    ],
+    "description": "Automated linting of Cascading Stylesheets",
+    "extensions": [
+      "*.css"
+    ],
+    "license": "MIT",
+    "name": "csslint",
+    "optionsDelimiter": "=",
+    "postfix": " | node file://{schema}/csslint/reporter.js",
+    "prefix": "node file://{schema}/csslint/prefix.js ",
+    "requirements": [
+      {
+        "package": "npm"
+      },
+      {
+        "manager": 4,
+        "package": "csslint"
+      }
+    ],
+    "url": "http://csslint.net",
+    "version": {
+      "local": "v1.0.3"
+    }
+  },
+  {
+    "areas": [
+      "syntax"
+    ],
+    "description": "A fully pluggable tool for identifying and reporting on patterns in JavaScript",
+    "extensions": [
+      "*.js"
+    ],
+    "license": "MIT",
+    "name": "eslint",
+    "requirements": [
+      {
+        "package": "npm"
+      },
+      {
+        "manager": 4,
         "package": "eslint"
       }
     ],
-    "active": false
+    "url": "http://eslint.org",
+    "version": {
+      "local": "v3.2.0"
+    }
   },
   {
-    "name": "jshint",
-    "description": "JSHint is a tool that helps to detect errors and potential problems in your JavaScript code",
-    "version": {
-      "local": "jshint v2.9.4"
-    },
-    "url": "http://jshint.com",
-    "languages": [
-      "javascript"
-    ],
-    "license": "MIT",
-    "areas": [
-      "syntax",
-      "formatting",
-      "complexity",
-      "unused code"
-    ],
-    "extensions": [
-      "*.js"
-    ],
-    "requirements": [
-      {
-        "manager": "system",
-        "package": "npm"
-      },
-      {
-        "manager": "npm",
-        "package": "jshint"
-      }
-    ],
-    "active": false
-  },
-  {
-    "name": "jslint",
-    "description": "The JavaScript Code Quality Tool.",
-    "version": {
-      "local": "node-jslint version: 0.10.3  JSLint edition 2013-08-26"
-    },
-    "url": "http://jslint.com",
-    "languages": [
-      "javascript"
-    ],
-    "license": "MIT",
-    "areas": [
-      "syntax",
-      "formatting",
-      "complexity",
-      "unused code"
-    ],
-    "extensions": [
-      "*.js"
-    ],
-    "requirements": [
-      {
-        "manager": "system",
-        "package": "npm"
-      },
-      {
-        "manager": "npm",
-        "package": "jslint"
-      }
-    ],
-    "postfix": " | node file://{schema}/jslint/reporter.js",
-    "active": false
-  },
-  {
-    "name": "standard",
-    "description": "JavaScript Standard Style",
-    "version": {
-      "package": "9.0.1",
-      "local": "9.0.1"
-    },
-    "url": "http://standardjs.com",
-    "languages": [
-      "javascript"
-    ],
-    "license": "MIT",
     "areas": [
       "syntax"
     ],
+    "description": "HTMLHint is a Static Code Analysis Tool for HTML",
     "extensions": [
-      "*.js"
+      "*.html"
     ],
+    "license": "MIT",
+    "name": "htmlhint",
+    "postfix": " | node file://{schema}/htmlhint/reporter.js",
     "requirements": [
       {
-        "manager": "system",
         "package": "npm"
       },
       {
-        "manager": "npm",
+        "manager": 4,
+        "package": "htmlhint"
+      }
+    ],
+    "url": "http://htmlhint.com",
+    "version": {
+      "local": "0.9.13",
+      "package": "0.9.13"
+    }
+  },
+  {
+    "areas": [
+      "syntax",
+      "formatting",
+      "complexity",
+      "unused code"
+    ],
+    "description": "JSHint is a tool that helps to detect errors and potential problems in your JavaScript code",
+    "extensions": [
+      "*.js"
+    ],
+    "license": "MIT",
+    "name": "jshint",
+    "requirements": [
+      {
+        "package": "npm"
+      },
+      {
+        "manager": 4,
+        "package": "jshint"
+      }
+    ],
+    "url": "http://jshint.com",
+    "version": {
+      "local": "jshint v2.9.4"
+    }
+  },
+  {
+    "areas": [
+      "syntax",
+      "formatting",
+      "complexity",
+      "unused code"
+    ],
+    "description": "The JavaScript Code Quality Tool.",
+    "extensions": [
+      "*.js"
+    ],
+    "license": "MIT",
+    "name": "jslint",
+    "postfix": " | node file://{schema}/jslint/reporter.js",
+    "requirements": [
+      {
+        "package": "npm"
+      },
+      {
+        "manager": 4,
+        "package": "jslint"
+      }
+    ],
+    "url": "http://jslint.com",
+    "version": {
+      "local": "node-jslint version: 0.10.3  JSLint edition 2013-08-26"
+    }
+  },
+  {
+    "areas": [
+      "syntax",
+      "formatting"
+    ],
+    "description": "A pure JavaScript version of the service provided at jsonlint.com.",
+    "extensions": [
+      "*.json"
+    ],
+    "license": "MIT",
+    "name": "jsonlint",
+    "postfix": " | node file://{schema}/jsonlint/reporter.js",
+    "prefix": "node file://{schema}/jsonlint/prefix.js ",
+    "requirements": [
+      {
+        "package": "npm"
+      },
+      {
+        "manager": 4,
+        "package": "jsonlint"
+      }
+    ],
+    "url": "https://github.com/zaach/jsonlint",
+    "version": {
+      "local": "1.6.2"
+    }
+  },
+  {
+    "areas": [
+      "syntax",
+      "formatting"
+    ],
+    "description": "A Node-only Sass linter for both sass and scss syntax!",
+    "extensions": [
+      "*.sass",
+      "*.scss"
+    ],
+    "license": "MIT",
+    "name": "sass-lint",
+    "postfix": " | node file://{schema}/sass-lint/reporter.js",
+    "requirements": [
+      {
+        "package": "npm"
+      },
+      {
+        "manager": 4,
+        "package": "sass-lint"
+      }
+    ],
+    "url": "https://github.com/sasstools/sass-lint",
+    "version": {
+      "local": "1.10.2"
+    }
+  },
+  {
+    "areas": [
+      "syntax"
+    ],
+    "description": "JavaScript Standard Style",
+    "extensions": [
+      "*.js"
+    ],
+    "license": "MIT",
+    "name": "standard",
+    "postfix": " | node file://{schema}/standard/reporter.js",
+    "requirements": [
+      {
+        "package": "npm"
+      },
+      {
+        "manager": 4,
         "package": "standard"
       }
     ],
-    "postfix": " | node file://{schema}/standard/reporter.js",
-    "active": false
+    "url": "http://standardjs.com",
+    "version": {
+      "local": "9.0.1",
+      "package": "9.0.1"
+    }
+  },
+  {
+    "areas": [
+      "simplification",
+      "syntax",
+      "formatting"
+    ],
+    "description": "A mighty, modern CSS linter that helps you enforce consistent conventions and avoid errors in your stylesheets.",
+    "extensions": [
+      "*.css",
+      "*.scss",
+      "*.less",
+      "*.sss"
+    ],
+    "license": "MIT",
+    "name": "stylelint",
+    "requirements": [
+      {
+        "package": "npm"
+      },
+      {
+        "manager": 4,
+        "package": "stylelint"
+      }
+    ],
+    "url": "https://stylelint.io/",
+    "version": {
+      "local": "7.10.1"
+    }
+  },
+  {
+    "areas": [
+      "simplification",
+      "syntax",
+      "formatting",
+      "complexity",
+      "unused code"
+    ],
+    "description": "An extensible linter for the TypeScript language.",
+    "extensions": [
+      "*.ts"
+    ],
+    "license": "Apache-2.0",
+    "name": "tslint",
+    "postfix": " | node file://{schema}/tslint/reporter.js",
+    "requirements": [
+      {
+        "package": "npm"
+      },
+      {
+        "manager": 4,
+        "package": "typescript"
+      },
+      {
+        "manager": 4,
+        "package": "tslint"
+      }
+    ],
+    "url": "https://palantir.github.io/tslint/",
+    "version": {
+      "local": "5.1.0"
+    }
   }
 ]

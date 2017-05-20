@@ -18,7 +18,7 @@ namespace Linterhub.Cli.Strategy
         {
             var ensure = locator.Get<Ensure>();
             var context = locator.Get<RunContext>();
-            var projectConfig = locator.Get<LinterhubSchema>();
+            var projectConfig = locator.Get<LinterhubConfigSchema>();
 
             // Validate
             ensure.LinterSpecified();
@@ -28,14 +28,14 @@ namespace Linterhub.Cli.Strategy
             // Enumerate linters and activate/deactivate
             foreach (var linter in context.Linters)
             {
-                var projectLinter = projectConfig.Linters.FirstOrDefault(x => x.Name == linter);
+                var projectLinter = projectConfig.Engines.FirstOrDefault(x => x.Name == linter);
                 if (projectLinter != null)
                 {
-                    projectLinter.Active = context.Activate == true ? (bool?)null : false;
+                    projectLinter.Active = context.Activate;
                 }
                 else
                 {
-                    projectConfig.Linters.Add(new LinterhubSchema.Linter
+                    projectConfig.Engines.Append(new LinterhubConfigSchema.ConfigurationType
                     {
                         Name = linter
                     });
