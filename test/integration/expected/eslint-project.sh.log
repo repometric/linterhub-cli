@@ -6,91 +6,91 @@
         "line": 1,
         "message": "'TocTypeEnum' is not defined.",
         "ruleId": "no-undef",
-        "severity": 2
+        "severity": "information"
       },
       {
         "column": 19,
         "line": 16,
         "message": "'TocTypeEnum' is not defined.",
         "ruleId": "no-undef",
-        "severity": 2
+        "severity": "information"
       },
       {
         "column": 19,
         "line": 19,
         "message": "'TocTypeEnum' is not defined.",
         "ruleId": "no-undef",
-        "severity": 2
+        "severity": "information"
       },
       {
         "column": 19,
         "line": 22,
         "message": "'TocTypeEnum' is not defined.",
         "ruleId": "no-undef",
-        "severity": 2
+        "severity": "information"
       },
       {
         "column": 10,
         "line": 31,
         "message": "Empty block statement.",
         "ruleId": "no-empty",
-        "severity": 2
+        "severity": "information"
       },
       {
         "column": 18,
         "line": 51,
         "message": "'TocTypeEnum' is not defined.",
         "ruleId": "no-undef",
-        "severity": 2
+        "severity": "information"
       },
       {
         "column": 7,
         "line": 62,
         "message": "'firstHeading' is assigned a value but never used.",
         "ruleId": "no-unused-vars",
-        "severity": 2
+        "severity": "information"
       },
       {
         "column": 10,
         "line": 69,
         "message": "'TocTypeEnum' is not defined.",
         "ruleId": "no-undef",
-        "severity": 2
+        "severity": "information"
       },
       {
         "column": 10,
         "line": 72,
         "message": "'TocTypeEnum' is not defined.",
         "ruleId": "no-undef",
-        "severity": 2
+        "severity": "information"
       },
       {
         "column": 7,
         "line": 97,
         "message": "'toc_current_row' is not defined.",
         "ruleId": "no-undef",
-        "severity": 2
+        "severity": "information"
       },
       {
         "column": 22,
         "line": 106,
         "message": "'toc_current_row' is not defined.",
         "ruleId": "no-undef",
-        "severity": 2
+        "severity": "information"
       },
       {
         "column": 13,
         "line": 219,
         "message": "'link' is already defined.",
         "ruleId": "no-redeclare",
-        "severity": 2
+        "severity": "information"
       },
       {
         "column": 10,
         "line": 286,
         "message": "'initStyleGuide' is defined but never used.",
         "ruleId": "no-unused-vars",
-        "severity": 2
+        "severity": "information"
       }
     ],
     "path": "include\\styleguide.js"

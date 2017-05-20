@@ -9,15 +9,17 @@
         "message": "The key 'bootstrap' is not sorted alphabetically",
         "ruleId": "tslint:object-literal-sort-keys",
         "ruleName": "object-literal-sort-keys",
-        "severity": 4
+        "severity": "error"
       },
       {
         "column": 34,
         "columnEnd": 1000,
+        "line": 0,
+        "lineEnd": 0,
         "message": "' should be \"",
         "ruleId": "tslint:quotemark",
         "ruleName": "quotemark",
-        "severity": 4
+        "severity": "error"
       },
       {
         "column": 23,
@@ -27,7 +29,7 @@
         "message": "' should be \"",
         "ruleId": "tslint:quotemark",
         "ruleName": "quotemark",
-        "severity": 4
+        "severity": "error"
       },
       {
         "column": 28,
@@ -37,7 +39,7 @@
         "message": "' should be \"",
         "ruleId": "tslint:quotemark",
         "ruleName": "quotemark",
-        "severity": 4
+        "severity": "error"
       }
     ],
     "path": "app.ts"
@@ -52,15 +54,17 @@
         "message": "The class property 'name' must be marked either 'private', 'public', or 'protected'",
         "ruleId": "tslint:member-access",
         "ruleName": "member-access",
-        "severity": 4
+        "severity": "error"
       },
       {
         "column": 24,
         "columnEnd": 1000,
+        "line": 0,
+        "lineEnd": 0,
         "message": "' should be \"",
         "ruleId": "tslint:quotemark",
         "ruleName": "quotemark",
-        "severity": 4
+        "severity": "error"
       },
       {
         "column": 12,
@@ -70,7 +74,7 @@
         "message": "' should be \"",
         "ruleId": "tslint:quotemark",
         "ruleName": "quotemark",
-        "severity": 4
+        "severity": "error"
       },
       {
         "column": 17,
@@ -80,7 +84,7 @@
         "message": "' should be \"",
         "ruleId": "tslint:quotemark",
         "ruleName": "quotemark",
-        "severity": 4
+        "severity": "error"
       }
     ],
     "path": "hello-world.component.ts"
@@ -90,10 +94,12 @@
       {
         "column": 30,
         "columnEnd": 1000,
+        "line": 0,
+        "lineEnd": 0,
         "message": "' should be \"",
         "ruleId": "tslint:quotemark",
         "ruleName": "quotemark",
-        "severity": 4
+        "severity": "error"
       },
       {
         "column": 33,
@@ -103,7 +109,7 @@
         "message": "' should be \"",
         "ruleId": "tslint:quotemark",
         "ruleName": "quotemark",
-        "severity": 4
+        "severity": "error"
       }
     ],
     "path": "main.ts"

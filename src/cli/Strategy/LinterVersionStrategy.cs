@@ -21,30 +21,24 @@ namespace Linterhub.Cli.Strategy
             var ensure = locator.Get<Ensure>();
             var context = locator.Get<RunContext>();
             var projectConfig = locator.Get<LinterhubConfigSchema>();
-            var linterRunner = locator.Get<LinterWrapper>();
-            var contextFactory = locator.Get<LinterContextFactory>();
+            var linterFactory = locator.Get<ILinterFactory>();
             var installer = locator.Get<Installer>();
 
             // Check
             ensure.LinterSpecified();
-            ensure.LinterExists();
+            ensure.LinterExists(); 
 
-            // Enumerate linters and get versions
-            var contexts = contextFactory.GetContexts(context.Linters, context.Project, projectConfig);
-            var results = 
-                from linterContext in contexts
-                let schema = linterContext.Specification.Schema
-                let installed = installer.IsInstalled(linterContext.Specification.Schema.Requirements.Where(x => x.Package == linterContext.Specification.Schema.Name).FirstOrDefault())
-                let version = installed.Installed ? linterRunner.RunVersion(linterContext) : null
-                select new
-                {
-                    name = schema.Name,
-                    version = version,
-                    message = !installed.Installed ? $"Engine '{schema.Name}' is not installed" : null
-                };
+            var linters = context.Linters.Any() ? context.Linters : projectConfig.Engines.Select(x => x.Name);
 
-            var result = results.ToList();
-            return result;
+            return linters.Select(linter => 
+            {
+                var specification = linterFactory.GetSpecification(linter);
+                return installer.IsInstalled(
+                    specification.Schema.Requirements
+                    .Where(x => x.Package == specification.Schema.Name)
+                    .FirstOrDefault()
+                );
+            }).FirstOrDefault();
         }
     }
 }

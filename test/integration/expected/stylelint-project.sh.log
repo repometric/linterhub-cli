@@ -2,20 +2,22 @@
   {
     "messages": [
       {
+        "column": 0,
         "columnEnd": 1000,
         "line": 2,
         "lineEnd": 2,
         "message": "Expected indentation of 1 tab (indentation)",
         "ruleId": "indentation",
-        "severity": 4
+        "severity": "error"
       },
       {
+        "column": 0,
         "columnEnd": 1000,
         "line": 3,
         "lineEnd": 3,
         "message": "Expected indentation of 1 tab (indentation)",
         "ruleId": "indentation",
-        "severity": 4
+        "severity": "error"
       }
     ],
     "path": "_all.sass"
@@ -29,7 +31,7 @@
         "lineEnd": 37,
         "message": "Unknown word (CssSyntaxError)",
         "ruleId": "CssSyntaxError",
-        "severity": 4
+        "severity": "error"
       }
     ],
     "path": "columns.sass"
@@ -43,7 +45,7 @@
         "lineEnd": 29,
         "message": "Unknown word (CssSyntaxError)",
         "ruleId": "CssSyntaxError",
-        "severity": 4
+        "severity": "error"
       }
     ],
     "path": "tiles.sass"

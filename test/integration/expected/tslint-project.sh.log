@@ -9,7 +9,7 @@
         "message": "non-arrow functions are forbidden",
         "ruleId": "tslint:only-arrow-functions",
         "ruleName": "only-arrow-functions",
-        "severity": 4
+        "severity": "error"
       },
       {
         "column": 37,
@@ -19,23 +19,27 @@
         "message": "non-arrow functions are forbidden",
         "ruleId": "tslint:only-arrow-functions",
         "ruleName": "only-arrow-functions",
-        "severity": 4
+        "severity": "error"
       },
       {
         "column": 18,
         "columnEnd": 1000,
+        "line": 0,
+        "lineEnd": 0,
         "message": "Named imports must be alphabetized.",
         "ruleId": "tslint:ordered-imports",
         "ruleName": "ordered-imports",
-        "severity": 4
+        "severity": "error"
       },
       {
         "column": 37,
         "columnEnd": 1000,
+        "line": 0,
+        "lineEnd": 0,
         "message": "' should be \"",
         "ruleId": "tslint:quotemark",
         "ruleName": "quotemark",
-        "severity": 4
+        "severity": "error"
       },
       {
         "column": 9,
@@ -45,7 +49,7 @@
         "message": "' should be \"",
         "ruleId": "tslint:quotemark",
         "ruleName": "quotemark",
-        "severity": 4
+        "severity": "error"
       },
       {
         "column": 5,
@@ -55,7 +59,7 @@
         "message": "' should be \"",
         "ruleId": "tslint:quotemark",
         "ruleName": "quotemark",
-        "severity": 4
+        "severity": "error"
       },
       {
         "column": 16,
@@ -65,7 +69,7 @@
         "message": "' should be \"",
         "ruleId": "tslint:quotemark",
         "ruleName": "quotemark",
-        "severity": 4
+        "severity": "error"
       },
       {
         "column": 31,
@@ -75,7 +79,7 @@
         "message": "' should be \"",
         "ruleId": "tslint:quotemark",
         "ruleName": "quotemark",
-        "severity": 4
+        "severity": "error"
       },
       {
         "column": 34,
@@ -85,7 +89,7 @@
         "message": "' should be \"",
         "ruleId": "tslint:quotemark",
         "ruleName": "quotemark",
-        "severity": 4
+        "severity": "error"
       },
       {
         "column": 19,
@@ -95,7 +99,7 @@
         "message": "' should be \"",
         "ruleId": "tslint:quotemark",
         "ruleName": "quotemark",
-        "severity": 4
+        "severity": "error"
       },
       {
         "column": 38,
@@ -105,7 +109,7 @@
         "message": "' should be \"",
         "ruleId": "tslint:quotemark",
         "ruleName": "quotemark",
-        "severity": 4
+        "severity": "error"
       },
       {
         "column": 34,
@@ -115,7 +119,7 @@
         "message": "' should be \"",
         "ruleId": "tslint:quotemark",
         "ruleName": "quotemark",
-        "severity": 4
+        "severity": "error"
       },
       {
         "column": 42,
@@ -125,7 +129,7 @@
         "message": "Spaces before function parens are disallowed",
         "ruleId": "tslint:space-before-function-paren",
         "ruleName": "space-before-function-paren",
-        "severity": 4
+        "severity": "error"
       },
       {
         "column": 45,
@@ -135,7 +139,7 @@
         "message": "Spaces before function parens are disallowed",
         "ruleId": "tslint:space-before-function-paren",
         "ruleName": "space-before-function-paren",
-        "severity": 4
+        "severity": "error"
       }
     ],
     "path": "e2e\\app.e2e-spec.ts"
@@ -150,15 +154,17 @@
         "message": "The key 'bootstrap' is not sorted alphabetically",
         "ruleId": "tslint:object-literal-sort-keys",
         "ruleName": "object-literal-sort-keys",
-        "severity": 4
+        "severity": "error"
       },
       {
         "column": 34,
         "columnEnd": 1000,
+        "line": 0,
+        "lineEnd": 0,
         "message": "' should be \"",
         "ruleId": "tslint:quotemark",
         "ruleName": "quotemark",
-        "severity": 4
+        "severity": "error"
       },
       {
         "column": 23,
@@ -168,7 +174,7 @@
         "message": "' should be \"",
         "ruleId": "tslint:quotemark",
         "ruleName": "quotemark",
-        "severity": 4
+        "severity": "error"
       },
       {
         "column": 28,
@@ -178,7 +184,7 @@
         "message": "' should be \"",
         "ruleId": "tslint:quotemark",
         "ruleName": "quotemark",
-        "severity": 4
+        "severity": "error"
       }
     ],
     "path": "src\\app.ts"
@@ -193,15 +199,17 @@
         "message": "The class property 'name' must be marked either 'private', 'public', or 'protected'",
         "ruleId": "tslint:member-access",
         "ruleName": "member-access",
-        "severity": 4
+        "severity": "error"
       },
       {
         "column": 24,
         "columnEnd": 1000,
+        "line": 0,
+        "lineEnd": 0,
         "message": "' should be \"",
         "ruleId": "tslint:quotemark",
         "ruleName": "quotemark",
-        "severity": 4
+        "severity": "error"
       },
       {
         "column": 12,
@@ -211,7 +219,7 @@
         "message": "' should be \"",
         "ruleId": "tslint:quotemark",
         "ruleName": "quotemark",
-        "severity": 4
+        "severity": "error"
       },
       {
         "column": 17,
@@ -221,7 +229,7 @@
         "message": "' should be \"",
         "ruleId": "tslint:quotemark",
         "ruleName": "quotemark",
-        "severity": 4
+        "severity": "error"
       }
     ],
     "path": "src\\hello-world.component.ts"
@@ -231,10 +239,12 @@
       {
         "column": 30,
         "columnEnd": 1000,
+        "line": 0,
+        "lineEnd": 0,
         "message": "' should be \"",
         "ruleId": "tslint:quotemark",
         "ruleName": "quotemark",
-        "severity": 4
+        "severity": "error"
       },
       {
         "column": 33,
@@ -244,7 +254,7 @@
         "message": "' should be \"",
         "ruleId": "tslint:quotemark",
         "ruleName": "quotemark",
-        "severity": 4
+        "severity": "error"
       }
     ],
     "path": "src\\main.ts"

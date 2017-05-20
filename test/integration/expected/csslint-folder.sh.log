@@ -9,7 +9,7 @@
         "message": "Rule doesn't have all its properties in alphabetical order.",
         "ruleId": "csslint:order-alphabetical",
         "ruleName": "order-alphabetical",
-        "severity": 3
+        "severity": "warning"
       },
       {
         "column": 1,
@@ -19,7 +19,7 @@
         "message": "Rule doesn't have all its properties in alphabetical order.",
         "ruleId": "csslint:order-alphabetical",
         "ruleName": "order-alphabetical",
-        "severity": 3
+        "severity": "warning"
       },
       {
         "column": 1,
@@ -29,7 +29,7 @@
         "message": "Rule doesn't have all its properties in alphabetical order.",
         "ruleId": "csslint:order-alphabetical",
         "ruleName": "order-alphabetical",
-        "severity": 3
+        "severity": "warning"
       },
       {
         "column": 1,
@@ -39,7 +39,7 @@
         "message": "Rule doesn't have all its properties in alphabetical order.",
         "ruleId": "csslint:order-alphabetical",
         "ruleName": "order-alphabetical",
-        "severity": 3
+        "severity": "warning"
       },
       {
         "column": 1,
@@ -49,7 +49,7 @@
         "message": "Rule doesn't have all its properties in alphabetical order.",
         "ruleId": "csslint:order-alphabetical",
         "ruleName": "order-alphabetical",
-        "severity": 3
+        "severity": "warning"
       },
       {
         "column": 1,
@@ -59,7 +59,7 @@
         "message": "Adjoining classes: .fa-li.fa-lg",
         "ruleId": "csslint:adjoining-classes",
         "ruleName": "adjoining-classes",
-        "severity": 3
+        "severity": "warning"
       },
       {
         "column": 1,
@@ -69,7 +69,7 @@
         "message": "Rule doesn't have all its properties in alphabetical order.",
         "ruleId": "csslint:order-alphabetical",
         "ruleName": "order-alphabetical",
-        "severity": 3
+        "severity": "warning"
       },
       {
         "column": 1,
@@ -79,7 +79,7 @@
         "message": "Adjoining classes: .fa.fa-pull-left",
         "ruleId": "csslint:adjoining-classes",
         "ruleName": "adjoining-classes",
-        "severity": 3
+        "severity": "warning"
       },
       {
         "column": 1,
@@ -89,7 +89,7 @@
         "message": "Adjoining classes: .fa.fa-pull-right",
         "ruleId": "csslint:adjoining-classes",
         "ruleName": "adjoining-classes",
-        "severity": 3
+        "severity": "warning"
       },
       {
         "column": 1,
@@ -99,7 +99,7 @@
         "message": "Adjoining classes: .fa.pull-left",
         "ruleId": "csslint:adjoining-classes",
         "ruleName": "adjoining-classes",
-        "severity": 3
+        "severity": "warning"
       },
       {
         "column": 1,
@@ -109,7 +109,7 @@
         "message": "Adjoining classes: .fa.pull-right",
         "ruleId": "csslint:adjoining-classes",
         "ruleName": "adjoining-classes",
-        "severity": 3
+        "severity": "warning"
       },
       {
         "column": 1,
@@ -119,7 +119,7 @@
         "message": "Rule doesn't have all its properties in alphabetical order.",
         "ruleId": "csslint:order-alphabetical",
         "ruleName": "order-alphabetical",
-        "severity": 3
+        "severity": "warning"
       },
       {
         "column": 1,
@@ -129,7 +129,7 @@
         "message": "Rule doesn't have all its properties in alphabetical order.",
         "ruleId": "csslint:order-alphabetical",
         "ruleName": "order-alphabetical",
-        "severity": 3
+        "severity": "warning"
       },
       {
         "column": 1,
@@ -139,7 +139,7 @@
         "message": "Rule doesn't have all its properties in alphabetical order.",
         "ruleId": "csslint:order-alphabetical",
         "ruleName": "order-alphabetical",
-        "severity": 3
+        "severity": "warning"
       },
       {
         "column": 1,
@@ -149,7 +149,7 @@
         "message": "Rule doesn't have all its properties in alphabetical order.",
         "ruleId": "csslint:order-alphabetical",
         "ruleName": "order-alphabetical",
-        "severity": 3
+        "severity": "warning"
       }
     ],
     "path": "css\\font-awesome.css"
@@ -164,7 +164,7 @@
         "message": "Adjoining classes: .fa.fa-pull-left",
         "ruleId": "csslint:adjoining-classes",
         "ruleName": "adjoining-classes",
-        "severity": 3
+        "severity": "warning"
       },
       {
         "column": 4,
@@ -174,7 +174,7 @@
         "message": "Rule doesn't have all its properties in alphabetical order.",
         "ruleId": "csslint:order-alphabetical",
         "ruleName": "order-alphabetical",
-        "severity": 3
+        "severity": "warning"
       },
       {
         "column": 824,
@@ -184,7 +184,7 @@
         "message": "Rule doesn't have all its properties in alphabetical order.",
         "ruleId": "csslint:order-alphabetical",
         "ruleName": "order-alphabetical",
-        "severity": 3
+        "severity": "warning"
       },
       {
         "column": 868,
@@ -194,7 +194,7 @@
         "message": "Rule doesn't have all its properties in alphabetical order.",
         "ruleId": "csslint:order-alphabetical",
         "ruleName": "order-alphabetical",
-        "severity": 3
+        "severity": "warning"
       },
       {
         "column": 964,
@@ -204,7 +204,7 @@
         "message": "Rule doesn't have all its properties in alphabetical order.",
         "ruleId": "csslint:order-alphabetical",
         "ruleName": "order-alphabetical",
-        "severity": 3
+        "severity": "warning"
       },
       {
         "column": 1061,
@@ -214,7 +214,7 @@
         "message": "Adjoining classes: .fa-li.fa-lg",
         "ruleId": "csslint:adjoining-classes",
         "ruleName": "adjoining-classes",
-        "severity": 3
+        "severity": "warning"
       },
       {
         "column": 1093,
@@ -224,7 +224,7 @@
         "message": "Rule doesn't have all its properties in alphabetical order.",
         "ruleId": "csslint:order-alphabetical",
         "ruleName": "order-alphabetical",
-        "severity": 3
+        "severity": "warning"
       },
       {
         "column": 495,
@@ -234,7 +234,7 @@
         "message": "Rule doesn't have all its properties in alphabetical order.",
         "ruleId": "csslint:order-alphabetical",
         "ruleName": "order-alphabetical",
-        "severity": 3
+        "severity": "warning"
       },
       {
         "column": 1259,
@@ -244,7 +244,7 @@
         "message": "Adjoining classes: .fa.fa-pull-right",
         "ruleId": "csslint:adjoining-classes",
         "ruleName": "adjoining-classes",
-        "severity": 3
+        "severity": "warning"
       },
       {
         "column": 1340,
@@ -254,7 +254,7 @@
         "message": "Adjoining classes: .fa.pull-left",
         "ruleId": "csslint:adjoining-classes",
         "ruleName": "adjoining-classes",
-        "severity": 3
+        "severity": "warning"
       },
       {
         "column": 1372,
@@ -264,7 +264,7 @@
         "message": "Adjoining classes: .fa.pull-right",
         "ruleId": "csslint:adjoining-classes",
         "ruleName": "adjoining-classes",
-        "severity": 3
+        "severity": "warning"
       },
       {
         "column": 2875,
@@ -274,7 +274,7 @@
         "message": "Rule doesn't have all its properties in alphabetical order.",
         "ruleId": "csslint:order-alphabetical",
         "ruleName": "order-alphabetical",
-        "severity": 3
+        "severity": "warning"
       },
       {
         "column": 2983,
@@ -284,7 +284,7 @@
         "message": "Rule doesn't have all its properties in alphabetical order.",
         "ruleId": "csslint:order-alphabetical",
         "ruleName": "order-alphabetical",
-        "severity": 3
+        "severity": "warning"
       },
       {
         "column": 30595,
@@ -294,7 +294,7 @@
         "message": "Rule doesn't have all its properties in alphabetical order.",
         "ruleId": "csslint:order-alphabetical",
         "ruleName": "order-alphabetical",
-        "severity": 3
+        "severity": "warning"
       },
       {
         "column": 30712,
@@ -304,7 +304,7 @@
         "message": "Rule doesn't have all its properties in alphabetical order.",
         "ruleId": "csslint:order-alphabetical",
         "ruleName": "order-alphabetical",
-        "severity": 3
+        "severity": "warning"
       }
     ],
     "path": "css\\font-awesome.min.css"

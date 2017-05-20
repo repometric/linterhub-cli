@@ -3,6 +3,7 @@ namespace Linterhub.Cli.Runtime
     using System.IO;
     using System.Linq;
     using Linterhub.Engine.Exceptions;
+    using Linterhub.Engine.Factory;
     using Linterhub.Engine.Schema;
 
     public class Ensure
@@ -30,11 +31,13 @@ namespace Linterhub.Cli.Runtime
 
         public void LinterExists()
         {
-            foreach (var linter in Context.Linters)
+            var factory = Locator.Get<ILinterFactory>();
+            
+            foreach(var linter in Context.Linters)
             {
-                if (!Locator.Get<LinterhubConfigSchema>().Engines.Any(x => x.Name == linter))
+                if(factory.GetSpecifications().Select(x => x.Schema).Where(x => x.Name == linter).Count() == 0)
                 {
-                    //throw new LinterEngineException("Linter is not exist: " + linter);
+                    throw new LinterEngineException("Linter is not exist: " + linter);
                 }
             }
         }

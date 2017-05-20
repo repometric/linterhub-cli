@@ -9,7 +9,7 @@
         "message": "'link' is already defined.",
         "ruleId": "W004",
         "ruleName": "(error)",
-        "severity": 3
+        "severity": "warning"
       },
       {
         "column": 21,
@@ -19,7 +19,7 @@
         "message": "Use '!==' to compare with ''.",
         "ruleId": "W041",
         "ruleName": "(error)",
-        "severity": 3
+        "severity": "warning"
       }
     ],
     "path": "styleguide.js"
