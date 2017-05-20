@@ -1,6 +1,5 @@
 [
   {
-    "filePath": "sass\\base\\_all.sass",
     "messages": [
       {
         "columnEnd": 1000,
@@ -26,10 +25,10 @@
         "ruleId": "indentation",
         "severity": 4
       }
-    ]
+    ],
+    "path": "sass\\base\\_all.sass"
   },
   {
-    "filePath": "sass\\base\\generic.sass",
     "messages": [
       {
         "columnEnd": 1000,
@@ -39,10 +38,10 @@
         "ruleId": "CssSyntaxError",
         "severity": 4
       }
-    ]
+    ],
+    "path": "sass\\base\\generic.sass"
   },
   {
-    "filePath": "sass\\base\\helpers.sass",
     "messages": [
       {
         "column": 8,
@@ -53,10 +52,10 @@
         "ruleId": "CssSyntaxError",
         "severity": 4
       }
-    ]
+    ],
+    "path": "sass\\base\\helpers.sass"
   },
   {
-    "filePath": "sass\\base\\minireset.sass",
     "messages": [
       {
         "column": 10,
@@ -67,6 +66,7 @@
         "ruleId": "CssSyntaxError",
         "severity": 4
       }
-    ]
+    ],
+    "path": "sass\\base\\minireset.sass"
   }
 ]

@@ -1,6 +1,5 @@
 [
   {
-    "filePath": "include\\styleguide.js",
     "messages": [
       {
         "columnEnd": 1000,
@@ -457,6 +456,7 @@
         "message": "Too many errors. (17% scanned).",
         "severity": 3
       }
-    ]
+    ],
+    "path": "include\\styleguide.js"
   }
 ]

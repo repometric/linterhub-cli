@@ -1,6 +1,5 @@
 [
   {
-    "filePath": "less\\core.less",
     "messages": [
       {
         "column": 2,
@@ -56,6 +55,7 @@
         "ruleId": "indentation",
         "severity": 4
       }
-    ]
+    ],
+    "path": "less\\core.less"
   }
 ]

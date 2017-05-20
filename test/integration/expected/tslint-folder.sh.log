@@ -1,6 +1,5 @@
 [
   {
-    "filePath": "app.ts",
     "messages": [
       {
         "column": 2,
@@ -40,10 +39,10 @@
         "ruleName": "quotemark",
         "severity": 4
       }
-    ]
+    ],
+    "path": "app.ts"
   },
   {
-    "filePath": "hello-world.component.ts",
     "messages": [
       {
         "column": 2,
@@ -83,10 +82,10 @@
         "ruleName": "quotemark",
         "severity": 4
       }
-    ]
+    ],
+    "path": "hello-world.component.ts"
   },
   {
-    "filePath": "main.ts",
     "messages": [
       {
         "column": 30,
@@ -106,6 +105,7 @@
         "ruleName": "quotemark",
         "severity": 4
       }
-    ]
+    ],
+    "path": "main.ts"
   }
 ]

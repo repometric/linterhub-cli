@@ -1,6 +1,5 @@
 [
   {
-    "filePath": "xmlstyle.html",
     "messages": [
       {
         "columnEnd": 1000,
@@ -32,6 +31,7 @@
         "ruleId": "htmlhint:tag-pair",
         "severity": 4
       }
-    ]
+    ],
+    "path": "xmlstyle.html"
   }
 ]

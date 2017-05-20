@@ -1,6 +1,5 @@
 [
   {
-    "filePath": "helpers.sass",
     "messages": [
       {
         "column": 1,
@@ -184,6 +183,7 @@
         "ruleId": "no-important",
         "severity": 1
       }
-    ]
+    ],
+    "path": "helpers.sass"
   }
 ]

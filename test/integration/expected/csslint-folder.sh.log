@@ -1,6 +1,5 @@
 [
   {
-    "filePath": "css\\font-awesome.css",
     "messages": [
       {
         "column": 1,
@@ -152,10 +151,10 @@
         "ruleName": "order-alphabetical",
         "severity": 3
       }
-    ]
+    ],
+    "path": "css\\font-awesome.css"
   },
   {
-    "filePath": "css\\font-awesome.min.css",
     "messages": [
       {
         "column": 1224,
@@ -307,6 +306,7 @@
         "ruleName": "order-alphabetical",
         "severity": 3
       }
-    ]
+    ],
+    "path": "css\\font-awesome.min.css"
   }
 ]

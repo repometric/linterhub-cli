@@ -34,7 +34,7 @@ function executeForFile(file)
             break;
     }
     var parsed = JSON.parse(child_process.execSync(command, { cwd: process.cwd() }).toString());
-    if(parsed.filePath != undefined)
+    if(parsed.path != undefined)
         result.push(parsed);
 }
 

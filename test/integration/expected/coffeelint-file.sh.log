@@ -1,6 +1,5 @@
 [
   {
-    "filePath": "coffee\\classes\\mds_main_menu.coffee",
     "messages": [
       {
         "columnEnd": 1000,
@@ -182,6 +181,7 @@
         "ruleName": "max_line_length",
         "severity": 4
       }
-    ]
+    ],
+    "path": "coffee\\classes\\mds_main_menu.coffee"
   }
 ]

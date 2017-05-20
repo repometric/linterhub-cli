@@ -1,6 +1,5 @@
 [
   {
-    "filePath": "e2e\\app.e2e-spec.ts",
     "messages": [
       {
         "column": 34,
@@ -138,10 +137,10 @@
         "ruleName": "space-before-function-paren",
         "severity": 4
       }
-    ]
+    ],
+    "path": "e2e\\app.e2e-spec.ts"
   },
   {
-    "filePath": "src\\app.ts",
     "messages": [
       {
         "column": 2,
@@ -181,10 +180,10 @@
         "ruleName": "quotemark",
         "severity": 4
       }
-    ]
+    ],
+    "path": "src\\app.ts"
   },
   {
-    "filePath": "src\\hello-world.component.ts",
     "messages": [
       {
         "column": 2,
@@ -224,10 +223,10 @@
         "ruleName": "quotemark",
         "severity": 4
       }
-    ]
+    ],
+    "path": "src\\hello-world.component.ts"
   },
   {
-    "filePath": "src\\main.ts",
     "messages": [
       {
         "column": 30,
@@ -247,6 +246,7 @@
         "ruleName": "quotemark",
         "severity": 4
       }
-    ]
+    ],
+    "path": "src\\main.ts"
   }
 ]

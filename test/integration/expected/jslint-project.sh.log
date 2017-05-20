@@ -1,6 +1,5 @@
 [
   {
-    "filePath": "rsingleTag.js",
     "messages": [
       {
         "columnEnd": 1000,
@@ -100,6 +99,7 @@
         "ruleId": "unexpected_space_a_b",
         "severity": 4
       }
-    ]
+    ],
+    "path": "rsingleTag.js"
   }
 ]

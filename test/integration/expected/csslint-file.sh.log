@@ -1,6 +1,5 @@
 [
   {
-    "filePath": "all.css",
     "messages": [
       {
         "column": 1,
@@ -22,6 +21,7 @@
         "ruleName": "import",
         "severity": 3
       }
-    ]
+    ],
+    "path": "all.css"
   }
 ]

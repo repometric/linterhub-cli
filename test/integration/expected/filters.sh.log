@@ -223,6 +223,7 @@
     ],
     "license": "MIT",
     "name": "sass-lint",
+    "postfix": " | node file://{schema}/sass-lint/reporter.js",
     "requirements": [
       {
         "package": "npm"

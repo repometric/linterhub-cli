@@ -1,6 +1,5 @@
 [
   {
-    "filePath": "styleguide.js",
     "messages": [
       {
         "column": 13,
@@ -22,6 +21,7 @@
         "ruleName": "(error)",
         "severity": 3
       }
-    ]
+    ],
+    "path": "styleguide.js"
   }
 ]

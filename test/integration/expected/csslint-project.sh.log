@@ -1,6 +1,5 @@
 [
   {
-    "filePath": "styleguide.css",
     "messages": [
       {
         "column": 1,
@@ -482,6 +481,7 @@
         "ruleName": "order-alphabetical",
         "severity": 3
       }
-    ]
+    ],
+    "path": "styleguide.css"
   }
 ]

@@ -1,6 +1,5 @@
 [
   {
-    "filePath": "include\\styleguide.js",
     "messages": [
       {
         "column": 1,
@@ -93,6 +92,7 @@
         "ruleId": "no-unused-vars",
         "severity": 2
       }
-    ]
+    ],
+    "path": "include\\styleguide.js"
   }
 ]

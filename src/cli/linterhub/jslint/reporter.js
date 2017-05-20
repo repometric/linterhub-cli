@@ -28,7 +28,7 @@ function processLine(line) {
         if (data[1][data[1].length - 1] === null)
             data[1].splice(data[1].length - 1, 1);
         result.push({
-            filePath: data[0],
+            path: data[0],
             messages: data[1].map(function (problem) {
                 if (problem != null)
                     return {

@@ -52,8 +52,8 @@ namespace Linterhub.Cli.Strategy
 
             foreach (var file in t)
             {
-                file.FilePath = file
-                    .FilePath
+                file.Path = file
+                    .Path
                     .Replace(context.Project, string.Empty)
                     .Replace(System.IO.Path.GetFullPath(context.Project), string.Empty)
                     .TrimStart('/')
@@ -61,7 +61,7 @@ namespace Linterhub.Cli.Strategy
                     .Replace("/", "\\");
             }
 
-            t.ToList().Sort((a, b) => a.FilePath.CompareTo(b.FilePath));
+            t.ToList().Sort((a, b) => a.Path.CompareTo(b.Path));
             return t;
             /* 
             var linterResults = new List<RunResult>();

@@ -1,6 +1,5 @@
 [
   {
-    "filePath": "coffee\\classes\\mds_config.coffee",
     "messages": [
       {
         "columnEnd": 1000,
@@ -22,16 +21,16 @@
         "ruleName": "max_line_length",
         "severity": 4
       }
-    ]
+    ],
+    "path": "coffee\\classes\\mds_config.coffee"
   },
   {
-    "filePath": "coffee\\classes\\mds_file_history.coffee"
+    "path": "coffee\\classes\\mds_file_history.coffee"
   },
   {
-    "filePath": "coffee\\classes\\mds_file.coffee"
+    "path": "coffee\\classes\\mds_file.coffee"
   },
   {
-    "filePath": "coffee\\classes\\mds_main_menu.coffee",
     "messages": [
       {
         "columnEnd": 1000,
@@ -213,10 +212,10 @@
         "ruleName": "max_line_length",
         "severity": 4
       }
-    ]
+    ],
+    "path": "coffee\\classes\\mds_main_menu.coffee"
   },
   {
-    "filePath": "coffee\\classes\\mds_manager.coffee",
     "messages": [
       {
         "columnEnd": 1000,
@@ -245,10 +244,10 @@
         "ruleName": "max_line_length",
         "severity": 4
       }
-    ]
+    ],
+    "path": "coffee\\classes\\mds_manager.coffee"
   },
   {
-    "filePath": "coffee\\classes\\mds_markdown.coffee",
     "messages": [
       {
         "columnEnd": 1000,
@@ -380,10 +379,10 @@
         "ruleName": "max_line_length",
         "severity": 4
       }
-    ]
+    ],
+    "path": "coffee\\classes\\mds_markdown.coffee"
   },
   {
-    "filePath": "coffee\\classes\\mds_md_setting.coffee",
     "messages": [
       {
         "columnEnd": 1000,
@@ -442,10 +441,10 @@
         "ruleName": "max_line_length",
         "severity": 4
       }
-    ]
+    ],
+    "path": "coffee\\classes\\mds_md_setting.coffee"
   },
   {
-    "filePath": "coffee\\classes\\mds_menu.coffee",
     "messages": [
       {
         "columnEnd": 1000,
@@ -476,13 +475,13 @@
         "ruleName": "max_line_length",
         "severity": 4
       }
-    ]
+    ],
+    "path": "coffee\\classes\\mds_menu.coffee"
   },
   {
-    "filePath": "coffee\\classes\\mds_renderer.coffee"
+    "path": "coffee\\classes\\mds_renderer.coffee"
   },
   {
-    "filePath": "coffee\\classes\\mds_window.coffee",
     "messages": [
       {
         "columnEnd": 1000,
@@ -591,10 +590,10 @@
         "ruleName": "max_line_length",
         "severity": 4
       }
-    ]
+    ],
+    "path": "coffee\\classes\\mds_window.coffee"
   },
   {
-    "filePath": "coffee\\index.coffee",
     "messages": [
       {
         "columnEnd": 1000,
@@ -744,13 +743,13 @@
         "ruleName": "max_line_length",
         "severity": 4
       }
-    ]
+    ],
+    "path": "coffee\\index.coffee"
   },
   {
-    "filePath": "coffee\\main.coffee"
+    "path": "coffee\\main.coffee"
   },
   {
-    "filePath": "coffee\\slide.coffee",
     "messages": [
       {
         "columnEnd": 1000,
@@ -812,10 +811,10 @@
         "ruleName": "max_line_length",
         "severity": 4
       }
-    ]
+    ],
+    "path": "coffee\\slide.coffee"
   },
   {
-    "filePath": "gulpfile.coffee",
     "messages": [
       {
         "columnEnd": 1000,
@@ -897,6 +896,7 @@
         "ruleName": "max_line_length",
         "severity": 4
       }
-    ]
+    ],
+    "path": "gulpfile.coffee"
   }
 ]

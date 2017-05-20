@@ -16,7 +16,7 @@
         "manager": "3.2.0"
     },
     "defaults": {
-        "--format": "json",
+        "--format": "file://{schema}/eslint/reporter.js",
         "--config": "file://{schema}/eslint/.eslintrc.js",
         "": "**/**/*.js"
     }

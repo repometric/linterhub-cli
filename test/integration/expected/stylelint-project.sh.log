@@ -1,6 +1,5 @@
 [
   {
-    "filePath": "_all.sass",
     "messages": [
       {
         "columnEnd": 1000,
@@ -18,10 +17,10 @@
         "ruleId": "indentation",
         "severity": 4
       }
-    ]
+    ],
+    "path": "_all.sass"
   },
   {
-    "filePath": "columns.sass",
     "messages": [
       {
         "column": 32,
@@ -32,10 +31,10 @@
         "ruleId": "CssSyntaxError",
         "severity": 4
       }
-    ]
+    ],
+    "path": "columns.sass"
   },
   {
-    "filePath": "tiles.sass",
     "messages": [
       {
         "column": 13,
@@ -46,6 +45,7 @@
         "ruleId": "CssSyntaxError",
         "severity": 4
       }
-    ]
+    ],
+    "path": "tiles.sass"
   }
 ]
