@@ -9,10 +9,10 @@ namespace Linterhub.Cli.Strategy
         public object Run(ServiceLocator locator)
         {
             var context = locator.Get<RunContext>();
-            var config = locator.Get<LinterhubSchema>();
-            var rule = new LinterhubSchema.IgnoreRule()
+            var config = locator.Get<LinterhubConfigSchema>();
+            var rule = new LinterhubConfigSchema.IgnoreType()
             {
-                Path = context.Path,
+                Mask = context.Path,
                 Line = context.Line,
                 RuleId = context.RuleId
             };
@@ -23,22 +23,22 @@ namespace Linterhub.Cli.Strategy
                 // TODO: Rule for project > for file > for line. Avoid dublicates and improve logic
                 foreach (var linter in context.Linters)
                 {
-                    var linterConfig = config.Linters.FirstOrDefault(x => x.Name == linter);
+                    var linterConfig = config.Engines.FirstOrDefault(x => x.Name == linter);
                     if (linterConfig == null)
                     {
-                        linterConfig = new LinterhubSchema.Linter
+                        linterConfig = new LinterhubConfigSchema.ConfigurationType
                         {
                             Name = linter
                         };
-                        config.Linters.Add(linterConfig);
+                        config.Engines.Append(linterConfig);
                     }
 
-                    linterConfig.Ignore.Add(rule);
+                    linterConfig.Ignore.Append(rule);
                 }
             }
             else
             {
-                config.Ignore.Add(rule);
+                config.Ignore.Append(rule);
             }
 
             context.SaveConfig = true;

@@ -51,7 +51,7 @@
                 var result = Strategies[context.Mode].Run(locator);
                 if (context.SaveConfig)
                 {
-                    var content = locator.Get<LinterhubSchema>().SerializeAsJson();
+                    var content = locator.Get<LinterhubConfigSchema>().SerializeAsJson();
                     System.IO.File.WriteAllText(string.IsNullOrEmpty(context.ProjectConfig) ? "linterhub.json" : context.ProjectConfig, content);
                 }
 
@@ -75,8 +75,7 @@
             var locator = new ServiceLocator();
             
             var platformConfig = context.PlatformConfig.DeserializeAsJsonFromFile<PlatformConfig>();
-            var projectConfig = context.ProjectConfig.DeserializeAsJsonFromFile<LinterhubSchema>();
-
+            var projectConfig = context.ProjectConfig.DeserializeAsJsonFromFile<LinterhubConfigSchema>();
             var terminal = new TerminalWrapper(platformConfig.Terminal.Path, platformConfig.Terminal.Command);
             var linterFactory = new LinterFileSystemFactory(context.Linterhub);
             var linterContextFactory = new LinterContextFactory(linterFactory);
@@ -84,7 +83,7 @@
             var installer = new Installer(terminal, platformConfig.Command.Installed);
             var linterRunner = new LinterWrapper(terminal, commandFactory);
 
-            locator.Register<LinterhubSchema>(new LinterhubSchema());
+            locator.Register<LinterhubConfigSchema>(projectConfig);
             locator.Register<RunContext>(context);
             locator.Register<PlatformConfig>(platformConfig);
             locator.Register<ILinterFactory>(linterFactory);

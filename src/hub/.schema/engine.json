@@ -114,6 +114,11 @@
             "type": "integer",
             "description": "Success exit code"
         },
+        "active": {
+            "type": "boolean",
+            "description": "A value indicating whether linter is active",
+            "default": true
+        },
         "defaults": {
             "type": "object",
             "description": "The default configuration of engine. This property is specific for each engine"

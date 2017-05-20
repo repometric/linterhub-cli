@@ -2,7 +2,7 @@ namespace Linterhub.Engine.Runtime
 {
     using System.Linq;
     using Linterhub.Engine.Schema;
-    using static Schema.LinterSchema;
+    using static Schema.EngineSchema;
 
     public class Installer
     {
@@ -15,7 +15,7 @@ namespace Linterhub.Engine.Runtime
             IsInstalledCommand = isInstalledCommand;
         }
 
-        public InstallResult IsInstalled(RequirementDefinition requirement)
+        public InstallResult IsInstalled(RequirementType requirement)
         {
             // var command = string.Format(IsInstalledCommand, package);
             // hot fix
@@ -43,15 +43,15 @@ namespace Linterhub.Engine.Runtime
             return requirementsChecks.FirstOrDefault(x => !x.Installed) ?? new InstallResult { Installed = true };
         }
 
-        private InstallResult Install(RequirementDefinition requirement)
+        private InstallResult Install(RequirementType requirement)
         {
             var command = "";
             switch(requirement.Manager)
             {
-                case "npm":
+                case RequirementType.ManagerType.npm:
                     command = $"npm install {requirement.Package} -g";
                     break;
-                case "pip":
+                case RequirementType.ManagerType.pip:
                     command = $"pip install {requirement.Package}";
                     break;
                 default:

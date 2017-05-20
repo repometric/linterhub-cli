@@ -62,7 +62,7 @@
             if (filters != null && filters.Any())
             {
                 // TODO: Now it supports only linter schema.
-                var supportedTypes =  new[] { typeof(IEnumerable<LinterSchema>) };
+                var supportedTypes =  new[] { typeof(IEnumerable<EngineSchema>) };
                 settings.Converters.Add(new ShouldSerializeConverter(supportedTypes, filters));
             }
 
