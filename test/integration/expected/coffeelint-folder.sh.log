@@ -25,12 +25,6 @@
     "path": "mds_config.coffee"
   },
   {
-    "path": "mds_file.coffee"
-  },
-  {
-    "path": "mds_file_history.coffee"
-  },
-  {
     "messages": [
       {
         "columnEnd": 1000,
@@ -477,9 +471,6 @@
       }
     ],
     "path": "mds_menu.coffee"
-  },
-  {
-    "path": "mds_renderer.coffee"
   },
   {
     "messages": [

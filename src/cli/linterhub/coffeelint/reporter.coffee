@@ -30,6 +30,7 @@ module.exports = class Reporter
                     ruleName: e.name,
                     ruleNamespace: e.rule
                 })
-            filesResult.push(fileResult)
+            if Object.keys(fileResult.messages).length > 0
+                filesResult.push(fileResult)
 
         @print JSON.stringify(filesResult, undefined, 0)
