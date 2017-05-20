@@ -39,7 +39,11 @@ fs.readdir(integration, (err, files) => {
                         is_json = false;
                         //process.exit(1);
                     }
-                    fs.writeFileSync(path.join(integration, 'actual', file + ".log"), stdout);
+                    var actualDir = path.join(integration, 'actual');
+                    if (!fs.existsSync(actualDir)){
+                        fs.mkdirSync(actualDir);
+                    }
+                    fs.writeFileSync(path.join(actualDir, file + ".log"), stdout);
                     var result = stdout;
                     if(is_json)
                     {
