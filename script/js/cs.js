@@ -14,9 +14,10 @@ const format = {
     highCase: (value) => value.charAt(0).toUpperCase() + value.slice(1),
     enum: (name, value) => {
         name = name.charAt(0).toUpperCase() + name.slice(1);
-        return `public enum ${format.highCase(name)}Type\n` + format.open() + "\n" +
+        var json_prop = `[JsonConverter(typeof(StringEnumConverter))]\n`;
+        return json_prop + `public enum ${format.highCase(name)}Type\n` + format.open() + "\n" +
             (value.enum ? value.enum.join(',\n') : '') +
-            (value.items && value.items.enum ? value.items.enum.join(',\n') : '') + "\n" + format.close();
+            (value.items && value.items.enum ? value.items.enum.join(',\n') : '') + "\n" + format.close() + "\n";
     },
     removeExtension: (typeName) => {
         if(typeName.indexOf(".json") == -1)
@@ -31,7 +32,7 @@ const format = {
             type = "LinterOptions";
         if(propname === "config" && name === `linterhub.config.json`)
             type = "LinterOptions";
-        if((type === "int" || type === "bool") && name === `linterhub.config.json`)
+        if(type === "int" || type === "bool")
             type += "?";
         type = type.replace("EngineOutputType", "EngineOutputSchema");
         return `public ${type} ${format.highCase(propname)}` + (isArray ? ` = new ${type}();` : ` { get; set; }`);
@@ -179,6 +180,8 @@ const tree = {
 tree.doc.push(`namespace Linterhub.Engine.Schema`);
 tree.doc.push(format.open());
 tree.doc.push("using System.Collections.Generic;");
+tree.doc.push("using Newtonsoft.Json;");
+tree.doc.push("using Newtonsoft.Json.Converters;");
 tree.visit(undefined, schema);
 tree.types.forEach(type => tree.document(type.name, type.node));
 tree.doc.push(format.close());

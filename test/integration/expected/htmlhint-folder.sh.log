@@ -2,12 +2,13 @@
   {
     "messages": [
       {
+        "column": 0,
         "columnEnd": 1000,
         "line": 16,
         "lineEnd": 16,
         "message": "<title> must be present in <head> tag.",
         "ruleId": "htmlhint:title-require",
-        "severity": 4
+        "severity": "error"
       }
     ],
     "path": "cc_on.html"
@@ -15,12 +16,13 @@
   {
     "messages": [
       {
+        "column": 0,
         "columnEnd": 1000,
         "line": 7,
         "lineEnd": 7,
         "message": "<title> must be present in <head> tag.",
         "ruleId": "htmlhint:title-require",
-        "severity": 4
+        "severity": "error"
       }
     ],
     "path": "dynamic_ready.html"

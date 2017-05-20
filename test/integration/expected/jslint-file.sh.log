@@ -2,10 +2,13 @@
   {
     "messages": [
       {
+        "column": 0,
         "columnEnd": 1000,
+        "line": 0,
+        "lineEnd": 0,
         "message": "'TocTypeEnum' was used before it was defined.",
         "ruleId": "used_before_a",
-        "severity": 4
+        "severity": "error"
       },
       {
         "column": 2,
@@ -14,7 +17,7 @@
         "lineEnd": 1,
         "message": "Expected 'VERTICAL' at column 5, not column 3.",
         "ruleId": "expected_a_at_b_c",
-        "severity": 4
+        "severity": "error"
       },
       {
         "column": 2,
@@ -23,7 +26,7 @@
         "lineEnd": 2,
         "message": "Expected 'HORIZONTAL' at column 5, not column 3.",
         "ruleId": "expected_a_at_b_c",
-        "severity": 4
+        "severity": "error"
       },
       {
         "column": 2,
@@ -32,7 +35,7 @@
         "lineEnd": 8,
         "message": "Missing 'use strict' statement.",
         "ruleId": "missing_use_strict",
-        "severity": 4
+        "severity": "error"
       },
       {
         "column": 12,
@@ -41,7 +44,7 @@
         "lineEnd": 8,
         "message": "'document' was used before it was defined.",
         "ruleId": "used_before_a",
-        "severity": 4
+        "severity": "error"
       },
       {
         "column": 2,
@@ -50,7 +53,7 @@
         "lineEnd": 10,
         "message": "Expected 'var' at column 5, not column 3.",
         "ruleId": "expected_a_at_b_c",
-        "severity": 4
+        "severity": "error"
       },
       {
         "column": 6,
@@ -59,7 +62,7 @@
         "lineEnd": 10,
         "message": "Combine this with the previous 'var' statement.",
         "ruleId": "combine_var",
-        "severity": 4
+        "severity": "error"
       },
       {
         "column": 2,
@@ -68,7 +71,7 @@
         "lineEnd": 11,
         "message": "Expected 'var' at column 5, not column 3.",
         "ruleId": "expected_a_at_b_c",
-        "severity": 4
+        "severity": "error"
       },
       {
         "column": 6,
@@ -77,7 +80,7 @@
         "lineEnd": 11,
         "message": "Combine this with the previous 'var' statement.",
         "ruleId": "combine_var",
-        "severity": 4
+        "severity": "error"
       },
       {
         "column": 2,
@@ -86,7 +89,7 @@
         "lineEnd": 13,
         "message": "Expected 'switch' at column 5, not column 3.",
         "ruleId": "expected_a_at_b_c",
-        "severity": 4
+        "severity": "error"
       },
       {
         "column": 6,
@@ -95,7 +98,7 @@
         "lineEnd": 14,
         "message": "Expected 'case' at column 3, not column 7.",
         "ruleId": "expected_a_at_b_c",
-        "severity": 4
+        "severity": "error"
       },
       {
         "column": 18,
@@ -104,7 +107,7 @@
         "lineEnd": 15,
         "message": "'TocTypeEnum' was used before it was defined.",
         "ruleId": "used_before_a",
-        "severity": 4
+        "severity": "error"
       },
       {
         "column": 6,
@@ -113,7 +116,7 @@
         "lineEnd": 17,
         "message": "Expected 'case' at column 5, not column 7.",
         "ruleId": "expected_a_at_b_c",
-        "severity": 4
+        "severity": "error"
       },
       {
         "column": 18,
@@ -122,7 +125,7 @@
         "lineEnd": 18,
         "message": "'TocTypeEnum' was used before it was defined.",
         "ruleId": "used_before_a",
-        "severity": 4
+        "severity": "error"
       },
       {
         "column": 6,
@@ -131,7 +134,7 @@
         "lineEnd": 20,
         "message": "Expected 'default' at column 5, not column 7.",
         "ruleId": "expected_a_at_b_c",
-        "severity": 4
+        "severity": "error"
       },
       {
         "column": 18,
@@ -140,7 +143,7 @@
         "lineEnd": 21,
         "message": "'TocTypeEnum' was used before it was defined.",
         "ruleId": "used_before_a",
-        "severity": 4
+        "severity": "error"
       },
       {
         "column": 2,
@@ -149,7 +152,7 @@
         "lineEnd": 23,
         "message": "Expected '}' at column 5, not column 3.",
         "ruleId": "expected_a_at_b_c",
-        "severity": 4
+        "severity": "error"
       },
       {
         "column": 2,
@@ -158,7 +161,7 @@
         "lineEnd": 27,
         "message": "Expected 'var' at column 5, not column 3.",
         "ruleId": "expected_a_at_b_c",
-        "severity": 4
+        "severity": "error"
       },
       {
         "column": 6,
@@ -167,7 +170,7 @@
         "lineEnd": 27,
         "message": "Combine this with the previous 'var' statement.",
         "ruleId": "combine_var",
-        "severity": 4
+        "severity": "error"
       },
       {
         "column": 2,
@@ -176,7 +179,7 @@
         "lineEnd": 28,
         "message": "Expected 'if' at column 5, not column 3.",
         "ruleId": "expected_a_at_b_c",
-        "severity": 4
+        "severity": "error"
       },
       {
         "column": 13,
@@ -185,7 +188,7 @@
         "lineEnd": 28,
         "message": "'toc_levels' was used before it was defined.",
         "ruleId": "used_before_a",
-        "severity": 4
+        "severity": "error"
       },
       {
         "column": 6,
@@ -194,7 +197,7 @@
         "lineEnd": 28,
         "message": "Unexpected 'typeof'. Use '===' to compare directly with undefined.",
         "ruleId": "unexpected_typeof_a",
-        "severity": 4
+        "severity": "error"
       },
       {
         "column": 4,
@@ -203,7 +206,7 @@
         "lineEnd": 29,
         "message": "Expected 'headingLevels' at column 9, not column 5.",
         "ruleId": "expected_a_at_b_c",
-        "severity": 4
+        "severity": "error"
       },
       {
         "column": 2,
@@ -212,7 +215,7 @@
         "lineEnd": 30,
         "message": "Expected '}' at column 5, not column 3.",
         "ruleId": "expected_a_at_b_c",
-        "severity": 4
+        "severity": "error"
       },
       {
         "column": 2,
@@ -221,7 +224,7 @@
         "lineEnd": 32,
         "message": "Expected '}' at column 5, not column 3.",
         "ruleId": "expected_a_at_b_c",
-        "severity": 4
+        "severity": "error"
       },
       {
         "column": 9,
@@ -230,7 +233,7 @@
         "lineEnd": 30,
         "message": "Empty block.",
         "ruleId": "empty_block",
-        "severity": 4
+        "severity": "error"
       },
       {
         "column": 2,
@@ -239,7 +242,7 @@
         "lineEnd": 35,
         "message": "Expected 'var' at column 5, not column 3.",
         "ruleId": "expected_a_at_b_c",
-        "severity": 4
+        "severity": "error"
       },
       {
         "column": 6,
@@ -248,7 +251,7 @@
         "lineEnd": 35,
         "message": "Combine this with the previous 'var' statement.",
         "ruleId": "combine_var",
-        "severity": 4
+        "severity": "error"
       },
       {
         "column": 17,
@@ -257,7 +260,7 @@
         "lineEnd": 35,
         "message": "'document' was used before it was defined.",
         "ruleId": "used_before_a",
-        "severity": 4
+        "severity": "error"
       },
       {
         "column": 2,
@@ -266,7 +269,7 @@
         "lineEnd": 38,
         "message": "Expected 'var' at column 5, not column 3.",
         "ruleId": "expected_a_at_b_c",
-        "severity": 4
+        "severity": "error"
       },
       {
         "column": 6,
@@ -275,7 +278,7 @@
         "lineEnd": 38,
         "message": "Combine this with the previous 'var' statement.",
         "ruleId": "combine_var",
-        "severity": 4
+        "severity": "error"
       },
       {
         "column": 22,
@@ -284,7 +287,7 @@
         "lineEnd": 38,
         "message": "'document' was used before it was defined.",
         "ruleId": "used_before_a",
-        "severity": 4
+        "severity": "error"
       },
       {
         "column": 2,
@@ -293,7 +296,7 @@
         "lineEnd": 39,
         "message": "Expected 'toc' at column 5, not column 3.",
         "ruleId": "expected_a_at_b_c",
-        "severity": 4
+        "severity": "error"
       },
       {
         "column": 2,
@@ -302,7 +305,7 @@
         "lineEnd": 40,
         "message": "Expected 'tocHeadingDiv' at column 5, not column 3.",
         "ruleId": "expected_a_at_b_c",
-        "severity": 4
+        "severity": "error"
       },
       {
         "column": 2,
@@ -311,7 +314,7 @@
         "lineEnd": 41,
         "message": "Expected 'var' at column 5, not column 3.",
         "ruleId": "expected_a_at_b_c",
-        "severity": 4
+        "severity": "error"
       },
       {
         "column": 6,
@@ -320,7 +323,7 @@
         "lineEnd": 41,
         "message": "Combine this with the previous 'var' statement.",
         "ruleId": "combine_var",
-        "severity": 4
+        "severity": "error"
       },
       {
         "column": 19,
@@ -329,7 +332,7 @@
         "lineEnd": 41,
         "message": "'document' was used before it was defined.",
         "ruleId": "used_before_a",
-        "severity": 4
+        "severity": "error"
       },
       {
         "column": 2,
@@ -338,7 +341,7 @@
         "lineEnd": 42,
         "message": "Expected 'toc' at column 5, not column 3.",
         "ruleId": "expected_a_at_b_c",
-        "severity": 4
+        "severity": "error"
       },
       {
         "column": 2,
@@ -347,7 +350,7 @@
         "lineEnd": 43,
         "message": "Expected 'tocHeading' at column 5, not column 3.",
         "ruleId": "expected_a_at_b_c",
-        "severity": 4
+        "severity": "error"
       },
       {
         "column": 2,
@@ -356,7 +359,7 @@
         "lineEnd": 44,
         "message": "Expected 'tocHeading' at column 5, not column 3.",
         "ruleId": "expected_a_at_b_c",
-        "severity": 4
+        "severity": "error"
       },
       {
         "column": 2,
@@ -365,7 +368,7 @@
         "lineEnd": 45,
         "message": "Expected 'var' at column 5, not column 3.",
         "ruleId": "expected_a_at_b_c",
-        "severity": 4
+        "severity": "error"
       },
       {
         "column": 6,
@@ -374,7 +377,7 @@
         "lineEnd": 45,
         "message": "Combine this with the previous 'var' statement.",
         "ruleId": "combine_var",
-        "severity": 4
+        "severity": "error"
       },
       {
         "column": 16,
@@ -383,7 +386,7 @@
         "lineEnd": 45,
         "message": "'document' was used before it was defined.",
         "ruleId": "used_before_a",
-        "severity": 4
+        "severity": "error"
       },
       {
         "column": 2,
@@ -392,7 +395,7 @@
         "lineEnd": 46,
         "message": "Expected 'tocHeading' at column 5, not column 3.",
         "ruleId": "expected_a_at_b_c",
-        "severity": 4
+        "severity": "error"
       },
       {
         "column": 2,
@@ -401,7 +404,7 @@
         "lineEnd": 49,
         "message": "Expected 'var' at column 5, not column 3.",
         "ruleId": "expected_a_at_b_c",
-        "severity": 4
+        "severity": "error"
       },
       {
         "column": 6,
@@ -410,7 +413,7 @@
         "lineEnd": 49,
         "message": "Combine this with the previous 'var' statement.",
         "ruleId": "combine_var",
-        "severity": 4
+        "severity": "error"
       },
       {
         "column": 17,
@@ -419,7 +422,7 @@
         "lineEnd": 49,
         "message": "'document' was used before it was defined.",
         "ruleId": "used_before_a",
-        "severity": 4
+        "severity": "error"
       },
       {
         "column": 2,
@@ -428,7 +431,7 @@
         "lineEnd": 50,
         "message": "Expected 'if' at column 5, not column 3.",
         "ruleId": "expected_a_at_b_c",
-        "severity": 4
+        "severity": "error"
       },
       {
         "column": 14,
@@ -437,7 +440,7 @@
         "lineEnd": 50,
         "message": "Expected '===' and instead saw '=='.",
         "ruleId": "expected_a_b",
-        "severity": 4
+        "severity": "error"
       },
       {
         "column": 17,
@@ -446,7 +449,7 @@
         "lineEnd": 50,
         "message": "'TocTypeEnum' was used before it was defined.",
         "ruleId": "used_before_a",
-        "severity": 4
+        "severity": "error"
       },
       {
         "column": 17,
@@ -454,7 +457,7 @@
         "line": 50,
         "lineEnd": 50,
         "message": "Too many errors. (17% scanned).",
-        "severity": 3
+        "severity": "warning"
       }
     ],
     "path": "include\\styleguide.js"

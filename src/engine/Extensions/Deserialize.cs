@@ -56,7 +56,7 @@
             {
                 NullValueHandling = NullValueHandling.Ignore,
                 ContractResolver = new ShouldSerializeContractResolver(allowedNames),
-                DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate,
+                DefaultValueHandling = DefaultValueHandling.Populate,
             };
 
             if (filters != null && filters.Any())

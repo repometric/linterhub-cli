@@ -9,7 +9,7 @@
         "message": "@import prevents parallel downloads, use <link> instead.",
         "ruleId": "csslint:import",
         "ruleName": "import",
-        "severity": 3
+        "severity": "warning"
       },
       {
         "column": 1,
@@ -19,7 +19,7 @@
         "message": "@import prevents parallel downloads, use <link> instead.",
         "ruleId": "csslint:import",
         "ruleName": "import",
-        "severity": 3
+        "severity": "warning"
       }
     ],
     "path": "all.css"

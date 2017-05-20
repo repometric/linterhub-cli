@@ -2,28 +2,31 @@
   {
     "messages": [
       {
+        "column": 0,
         "columnEnd": 1000,
         "line": 2,
         "lineEnd": 2,
         "message": "Expected indentation of 1 tab (indentation)",
         "ruleId": "indentation",
-        "severity": 4
+        "severity": "error"
       },
       {
+        "column": 0,
         "columnEnd": 1000,
         "line": 3,
         "lineEnd": 3,
         "message": "Expected indentation of 1 tab (indentation)",
         "ruleId": "indentation",
-        "severity": 4
+        "severity": "error"
       },
       {
+        "column": 0,
         "columnEnd": 1000,
         "line": 4,
         "lineEnd": 4,
         "message": "Expected indentation of 1 tab (indentation)",
         "ruleId": "indentation",
-        "severity": 4
+        "severity": "error"
       }
     ],
     "path": "sass\\base\\_all.sass"
@@ -31,12 +34,13 @@
   {
     "messages": [
       {
+        "column": 0,
         "columnEnd": 1000,
         "line": 2,
         "lineEnd": 2,
         "message": "Missed semicolon (CssSyntaxError)",
         "ruleId": "CssSyntaxError",
-        "severity": 4
+        "severity": "error"
       }
     ],
     "path": "sass\\base\\generic.sass"
@@ -50,7 +54,7 @@
         "lineEnd": 5,
         "message": "Unknown word (CssSyntaxError)",
         "ruleId": "CssSyntaxError",
-        "severity": 4
+        "severity": "error"
       }
     ],
     "path": "sass\\base\\helpers.sass"
@@ -64,7 +68,7 @@
         "lineEnd": 25,
         "message": "Missed semicolon (CssSyntaxError)",
         "ruleId": "CssSyntaxError",
-        "severity": 4
+        "severity": "error"
       }
     ],
     "path": "sass\\base\\minireset.sass"

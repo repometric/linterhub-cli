@@ -8,7 +8,7 @@
         "lineEnd": 4,
         "message": "Expected indentation of 1 tab (indentation)",
         "ruleId": "indentation",
-        "severity": 4
+        "severity": "error"
       },
       {
         "column": 2,
@@ -17,7 +17,7 @@
         "lineEnd": 5,
         "message": "Expected indentation of 1 tab (indentation)",
         "ruleId": "indentation",
-        "severity": 4
+        "severity": "error"
       },
       {
         "column": 2,
@@ -26,7 +26,7 @@
         "lineEnd": 6,
         "message": "Expected indentation of 1 tab (indentation)",
         "ruleId": "indentation",
-        "severity": 4
+        "severity": "error"
       },
       {
         "column": 2,
@@ -35,7 +35,7 @@
         "lineEnd": 7,
         "message": "Expected indentation of 1 tab (indentation)",
         "ruleId": "indentation",
-        "severity": 4
+        "severity": "error"
       },
       {
         "column": 2,
@@ -44,7 +44,7 @@
         "lineEnd": 8,
         "message": "Expected indentation of 1 tab (indentation)",
         "ruleId": "indentation",
-        "severity": 4
+        "severity": "error"
       },
       {
         "column": 2,
@@ -53,7 +53,7 @@
         "lineEnd": 9,
         "message": "Expected indentation of 1 tab (indentation)",
         "ruleId": "indentation",
-        "severity": 4
+        "severity": "error"
       }
     ],
     "path": "less\\core.less"

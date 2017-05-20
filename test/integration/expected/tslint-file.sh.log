@@ -4,10 +4,12 @@
       {
         "column": 30,
         "columnEnd": 1000,
+        "line": 0,
+        "lineEnd": 0,
         "message": "' should be \"",
         "ruleId": "tslint:quotemark",
         "ruleName": "quotemark",
-        "severity": 4
+        "severity": "error"
       },
       {
         "column": 33,
@@ -17,7 +19,7 @@
         "message": "' should be \"",
         "ruleId": "tslint:quotemark",
         "ruleName": "quotemark",
-        "severity": 4
+        "severity": "error"
       }
     ],
     "path": "main.ts"

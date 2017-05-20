@@ -15,10 +15,11 @@
     "name": "coffeelint",
     "requirements": [
       {
+        "manager": "system",
         "package": "npm"
       },
       {
-        "manager": 4,
+        "manager": "npm",
         "package": "coffeelint"
       }
     ],
@@ -42,10 +43,11 @@
     "prefix": "node file://{schema}/colorguard/prefix.js ",
     "requirements": [
       {
+        "manager": "system",
         "package": "npm"
       },
       {
-        "manager": 4,
+        "manager": "npm",
         "package": "colorguard"
       }
     ],
@@ -70,10 +72,11 @@
     "prefix": "node file://{schema}/csslint/prefix.js ",
     "requirements": [
       {
+        "manager": "system",
         "package": "npm"
       },
       {
-        "manager": 4,
+        "manager": "npm",
         "package": "csslint"
       }
     ],
@@ -95,10 +98,11 @@
     "name": "eslint",
     "requirements": [
       {
+        "manager": "system",
         "package": "npm"
       },
       {
-        "manager": 4,
+        "manager": "npm",
         "package": "eslint"
       }
     ],
@@ -121,10 +125,11 @@
     "postfix": " | node file://{schema}/htmlhint/reporter.js",
     "requirements": [
       {
+        "manager": "system",
         "package": "npm"
       },
       {
-        "manager": 4,
+        "manager": "npm",
         "package": "htmlhint"
       }
     ],
@@ -149,10 +154,11 @@
     "name": "jshint",
     "requirements": [
       {
+        "manager": "system",
         "package": "npm"
       },
       {
-        "manager": 4,
+        "manager": "npm",
         "package": "jshint"
       }
     ],
@@ -178,10 +184,11 @@
     "postfix": " | node file://{schema}/jslint/reporter.js",
     "requirements": [
       {
+        "manager": "system",
         "package": "npm"
       },
       {
-        "manager": 4,
+        "manager": "npm",
         "package": "jslint"
       }
     ],
@@ -206,10 +213,11 @@
     "prefix": "node file://{schema}/jsonlint/prefix.js ",
     "requirements": [
       {
+        "manager": "system",
         "package": "npm"
       },
       {
-        "manager": 4,
+        "manager": "npm",
         "package": "jsonlint"
       }
     ],
@@ -234,10 +242,11 @@
     "postfix": " | node file://{schema}/sass-lint/reporter.js",
     "requirements": [
       {
+        "manager": "system",
         "package": "npm"
       },
       {
-        "manager": 4,
+        "manager": "npm",
         "package": "sass-lint"
       }
     ],
@@ -260,10 +269,11 @@
     "postfix": " | node file://{schema}/standard/reporter.js",
     "requirements": [
       {
+        "manager": "system",
         "package": "npm"
       },
       {
-        "manager": 4,
+        "manager": "npm",
         "package": "standard"
       }
     ],
@@ -290,10 +300,11 @@
     "name": "stylelint",
     "requirements": [
       {
+        "manager": "system",
         "package": "npm"
       },
       {
-        "manager": 4,
+        "manager": "npm",
         "package": "stylelint"
       }
     ],
@@ -320,14 +331,15 @@
     "postfix": " | node file://{schema}/tslint/reporter.js",
     "requirements": [
       {
+        "manager": "system",
         "package": "npm"
       },
       {
-        "manager": 4,
+        "manager": "npm",
         "package": "typescript"
       },
       {
-        "manager": 4,
+        "manager": "npm",
         "package": "tslint"
       }
     ],

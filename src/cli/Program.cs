@@ -1,4 +1,4 @@
-﻿namespace Linterhub.Cli
+namespace Linterhub.Cli
 {
     using System;
     using System.Collections.Generic;
@@ -91,6 +91,9 @@
             locator.Register<TerminalWrapper>(terminal);
             locator.Register<LinterWrapper>(linterRunner);
             locator.Register<Installer>(installer);
+
+            var ensure = new Ensure(locator);
+            locator.Register<Ensure>(ensure);
 
             return locator;
         }

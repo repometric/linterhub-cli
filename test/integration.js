@@ -56,13 +56,15 @@ fs.readdir(integration, (err, files) => {
                             else
                             {
                                 printError(file, "FAILED!");
-                                var diff = JsDiff.diffLines(JSON.stringify(result), JSON.stringify(expected));
+                                var diff = JsDiff.diffLines(JSON.stringify(result, null, 2), JSON.stringify(expected, null, 2));
                             
                                 diff.forEach(function(part){
                                     if(part.removed)
                                         console.log("\x1b[31m%s\x1b[37m", part.value);
-                                    if(part.added)
+                                    else if(part.added)
                                         console.log("\x1b[32m%s\x1b[37m", part.value);
+                                    else 
+                                        console.log("%s", part.value);
                                 });
                                 //console.log(compareObj(result, expected));
                                 process.exit(1);
