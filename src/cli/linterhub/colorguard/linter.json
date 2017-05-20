@@ -26,6 +26,7 @@
     "postfix": " node file://{schema}/colorguard/reporter.js",
     "prefix": "node file://{schema}/colorguard/prefix.js ",
     "version": {
+        "package": "1.2.0"
     },
     "defaults": {
         "--file": null,

@@ -24,7 +24,8 @@
     ],
     "url": "http://www.coffeelint.org",
     "version": {
-      "local": "1.16.0"
+      "local": "1.16.0",
+      "package": "1.16.0"
     }
   },
   {
@@ -49,7 +50,9 @@
       }
     ],
     "url": "https://github.com/SlexAxton/css-colorguard",
-    "version": {}
+    "version": {
+      "package": "1.2.0"
+    }
   },
   {
     "areas": [
@@ -76,7 +79,8 @@
     ],
     "url": "http://csslint.net",
     "version": {
-      "local": "v1.0.3"
+      "local": "v1.0.4",
+      "package": "1.0.4"
     }
   },
   {
@@ -100,7 +104,8 @@
     ],
     "url": "http://eslint.org",
     "version": {
-      "local": "v3.2.0"
+      "local": "v3.19.0",
+      "package": "3.19.0"
     }
   },
   {
@@ -153,7 +158,8 @@
     ],
     "url": "http://jshint.com",
     "version": {
-      "local": "jshint v2.9.4"
+      "local": "jshint v2.9.4",
+      "package": "2.9.4"
     }
   },
   {
@@ -181,7 +187,8 @@
     ],
     "url": "http://jslint.com",
     "version": {
-      "local": "node-jslint version: 0.10.3  JSLint edition 2013-08-26"
+      "local": "node-jslint version: 0.10.3  JSLint edition 2013-08-26",
+      "package": "0.10.3"
     }
   },
   {
@@ -208,7 +215,8 @@
     ],
     "url": "https://github.com/zaach/jsonlint",
     "version": {
-      "local": "1.6.2"
+      "local": "1.6.2",
+      "package": "1.6.2"
     }
   },
   {
@@ -235,7 +243,8 @@
     ],
     "url": "https://github.com/sasstools/sass-lint",
     "version": {
-      "local": "1.10.2"
+      "local": "1.10.2",
+      "package": "1.10.2"
     }
   },
   {
@@ -260,8 +269,8 @@
     ],
     "url": "http://standardjs.com",
     "version": {
-      "local": "9.0.1",
-      "package": "9.0.1"
+      "local": "10.0.2",
+      "package": "10.0.2"
     }
   },
   {
@@ -290,7 +299,8 @@
     ],
     "url": "https://stylelint.io/",
     "version": {
-      "local": "7.10.1"
+      "local": "7.10.1",
+      "package": "7.10.1"
     }
   },
   {
@@ -323,7 +333,8 @@
     ],
     "url": "https://palantir.github.io/tslint/",
     "version": {
-      "local": "5.1.0"
+      "local": "5.1.0",
+      "package": "5.1.0"
     }
   }
 ]

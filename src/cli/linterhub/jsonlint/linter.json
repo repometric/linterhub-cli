@@ -28,7 +28,7 @@
     "prefix": "node file://{schema}/jsonlint/prefix.js ",
     "version": {
         "local": "1.6.2",
-        "manager": "1.6.2"
+        "package": "1.6.2"
     },
     "defaults": {
         "": "*",

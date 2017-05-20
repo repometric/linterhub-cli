@@ -29,7 +29,7 @@ namespace Linterhub.Engine.Runtime
 
         public InstallResult Install(LinterSpecification specification)
         {
-            var requirementsChecks = specification.Schema.Requirements.Select(requirement => 
+            var requirementsChecks = specification.Schema.Requirements.Select(requirement =>
             {
                 var installCheck = IsInstalled(requirement);
                 if (installCheck.Installed)
@@ -37,19 +37,21 @@ namespace Linterhub.Engine.Runtime
                     return installCheck;
                 }
 
-                return Install(requirement);
+                return Install(requirement, specification.Schema.Name, specification.Schema.Version.Package);
             });
 
             return requirementsChecks.FirstOrDefault(x => !x.Installed) ?? new InstallResult { Installed = true };
         }
 
-        private InstallResult Install(RequirementType requirement)
+        private InstallResult Install(RequirementType requirement, string Linter, string Version)
         {
             var command = "";
-            switch(requirement.Manager)
+            switch (requirement.Manager)
             {
                 case RequirementType.ManagerType.npm:
-                    command = $"npm install {requirement.Package} -g";
+                    command = $"npm install -g {requirement.Package}";
+                    if (Linter == requirement.Package)
+                        command += "@" + Version;
                     break;
                 case RequirementType.ManagerType.pip:
                     command = $"pip install {requirement.Package}";
@@ -78,4 +80,5 @@ namespace Linterhub.Engine.Runtime
             public string Message { get; set; }
         }
     }
+
 }

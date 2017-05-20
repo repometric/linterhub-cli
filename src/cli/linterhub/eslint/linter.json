@@ -12,8 +12,8 @@
         { "manager": "npm", "package": "eslint" }
     ],
     "version": {
-        "local": "v3.2.0",
-        "manager": "3.2.0"
+        "local": "v3.19.0",
+        "package": "3.19.0"
     },
     "defaults": {
         "--format": "file://{schema}/eslint/reporter.js",
