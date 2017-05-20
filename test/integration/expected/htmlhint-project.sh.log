@@ -3,14 +3,10 @@
     "filePath": "cleanScript.html",
     "messages": [
       {
+        "columnEnd": 1000,
         "message": "Doctype must be declared first.",
-        "source": "<script>",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "0",
-        "lineEnd": "0",
-        "ruleId": "htmlhint:doctype-first"
+        "ruleId": "htmlhint:doctype-first",
+        "severity": 4
       }
     ]
   },
@@ -18,14 +14,10 @@
     "filePath": "iframe.html",
     "messages": [
       {
+        "columnEnd": 1000,
         "message": "Doctype must be declared first.",
-        "source": "<html>",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "0",
-        "lineEnd": "0",
-        "ruleId": "htmlhint:doctype-first"
+        "ruleId": "htmlhint:doctype-first",
+        "severity": 4
       }
     ]
   },
@@ -33,14 +25,10 @@
     "filePath": "name.html",
     "messages": [
       {
+        "columnEnd": 1000,
         "message": "Doctype must be declared first.",
-        "source": "ERROR <script type=\"text/javascript\">ok( true, \"name.html retrieved\" );</script>",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "0",
-        "lineEnd": "0",
-        "ruleId": "htmlhint:doctype-first"
+        "ruleId": "htmlhint:doctype-first",
+        "severity": 4
       }
     ]
   },
@@ -48,14 +36,10 @@
     "filePath": "test.html",
     "messages": [
       {
+        "columnEnd": 1000,
         "message": "Doctype must be declared first.",
-        "source": "html text<br/>",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "0",
-        "lineEnd": "0",
-        "ruleId": "htmlhint:doctype-first"
+        "ruleId": "htmlhint:doctype-first",
+        "severity": 4
       }
     ]
   },
@@ -63,14 +47,10 @@
     "filePath": "test2.html",
     "messages": [
       {
+        "columnEnd": 1000,
         "message": "Doctype must be declared first.",
-        "source": "<script type=\"text/javascript\">",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "0",
-        "lineEnd": "0",
-        "ruleId": "htmlhint:doctype-first"
+        "ruleId": "htmlhint:doctype-first",
+        "severity": 4
       }
     ]
   },
@@ -78,14 +58,10 @@
     "filePath": "test3.html",
     "messages": [
       {
+        "columnEnd": 1000,
         "message": "Doctype must be declared first.",
-        "source": "<div class=\"user\">This is a user</div>",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "0",
-        "lineEnd": "0",
-        "ruleId": "htmlhint:doctype-first"
+        "ruleId": "htmlhint:doctype-first",
+        "severity": 4
       }
     ]
   },
@@ -93,14 +69,12 @@
     "filePath": "core\\cc_on.html",
     "messages": [
       {
+        "columnEnd": 1000,
+        "line": 16,
+        "lineEnd": 16,
         "message": "<title> must be present in <head> tag.",
-        "source": "</head>",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "16",
-        "lineEnd": "16",
-        "ruleId": "htmlhint:title-require"
+        "ruleId": "htmlhint:title-require",
+        "severity": 4
       }
     ]
   },
@@ -108,14 +82,12 @@
     "filePath": "core\\dynamic_ready.html",
     "messages": [
       {
+        "columnEnd": 1000,
+        "line": 7,
+        "lineEnd": 7,
         "message": "<title> must be present in <head> tag.",
-        "source": "</head>",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "7",
-        "lineEnd": "7",
-        "ruleId": "htmlhint:title-require"
+        "ruleId": "htmlhint:title-require",
+        "severity": 4
       }
     ]
   },
@@ -123,14 +95,12 @@
     "filePath": "css\\cssWidthBeforeDocReady.html",
     "messages": [
       {
+        "columnEnd": 1000,
+        "line": 12,
+        "lineEnd": 12,
         "message": "<title> must be present in <head> tag.",
-        "source": "</head>",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "12",
-        "lineEnd": "12",
-        "ruleId": "htmlhint:title-require"
+        "ruleId": "htmlhint:title-require",
+        "severity": 4
       }
     ]
   },
@@ -138,14 +108,12 @@
     "filePath": "dimensions\\documentLarge.html",
     "messages": [
       {
+        "columnEnd": 1000,
+        "line": 11,
+        "lineEnd": 11,
         "message": "<title> must be present in <head> tag.",
-        "source": "</head>",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "11",
-        "lineEnd": "11",
-        "ruleId": "htmlhint:title-require"
+        "ruleId": "htmlhint:title-require",
+        "severity": 4
       }
     ]
   },
@@ -153,14 +121,13 @@
     "filePath": "manipulation\\iframe-denied.html",
     "messages": [
       {
+        "column": 7,
+        "columnEnd": 1000,
+        "line": 3,
+        "lineEnd": 3,
         "message": "The value of attribute [ charset ] must be in double quotes.",
-        "source": "<meta charset=utf-8 />",
-        "severity": 5,
-        "column": "7",
-        "columnEnd": "1000",
-        "line": "3",
-        "lineEnd": "3",
-        "ruleId": "htmlhint:attr-value-double-quotes"
+        "ruleId": "htmlhint:attr-value-double-quotes",
+        "severity": 4
       }
     ]
   },
@@ -168,14 +135,13 @@
     "filePath": "manipulation\\scripts-context.html",
     "messages": [
       {
+        "column": 7,
+        "columnEnd": 1000,
+        "line": 3,
+        "lineEnd": 3,
         "message": "The value of attribute [ charset ] must be in double quotes.",
-        "source": "<meta charset=utf-8 />",
-        "severity": 5,
-        "column": "7",
-        "columnEnd": "1000",
-        "line": "3",
-        "lineEnd": "3",
-        "ruleId": "htmlhint:attr-value-double-quotes"
+        "ruleId": "htmlhint:attr-value-double-quotes",
+        "severity": 4
       }
     ]
   },
@@ -183,14 +149,12 @@
     "filePath": "support\\bodyBackground.html",
     "messages": [
       {
+        "columnEnd": 1000,
+        "line": 16,
+        "lineEnd": 16,
         "message": "<title> must be present in <head> tag.",
-        "source": "</head>",
-        "severity": 5,
-        "column": "0",
-        "columnEnd": "1000",
-        "line": "16",
-        "lineEnd": "16",
-        "ruleId": "htmlhint:title-require"
+        "ruleId": "htmlhint:title-require",
+        "severity": 4
       }
     ]
   }
