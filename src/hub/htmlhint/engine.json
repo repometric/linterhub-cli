@@ -1,0 +1,35 @@
+{
+    "$schema": "./../.schema/engine.json",
+    "name": "htmlhint",
+    "description": "HTMLHint is a Static Code Analysis Tool for HTML",
+    "url": "http://htmlhint.com",
+    "languages": [
+        "html"
+    ],
+    "extensions": [
+        "*.html"
+    ],
+    "license": "MIT",
+    "areas": [
+        "syntax"
+    ],
+    "requirements": [
+        {
+            "manager": "system",
+            "package": "npm"
+        },
+        {
+            "manager": "npm",
+            "package": "htmlhint"
+        }
+    ],
+    "version": {
+        "local": "0.9.13",
+        "package": "0.9.13"
+    },
+    "postfix": " | node file://{schema}/htmlhint/reporter.js",
+    "defaults": {
+        "": "**/**/*.html",
+        "--format": "json"
+    }
+}

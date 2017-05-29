@@ -1,0 +1,38 @@
+{
+    "$schema": "./../.schema/engine.json",
+    "name": "coffeelint",
+    "description": "CoffeeLint is a style checker that helps keep CoffeeScript code clean and consistent",
+    "url": "http://www.coffeelint.org",
+    "languages": [
+        "coffeescript"
+    ],
+    "extensions": [
+        "*.coffee"
+    ],
+    "license": "MIT",
+    "areas": [
+        "syntax",
+        "formatting",
+        "smell",
+        "complexity",
+        "duplication"
+    ],
+    "requirements": [
+        {
+            "manager": "system",
+            "package": "npm"
+        },
+        {
+            "manager": "npm",
+            "package": "coffeelint"
+        }
+    ],
+    "version": {
+        "local": "1.16.0",
+        "manager": "1.16.0"
+    },
+    "defaults": {
+        "--reporter": "file://{schema}/coffeelint/reporter.coffee",
+        "": "./"
+    }
+}

@@ -1,0 +1,89 @@
+{
+    "$schema": "./../.schema/args.json",
+    "title": "htmlhint args schema",
+    "description": "htmlhint configuration",
+    "type": "object",
+    "allOf": [
+        {
+            "$ref": "#/definitions/options"
+        }
+    ],
+    "definitions": {
+        "options": {
+            "type": "object",
+            "properties": {
+                "stdin": {
+                    "type": "null",
+                    "description": "Read the source from stdin"
+                },
+                "--nocolor": {
+                    "type": "null",
+                    "description": "Disable color"
+                },
+                "--ignore": {
+                    "type": "string",
+                    "description": "Add pattern to exclude matches"
+                },
+                "--format": {
+                    "type": "string",
+                    "description": "Output messages as custom format",
+                    "enum": [
+                        "checkstyle",
+                        "compact",
+                        "json",
+                        "junit",
+                        "markdown",
+                        "unix"
+                    ]
+                },
+                "--rulesdir": {
+                    "type": "string",
+                    "description": "Load custom rules from file or folder"
+                },
+                "--rules": {
+                    "type": "string",
+                    "description": "Set all of the rules available"
+                },
+                "--config": {
+                    "type": "string",
+                    "description": "Custom configuration file"
+                },
+                "--list": {
+                    "type": "string",
+                    "description": "Show all of the rules available"
+                },
+                "--help": {
+                    "type": "string",
+                    "description": "Show help"
+                },
+                "--version": {
+                    "type": "string",
+                    "description": "Show version"
+                },
+                "": {
+                    "id": "{path}",
+                    "type": "string",
+                    "description": "Path for analysis"
+                }
+            }
+        },
+        "section": {
+            "type": "object",
+            "description": "The engine configuration section",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "The engine name",
+                    "enum": [
+                        "htmlhint"
+                    ]
+                },
+                "options": {
+                    "type": "object",
+                    "description": "The engine configuration",
+                    "$ref": "#/definitions/options"
+                }
+            }
+        }
+    }
+}

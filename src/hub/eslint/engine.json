@@ -1,0 +1,36 @@
+{
+    "$schema": "./../.schema/engine.json",
+    "name": "eslint",
+    "description": "A fully pluggable tool for identifying and reporting on patterns in JavaScript",
+    "url": "http://eslint.org",
+    "languages": [
+        "javascript",
+        "jsx"
+    ],
+    "extensions": [
+        "*.js"
+    ],
+    "license": "MIT",
+    "areas": [
+        "syntax"
+    ],
+    "requirements": [
+        {
+            "manager": "system",
+            "package": "npm"
+        },
+        {
+            "manager": "npm",
+            "package": "eslint"
+        }
+    ],
+    "version": {
+        "local": "v3.19.0",
+        "package": "3.19.0"
+    },
+    "defaults": {
+        "--format": "file://{schema}/eslint/reporter.js",
+        "--config": "file://{schema}/eslint/.eslintrc.js",
+        "": "**/**/*.js"
+    }
+}

@@ -1,0 +1,78 @@
+{
+    "$schema": "./../.schema/args.json",
+    "title": "jsonlint args schema",
+    "description": "jsonlint configuration",
+    "type": "object",
+    "allOf": [
+        {
+            "$ref": "#/definitions/options"
+        }
+    ],
+    "definitions": {
+        "options": {
+            "type": "object",
+            "properties": {
+                "--sort-keys": {
+                    "type": "null",
+                    "description": "Sort object keys"
+                },
+                "--in-place": {
+                    "type": "null",
+                    "description": "Overwrite the file"
+                },
+                "--indent": {
+                    "type": "string",
+                    "description": "Character to use for indentation"
+                },
+                "--compact": {
+                    "type": "null",
+                    "description": "Compact error display"
+                },
+                "--validate": {
+                    "type": "string",
+                    "description": "A JSON schema to use for validation"
+                },
+                "--environment": {
+                    "type": "string",
+                    "description": "Which specification of JSON Schema the validation file uses",
+                    "default": "json-schema-draft-03"
+                },
+                "--quiet": {
+                    "type": "null",
+                    "description": "Do not print the parsed json to STDOUT"
+                },
+                "--pretty-print": {
+                    "type": "null",
+                    "description": "Force pretty printing even if invalid"
+                },
+                "--version": {
+                    "type": "null",
+                    "description": "Show version of linter"
+                },
+                "": {
+                    "id": "{path}",
+                    "type": "string",
+                    "description": "Path for analysis"
+                }
+            }
+        },
+        "section": {
+            "type": "object",
+            "description": "The engine configuration section",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "The engine name",
+                    "enum": [
+                        "jsonlint"
+                    ]
+                },
+                "options": {
+                    "type": "object",
+                    "description": "The engine configuration",
+                    "$ref": "#/definitions/options"
+                }
+            }
+        }
+    }
+}
