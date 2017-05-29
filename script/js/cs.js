@@ -30,7 +30,7 @@ const format = {
     property: (propname, type, isArray) => {
         if(propname === "defaults")
             type = "LinterOptions";
-        if(propname === "config" && name === `linterhub.config.json`)
+        if(propname === "options" && name === `linterhub.config.json`)
             type = "LinterOptions";
         if(type === "int" || type === "bool")
             type += "?";
