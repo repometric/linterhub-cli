@@ -1,0 +1,15 @@
+{
+  "name": "linterhub-cli",
+  "version": "0.0.0",
+  "description": "linterhub cli nodejs dependencies",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/repometric/linterhub-cli.git"
+  },
+  "author": "repometric",
+  "license": "MIT",
+	"devDependencies": {
+    "eslint": "^3.19.0",
+    "eslint-config-google": "^0.7.1"
+  }
+}

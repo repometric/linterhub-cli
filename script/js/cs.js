@@ -1,3 +1,4 @@
+'use strict';
 const fs = require('fs');
 const path = require('path');
 
@@ -6,7 +7,7 @@ const content = fs.readFileSync(fileName);
 const name = path.basename(fileName);
 const schema = JSON.parse(content);
 
-Object.resolve = (path, obj) => path.replace('#/', '').split('/').reduce((prev, curr) => prev ? prev[curr] : undefined, obj || self);
+Object.resolve = (path, obj) => path.replace('#/', '').split('/').reduce((prev, curr) => prev ? prev[curr] : undefined, obj || null);
 
 const format = {
     undef: (name) => name.replace('#/definitions/', ''),
@@ -14,103 +15,108 @@ const format = {
     highCase: (value) => value.charAt(0).toUpperCase() + value.slice(1),
     enum: (name, value) => {
         name = name.charAt(0).toUpperCase() + name.slice(1);
-        var json_prop = `[JsonConverter(typeof(StringEnumConverter))]\n`;
-        return json_prop + `public enum ${format.highCase(name)}Type\n` + format.open() + "\n" +
+        const jsonProp = '[JsonConverter(typeof(StringEnumConverter))]\n';
+        return jsonProp + `public enum ${format.highCase(name)}Type\n` + format.open() + '\n' +
             (value.enum ? value.enum.join(',\n') : '') +
-            (value.items && value.items.enum ? value.items.enum.join(',\n') : '') + "\n" + format.close() + "\n";
+            (value.items && value.items.enum ? value.items.enum.join(',\n') : '') + '\n' + format.close() + '\n';
     },
     removeExtension: (typeName) => {
-        if(typeName.indexOf(".json") == -1)
+        if(typeName.indexOf('.json') == -1) {
             return typeName;
-        typeName = typeName.replace('.json', '').split(".");
-        for(var i = 0; i < typeName.length; ++i)
+        }
+        typeName = typeName.replace('.json', '').split('.');
+        for (let i = 0; i < typeName.length; ++i) {
             typeName[i] = format.highCase(typeName[i]);
-        return typeName.join("");
+        }
+        return typeName.join('');
     },
     property: (propname, type, isArray) => {
-        if(propname === "defaults")
-            type = "LinterOptions";
-        if(propname === "options" && name === `linterhub.config.json`)
-            type = "LinterOptions";
-        if(type === "int" || type === "bool")
-            type += "?";
-        type = type.replace("EngineOutputType", "EngineOutputSchema");
+        if (propname === 'defaults') {
+            type = 'LinterOptions';
+        }
+        if (propname === 'options' && name === 'linterhub.config.json') {
+            type = 'LinterOptions';
+        }
+        if (type === 'int' || type === 'bool') {
+            type += '?';
+        }
+        type = type.replace('EngineOutputType', 'EngineOutputSchema');
         return `public ${type} ${format.highCase(propname)}` + (isArray ? ` = new ${type}();` : ` { get; set; }`);
     },
-    open: () => `{`,
+    open: () => '{',
     close: () => '}',
     documentation: (text, isClass) => {
-        var result = "\n/// <summary>\n/// ";
-        if(isClass)
+        let result = '\n/// <summary>\n/// ';
+        if (isClass) {
             result += `${text}`;
-        else
+        } else {
             result += `Gets or sets ${text.toLowerCase()}`;
-        result += `\n/// </summary>`;
+        }
+        result += '\n/// </summary>';
         return result;
     },
     type: (name) => {
         if (name == undefined)
-            return "string";
-        if(name === "string")
+            return 'string';
+        if (name === 'string')
             return name;
-        if(name == "integer")
-            return "int";
-        if(name == "boolean")
-            return "bool";
-        if(name == "object")
+        if (name == 'integer')
+            return 'int';
+        if (name == 'boolean')
+            return 'bool';
+        if (name == 'object')
             return name;
-        if(name == "array")
+        if (name == 'array')
             return name;
         name = format.undef(name);
-        return format.highCase(name) + "Type";
+        return format.highCase(name) + 'Type';
     },
     isDefaultType: (name) => name === 'string',
     tabs: (code) => {
-        var arr = code.split('\n');
-        var counter = 0;
-        for (var i = 0; i < arr.length; ++i) {
-            var line = "";
-            if (arr[i] === "}")
+        const arr = code.split('\n');
+        let counter = 0;
+        for (let i = 0; i < arr.length; ++i) {
+            let line = '';
+            if (arr[i] === '}') {
                 counter--;
-            for(var j = 0; j < counter; ++j)
-                line += "\t";
-            if (arr[i] === "{")
+            }
+            for (let j = 0; j < counter; ++j) {
+                line += '\t';
+            }
+            if (arr[i] === '{') {
                 counter++;
+            }
             line += arr[i];
             arr[i] = line;
         }
         return arr.join('\n');
-    }
+    },
 };
 
 const describe = {
     property: (name, value) => {
-        var type = format.type(value.type);
-        var isArray = false;
-        if(value.enum || (value.items && value.items.enum))
-        {
-             if (type === 'array')
-             {
+        let type = format.type(value.type);
+        let isArray = false;
+        if (value.enum || (value.items && value.items.enum)) {
+             if (type === 'array') {
                 isArray = true;
-                type = "List<" + format.type(name) + ">";
-             }
-             else
+                type = 'List<' + format.type(name) + '>';
+             } else {
                 type = format.type(name);
+             }
         }
         if (type === 'array') {
             isArray = true;
             const typeName = value.items.type ? format.type(value.items.type) : format.type(value.items.$ref);
-            type = "List<" + typeName + ">";
+            type = 'List<' + typeName + '>';
         }
-        if (type === 'object') {
-            if(value.properties)
-                type = format.type(name);
+        if (type === 'object' && value.properties) {
+            type = format.type(name);
         }
 
         type = format.removeExtension(type);
-
         return format.property(name, type, isArray);
-    }
+    },
 };
 
 const tree = {
@@ -122,13 +128,13 @@ const tree = {
             return;
         }
         if (node.properties) {
-            tree.types.push({ name: name, node: node });
+            tree.types.push({name: name, node: node});
             Object.keys(node.properties).forEach((name) => {
                 tree.visit(name, node.properties[name]);
             });
         }
         if (node.items && !format.isDefaultType(node.items.type)) {
-            tree.types.push({ name: name, node: node });
+            tree.types.push({name: name, node: node});
             tree.visit(name, node.items);
         }
         if (node.$ref) {
@@ -137,9 +143,10 @@ const tree = {
         }
     },
     node: (nodeName, node) => {
-        var typeName = format.type(nodeName);
-        if (!nodeName)
-            typeName = format.removeExtension(name + "Schema");
+        let typeName = format.type(nodeName);
+        if (!nodeName) {
+            typeName = format.removeExtension(name + 'Schema');
+        }
         tree.doc.push(format.documentation(node.description, true));
         tree.doc.push(format.class(typeName));
         tree.doc.push(format.open());
@@ -147,15 +154,13 @@ const tree = {
             Object.keys(node.properties).forEach((name) => {
                 const value = node.properties[name];
                 tree.doc.push(format.documentation(value.description, false));
-                if(value.enum || (value.items && value.items.enum))
-                {
-                    if(name == "languages" || name == "manager" || name == "severity")
+                if (value.enum || (value.items && value.items.enum)) {
+                    if (name === 'languages' || name === 'manager' || name === 'severity') {
                         tree.doc.push(format.enum(name, value));
-                    else
-                    {
+                    } else {
                         value.enum = null;
                         value.items = {
-                            type: "string"
+                            type: 'string',
                         };
                     }
                 }
@@ -163,8 +168,9 @@ const tree = {
                 tree.doc.push(prop);
             });
         }
-        if(nodeName != undefined)
+        if(nodeName != undefined) {
             tree.doc.push(format.close());
+        }
     },
     document: (name, node) => {
         if (name && node.items && node.items.$ref) {
@@ -177,13 +183,13 @@ const tree = {
         tree.described.push(name);
     },
 };
-tree.doc.push(`namespace Linterhub.Engine.Schema`);
+tree.doc.push('namespace Linterhub.Engine.Schema');
 tree.doc.push(format.open());
-tree.doc.push("using System.Collections.Generic;");
-tree.doc.push("using Newtonsoft.Json;");
-tree.doc.push("using Newtonsoft.Json.Converters;");
+tree.doc.push('using System.Collections.Generic;');
+tree.doc.push('using Newtonsoft.Json;');
+tree.doc.push('using Newtonsoft.Json.Converters;');
 tree.visit(undefined, schema);
-tree.types.forEach(type => tree.document(type.name, type.node));
+tree.types.forEach((type) => tree.document(type.name, type.node));
 tree.doc.push(format.close());
 tree.doc.push(format.close());
 console.log(format.tabs(tree.doc.join('\n')));

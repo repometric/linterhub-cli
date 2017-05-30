@@ -7,12 +7,12 @@ const mask = '.json';
 com.find(folder, mask, function(fileName) {
     console.log(`File: ${fileName}`);
     console.log('Format');
-    var content = fs.readFileSync(fileName).toString();
-    var json = JSON.parse(content);
-    var formatted = JSON.stringify(json, null, 4);
+    const content = fs.readFileSync(fileName).toString();
+    const json = JSON.parse(content);
+    const formatted = JSON.stringify(json, null, 4);
     fs.writeFileSync(fileName, formatted + '\n');
     console.log('Validate');
-    var result = cp.spawnSync(`z-schema`, [`${fileName}`]);
+    const result = cp.spawnSync(`z-schema`, [`${fileName}`]);
     if (result.status) {
         console.log(`Fail`);
         process.exit(1);

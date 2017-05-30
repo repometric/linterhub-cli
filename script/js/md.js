@@ -1,3 +1,4 @@
+'use strict';
 const fs = require('fs');
 const path = require('path');
 
@@ -6,7 +7,7 @@ const content = fs.readFileSync(fileName);
 const name = path.basename(fileName);
 const schema = JSON.parse(content);
 
-Object.resolve = (path, obj) => path.replace('#/', '').split('/').reduce((prev, curr) => prev ? prev[curr] : undefined, obj || self);
+Object.resolve = (path, obj) => path.replace('#/', '').split('/').reduce((prev, curr) => prev ? prev[curr] : undefined, obj || null);
 
 const format = {
   h1: (text) => `# ${text}`,
@@ -23,7 +24,7 @@ const format = {
         return `${type}[]`;
       } else if (type.indexOf('.json') < 0) {
         return `[${type}](#${type})[]`;
-      } else { 
+      } else {
         const name = format.capitalize(format.title(type));
         const file = type.replace('.json', '.md');
         return `[${name}](${file})[]`;
@@ -33,18 +34,18 @@ const format = {
   },
   title: (text) => text.replace('.json', '').replace('.', ' '),
   type: (name) => name.replace('#/definitions/', ''),
-  isDefaultType: (name) => name === 'string'
+  isDefaultType: (name) => name === 'string',
 };
 
 const describe = {
   description: (value) => {
     return value.description +
-      (value.enum ? '. Possible values: ' + value.enum.map(v => `\`${v}\``).join(', ') : '') +
-      (value.items && value.items.enum ? '. Possible values: ' + value.items.enum.map(v => `\`${v}\``).join(', ') : '') +
+      (value.enum ? '. Possible values: ' + value.enum.map((v) => `\`${v}\``).join(', ') : '') +
+      (value.items && value.items.enum ? '. Possible values: ' + value.items.enum.map((v) => `\`${v}\``).join(', ') : '') +
       (value.default ? '. Default is `' + value.default + '`' : '');
   },
   type: (name, value) => {
-    var type = value.type;
+    let type = value.type;
     if (type === 'array') {
       const typeName = value.items.type ? value.items.type : format.type(value.items.$ref);
       type = format.table.array(typeName);
@@ -71,13 +72,13 @@ const tree = {
       return;
     }
     if (node.properties) {
-      tree.types.push({ name: name, node: node });
+      tree.types.push({name: name, node: node});
       Object.keys(node.properties).forEach((name) => {
         tree.visit(name, node.properties[name]);
       });
     }
     if (node.items && !format.isDefaultType(node.items.type)) {
-      tree.types.push({ name: name, node: node });
+      tree.types.push({name: name, node: node});
       tree.visit(name, node.items);
     }
     if (node.$ref) {
@@ -114,7 +115,7 @@ const tree = {
     tree.described.push(name);
   },
   example: (nodeName, node) => {
-    var result = '';
+    let result = '';
     const hasName = nodeName || nodeName == '';
     if (!node) {
       return result;
@@ -124,14 +125,14 @@ const tree = {
       result += node.type === 'integer' ? 0 :
                 node.enum ? `"${node.enum[0]}"` :
                 node.type === 'null' ? 'null' :
-                node.type === 'boolean' ? false : 
+                node.type === 'boolean' ? false :
                 node.type ==='object' ? '{}' : `"${node.type}"`;
     }
     if (node.properties) {
       const properties = Object.keys(node.properties).map((name) => tree.example(name, node.properties[name])).join(',');
       result += `{${properties}}`;
     }
-    result += 
+    result +=
       (node.items ? `[${tree.example(undefined, node.items)}]` : '') +
       (node.$ref ? tree.example(undefined, Object.resolve(node.$ref, schema)) : '');
 
@@ -144,7 +145,7 @@ tree.visit(undefined, schema);
 tree.doc.push(format.h1(title));
 tree.doc.push(schema.title);
 tree.doc.push(format.h2('Structure'));
-tree.types.forEach(type => tree.document(type.name, type.node));
+tree.types.forEach((type) => tree.document(type.name, type.node));
 tree.doc.push(format.h2('Example'));
 const example = tree.example(undefined, schema);
 const jsonExample = JSON.stringify(JSON.parse(example), null, 4);
