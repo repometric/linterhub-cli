@@ -93,7 +93,7 @@ namespace Linterhub.Cli.Strategy
                 return path;
             }
 
-            return Path.Combine(Directory.GetCurrentDirectory(), "linterhub");
+            return Path.Combine(Directory.GetCurrentDirectory(), "hub");
         }
 
         private string GetProjectPath(string path)

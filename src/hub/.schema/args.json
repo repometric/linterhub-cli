@@ -19,13 +19,11 @@
             "properties": {
                 "options": {
                     "description": "The engine options",
-                    "type": "object",
-                    "$ref": "http://json-schema.org/draft-04/schema"
+                    "type": "object"
                 },
                 "section": {
                     "description": "The engine configuration section",
-                    "type": "object",
-                    "$ref": "http://json-schema.org/draft-04/schema"
+                    "type": "object"
                 }
             },
             "required": [

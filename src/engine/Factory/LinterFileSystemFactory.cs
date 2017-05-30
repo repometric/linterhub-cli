@@ -18,8 +18,8 @@ namespace Linterhub.Engine.Factory
 
     public class LinterFileSystemFactory : ILinterFactory
     {
-        protected const string LinterDefinitionFile = "linter.json";
-        protected const string LinterArgsSchema = "args.schema.json";
+        protected const string LinterDefinitionFile = "engine.json";
+        protected const string LinterArgsSchema = "args.json";
 
         protected string Folder { get; }
 
@@ -71,7 +71,11 @@ namespace Linterhub.Engine.Factory
 
         public IEnumerable<string> GetNames()
         {
-            return Directory.EnumerateDirectories(Folder).Select(x => x.Replace(Folder, string.Empty).TrimStart(Path.DirectorySeparatorChar));
+            return Directory
+                .EnumerateDirectories(Folder)
+                .Select(x => x.Replace(Folder, string.Empty)
+                .TrimStart(Path.DirectorySeparatorChar))
+                .Where(x => x != ".schema");
         }
 
         public IEnumerable<LinterSpecification> GetSpecifications()
