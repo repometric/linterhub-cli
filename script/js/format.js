@@ -15,6 +15,7 @@ com.find(folder, mask, function(fileName) {
     const result = cp.spawnSync(`z-schema`, [`${fileName}`]);
     if (result.status) {
         console.log(`Fail`);
+        console.log(result.stderr.toString());
         process.exit(1);
     }
 });

@@ -54,23 +54,23 @@
                     "description": "Path for analysis"
                 }
             }
-        }
-    },
-    "section": {
-        "type": "object",
-        "description": "The engine configuration section",
-        "properties": {
-            "name": {
-                "type": "string",
-                "description": "The engine name",
-                "enum": [
-                    "standard"
-                ]
-            },
-            "options": {
-                "type": "object",
-                "description": "The engine configuration",
-                "$ref": "#/definitions/options"
+        },
+        "section": {
+            "type": "object",
+            "description": "The engine configuration section",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "The engine name",
+                    "enum": [
+                        "standard"
+                    ]
+                },
+                "options": {
+                    "type": "object",
+                    "description": "The engine configuration",
+                    "$ref": "#/definitions/options"
+                }
             }
         }
     }

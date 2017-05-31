@@ -20,7 +20,7 @@ namespace Linterhub.Engine.Runtime
             // var command = string.Format(IsInstalledCommand, package);
             // hot fix
             var command = string.Format("{0} --version", requirement.Package);
-            var checkResult = Terminal.RunTerminal(command);
+            var checkResult = Terminal.RunTerminal(command, waitTimeout: 1000);
             return new InstallResult
             {
                 Installed = checkResult.ExitCode == 0,

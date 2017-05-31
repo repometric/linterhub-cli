@@ -2,7 +2,6 @@
     "$schema": "./../.schema/args.json",
     "title": "colorguard args schema",
     "description": "colorguard configuration",
-    "type": "object",
     "allOf": [
         {
             "$ref": "#/definitions/options"

@@ -107,6 +107,9 @@ namespace Linterhub.Cli.Runtime
         public RunContext(RunMode mode = RunMode.Help)
         {
             Mode = mode;
+            Linters = new string[0];
+            Keys = new string[0];
+            Filters = new string[0];
         }
     }
 }

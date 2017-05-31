@@ -1,6 +1,7 @@
 namespace Linterhub.Cli.Strategy
 {
     using System.IO;
+    using System.Reflection;
     using System.Runtime.InteropServices;
     using Linterhub.Engine.Exceptions;
     using Linterhub.Engine.Extensions;
@@ -82,28 +83,50 @@ namespace Linterhub.Cli.Strategy
                 file = "default.json";
             }
 
-            file = Path.Combine(Directory.GetCurrentDirectory(), "platform", file);
+            file = Path.Combine(GetResourcePath("platform"), file);
             return file;
         }
 
         private string GetLinterhubPath(string path)
         {
-            if (!string.IsNullOrEmpty(path))
-            {
-                return path;
-            }
-
-            return Path.Combine(Directory.GetCurrentDirectory(), "hub");
+            return !string.IsNullOrEmpty(path) ? path : GetResourcePath("hub");
         }
 
         private string GetProjectPath(string path)
         {
-            return string.IsNullOrEmpty(path) ? Directory.GetCurrentDirectory() : path;
+            return !string.IsNullOrEmpty(path) ? path : GetCurrentDirectory();
         }
 
         private string GetProjectConfigPath(string path, string projectPath)
         {
             return !string.IsNullOrEmpty(path) ? path : string.Empty;
+        }
+
+        private string GetCliDirectory()
+        {
+            return Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
+        }
+
+        private string GetCurrentDirectory()
+        {
+            return Directory.GetCurrentDirectory();
+        }
+
+        private string GetResourcePath(string name)
+        {
+            var path = Path.Combine(GetCurrentDirectory(), name);
+            if (Directory.Exists(path))
+            {
+                return path;
+            }
+            
+            path = Path.Combine(GetCliDirectory(), name);
+            if (Directory.Exists(path))
+            {
+                return path;
+            }
+
+            return name;
         }
     }
 }

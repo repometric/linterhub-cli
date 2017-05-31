@@ -12,6 +12,39 @@
                 "anyOf": [
                     {
                         "$ref": "./../coffeelint/args.json#/definitions/section"
+                    },
+                    {
+                        "$ref": "./../colorguard/args.json#/definitions/section"
+                    },
+                    {
+                        "$ref": "./../csslint/args.json#/definitions/section"
+                    },
+                    {
+                        "$ref": "./../eslint/args.json#/definitions/section"
+                    },
+                    {
+                        "$ref": "./../htmlhint/args.json#/definitions/section"
+                    },
+                    {
+                        "$ref": "./../jshint/args.json#/definitions/section"
+                    },
+                    {
+                        "$ref": "./../jslint/args.json#/definitions/section"
+                    },
+                    {
+                        "$ref": "./../jsonlint/args.json#/definitions/section"
+                    },
+                    {
+                        "$ref": "./../sass-lint/args.json#/definitions/section"
+                    },
+                    {
+                        "$ref": "./../standard/args.json#/definitions/section"
+                    },
+                    {
+                        "$ref": "./../stylelint/args.json#/definitions/section"
+                    },
+                    {
+                        "$ref": "./../tslint/args.json#/definitions/section"
                     }
                 ]
             }
