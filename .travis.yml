@@ -19,4 +19,4 @@ install:
   - sh script/cibuild.sh
   - sh script/linters.sh
 script:
-  - node test/integration.js
+#  - node test/integration.js
