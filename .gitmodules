@@ -1,3 +1,0 @@
-[submodule "test/linterhub-tests"]
-	path = test/linterhub-tests
-	url = https://github.com/Repometric/linterhub-tests.git
