@@ -47,7 +47,7 @@ function processLine(line) {
 
     if (obj === undefined) {
         obj = {
-            path: path,
+            path: filePath,
             messages: []
         };
         result.push(obj);

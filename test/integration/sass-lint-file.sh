@@ -1,1 +1,0 @@
-dotnet cli.dll --mode=Analyze --project=../../test/linterhub-tests/bulma --folder=sass/base --file=helpers.sass --linter=sass-lint

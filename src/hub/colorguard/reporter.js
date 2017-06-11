@@ -37,7 +37,7 @@ function processLine(line) {
     }
 
     var problem = {
-        message: match[3].trim(),
+        message: match[3].trim().replace(/\s+/g,' '),
         severity: "warning",
         line: match[1] - 1,
         lineEnd: match[1] - 1,
