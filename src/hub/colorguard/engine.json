@@ -31,5 +31,9 @@
     "defaults": {
         "--file": null,
         "": "*"
+    },
+    "stdin":
+    {
+        "available": false
     }
 }

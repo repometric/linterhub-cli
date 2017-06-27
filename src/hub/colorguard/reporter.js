@@ -1,7 +1,7 @@
 'use strict';
 
-let md5 = require("../md5.min");
-let template = require("../reporter.template");
+let md5 = require('../md5.min');
+let template = require('../reporter.template');
 
 template.run(function (lines) {
     let filePath = undefined;
@@ -9,7 +9,7 @@ template.run(function (lines) {
 
     lines.forEach(function (line) {
         if (filePath === undefined) {
-            filePath = line
+            filePath = line;
             return;
         }
 
@@ -20,20 +20,20 @@ template.run(function (lines) {
             return;
         }
 
-        var problem = {
-            message: match[3].trim().replace(/\s+/g,' '),
-            severity: "warning",
+        let problem = {
+            message: match[3].trim().replace(/\s+/g, ' '),
+            severity: 'warning',
             line: match[1] - 1,
             lineEnd: match[1] - 1,
             column: match[2] - 1,
-            ruleId: "colorguard:" + md5(match[3]).substr(0, 6),
-        }
+            ruleId: 'colorguard:' + md5(match[3]).substr(0, 6),
+        };
 
         results.push(problem);
     });
 
     console.log(JSON.stringify({
         path: filePath,
-        messages: results
+        messages: results,
     }));
 });

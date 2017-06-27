@@ -2,32 +2,36 @@ namespace Linterhub.Engine.Schema
 {
     using System.Collections.Generic;
     using System.Linq;
-    using Linterhub.Engine.Extensions;
+    using Extensions;
     using Option = System.Collections.Generic.KeyValuePair<string, string>;
-    using System;
+    using static Runtime.LinterWrapper;
 
     public class CommandFactory
     {
         public string GetAnalyzeCommand(
-            LinterSpecification specification,
-            LinterOptions runtimeOptions, 
-            LinterOptions configOptions,
+            Context context,
             string argSeparator = " ")
         {
-            var valueSeparator = specification.Schema.OptionsDelimiter ?? " ";
-            var options = MergeOptions(configOptions, specification);
-            var args = options.Select(x => BuildArg(runtimeOptions, x, valueSeparator)).Where(x => !string.IsNullOrEmpty(x));
-            var command = specification.Schema.Name + " " + string.Join(argSeparator, args);
-            if (specification.Schema.Postfix != null || specification.Schema.Prefix != null)
+            var valueSeparator = context.Specification.Schema.OptionsDelimiter ?? " ";
+            var options = MergeOptions(context.ConfigOptions, context.Specification);
+            var args = options.Select(x => BuildArg(context.RunOptions, x, valueSeparator, context.Stdin)).Where(x => !string.IsNullOrEmpty(x));
+            var command = context.Specification.Schema.Name + " " + string.Join(argSeparator, args);
+
+            if(context.Stdin == Context.stdinType.UseWithLinter)
             {
-                var postfix = specification.Schema.Postfix ?? "";
-                var prefix = specification.Schema.Prefix ?? "";
-                foreach (var runtimeOption in runtimeOptions)
+                command = string.Join(" ", command, BuildArgValue(context.RunOptions, context.Specification.Schema.Stdin.CustomCommand));
+            }
+
+            if (context.Specification.Schema.Postfix != null || context.Specification.Schema.Prefix != null)
+            {
+                var postfix = context.Specification.Schema.Postfix ?? "";
+                var prefix = context.Stdin != Context.stdinType.UseWithLinter ? context.Specification.Schema.Prefix ?? "" : "";
+                foreach (var runtimeOption in context.RunOptions)
                 {
                     postfix = postfix?.Replace(runtimeOption.Key, runtimeOption.Value);
                     prefix = prefix?.Replace(runtimeOption.Key, runtimeOption.Value);
                 }
-                command = prefix + command + postfix;
+                command = string.Join(" ", prefix, command, postfix);
             }
 
             return command;
@@ -69,16 +73,28 @@ namespace Linterhub.Engine.Schema
         private string BuildArg(
             LinterOptions runtimeOptions,
             Option option,
-            string valueSeparator = " ")
+            string valueSeparator = " ", Context.stdinType stdin = Context.stdinType.NotUse)
         {
-            var value = option.Value;
+            if(stdin == Context.stdinType.UseWithLinter && (option.Value ?? "").Contains("{path}"))
+            {
+                return "";
+            }
+
+            var value = BuildArgValue(runtimeOptions, option.Value);
             var key = option.Key;
+            var parts = new [] { key, value }.Where(x => !string.IsNullOrEmpty(x));
+            return string.Join(valueSeparator, parts);
+        }
+
+        private string BuildArgValue(
+            LinterOptions runtimeOptions,
+            string value)
+        {
             foreach (var runtimeOption in runtimeOptions)
             {
                 value = value?.Replace(runtimeOption.Key, runtimeOption.Value);
             }
-            var parts = new [] { key, value }.Where(x => !string.IsNullOrEmpty(x));
-            return string.Join(valueSeparator, parts);
+            return value;
         }
     }
 }

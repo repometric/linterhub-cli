@@ -31,5 +31,9 @@
     "defaults": {
         "--verbose": null,
         "": "**/**/*.js"
+    },
+    "stdin":
+    {
+        "available": false
     }
 }

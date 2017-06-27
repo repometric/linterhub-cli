@@ -1,18 +1,19 @@
-﻿let template = require("../prefix.template");
-let child_process = require('child_process');
+﻿let template = require('../prefix.template');
+let childProcess = require('child_process');
 
-template.run(".json", function (file) {
-    let command = "";
-    for (let i = process.argv.length - 1; i != 0; --i)
-    {
+template.run('.json', function(file) {
+    let command = '';
+    for (let i = process.argv.length - 1; i != 0; --i) {
         let current = process.argv[i];
-        if(current === "*")
+        if (current === '*') {
             current = file;
-        command = current + " " + command;
-        if (current === "jsonlint")
+        }
+        command = current + ' ' + command;
+        if (current === 'jsonlint') {
             break;
+        }
     }
-    child_process.exec(command, { cwd: process.cwd() }, function (error, stdout, stderr) {
+    childProcess.exec(command, { cwd: process.cwd() }, function(error, stdout, stderr) {
         console.log(stderr);
     });
 });

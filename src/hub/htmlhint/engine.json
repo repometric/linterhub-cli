@@ -31,5 +31,10 @@
     "defaults": {
         "": "**/**/*.html",
         "--format": "json"
+    },
+    "stdin":
+    {
+        "available": true,
+        "customCommand": "stdin"
     }
 }

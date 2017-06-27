@@ -40,5 +40,9 @@
         "": "**/**/*.ts",
         "--format": "verbose",
         "--config": "file://{schema}/tslint/tslint.json"
+    },
+    "stdin":
+    {
+        "available": false
     }
 }

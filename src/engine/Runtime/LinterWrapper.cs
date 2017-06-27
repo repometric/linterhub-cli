@@ -3,6 +3,9 @@ namespace Linterhub.Engine.Runtime
     using System.IO;
     using Linterhub.Engine.Exceptions;
     using Linterhub.Engine.Schema;
+    using System.Collections.Generic;
+    using System.Linq;
+    using Extensions;
 
     /// <summary>
     /// The linter wrapper.
@@ -37,8 +40,37 @@ namespace Linterhub.Engine.Runtime
         /// <returns>The result.</returns>
         public string RunAnalysis(LinterWrapper.Context context)
         {
-            var command = CommandFactory.GetAnalyzeCommand(context.Specification, context.RunOptions, context.ConfigOptions);
-            return Run(context, command, successCode: context.Specification.Schema.SuccessCode ?? 0);
+            var tempFile = "#tempfile";
+
+            if (context.Stdin == Context.stdinType.Use)
+            {
+                tempFile = Path.GetTempFileName();
+                using (StreamReader sr = new StreamReader(System.Console.OpenStandardInput()))
+                {
+                    File.WriteAllText(tempFile, sr.ReadToEnd());
+                }
+                context.RunOptions.Remove("{path}");
+                context.RunOptions.Add("{path}", Path.GetFileName(tempFile));
+                context.WorkingDirectory = Path.GetDirectoryName(tempFile);
+            }
+
+            var command = CommandFactory.GetAnalyzeCommand(context);
+
+            var result = Run(context, command, successCode: context.Specification.Schema.SuccessCode ?? 0)
+                    .DeserializeAsJson<EngineOutputSchema.ResultType[]>()
+                    .Select((file) => {
+                        var dic = context.RunOptions.Where(x => x.Key == "file://{stdin}");
+                        if (dic.Count() != 0)
+                        {
+                            file.Path = dic.First().Value;
+                        }
+                        return file;
+                    });
+
+            if (File.Exists(tempFile))
+                File.Delete(tempFile);
+
+            return result.SerializeAsJson();
         }
 
         /// <summary>
@@ -62,7 +94,14 @@ namespace Linterhub.Engine.Runtime
         /// <returns>The result.</returns>
         protected string Run(LinterWrapper.Context context, string command, string commandSeparator = " ", int successCode = 0)
         {
-            var result = Terminal.RunTerminal(command, Path.GetFullPath(context.WorkingDirectory));
+            Stream stdin = null;
+
+            if(context.Stdin == Context.stdinType.UseWithLinter)
+            {
+                stdin = System.Console.OpenStandardInput();
+            }
+
+            var result = Terminal.RunTerminal(command, Path.GetFullPath(context.WorkingDirectory), stdin: stdin);
 
             if (result.RunException != null)
             {
@@ -109,6 +148,15 @@ namespace Linterhub.Engine.Runtime
             /// Gets or sets the working directory.
             /// </summary>
             public string WorkingDirectory { get; set; }
+
+            public stdinType Stdin { get; set; } = 0;
+
+            public enum stdinType
+            {
+                NotUse,
+                Use,
+                UseWithLinter
+            }
         }
     }
 }

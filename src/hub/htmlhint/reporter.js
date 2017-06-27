@@ -1,18 +1,19 @@
-let template = require("../reporter.template");
+let template = require('../reporter.template');
 
-template.run(function (lines) {
+template.run(function(lines) {
     let results = [];
 
-    lines.forEach(function (line) {
-        if (line === "")
+    lines.forEach(function(line) {
+        if (line === '') {
             return;
+        }
 
         let data = JSON.parse(line);
 
-        results = data.map(function (file) {
+        results = data.map(function(current) {
             return {
-                path: file.file,
-                messages: file.messages.map(function (problem) {
+                path: current.file,
+                messages: current.messages.map(function(problem) {
                     return {
                         message: problem.message,
                         severity: problem.type,
@@ -21,10 +22,10 @@ template.run(function (lines) {
                         lineEnd: problem.line - 1,
                         column: problem.col - 1,
                         columnEnd: 1000,
-                        ruleId: "htmlhint:" + problem.rule.id
-                    }
-                })
-            }
+                        ruleId: 'htmlhint:' + problem.rule.id,
+                    };
+                }),
+            };
         });
     });
 

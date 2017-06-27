@@ -32,7 +32,11 @@
     },
     "defaults": {
         "": "*",
-        "--quiet": null,
+       // "--quiet": null,
         "--compact": null
+    },
+    "stdin":
+    {
+        "available": true
     }
 }

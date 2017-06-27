@@ -17,13 +17,13 @@ namespace Linterhub.Engine.Factory
         public LinterWrapper.Context GetContext(string name, string project, LinterhubConfigSchema projectConfig)
         {
             var specification = Factory.GetSpecification(name);
-            var configOptions = projectConfig.Engines.FirstOrDefault(y => y.Name == name)?.Options ?? specification.Schema.Defaults;
+            var configOptions = projectConfig.Engines.FirstOrDefault(y => y.Name == name)?.Config ?? specification.Schema.Defaults;
             var runOptions = new LinterOptions { { "{path}", "" } };
             var workingDirectory = project;
             return new LinterWrapper.Context
             {
                 Specification = specification,
-                ConfigOptions = configOptions,
+                ConfigOptions = (LinterOptions)configOptions,
                 RunOptions = runOptions,
                 WorkingDirectory = workingDirectory
             };

@@ -34,5 +34,9 @@
         "": "*",
         "--verbose": null,
         "--format": "json"
+    },
+    "stdin":
+    {
+        "available": false
     }
 }

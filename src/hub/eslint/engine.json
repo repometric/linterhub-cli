@@ -36,5 +36,10 @@
         "--format": "file://{schema}/eslint/reporter.js",
         "--config": "file://{schema}/eslint/.eslintrc.js",
         "": "**/**/*.js"
+    },
+    "stdin":
+    {
+        "available": true,
+        "customCommand": "--stdin --stdin-filename file://{stdin}"
     }
 }

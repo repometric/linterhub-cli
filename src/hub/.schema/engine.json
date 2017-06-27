@@ -122,6 +122,20 @@
         "defaults": {
             "type": "object",
             "description": "The default configuration of engine. This property is specific for each engine"
+        },
+        "stdin":{
+            "type": "object",
+            "description": "Support of stdin analyze",
+            "properties": {
+                "available": {
+                    "type": "boolean",
+                    "description": "Supports stdin or not"
+                },
+                "customCommand": {
+                    "type": "string",
+                    "description": "Custom command to path all variables for stdin analyze"
+                }
+            }
         }
     },
     "required": [
@@ -129,7 +143,8 @@
         "description",
         "languages",
         "license",
-        "areas"
+        "areas",
+        "stdin"
     ],
     "definitions": {
         "requirement": {

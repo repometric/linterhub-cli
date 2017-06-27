@@ -31,7 +31,7 @@ namespace Linterhub.Cli.Strategy
             var contexts =
                 from linter in linters
                 let specification = linterFactory.GetSpecification(linter)
-                let configOptions = config.Engines.FirstOrDefault(y => y.Name == linter)?.Options ?? specification.Schema.Defaults
+                let configOptions = config.Engines.FirstOrDefault(y => y.Name == linter)?.Config ?? specification.Schema.Defaults
                 let path = !string.IsNullOrEmpty(context.File) ? context.File : specification.Schema.Defaults.GetValueOrDefault("")
                 let runOptions = new LinterOptions
                 {
@@ -42,9 +42,10 @@ namespace Linterhub.Cli.Strategy
                 select new LinterWrapper.Context
                 {
                     Specification = specification,
-                    ConfigOptions = configOptions,
+                    ConfigOptions = (LinterOptions)configOptions,
                     RunOptions = runOptions,
-                    WorkingDirectory = workingDirectory
+                    WorkingDirectory = workingDirectory,
+                    Stdin = LinterWrapper.Context.stdinType.NotUse
                 };
 
             var r = linterRunner.RunAnalysis(contexts.First());

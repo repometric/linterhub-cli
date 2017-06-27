@@ -33,5 +33,10 @@
     "defaults": {
         "": "./",
         "--reporter": "file://{schema}/jshint/reporter.js"
+    },
+    "stdin":
+    {
+        "available": true,
+        "customCommand": "--filename=file://{stdin} - "
     }
 }

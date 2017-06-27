@@ -14,6 +14,10 @@ namespace Linterhub.Cli.Runtime
         /// </summary>
         Analyze,
         /// <summary>
+        /// Analyze stdin.
+        /// </summary>
+        AnalyzeStdin,
+        /// <summary>
         /// List available linters.
         /// </summary>
         Catalog,
