@@ -29,10 +29,10 @@
         "package": "1.0.5"
     },
     "postfix": " | node file://{schema}/csslint/reporter.js",
-    "prefix": "node file://{schema}/csslint/prefix.js ",
+    "acceptMask": false,
     "optionsDelimiter": "=",
     "defaults": {
-        "": "./",
+        "": "*",
         "--format": "compact"
     },
     "stdin":

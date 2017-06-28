@@ -4,11 +4,11 @@ let md5 = require('../md5.min');
 let template = require('../reporter.template');
 
 template.run(function (lines) {
-    let filePath = undefined;
+    let filePath = '';
     let results = [];
 
     lines.forEach(function (line) {
-        if (filePath === undefined) {
+        if (filePath === '') {
             filePath = line;
             return;
         }
@@ -32,8 +32,8 @@ template.run(function (lines) {
         results.push(problem);
     });
 
-    console.log(JSON.stringify({
+    console.log(JSON.stringify([{
         path: filePath,
         messages: results,
-    }));
+    }]));
 });

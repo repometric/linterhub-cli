@@ -1,10 +1,19 @@
-let template = require("../reporter.template");
+let template = require('../reporter.template');
 
 template.run(function (lines) {
-    let results = JSON.parse(lines.join("\n"));
+    try {
+    let results = JSON.parse(lines.join('\n'));
     results.forEach(function (element) {
         element.path = element.filePath;
-        element.filePath = null;
-    }, this);
+        element.filePath = undefined;
+        element.warningCount = undefined;
+        element.errorCount = undefined;
+    });
     console.log(JSON.stringify(results));
+    } catch (e) {
+        console.log(JSON.stringify([{
+            messages: [],
+            path: '',
+        }]));
+    }
 });

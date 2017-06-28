@@ -25,7 +25,7 @@
         }
     ],
     "postfix": " | node file://{schema}/jsonlint/reporter.js",
-    "prefix": "node file://{schema}/jsonlint/prefix.js ",
+    "acceptMask": false,
     "version": {
         "local": "1.6.2",
         "package": "1.6.2"
@@ -37,6 +37,9 @@
     },
     "stdin":
     {
-        "available": true
+        "available": true,
+        "arguments": {
+            
+        }
     }
 }

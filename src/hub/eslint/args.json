@@ -76,7 +76,7 @@
                     "description": "Lint code provided on stdin"
                 },
                 "--stdin-filename": {
-                    "type": "null",
+                    "type": "string",
                     "description": "Specify filename to process stdin as"
                 },
                 "--quiet": {

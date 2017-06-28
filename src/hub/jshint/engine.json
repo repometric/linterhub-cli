@@ -37,6 +37,10 @@
     "stdin":
     {
         "available": true,
-        "customCommand": "--filename=file://{stdin} - "
-    }
+        "arguments": {
+            "--filename": "file://{stdin}",
+            "-": null
+        }
+    },
+    "optionsDelimiter": "="
 }

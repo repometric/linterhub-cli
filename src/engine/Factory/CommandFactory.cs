@@ -14,24 +14,24 @@ namespace Linterhub.Engine.Schema
         {
             var valueSeparator = context.Specification.Schema.OptionsDelimiter ?? " ";
             var options = MergeOptions(context.ConfigOptions, context.Specification);
+
+            if (context.Stdin == Context.stdinType.UseWithLinter)
+            {
+                options.AddRange(context.Specification.Schema.Stdin.Arguments);
+            }
+
             var args = options.Select(x => BuildArg(context.RunOptions, x, valueSeparator, context.Stdin)).Where(x => !string.IsNullOrEmpty(x));
             var command = context.Specification.Schema.Name + " " + string.Join(argSeparator, args);
 
-            if(context.Stdin == Context.stdinType.UseWithLinter)
-            {
-                command = string.Join(" ", command, BuildArgValue(context.RunOptions, context.Specification.Schema.Stdin.CustomCommand));
-            }
 
-            if (context.Specification.Schema.Postfix != null || context.Specification.Schema.Prefix != null)
+            if (context.Specification.Schema.Postfix != null)
             {
                 var postfix = context.Specification.Schema.Postfix ?? "";
-                var prefix = context.Stdin != Context.stdinType.UseWithLinter ? context.Specification.Schema.Prefix ?? "" : "";
                 foreach (var runtimeOption in context.RunOptions)
                 {
                     postfix = postfix?.Replace(runtimeOption.Key, runtimeOption.Value);
-                    prefix = prefix?.Replace(runtimeOption.Key, runtimeOption.Value);
                 }
-                command = string.Join(" ", prefix, command, postfix);
+                command = string.Join(" ", command, postfix);
             }
 
             return command;

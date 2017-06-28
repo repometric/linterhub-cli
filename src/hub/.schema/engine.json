@@ -97,13 +97,14 @@
                 ]
             }
         },
-        "prefix": {
-            "type": "string",
-            "description": "Prefix in terminal (normally engine name)"
+        "acceptMask": {
+            "type": "boolean",
+            "description": "Can use masks for multiple files analyze",
+            "default": true
         },
         "postfix": {
             "type": "string",
-            "description": "Postfix in terminal (normaly post processor)"
+            "description": "Posstfix in terminal (normaly post processor)"
         },
         "optionsDelimiter": {
             "type": "string",
@@ -116,7 +117,7 @@
         },
         "active": {
             "type": "boolean",
-            "description": "A value indicating whether linter is active",
+            "description": "A value indicating whether engine is active",
             "default": true
         },
         "defaults": {
@@ -131,9 +132,9 @@
                     "type": "boolean",
                     "description": "Supports stdin or not"
                 },
-                "customCommand": {
-                    "type": "string",
-                    "description": "Custom command to path all variables for stdin analyze"
+                "arguments": {
+                    "type": "object",
+                    "description": "The stdin configuration of engine. This property is specific for each engine"
                 }
             }
         }

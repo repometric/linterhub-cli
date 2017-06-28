@@ -34,6 +34,9 @@ const format = {
         if (propname === 'defaults') {
             type = 'LinterOptions';
         }
+        if (propname === 'arguments') {
+            type = 'LinterOptions';
+        }
         if (propname === 'options' && name === 'linterhub.config.json') {
             type = 'LinterOptions';
         }
@@ -168,7 +171,7 @@ const tree = {
                 tree.doc.push(prop);
             });
         }
-        if(nodeName != undefined) {
+        if (nodeName != undefined) {
             tree.doc.push(format.close());
         }
     },

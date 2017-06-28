@@ -38,6 +38,8 @@
     "stdin":
     {
         "available": true,
-        "customCommand": "--stdin"
+        "arguments": {
+            "--stdin": null
+        }
     }
 }

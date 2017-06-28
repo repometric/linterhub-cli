@@ -52,8 +52,7 @@
                             ? LinterWrapper.Context.stdinType.UseWithLinter : LinterWrapper.Context.stdinType.Use
                 };
 
-            var r = linterRunner.RunAnalysis(contexts.First());
-            var t = r.DeserializeAsJson<EngineOutputSchema.ResultType[]>();
+            var t = new LinterRunner(linterRunner).RunAnalyze(contexts.ToList());
 
             foreach (var file in t)
             {
@@ -66,9 +65,8 @@
                     .Replace("/", "\\");
             }
 
-            var tl = t.ToList();
-            tl.Sort((a, b) => a.Path.CompareTo(b.Path));
-            return tl;
+            t.Sort((a, b) => a.Path.CompareTo(b.Path));
+            return t;
         }
     }
 }
