@@ -29,7 +29,7 @@
     ],
     "version": {
         "local": "1.16.0",
-        "manager": "1.16.0"
+        "package": "1.16.0"
     },
     "defaults": {
         "--reporter": "file://{schema}/coffeelint/reporter.coffee",

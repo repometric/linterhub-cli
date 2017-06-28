@@ -22,11 +22,15 @@
         {
             "manager": "npm",
             "package": "eslint"
+        },
+        {
+            "manager": "npm",
+            "package": "eslint-config-google"
         }
     ],
     "version": {
-        "local": "v3.19.0",
-        "package": "3.19.0"
+        "local": "v4.0.0",
+        "package": "4.0.0"
     },
     "defaults": {
         "--format": "file://{schema}/eslint/reporter.js",

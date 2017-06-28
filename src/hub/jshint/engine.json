@@ -27,8 +27,8 @@
         }
     ],
     "version": {
-        "local": "jshint v2.9.4",
-        "package": "2.9.4"
+        "local": "jshint v2.9.5",
+        "package": "2.9.5"
     },
     "defaults": {
         "": "./",

@@ -25,8 +25,8 @@
         }
     ],
     "version": {
-        "local": "v1.0.4",
-        "package": "1.0.4"
+        "local": "v1.0.5",
+        "package": "1.0.5"
     },
     "postfix": " | node file://{schema}/csslint/reporter.js",
     "prefix": "node file://{schema}/csslint/prefix.js ",
