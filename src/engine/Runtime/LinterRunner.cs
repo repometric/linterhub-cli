@@ -21,6 +21,13 @@
             var results = new List<EngineOutputSchema.ResultType>();
             var n_contexts = new List<LinterWrapper.Context>();
 
+            string stdin = "";
+
+            if (contexts.Any(x => x.Stdin != LinterWrapper.Context.stdinType.NotUse))
+            {
+                stdin = new StreamReader(System.Console.OpenStandardInput()).ReadToEnd();
+            }
+
             contexts.ForEach(context =>
             {
                 if (context.Stdin == LinterWrapper.Context.stdinType.NotUse &&
@@ -64,13 +71,13 @@
             Parallel.ForEach(n_contexts, context =>
             {
 
-                var res = linterRunner.RunAnalysis(context);
+                var res = linterRunner.RunAnalysis(context, stdin);
                 var current = res.DeserializeAsJson<EngineOutputSchema.ResultType[]>();
                 lock (results)
                 {
                     foreach (var output in current)
                     {
-                        if (!string.IsNullOrEmpty(directory))
+                        if (!string.IsNullOrEmpty(directory) && output.Path != string.Empty)
                         {
                             var directoryPrefix = Path.GetFullPath(directory).Replace(Path.GetFullPath(project), string.Empty)
                                 .TrimStart('/')

@@ -35,7 +35,7 @@ namespace Linterhub.Engine.Runtime
         /// <param name="workingDirectory">The working directory.</param>
         /// <param name="waitTimeout">The amount of time, in milliseconds, to wait for the associated process to exit.</param>
         /// <returns>The <seealso cref="Result"/>.</returns>
-        public CmdWrapper.Result RunTerminal(string arguments, string workingDirectory = null, int waitTimeout = -1, Stream stdin = null)
+        public CmdWrapper.Result RunTerminal(string arguments, string workingDirectory = null, int waitTimeout = -1, string stdin = "")
         {
             var command = string.Format(TerminalCommand, arguments);
             var result = this.RunExecutable(TerminalPath, command, workingDirectory, waitTimeout, stdin);
