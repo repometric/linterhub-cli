@@ -1,57 +1,39 @@
 'use strict';
 
-var md5 = require("./md5.min")
+let md5 = require("../md5.min");
+let template = require("../reporter.template");
 
-process.stdin.resume();
-process.stdin.setEncoding('utf8');
+template.run(function (lines) {
+    let filePath = undefined;
+    let results = [];
 
-var lingeringLine = "";
+    lines.forEach(function (line) {
+        if (filePath === undefined) {
+            filePath = line
+            return;
+        }
 
-process.stdin.on('data', function (chunk) {
-    var lines = chunk.split("\n");
+        let regex = /\s+line ([0-9]+)\s+col ([0-9]+)\s+(.*)/g;
+        let match = regex.exec(line);
 
-    lines[0] = lingeringLine + lines[0];
-    lingeringLine = lines.pop();
+        if (match === null) {
+            return;
+        }
 
-    lines.forEach(processLine);
-});
+        var problem = {
+            message: match[3].trim().replace(/\s+/g,' '),
+            severity: "warning",
+            line: match[1] - 1,
+            lineEnd: match[1] - 1,
+            column: match[2] - 1,
+            ruleId: "colorguard:" + md5(match[3]).substr(0, 6),
+        }
 
-process.stdin.on('end', function () {
-    print_result();
-});
+        results.push(problem);
+    });
 
-var filePath = undefined;
-var result = [];
-
-function processLine(line) {
-    if(filePath == undefined)
-    {
-        filePath = line.trim();
-        return;
-    }
-    var regex = /\s+line ([0-9]+)\s+col ([0-9]+)\s+(.*)/g;
-    var match = regex.exec(line);
-
-    if (match == null) {
-        return;
-    }
-
-    var problem = {
-        message: match[3].trim().replace(/\s+/g,' '),
-        severity: "warning",
-        line: match[1] - 1,
-        lineEnd: match[1] - 1,
-        column: match[2] - 1,
-        ruleId: "colorguard:" + md5(match[3]).substr(0,6),
-    }
-
-    result.push(problem);
-}
-
-function print_result() {
-    var ret = {
+    console.log(JSON.stringify({
         path: filePath,
-        messages: result
-    };
-    console.log(JSON.stringify(ret));
-}
+        messages: results
+    }));
+});

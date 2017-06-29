@@ -8,15 +8,15 @@ mono:
 os:
   - linux
 node_js:
-  - '6.9.1'
+  - '7'
 before_install:
+  - nvm install 7.10.0
+  - nvm use 7.10.0
   - npm install compare-obj diff fs path child_process
   - npm install -g z-schema
 install:
-  - nvm install 6.9.1
-  - nvm use 6.9.1
   - sh script/setup.sh
   - sh script/cibuild.sh
   - sh script/linters.sh
 script:
-#  - node test/integration.js
+  - node test/integration.js
