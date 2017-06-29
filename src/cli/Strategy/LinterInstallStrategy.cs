@@ -29,13 +29,7 @@ namespace Linterhub.Cli.Strategy
             var result = linters.Select(linter => 
             {
                 var specification = linterFactory.GetSpecification(linter);
-                var installation = installer.Install(specification);
-                return new
-                {
-                    name = linter,
-                    installed = installation.Installed,
-                    message = installation.Message
-                };
+                return installer.Install(specification);
             }).ToList();
 
             return result;
