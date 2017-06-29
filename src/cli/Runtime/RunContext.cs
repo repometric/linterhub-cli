@@ -51,7 +51,7 @@ namespace Linterhub.Cli.Runtime
 
         #endregion
 
-        #region Mode specific arguments
+        #region More specific arguments
 
         /// <summary>
         /// Gets or sets the value indicationg whether to activate linter.

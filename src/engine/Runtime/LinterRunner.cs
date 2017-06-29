@@ -1,13 +1,12 @@
-﻿using Linterhub.Engine.Extensions;
-using Linterhub.Engine.Schema;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Linterhub.Engine.Runtime
+﻿namespace Linterhub.Engine.Runtime
 {
+    using Extensions;
+    using Schema;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Linq;
+    using System.Threading.Tasks;
+
     public class LinterRunner
     {
         private LinterWrapper linterRunner;
@@ -17,7 +16,7 @@ namespace Linterhub.Engine.Runtime
             linterRunner = wrapper;
         }
 
-        public List<EngineOutputSchema.ResultType> RunAnalyze(List<LinterWrapper.Context> contexts)
+        public List<EngineOutputSchema.ResultType> RunAnalyze(List<LinterWrapper.Context> contexts, string project, string directory, string file)
         {
             var results = new List<EngineOutputSchema.ResultType>();
             var n_contexts = new List<LinterWrapper.Context>();
@@ -25,7 +24,7 @@ namespace Linterhub.Engine.Runtime
             contexts.ForEach(context =>
             {
                 if (context.Stdin == LinterWrapper.Context.stdinType.NotUse &&
-                    context.RunOptions.Where((x) => x.Key == "{path}" && x.Value == context.Specification.Schema.Defaults.GetValueOrDefault("")).Count() != 0 &&
+                    string.IsNullOrEmpty(file) &&
                     context.Specification.Schema.AcceptMask == false)
                 {
                     context.Specification.Schema.Extensions.Select(x =>
@@ -71,6 +70,27 @@ namespace Linterhub.Engine.Runtime
                 {
                     foreach (var output in current)
                     {
+                        if (!string.IsNullOrEmpty(directory))
+                        {
+                            var directoryPrefix = Path.GetFullPath(directory).Replace(Path.GetFullPath(project), string.Empty)
+                                .TrimStart('/')
+                                .TrimStart('\\')
+                                .Replace("/", "\\");
+
+                            if (!output.Path.Contains(directoryPrefix))
+                            {
+                                output.Path = Path.Combine(Path.GetFullPath(directory), output.Path);
+                            }
+                        }
+
+                        output.Path = output
+                             .Path
+                             .Replace(project, string.Empty)
+                             .Replace(Path.GetFullPath(project), string.Empty)
+                             .TrimStart('/')
+                             .TrimStart('\\')
+                             .Replace("/", "\\");
+
                         var req = results.Where(x => x.Path == output.Path);
                         if (req.Count() > 0)
                         {
@@ -85,7 +105,7 @@ namespace Linterhub.Engine.Runtime
 
             });
 
-            return results;
+            return results.OrderBy((x) => x.Path).ToList();
 
         }
     }

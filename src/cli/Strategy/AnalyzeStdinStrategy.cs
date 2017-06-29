@@ -6,8 +6,6 @@
     using Linterhub.Engine.Schema;
     using Linterhub.Engine.Runtime;
     using Linterhub.Engine.Factory;
-    using Linterhub.Engine.Extensions;
-    using System.IO;
 
     public class AnalyzeStdinStrategy : IStrategy
     {
@@ -52,21 +50,7 @@
                             ? LinterWrapper.Context.stdinType.UseWithLinter : LinterWrapper.Context.stdinType.Use
                 };
 
-            var t = new LinterRunner(linterRunner).RunAnalyze(contexts.ToList());
-
-            foreach (var file in t)
-            {
-                file.Path = file
-                    .Path
-                    .Replace(context.Project, string.Empty)
-                    .Replace(System.IO.Path.GetFullPath(context.Project), string.Empty)
-                    .TrimStart('/')
-                    .TrimStart('\\')
-                    .Replace("/", "\\");
-            }
-
-            t.Sort((a, b) => a.Path.CompareTo(b.Path));
-            return t;
+            return new LinterRunner(linterRunner).RunAnalyze(contexts.ToList(), context.Project, context.Directory, context.File);
         }
     }
 }
