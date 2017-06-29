@@ -1,8 +1,11 @@
 namespace Linterhub.Engine.Runtime
 {
+    using System.Collections.Generic;
     using System.Linq;
     using Linterhub.Engine.Schema;
     using static Schema.EngineSchema;
+    using System.Text.RegularExpressions;
+    using Extensions;
 
     public class Installer
     {
@@ -19,29 +22,54 @@ namespace Linterhub.Engine.Runtime
         {
             // var command = string.Format(IsInstalledCommand, package);
             // hot fix
-            var command = string.Format("{0} --version", requirement.Package);
-            var checkResult = Terminal.RunTerminal(command, waitTimeout: 1000);
+            var command = "";
+            CmdWrapper.Result checkResult = null;
+            switch (requirement.Manager)
+            {
+                case RequirementType.ManagerType.npm:
+                    command = string.Format("npm list -g --depth=0");
+                    checkResult = Terminal.RunTerminal(command);
+                    var regex = new Regex($"\\s{requirement.Package}\\@(.*)", RegexOptions.IgnoreCase);
+                    var match = regex.Match(checkResult.Output.ToString());
+                    if(match.Success)
+                    {
+                        return new InstallResult
+                        {
+                            Name = requirement.Package,
+                            Installed = true,
+                            Version = Deserialize.RemoveNewline(match.Groups[1].Value),
+                            Message = ""
+                        };
+                    }
+                    break;
+            }
+
+            command = string.Format("{0} --version", requirement.Package);
+            checkResult = Terminal.RunTerminal(command);
             return new InstallResult
             {
+                Name = requirement.Package,
                 Installed = checkResult.ExitCode == 0,
-                Message = checkResult.Output.ToString().Replace("\r","").Replace("\n","")
+                Version = Deserialize.RemoveNewline(checkResult.Output.ToString()),
+                Message = Deserialize.RemoveNewline(checkResult.Error.ToString())
             };
         }
 
         public InstallResult Install(LinterSpecification specification)
         {
-            var requirementsChecks = specification.Schema.Requirements.Select(requirement =>
+            var result = new InstallResult()
             {
-                var installCheck = IsInstalled(requirement);
-                if (installCheck.Installed)
+                Name = specification.Schema.Name,
+                Packages = new List<InstallResult>(specification.Schema.Requirements.Select(requirement =>
                 {
-                    return installCheck;
-                }
+                    var installCheck = IsInstalled(requirement);
+                    return installCheck.Installed ? installCheck : Install(requirement, specification.Schema.Name, specification.Schema.Version.Package);
+                }))
+            };
 
-                return Install(requirement, specification.Schema.Name, specification.Schema.Version.Package);
-            });
+            result.Installed = result.Packages.All((x) => x.Installed);
 
-            return requirementsChecks.FirstOrDefault(x => !x.Installed) ?? new InstallResult { Installed = true };
+            return result;
         }
 
         private InstallResult Install(RequirementType requirement, string Linter, string Version)
@@ -60,25 +88,23 @@ namespace Linterhub.Engine.Runtime
                 default:
                     return new InstallResult
                     {
+                        Name = requirement.Package,
                         Installed = false,
                         Message = $"Automatic installation for '{requirement.Package}' using '{requirement.Manager}' is not supported"
                     };
             }
 
             var result = Terminal.RunTerminal(command);
-            var stdError = result.Error.ToString().Trim();
-            var isInstalled = result.ExitCode == 0 && string.IsNullOrEmpty(stdError) && result.RunException == null;
-            return new InstallResult
-            {
-                Installed = isInstalled,
-                Message = isInstalled ? null : stdError
-            };
+            return IsInstalled(requirement);
         }
 
         public class InstallResult
         {
+            public string Name { get; set; }
             public bool Installed { get; set; }
             public string Message { get; set; }
+            public string Version { get; set; }
+            public List<InstallResult> Packages { get; set; }
         }
     }
 

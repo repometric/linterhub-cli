@@ -25,6 +25,11 @@
             return self?.Replace(Path.AltDirectorySeparatorChar, Path.DirectorySeparatorChar);
         }
 
+        public static string RemoveNewline(string str)
+        {
+            return str.Replace("\r", "").Replace("\n", "");
+        }
+
         public static TValue GetValueOrDefault<TKey, TValue>
             (this IDictionary<TKey, TValue> dictionary, 
             TKey key,
