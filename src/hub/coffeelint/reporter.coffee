@@ -26,7 +26,7 @@ module.exports = class Reporter
                     lineEnd: if e.lineNumberEnd then e.lineNumberEnd - 1 else e.lineNumber - 1
                     column: 0,
                     columnEnd: 1000,
-                    ruleId: e.value,
+                    ruleId: 'coffeelint:' + e.value,
                     ruleName: e.name,
                     ruleNamespace: e.rule
                 })

@@ -8,6 +8,7 @@ template.run(function (lines) {
         element.filePath = undefined;
         element.warningCount = undefined;
         element.errorCount = undefined;
+        element.ruleId = 'sass-lint:' + element.ruleId;
     });
     console.log(JSON.stringify(results));
     } catch (e) {
