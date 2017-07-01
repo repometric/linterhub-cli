@@ -71,7 +71,7 @@ namespace Linterhub.Engine.Schema
 		/// <summary>
 		/// Gets or sets can use masks for multiple files analyze
 		/// </summary>
-		public bool? AcceptMask { get; set; }
+		public bool? AcceptMask { get; set; } = true;
 		
 		/// <summary>
 		/// Gets or sets posstfix in terminal (normaly post processor)
@@ -81,7 +81,7 @@ namespace Linterhub.Engine.Schema
 		/// <summary>
 		/// Gets or sets delimiter for options (space by default)
 		/// </summary>
-		public string OptionsDelimiter { get; set; }
+		public string OptionsDelimiter { get; set; } = " ";
 		
 		/// <summary>
 		/// Gets or sets success exit code
@@ -91,7 +91,7 @@ namespace Linterhub.Engine.Schema
 		/// <summary>
 		/// Gets or sets a value indicating whether engine is active
 		/// </summary>
-		public bool? Active { get; set; }
+		public bool? Active { get; set; } = true;
 		
 		/// <summary>
 		/// Gets or sets the default configuration of engine. this property is specific for each engine

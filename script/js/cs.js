@@ -21,7 +21,7 @@ const format = {
             (value.items && value.items.enum ? value.items.enum.join(',\n') : '') + '\n' + format.close() + '\n';
     },
     removeExtension: (typeName) => {
-        if(typeName.indexOf('.json') == -1) {
+        if (typeName.indexOf('.json') == -1) {
             return typeName;
         }
         typeName = typeName.replace('.json', '').split('.');
@@ -30,7 +30,7 @@ const format = {
         }
         return typeName.join('');
     },
-    property: (propname, type, isArray) => {
+    property: (propname, type, isArray, def) => {
         if (propname === 'defaults') {
             type = 'LinterOptions';
         }
@@ -43,8 +43,9 @@ const format = {
         if (type === 'int' || type === 'bool') {
             type += '?';
         }
+        let postfix = (def != undefined ? (` = ` + (type.includes('string') ? `"${def.toString()}";` : `${def.toString()};`)) : '');
         type = type.replace('EngineOutputType', 'EngineOutputSchema');
-        return `public ${type} ${format.highCase(propname)}` + (isArray ? ` = new ${type}();` : ` { get; set; }`);
+        return `public ${type} ${format.highCase(propname)}` + (isArray ? ` = new ${type}();` : ` { get; set; }`) + postfix;
     },
     open: () => '{',
     close: () => '}',
@@ -59,18 +60,18 @@ const format = {
         return result;
     },
     type: (name) => {
-        if (name == undefined)
-            return 'string';
-        if (name === 'string')
-            return name;
-        if (name == 'integer')
-            return 'int';
-        if (name == 'boolean')
-            return 'bool';
-        if (name == 'object')
-            return name;
-        if (name == 'array')
-            return name;
+        switch (name) {
+            case undefined:
+                return 'string';
+            case 'integer':
+                return 'int';
+            case 'boolean':
+                return 'bool';
+            case 'object':
+            case 'array':
+            case 'string':
+                return name;
+        }
         name = format.undef(name);
         return format.highCase(name) + 'Type';
     },
@@ -118,7 +119,7 @@ const describe = {
         }
 
         type = format.removeExtension(type);
-        return format.property(name, type, isArray);
+        return format.property(name, type, isArray, value.default);
     },
 };
 
@@ -171,7 +172,7 @@ const tree = {
                 tree.doc.push(prop);
             });
         }
-        if (nodeName != undefined) {
+        if (nodeName !== undefined) {
             tree.doc.push(format.close());
         }
     },
@@ -186,6 +187,7 @@ const tree = {
         tree.described.push(name);
     },
 };
+
 tree.doc.push('namespace Linterhub.Engine.Schema');
 tree.doc.push(format.open());
 tree.doc.push('using System.Collections.Generic;');
