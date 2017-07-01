@@ -69,8 +69,7 @@
                 "columnEnd": {
                     "type": "integer",
                     "description": "The end column where the message is located",
-                    "minimum": 0,
-                    "default": 1000
+                    "minimum": 0
                 },
                 "ruleId": {
                     "type": "string",
