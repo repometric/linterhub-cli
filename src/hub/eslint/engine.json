@@ -36,5 +36,14 @@
         "--format": "file://{schema}/eslint/reporter.js",
         "--config": "file://{schema}/eslint/.eslintrc.js",
         "": "**/**/*.js"
-    }
+    },
+    "stdin":
+    {
+        "available": true,
+        "arguments": {
+            "--stdin": null,
+            "--stdin-filename": "file://{stdin}"
+        }
+    },
+    "optionsDelimiter": "="
 }

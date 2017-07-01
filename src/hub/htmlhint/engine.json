@@ -31,5 +31,12 @@
     "defaults": {
         "": "**/**/*.html",
         "--format": "json"
+    },
+    "stdin":
+    {
+        "available": true,
+        "arguments": {
+            "stdin": null
+        }
     }
 }

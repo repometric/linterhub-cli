@@ -1,11 +1,11 @@
 'use strict';
 module.exports = {
 	reporter: function (results, data, opts) {
-        var files = {};
+        let files = {};
 		opts = opts || {};
         results.forEach(function(record) {
-            var error = record.error;
-            var severity = '';
+            let error = record.error;
+            let severity = '';
             if (!files[record.file]) {
                 files[record.file] = [];
             }
@@ -31,16 +31,16 @@ module.exports = {
                 lineEnd: error.line,
                 column: error.character,
                 columnEnd: 1000,
-                ruleId: error.code,
+                ruleId: 'jshint:' + error.code,
                 ruleName: error.id,
-                ruleNamespace: error.scope
+                ruleNamespace: error.scope,
             });
         });
         process.stdout.write(JSON.stringify(Object.keys(files).map(function (key) {
             return {
                 path: key,
-                messages: files[key]
-            }
+                messages: files[key],
+            };
         })));
-	}
+	},
 };

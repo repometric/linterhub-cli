@@ -24,6 +24,7 @@ namespace Linterhub.Cli
         {
             { RunMode.Catalog, new CatalogStrategy() },
             { RunMode.Analyze, new AnalyzeStrategy() },
+            { RunMode.AnalyzeStdin, new AnalyzeStdinStrategy() },
             { RunMode.Version, new VersionStrategy() },
             { RunMode.Activate, new ActivateStrategy() },
             { RunMode.Help, new OptionsStrategy() },

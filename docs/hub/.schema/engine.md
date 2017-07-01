@@ -14,12 +14,13 @@ The meta information of engine
 |license|string|+|The engine license. Possible values: `Unknown`, `AGPL-3.0`, `Apache-2.0`, `MIT`|
 |requirements|[requirement](#requirement)[]|-|The engine requirements|
 |areas|string[]|+|The engine areas. Possible values: `code simplification`, `commented code`, `complexity`, `documentation`, `duplication`, `formatting`, `grammar`, `memory leak`, `security`, `simplification`, `smell`, `spelling`, `syntax`, `undefined element`, `unreachable code`, `unused code`|
-|prefix|string|-|Prefix in terminal (normally engine name)|
-|postfix|string|-|Postfix in terminal (normaly post processor)|
+|acceptMask|boolean|-|Can use masks for multiple files analyze. Default is `true`|
+|postfix|string|-|Posstfix in terminal (normaly post processor)|
 |optionsDelimiter|string|-|Delimiter for options (space by default). Default is ` `|
 |successCode|integer|-|Success exit code|
-|active|boolean|-|A value indicating whether linter is active. Default is `true`|
+|active|boolean|-|A value indicating whether engine is active. Default is `true`|
 |defaults|object|-|The default configuration of engine. This property is specific for each engine|
+|stdin|[stdin](#stdin)|+|Support of stdin analyze|
 ### version
 The engine version (expected)
 
@@ -34,6 +35,13 @@ The engine dependency
 |-|:-:|:-:|-|
 |manager|string|-|The manager for dependency. Possible values: `system`, `url`, `composer`, `gem`, `npm`, `pip`|
 |package|string|-|The package name|
+### stdin
+Support of stdin analyze
+
+|Key|Type|Required|Description|
+|-|:-:|:-:|-|
+|available|boolean|-|Supports stdin or not|
+|arguments|object|-|The stdin configuration of engine. This property is specific for each engine|
 ## Example
 ```
 {
@@ -54,11 +62,15 @@ The engine dependency
         }
     ],
     "areas": [],
-    "prefix": "string",
+    "acceptMask": false,
     "postfix": "string",
     "optionsDelimiter": "string",
     "successCode": 0,
     "active": false,
-    "defaults": {}
+    "defaults": {},
+    "stdin": {
+        "available": false,
+        "arguments": {}
+    }
 }
 ```

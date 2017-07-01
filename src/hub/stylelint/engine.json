@@ -36,5 +36,13 @@
         "": "**/**/*.*",
         "--custom-formatter": "file://{schema}/stylelint/reporter.js",
         "--config": "file://{schema}/stylelint/.stylelintrc"
-    }
+    },
+    "stdin":
+    {
+        "available": true,
+        "arguments": {
+            "--stdin-filename": "file://{stdin}"
+        }
+    },
+     "optionsDelimiter": "="
 }

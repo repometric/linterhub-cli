@@ -34,5 +34,10 @@
         "": "*",
         "--verbose": null,
         "--format": "json"
+    },
+    "acceptMask": false,
+    "stdin":
+    {
+        "available": false
     }
 }

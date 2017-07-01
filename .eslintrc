@@ -13,6 +13,9 @@
     },
     "rules": {
         "no-console": 0,
-        "max-len": "off"
+        "max-len": "off",
+        "linebreak-style": "off",
+        "object-curly-spacing": "off",
+        "space-before-function-paren":"off"
     }
 }

@@ -7,6 +7,7 @@ namespace Linterhub.Cli.Strategy
     using Linterhub.Engine.Runtime;
     using Linterhub.Engine.Factory;
     using Linterhub.Engine.Extensions;
+    using System.IO;
 
     public class AnalyzeStrategy : IStrategy
     {
@@ -31,7 +32,7 @@ namespace Linterhub.Cli.Strategy
             var contexts =
                 from linter in linters
                 let specification = linterFactory.GetSpecification(linter)
-                let configOptions = config.Engines.FirstOrDefault(y => y.Name == linter)?.Options ?? specification.Schema.Defaults
+                let configOptions = config.Engines.FirstOrDefault(y => y.Name == linter)?.Config ?? specification.Schema.Defaults
                 let path = !string.IsNullOrEmpty(context.File) ? context.File : specification.Schema.Defaults.GetValueOrDefault("")
                 let runOptions = new LinterOptions
                 {
@@ -42,28 +43,14 @@ namespace Linterhub.Cli.Strategy
                 select new LinterWrapper.Context
                 {
                     Specification = specification,
-                    ConfigOptions = configOptions,
+                    ConfigOptions = (LinterOptions)configOptions,
                     RunOptions = runOptions,
-                    WorkingDirectory = workingDirectory
+                    WorkingDirectory = workingDirectory,
+                    Stdin = LinterWrapper.Context.stdinType.NotUse
                 };
 
-            var r = linterRunner.RunAnalysis(contexts.First());
-            var t = r.DeserializeAsJson<EngineOutputSchema.ResultType[]>();
-
-            foreach (var file in t)
-            {
-                file.Path = file
-                    .Path
-                    .Replace(context.Project, string.Empty)
-                    .Replace(System.IO.Path.GetFullPath(context.Project), string.Empty)
-                    .TrimStart('/')
-                    .TrimStart('\\')
-                    .Replace("/", "\\");
-            }
-
-            var tl = t.ToList();
-            tl.Sort((a, b) => a.Path.CompareTo(b.Path));
-            return tl;
+            return new LinterRunner(linterRunner).RunAnalyze(contexts.ToList(), context.Project, context.Directory, context.File);
+            
             /* 
             var linterResults = new List<RunResult>();
             try

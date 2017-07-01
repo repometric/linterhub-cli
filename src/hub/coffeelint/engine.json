@@ -34,5 +34,12 @@
     "defaults": {
         "--reporter": "file://{schema}/coffeelint/reporter.coffee",
         "": "./"
+    },
+    "stdin":
+    {
+        "available": true,
+        "arguments": {
+            "--stdin": null
+        }
     }
 }

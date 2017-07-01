@@ -23,13 +23,16 @@
             "package": "colorguard"
         }
     ],
-    "postfix": " node file://{schema}/colorguard/reporter.js",
-    "prefix": "node file://{schema}/colorguard/prefix.js ",
+    "postfix": " | node file://{schema}/colorguard/reporter.js",
+    "acceptMask": false,
     "version": {
         "package": "1.2.0"
     },
     "defaults": {
-        "--file": null,
-        "": "*"
+        "--file": "*"
+    },
+    "stdin":
+    {
+        "available": false
     }
 }

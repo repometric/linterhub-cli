@@ -69,12 +69,12 @@ namespace Linterhub.Engine.Schema
 		public List<string> Areas = new List<string>();
 		
 		/// <summary>
-		/// Gets or sets prefix in terminal (normally engine name)
+		/// Gets or sets can use masks for multiple files analyze
 		/// </summary>
-		public string Prefix { get; set; }
+		public bool? AcceptMask { get; set; }
 		
 		/// <summary>
-		/// Gets or sets postfix in terminal (normaly post processor)
+		/// Gets or sets posstfix in terminal (normaly post processor)
 		/// </summary>
 		public string Postfix { get; set; }
 		
@@ -89,7 +89,7 @@ namespace Linterhub.Engine.Schema
 		public int? SuccessCode { get; set; }
 		
 		/// <summary>
-		/// Gets or sets a value indicating whether linter is active
+		/// Gets or sets a value indicating whether engine is active
 		/// </summary>
 		public bool? Active { get; set; }
 		
@@ -97,6 +97,11 @@ namespace Linterhub.Engine.Schema
 		/// Gets or sets the default configuration of engine. this property is specific for each engine
 		/// </summary>
 		public LinterOptions Defaults { get; set; }
+		
+		/// <summary>
+		/// Gets or sets support of stdin analyze
+		/// </summary>
+		public StdinType Stdin { get; set; }
 		
 		/// <summary>
 		/// The engine version (expected)
@@ -141,6 +146,23 @@ namespace Linterhub.Engine.Schema
 			/// Gets or sets the package name
 			/// </summary>
 			public string Package { get; set; }
+		}
+		
+		/// <summary>
+		/// Support of stdin analyze
+		/// </summary>
+		public class StdinType
+		{
+			
+			/// <summary>
+			/// Gets or sets supports stdin or not
+			/// </summary>
+			public bool? Available { get; set; }
+			
+			/// <summary>
+			/// Gets or sets the stdin configuration of engine. this property is specific for each engine
+			/// </summary>
+			public LinterOptions Arguments { get; set; }
 		}
 	}
 }
