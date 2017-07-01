@@ -8,6 +8,10 @@
             "type": "string",
             "description": "The engine name"
         },
+        "customName": {
+            "type": "string",
+            "description": "Custom engine name. Use this property when need to change default engine name on execute"
+        },
         "description": {
             "type": "string",
             "description": "The engine description"

@@ -1,5 +1,5 @@
 {
-  "version": "0.4.0",
+  "version": "0.5.0",
   "buildOptions": {
     "outputName": "cli",
     "debugType": "portable",
@@ -19,7 +19,7 @@
     },
     "Mono.Options": "5.3.0",
     "System.Diagnostics.Process": "4.3.0",
-    "engine": "0.4.0"
+    "engine": "0.5.0"
   },
 
   "frameworks": {

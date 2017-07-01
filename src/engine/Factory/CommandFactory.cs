@@ -21,7 +21,7 @@ namespace Linterhub.Engine.Schema
             }
 
             var args = options.Select(x => BuildArg(context.RunOptions, x, valueSeparator, context.Stdin)).Where(x => !string.IsNullOrEmpty(x));
-            var command = context.Specification.Schema.Name + " " + string.Join(argSeparator, args);
+            var command = context.Specification.Schema.CustomName ?? context.Specification.Schema.Name + " " + string.Join(argSeparator, args);
 
 
             if (context.Specification.Schema.Postfix != null)

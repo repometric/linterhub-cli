@@ -16,6 +16,11 @@ namespace Linterhub.Engine.Schema
 		public string Name { get; set; }
 		
 		/// <summary>
+		/// Gets or sets custom engine name. use this property when need to change default engine name on execute
+		/// </summary>
+		public string CustomName { get; set; }
+		
+		/// <summary>
 		/// Gets or sets the engine description
 		/// </summary>
 		public string Description { get; set; }

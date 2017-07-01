@@ -6,6 +6,7 @@ The meta information of engine
 |Key|Type|Required|Description|
 |-|:-:|:-:|-|
 |name|string|+|The engine name|
+|customName|string|-|Custom engine name. Use this property when need to change default engine name on execute|
 |description|string|+|The engine description|
 |url|string|-|The engine url or homepage|
 |version|[version](#version)|-|The engine version (expected)|
@@ -46,6 +47,7 @@ Support of stdin analyze
 ```
 {
     "name": "string",
+    "customName": "string",
     "description": "string",
     "url": "string",
     "version": {
