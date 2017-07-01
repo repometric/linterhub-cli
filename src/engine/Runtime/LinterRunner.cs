@@ -102,6 +102,7 @@
                         if (req.Count() > 0)
                         {
                             req.First().Messages.AddRange(output.Messages);
+                            req.First().Messages = req.First().Messages.OrderBy(x => x.Line).ThenBy(x => x.Column).ThenBy(x => x.RuleId).ToList();
                         }
                         else if (output.Path != string.Empty)
                         {
