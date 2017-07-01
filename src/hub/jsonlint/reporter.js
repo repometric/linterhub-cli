@@ -13,7 +13,6 @@ reporter.run(regex, function(match) {
             line: match[2] - 1,
             lineEnd: match[2] - 1,
             column: match[3] - 1,
-            columnEnd: 1000,
             ruleId: 'jsonlint:' + md5(match[4]).substr(0, 6),
         },
     };

@@ -12,7 +12,6 @@ reporter.run(regex, function (match) {
             line: match[2],
             lineEnd: match[2],
             column: match[3],
-            columnEnd: 1000,
             ruleId: 'csslint:' + match[6],
             ruleName: match[6],
         },

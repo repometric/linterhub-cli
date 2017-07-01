@@ -24,7 +24,7 @@
             "package": "jsonlint"
         }
     ],
-    "postfix": " | node file://{schema}/jsonlint/reporter.js",
+    "postfix": " 2>&1 | node file://{schema}/jsonlint/reporter.js",
     "acceptMask": false,
     "version": {
         "local": "1.6.2",
@@ -32,14 +32,11 @@
     },
     "defaults": {
         "": "*",
-       // "--quiet": null,
+        "--quiet": null,
         "--compact": null
     },
     "stdin":
     {
-        "available": true,
-        "arguments": {
-            
-        }
+        "available": false
     }
 }
