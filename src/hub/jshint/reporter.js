@@ -30,7 +30,6 @@ module.exports = {
                 line: error.line,
                 lineEnd: error.line,
                 column: error.character,
-                columnEnd: 1000,
                 ruleId: 'jshint:' + error.code,
                 ruleName: error.id,
                 ruleNamespace: error.scope,

@@ -23,7 +23,6 @@ template.run(function (lines) {
                             line: problem.line - 1,
                             lineEnd: problem.line - 1,
                             column: problem.character - 1,
-                            columnEnd: 1000,
                             ruleId: 'jslint:' + problem.code,
                         };
                     }
