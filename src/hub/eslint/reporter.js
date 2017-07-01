@@ -4,5 +4,5 @@ module.exports = function (results) {
         element.filePath = undefined;
         element.ruleId = 'eslint:' + element.ruleId;
     }, this);
-    console.log(JSON.stringify(results, null, 2));
+    return JSON.stringify(results, null, 2);
 }
