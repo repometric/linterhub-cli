@@ -2,10 +2,10 @@
 const fs = require('fs');
 const path = require('path');
 
-const fileName = process.argv.slice(2)[0];
-const content = fs.readFileSync(fileName);
-const name = path.basename(fileName);
-const schema = JSON.parse(content);
+let fileName = null;
+let content = null;
+let name = null;
+let schema = null;
 
 Object.resolve = (path, obj) => path.replace('#/', '').split('/').reduce((prev, curr) => prev ? prev[curr] : undefined, obj || null);
 
@@ -67,23 +67,33 @@ const tree = {
   types: [],
   described: [],
   doc: [],
+  visited_refs: [],
+  init: () => {
+    tree.types = [];
+    tree.described = [];
+    tree.doc = [];
+    tree.visited_refs = [];
+  },
   visit: (name, node) => {
     if (!node) {
       return;
     }
     if (node.properties) {
-      tree.types.push({name: name, node: node});
+      tree.types.push({ name: name, node: node });
       Object.keys(node.properties).forEach((name) => {
         tree.visit(name, node.properties[name]);
       });
     }
     if (node.items && !format.isDefaultType(node.items.type)) {
-      tree.types.push({name: name, node: node});
+      tree.types.push({ name: name, node: node });
       tree.visit(name, node.items);
     }
     if (node.$ref) {
-      const ref = Object.resolve(node.$ref, schema);
-      tree.visit(node.$ref, ref);
+      if (tree.visited_refs[node.$ref] === undefined) {
+        tree.visited_refs[node.$ref] = true;
+        const ref = Object.resolve(node.$ref, schema);
+        tree.visit(node.$ref, ref);
+      }
     }
   },
   node: (nodeName, node) => {
@@ -120,36 +130,46 @@ const tree = {
     if (!node) {
       return result;
     }
-    result += (hasName ? `"${nodeName}":`: '');
+    result += (hasName ? `"${nodeName}":` : '');
     if (hasName && !node.properties && !node.items) {
       result += node.type === 'integer' ? 0 :
-                node.enum ? `"${node.enum[0]}"` :
-                node.type === 'null' ? 'null' :
-                node.type === 'boolean' ? false :
-                node.type ==='object' ? '{}' : `"${node.type}"`;
+        node.enum ? `"${node.enum[0]}"` :
+          node.type === 'null' ? 'null' :
+            node.type === 'boolean' ? false :
+              node.type === 'object' ? '{}' : `"${node.type}"`;
     }
     if (node.properties) {
       const properties = Object.keys(node.properties).map((name) => tree.example(name, node.properties[name])).join(',');
       result += `{${properties}}`;
     }
-    result +=
-      (node.items ? `[${tree.example(undefined, node.items)}]` : '') +
-      (node.$ref ? tree.example(undefined, Object.resolve(node.$ref, schema)) : '');
+    result += (node.items ? `[${tree.example(undefined, node.items)}]` : '');
 
+    if (node.$ref && tree.visited_refs[node.$ref] === undefined) {
+      tree.visited_refs[node.$ref] = true;
+      result += tree.example(undefined, Object.resolve(node.$ref, schema));
+    }
     return result;
   },
 };
 
-const title = format.capitalize(format.title(name));
-tree.visit(undefined, schema);
-tree.doc.push(format.h1(title));
-tree.doc.push(schema.title);
-tree.doc.push(format.h2('Structure'));
-tree.types.forEach((type) => tree.document(type.name, type.node));
-tree.doc.push(format.h2('Example'));
-const example = tree.example(undefined, schema);
-const jsonExample = JSON.stringify(JSON.parse(example), null, 4);
-tree.doc.push('```');
-tree.doc.push(jsonExample);
-tree.doc.push('```');
-console.log(tree.doc.join('\n'));
+module.exports.generate = function (file) {
+  tree.init();
+  fileName = file;
+  content = fs.readFileSync(fileName);
+  name = path.basename(fileName);
+  schema = JSON.parse(content);
+  const title = format.capitalize(format.title(name));
+  tree.visit(undefined, schema);
+  tree.visited_refs = [];
+  tree.doc.push(format.h1(title));
+  tree.doc.push(schema.title);
+  tree.doc.push(format.h2('Structure'));
+  tree.types.forEach((type) => tree.document(type.name, type.node));
+  tree.doc.push(format.h2('Example'));
+  const example = tree.example(undefined, schema);
+  const jsonExample = JSON.stringify(JSON.parse(example), null, 4);
+  tree.doc.push('```');
+  tree.doc.push(jsonExample);
+  tree.doc.push('```');
+  return tree.doc.join('\n');
+};

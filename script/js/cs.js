@@ -2,10 +2,10 @@
 const fs = require('fs');
 const path = require('path');
 
-const fileName = process.argv.slice(2)[0];
-const content = fs.readFileSync(fileName);
-const name = path.basename(fileName);
-const schema = JSON.parse(content);
+let fileName = null;
+let content = null;
+let name = null;
+let schema = null;
 
 Object.resolve = (path, obj) => path.replace('#/', '').split('/').reduce((prev, curr) => prev ? prev[curr] : undefined, obj || null);
 
@@ -32,13 +32,13 @@ const format = {
     },
     property: (propname, type, isArray, def) => {
         if (propname === 'defaults') {
-            type = 'LinterOptions';
+            type = 'EngineOptions';
         }
         if (propname === 'arguments') {
-            type = 'LinterOptions';
+            type = 'EngineOptions';
         }
         if (propname === 'options' && name === 'linterhub.config.json') {
-            type = 'LinterOptions';
+            type = 'EngineOptions';
         }
         if (type === 'int' || type === 'bool') {
             type += '?';
@@ -102,12 +102,12 @@ const describe = {
         let type = format.type(value.type);
         let isArray = false;
         if (value.enum || (value.items && value.items.enum)) {
-             if (type === 'array') {
+            if (type === 'array') {
                 isArray = true;
                 type = 'List<' + format.type(name) + '>';
-             } else {
+            } else {
                 type = format.type(name);
-             }
+            }
         }
         if (type === 'array') {
             isArray = true;
@@ -126,24 +126,34 @@ const describe = {
 const tree = {
     types: [],
     doc: [],
+    visited_refs: [],
     described: [],
+    init: () => {
+        tree.types = [];
+        tree.described = [];
+        tree.doc = [];
+        tree.visited_refs = [];
+    },
     visit: (name, node) => {
         if (!node) {
             return;
         }
         if (node.properties) {
-            tree.types.push({name: name, node: node});
+            tree.types.push({ name: name, node: node });
             Object.keys(node.properties).forEach((name) => {
                 tree.visit(name, node.properties[name]);
             });
         }
         if (node.items && !format.isDefaultType(node.items.type)) {
-            tree.types.push({name: name, node: node});
+            tree.types.push({ name: name, node: node });
             tree.visit(name, node.items);
         }
         if (node.$ref) {
             const ref = Object.resolve(node.$ref, schema);
-            tree.visit(node.$ref, ref);
+            if (!tree.visited_refs[node.$ref]) {
+                tree.visited_refs[node.$ref] = true;
+                tree.visit(node.$ref, ref);
+            }
         }
     },
     node: (nodeName, node) => {
@@ -188,13 +198,21 @@ const tree = {
     },
 };
 
-tree.doc.push('namespace Linterhub.Engine.Schema');
-tree.doc.push(format.open());
-tree.doc.push('using System.Collections.Generic;');
-tree.doc.push('using Newtonsoft.Json;');
-tree.doc.push('using Newtonsoft.Json.Converters;');
-tree.visit(undefined, schema);
-tree.types.forEach((type) => tree.document(type.name, type.node));
-tree.doc.push(format.close());
-tree.doc.push(format.close());
-console.log(format.tabs(tree.doc.join('\n')));
+module.exports.generate = function (file) {
+    tree.init();
+    fileName = file;
+    content = fs.readFileSync(fileName);
+    name = path.basename(fileName);
+    schema = JSON.parse(content);
+    tree.doc.push('namespace Linterhub.Core.Schema');
+    tree.doc.push(format.open());
+    tree.doc.push('using System.Collections.Generic;');
+    tree.doc.push('using Newtonsoft.Json;');
+    tree.doc.push('using Newtonsoft.Json.Converters;');
+    tree.visit(undefined, schema);
+    tree.types.forEach((type) => tree.document(type.name, type.node));
+    tree.doc.push(format.close());
+    tree.doc.push(format.close());
+    return format.tabs(tree.doc.join('\n'));
+};
+

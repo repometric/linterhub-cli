@@ -41,12 +41,6 @@ The configuration for ignoring engine results
             ]
         }
     ],
-    "ignore": [
-        {
-            "mask": "string",
-            "line": 0,
-            "ruleId": "string"
-        }
-    ]
+    "ignore": []
 }
 ```

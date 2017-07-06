@@ -1,11 +1,11 @@
-namespace Linterhub.Engine.Schema
+namespace Linterhub.Core.Schema
 {
     using System.Collections.Generic;
 
     /// <summary>
-    /// Represents definition of linter options where key is the option name.
+    /// Represents definition of engine options where key is the option name.
     /// </summary>
-    public class LinterOptionsSchema: Dictionary<string, LinterOptionsSchema.Item>
+    public class EngineOptionsSchema: Dictionary<string, EngineOptionsSchema.Item>
     {
         /// <summary>
         /// Option definition.
