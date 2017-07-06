@@ -3,54 +3,53 @@
     using System.Collections.Generic;
     using System.Linq;
     using Runtime;
-    using Linterhub.Engine.Schema;
-    using Linterhub.Engine.Runtime;
-    using Linterhub.Engine.Factory;
+    using Core.Schema;
+    using Core.Runtime;
+    using Core.Factory;
 
     public class AnalyzeStdinStrategy : IStrategy
     {
-        private IEnumerable<string> MergeLinters(IEnumerable<string> lintersFromCommand, IEnumerable<LinterhubConfigSchema.ConfigurationType> lintersFromConfig)
+        public static IEnumerable<string> MergeEngines(IEnumerable<string> enginesFromCommand, IEnumerable<LinterhubConfigSchema.ConfigurationType> enginesFromConfig)
         {
-            var linters = lintersFromConfig
+            return enginesFromConfig
                 .Where(x => x.Active != false)
                 .Select(x => x.Name)
-                .Concat(lintersFromCommand)
+                .Concat(enginesFromCommand)
                 .Distinct();
-            return linters;
         }
 
         public object Run(ServiceLocator locator)
         {
             var context = locator.Get<RunContext>();
             var config = locator.Get<LinterhubConfigSchema>();
-            var linterRunner = locator.Get<LinterWrapper>();
-            var linterFactory = locator.Get<ILinterFactory>();
-            var linters = MergeLinters(context.Linters, config.Engines);
+            var engineRunner = locator.Get<EngineWrapper>();
+            var engineFactory = locator.Get<IEngineFactory>();
+            var engines = MergeEngines(context.Engines, config.Engines);
 
             var contexts =
-                from linter in linters
-                let specification = linterFactory.GetSpecification(linter)
-                let configOptions = config.Engines.FirstOrDefault(y => y.Name == linter)?.Config ?? specification.Schema.Defaults
+                from engine in engines
+                let specification = engineFactory.GetSpecification(engine)
+                let configOptions = config.Engines.FirstOrDefault(y => y.Name == engine)?.Config ?? specification.Schema.Defaults
                 let path = !string.IsNullOrEmpty(context.File) ? context.File : null
                 let fileName = path ?? "#stdin"
-                let runOptions = new LinterOptions
+                let runOptions = new EngineOptions
                 {
                     { "{path}", /*System.IO.Path.GetFullPath(path)*/ path },
                     { "file://{schema}", context.Linterhub },
                     { "file://{stdin}", fileName },
                 }
                 let workingDirectory = context.Directory ?? context.Project
-                select new LinterWrapper.Context
+                select new EngineWrapper.Context
                 {
                     Specification = specification,
-                    ConfigOptions = (LinterOptions)configOptions,
+                    ConfigOptions = (EngineOptions)configOptions,
                     RunOptions = runOptions,
                     WorkingDirectory = workingDirectory,
                     Stdin = (specification.Schema.Stdin.Available ?? false)
-                            ? LinterWrapper.Context.stdinType.UseWithLinter : LinterWrapper.Context.stdinType.Use
+                            ? EngineWrapper.Context.stdinType.UseWithEngine : EngineWrapper.Context.stdinType.Use
                 };
 
-            return new LinterRunner(linterRunner).RunAnalyze(contexts.ToList(), context.Project, context.Directory, context.File);
+            return new EngineRunner(engineRunner).RunAnalyze(contexts.ToList(), context.Project, context.Directory, context.File);
         }
     }
 }

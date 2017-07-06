@@ -1,4 +1,4 @@
-namespace Linterhub.Engine.Utils
+namespace Linterhub.Core.Utils
 {
     using System;
     using System.Collections;

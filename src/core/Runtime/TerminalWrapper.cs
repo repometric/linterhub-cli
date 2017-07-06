@@ -1,7 +1,7 @@
-using System.IO;
-
-namespace Linterhub.Engine.Runtime
+namespace Linterhub.Core.Runtime
 {
+    using System.IO;
+
     /// <summary>
     /// The terminal wrapper.
     /// </summary>

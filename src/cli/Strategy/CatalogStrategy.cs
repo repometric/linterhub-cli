@@ -1,11 +1,11 @@
 namespace Linterhub.Cli.Strategy
 {
     using System.Linq;
-    using Linterhub.Engine.Factory;
-    using Linterhub.Engine.Schema;
+    using Core.Factory;
+    using Core.Schema;
 
     /// <summary>
-    /// The 'catalog linter' strategy logic.
+    /// The 'catalog engine' strategy logic.
     /// </summary>
     public class CatalogStrategy : IStrategy
     {
@@ -13,18 +13,18 @@ namespace Linterhub.Cli.Strategy
         /// Run strategy.
         /// </summary>
         /// <param name="locator">The service locator.</param>
-        /// <returns>Run results (list of linters).</returns>
+        /// <returns>Run results (list of engines).</returns>
         public object Run(ServiceLocator locator)
         {
-            var factory = locator.Get<ILinterFactory>();
+            var factory = locator.Get<IEngineFactory>();
             var projectConfig = locator.Get<LinterhubConfigSchema>();
             
-            // List all linters and detect active linters (active for the project)
-            var linters = factory.GetSpecifications().Select(x => x.Schema).OrderBy(x => x.Name);
-            var result = linters.Select(linter => 
+            // List all engines and detect active engines (active for the project)
+            var engines = factory.GetSpecifications().Select(x => x.Schema).OrderBy(x => x.Name);
+            var result = engines.Select(engine => 
             {
-                linter.Active = projectConfig.Engines.Any(projectLinter => projectLinter.Name == linter.Name && projectLinter.Active != false);
-                return linter;
+                engine.Active = projectConfig.Engines.Any(projectEngine => projectEngine.Name == engine.Name && (projectEngine.Active ?? false));
+                return engine;
             });
 
             return result.OrderBy(x => x.Name).Select((x) => {

@@ -1,4 +1,4 @@
-﻿namespace Linterhub.Engine.Runtime
+﻿namespace Linterhub.Core.Runtime
 {
     using Extensions;
     using Schema;
@@ -7,30 +7,35 @@
     using System.Linq;
     using System.Threading.Tasks;
 
-    public class LinterRunner
+    public class EngineRunner
     {
-        private LinterWrapper linterRunner;
+        private EngineWrapper engineRunner;
 
-        public LinterRunner(LinterWrapper wrapper)
+        public EngineRunner(EngineWrapper wrapper)
         {
-            linterRunner = wrapper;
+            engineRunner = wrapper;
         }
 
-        public List<EngineOutputSchema.ResultType> RunAnalyze(List<LinterWrapper.Context> contexts, string project, string directory, string file)
+        public List<EngineOutputSchema.ResultType> RunAnalyze(
+            List<EngineWrapper.Context> contexts,
+            string project,
+            string directory,
+            string file,
+            LinterhubConfigSchema config = null)
         {
             var results = new List<EngineOutputSchema.ResultType>();
-            var n_contexts = new List<LinterWrapper.Context>();
+            var n_contexts = new List<EngineWrapper.Context>();
 
             string stdin = "";
 
-            if (contexts.Any(x => x.Stdin != LinterWrapper.Context.stdinType.NotUse))
+            if (contexts.Any(x => x.Stdin != EngineWrapper.Context.stdinType.NotUse))
             {
                 stdin = new StreamReader(System.Console.OpenStandardInput()).ReadToEnd();
             }
 
             contexts.ForEach(context =>
             {
-                if (context.Stdin == LinterWrapper.Context.stdinType.NotUse &&
+                if (context.Stdin == EngineWrapper.Context.stdinType.NotUse &&
                     string.IsNullOrEmpty(file) &&
                     context.Specification.Schema.AcceptMask == false)
                 {
@@ -39,7 +44,7 @@
                         return Directory.GetFiles(context.WorkingDirectory, x, System.IO.SearchOption.AllDirectories).ToList();
                     }).SelectMany(x => x).ToList()
                     .ForEach(x => {
-                        var lo = new LinterOptions();
+                        var lo = new EngineOptions();
                         context.RunOptions.Select(y => {
                             if (y.Key == "{path}")
                             {
@@ -51,7 +56,7 @@
                             return y;
                         }).ToList().ForEach(z => lo.Add(z.Key, z.Value));
 
-                        n_contexts.Add(new LinterWrapper.Context()
+                        n_contexts.Add(new EngineWrapper.Context()
                         {
                             ConfigOptions = context.ConfigOptions,
                             Stdin = context.Stdin,
@@ -71,7 +76,7 @@
             Parallel.ForEach(n_contexts, context =>
             {
 
-                var res = linterRunner.RunAnalysis(context, stdin);
+                var res = engineRunner.RunAnalysis(context, stdin);
                 var current = res.DeserializeAsJson<EngineOutputSchema.ResultType[]>();
                 lock (results)
                 {
@@ -112,6 +117,19 @@
                 }
 
             });
+
+            if(config != null)
+            {
+                results = results.Select(x =>
+                {
+                    x.Messages = x.Messages.Where(m =>
+                    {
+                        return !(config.Ignore.Find(r => x.Path.Contains(r.Mask)) != null || config.Ignore.Find(r => x.Path.Contains(r.Mask) && m.RuleId == r.RuleId) != null ||
+                            config.Ignore.Find(r => x.Path.Contains(r.Mask) && m.Line == r.Line) != null);
+                    }).ToList();
+                    return x;
+                }).ToList();
+            }
 
             return results.OrderBy((x) => x.Path).ToList();
 

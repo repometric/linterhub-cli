@@ -45,16 +45,16 @@ namespace Linterhub.Cli.Runtime
         public string PlatformConfig { get; set; }
 
         /// <summary>
-        /// Gets or sets the list of linters for the analysis.
+        /// Gets or sets the list of engines for the analysis.
         /// </summary>
-        public string[] Linters { get; set; }
+        public string[] Engines { get; set; }
 
         #endregion
 
         #region More specific arguments
 
         /// <summary>
-        /// Gets or sets the value indicationg whether to activate linter.
+        /// Gets or sets the value indicationg whether to activate engine.
         /// </summary>
         public bool? Activate { get; set; }
 
@@ -107,7 +107,7 @@ namespace Linterhub.Cli.Runtime
         public RunContext(RunMode mode = RunMode.Help)
         {
             Mode = mode;
-            Linters = new string[0];
+            Engines = new string[0];
             Keys = new string[0];
             Filters = new string[0];
         }

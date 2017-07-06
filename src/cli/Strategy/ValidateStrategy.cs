@@ -3,9 +3,8 @@ namespace Linterhub.Cli.Strategy
     using System.IO;
     using System.Reflection;
     using System.Runtime.InteropServices;
-    using Linterhub.Engine.Exceptions;
-    using Linterhub.Engine.Extensions;
-    using Linterhub.Cli.Runtime;
+    using Core.Extensions;
+    using Runtime;
 
     /// <summary>
     /// The 'validate input' strategy logic.

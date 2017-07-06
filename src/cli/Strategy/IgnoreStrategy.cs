@@ -1,15 +1,28 @@
 namespace Linterhub.Cli.Strategy
 {
     using System.Linq;
-    using Linterhub.Engine.Schema;
-    using Linterhub.Cli.Runtime;
+    using Core.Schema;
+    using Runtime;
+    using System.Collections.Generic;
 
     public class IgnoreStrategy : IStrategy
     {
+        private bool exists(List<LinterhubConfigSchema.IgnoreType> list, LinterhubConfigSchema.IgnoreType element)
+        {
+            return list.Exists(x => x.Line == element.Line && x.Mask == element.Mask && x.RuleId == element.RuleId);
+        }
+
         public object Run(ServiceLocator locator)
         {
             var context = locator.Get<RunContext>();
             var config = locator.Get<LinterhubConfigSchema>();
+            var projectConfig = locator.Get<LinterhubConfigSchema>();
+            var ensure = locator.Get<Ensure>();
+
+            // Validate
+            ensure.ProjectSpecified();
+
+
             var rule = new LinterhubConfigSchema.IgnoreType()
             {
                 Mask = context.Path,
@@ -17,32 +30,38 @@ namespace Linterhub.Cli.Strategy
                 RuleId = context.RuleId
             };
 
-            if (context.Linters.Any())
+            if (context.Engines.Any())
             {
                 // TODO: File could be mask
                 // TODO: Rule for project > for file > for line. Avoid dublicates and improve logic
-                foreach (var linter in context.Linters)
+                foreach (var engine in context.Engines)
                 {
-                    var linterConfig = config.Engines.FirstOrDefault(x => x.Name == linter);
-                    if (linterConfig == null)
+                    var projectEngine = projectConfig.Engines.FirstOrDefault(x => x.Name == engine);
+                    if (projectEngine == null)
                     {
-                        linterConfig = new LinterhubConfigSchema.ConfigurationType
+                        projectEngine = new LinterhubConfigSchema.ConfigurationType
                         {
-                            Name = linter
+                            Name = engine
                         };
-                        config.Engines.Append(linterConfig);
+                        projectConfig.Engines.Add(projectEngine);
                     }
 
-                    linterConfig.Ignore.Append(rule);
+                    if (!exists(projectEngine.Ignore, rule))
+                    {
+                        projectEngine.Ignore.Add(rule);
+                    }
                 }
             }
             else
             {
-                config.Ignore.Append(rule);
+                if (!exists(projectConfig.Ignore, rule))
+                {
+                    projectConfig.Ignore.Add(rule);
+                }
             }
 
             context.SaveConfig = true;
-            return null;
+            return projectConfig;
         }
     }
 }

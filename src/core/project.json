@@ -1,9 +1,9 @@
 {
   "version": "0.5.0",
   "buildOptions": {
-    "outputName": "engine"
+    "outputName": "core"
   },
-  "description": "Linterhub engine.",
+  "description": "Linterhub core.",
   "dependencies": {
     "NETStandard.Library": "1.6.1",
     "Microsoft.NETCore.Runtime.CoreCLR": "1.1.1",

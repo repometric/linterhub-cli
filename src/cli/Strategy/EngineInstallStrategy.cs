@@ -1,15 +1,15 @@
 namespace Linterhub.Cli.Strategy
 {
-    using Linterhub.Cli.Runtime;
-    using Linterhub.Engine.Schema;
-    using Linterhub.Engine.Runtime;
-    using Linterhub.Engine.Factory;
+    using Runtime;
+    using Core.Schema;
+    using Core.Runtime;
+    using Core.Factory;
     using System.Linq;
 
     /// <summary>
-    /// The 'install linters' strategy logic.
+    /// The 'install engines' strategy logic.
     /// </summary>
-    public class LinterInstallStrategy : IStrategy
+    public class EngineInstallStrategy : IStrategy
     {
         /// <summary>
         /// Run strategy.
@@ -20,15 +20,19 @@ namespace Linterhub.Cli.Strategy
         {
             var context = locator.Get<RunContext>();
             var projectConfig = locator.Get<LinterhubConfigSchema>();
-            var linterFactory = locator.Get<ILinterFactory>();
+            var engineFactory = locator.Get<IEngineFactory>();
             var installer = locator.Get<Installer>();
+            var ensure = locator.Get<Ensure>();
 
-            // Select linters from context or config
-            var linters = context.Linters.Any() ? context.Linters : projectConfig.Engines.Select(x => x.Name);
+            ensure.EngineSpecified();
+            ensure.EngineExists();
 
-            var result = linters.Select(linter => 
+            // Select engines from context or config
+            var engines = context.Engines.Any() ? context.Engines : projectConfig.Engines.Select(x => x.Name);
+
+            var result = engines.Select(engine => 
             {
-                var specification = linterFactory.GetSpecification(linter);
+                var specification = engineFactory.GetSpecification(engine);
                 return installer.Install(specification);
             }).ToList();
 

@@ -1,12 +1,12 @@
-﻿namespace Linterhub.Engine.Extensions
+﻿namespace Linterhub.Core.Extensions
 {
     using System.IO;
     using Newtonsoft.Json;
     using System.Collections.Generic;
-    using Linterhub.Engine.Utils;
+    using Core.Utils;
     using System.Linq;
     using System.Reflection;
-    using Linterhub.Engine.Schema;
+    using Core.Schema;
 
     public static class Deserialize
     {
@@ -27,7 +27,8 @@
 
         public static string RemoveNewline(string str)
         {
-            return str.Replace("\r", "").Replace("\n", "");
+            var result = str.Replace("\r", "").Replace("\n", "");
+            return string.IsNullOrEmpty(result) ? null : result;
         }
 
         public static TValue GetValueOrDefault<TKey, TValue>
@@ -66,7 +67,7 @@
 
             if (filters != null && filters.Any())
             {
-                // TODO: Now it supports only linter schema.
+                // TODO: Now it supports only engine schema.
                 var supportedTypes =  new[] { typeof(IEnumerable<EngineSchema>) };
                 settings.Converters.Add(new ShouldSerializeConverter(supportedTypes, filters));
             }
