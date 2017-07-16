@@ -12,11 +12,11 @@ namespace Linterhub.Cli
 
     internal class Program
     {
-        internal static void Main(string[] args)
+        internal static int Main(string[] args)
         {
             using (var log = new LogManager())
             {
-                Run(args, log);
+                return Run(args, log);
             }
         }
 
@@ -33,7 +33,7 @@ namespace Linterhub.Cli
             { RunMode.Ignore, new IgnoreStrategy() }
         };
         
-        internal static void Run(string[] args, LogManager log)
+        internal static int Run(string[] args, LogManager log)
         {
             try
             {
@@ -75,8 +75,9 @@ namespace Linterhub.Cli
             catch (LinterhubException exception)
             {
                 Console.WriteLine(exception.Message);
-                Environment.Exit((int)exception.exitCode);
+                return (int)exception.exitCode;
             }
+            return 0;
         }
 
         private static ServiceLocator RegisterServices(RunContext context)

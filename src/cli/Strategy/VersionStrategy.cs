@@ -3,6 +3,7 @@ namespace Linterhub.Cli.Strategy
     using System;
     using System.Reflection;
     using Core.Schema;
+    using System.Linq;
 
     /// <summary>
     /// The 'version' strategy logic.
@@ -18,9 +19,8 @@ namespace Linterhub.Cli.Strategy
         {
             // Engine version is not needed right now
             // var engineVersion = GetVersion(typeof(LinterSpecification));
-            return new LinterhubVersionSchema(){
-                Version = GetVersion(typeof(Program))
-            };
+            var version = GetVersion(typeof(Program)).Split('.');
+            return string.Join(".", version.Take(version.Length - 1));
         }
 
         private string GetVersion(Type type)

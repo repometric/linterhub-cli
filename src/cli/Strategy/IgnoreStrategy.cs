@@ -7,7 +7,7 @@ namespace Linterhub.Cli.Strategy
 
     public class IgnoreStrategy : IStrategy
     {
-        private bool exists(List<LinterhubConfigSchema.IgnoreType> list, LinterhubConfigSchema.IgnoreType element)
+        private bool Exists(List<LinterhubConfigSchema.IgnoreType> list, LinterhubConfigSchema.IgnoreType element)
         {
             return list.Exists(x => x.Line == element.Line && x.Mask == element.Mask && x.RuleId == element.RuleId);
         }
@@ -16,7 +16,6 @@ namespace Linterhub.Cli.Strategy
         {
             var context = locator.Get<RunContext>();
             var config = locator.Get<LinterhubConfigSchema>();
-            var projectConfig = locator.Get<LinterhubConfigSchema>();
             var ensure = locator.Get<Ensure>();
 
             // Validate
@@ -36,17 +35,17 @@ namespace Linterhub.Cli.Strategy
                 // TODO: Rule for project > for file > for line. Avoid dublicates and improve logic
                 foreach (var engine in context.Engines)
                 {
-                    var projectEngine = projectConfig.Engines.FirstOrDefault(x => x.Name == engine);
+                    var projectEngine = config.Engines.FirstOrDefault(x => x.Name == engine);
                     if (projectEngine == null)
                     {
                         projectEngine = new LinterhubConfigSchema.ConfigurationType
                         {
                             Name = engine
                         };
-                        projectConfig.Engines.Add(projectEngine);
+                        config.Engines.Add(projectEngine);
                     }
 
-                    if (!exists(projectEngine.Ignore, rule))
+                    if (!Exists(projectEngine.Ignore, rule))
                     {
                         projectEngine.Ignore.Add(rule);
                     }
@@ -54,14 +53,14 @@ namespace Linterhub.Cli.Strategy
             }
             else
             {
-                if (!exists(projectConfig.Ignore, rule))
+                if (!Exists(config.Ignore, rule))
                 {
-                    projectConfig.Ignore.Add(rule);
+                    config.Ignore.Add(rule);
                 }
             }
 
             context.SaveConfig = true;
-            return projectConfig;
+            return null;
         }
     }
 }

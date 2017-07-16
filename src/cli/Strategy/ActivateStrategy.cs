@@ -45,7 +45,7 @@ namespace Linterhub.Cli.Strategy
             }
 
             context.SaveConfig = true;
-            return projectConfig;
+            return null;
         }
     }
 }
