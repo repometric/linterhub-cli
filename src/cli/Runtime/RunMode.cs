@@ -6,7 +6,7 @@ namespace Linterhub.Cli.Runtime
     public enum RunMode
     {
         /// <summary>
-        /// Activate linter for project.
+        /// Activate engine for project.
         /// </summary>
         Activate,
         /// <summary>
@@ -18,7 +18,7 @@ namespace Linterhub.Cli.Runtime
         /// </summary>
         AnalyzeStdin,
         /// <summary>
-        /// List available linters.
+        /// List available engines.
         /// </summary>
         Catalog,
         /// <summary>
@@ -30,13 +30,13 @@ namespace Linterhub.Cli.Runtime
         /// </summary>
         Help,
         /// <summary>
-        /// Get linter version.
+        /// Get engine version.
         /// </summary>
-        LinterVersion,
+        EngineVersion,
         /// <summary>
         /// Install linter.
         /// </summary>
-        LinterInstall,
+        EngineInstall,
         /// <summary>
         /// Exclude objects from the analysis.
         /// </summary>

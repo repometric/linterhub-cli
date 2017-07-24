@@ -4,8 +4,8 @@ namespace Linterhub.Cli.Strategy
     using System.Collections.Generic;
     using Mono.Options;
     using Runtime;
-    using Linterhub.Engine.Exceptions;
-    using System.Text.RegularExpressions;
+    using Core.Exceptions;
+    using System.IO;
 
     public class OptionsStrategy : IStrategy
     {
@@ -18,12 +18,14 @@ namespace Linterhub.Cli.Strategy
             {
                 { "c=|config=", "Path to configuration.", v => runContext.ProjectConfig = v },
                 { "s=|system=", "Path to platform configuration.", v => runContext.PlatformConfig = v },
-                { "l=|linter=", "The linter name.", v => runContext.Linters = string.IsNullOrEmpty(v) ? new string[0] : v.Split(',') },
+                { "e=|engine=", "The engine name.", v => runContext.Engines = string.IsNullOrEmpty(v) ? new string[0] : v.Split(',') },
                 { "p=|project=", "Path to project.", v => runContext.Project = v },
                 { "d=|folder=", "Path to directory", v => runContext.Directory = v },
                 { "f=|file=", "Path to file.", v => runContext.File = v },
                 { "m=|mode=", "Run mode.", v => runContext.Mode = (RunMode)Enum.Parse(typeof(RunMode), v, true) },
                 { "a=|active=", "Activate or not.", v => runContext.Activate = bool.Parse(v) },
+                { "l=|line=", "Line in a file.", v => runContext.Line = int.Parse(v) },
+                { "r=|ruleid=", "Rule id.", v => runContext.RuleId = v },
                 { "k=|keys=", "Keys to include.", v => runContext.Keys = string.IsNullOrEmpty(v) ? new string[0] : v.Replace("\"", "").Replace("'", "").Split(',') },
                 { "filters=", "Filters to apply", v => runContext.Filters = string.IsNullOrEmpty(v) ? new string[0] : v.Replace("\"", "").Replace("'", "").Split(',') },
                 { "linterhub=", "Path to linterhub.", v => runContext.Linterhub = v },
@@ -37,25 +39,18 @@ namespace Linterhub.Cli.Strategy
             }
             catch (Exception exception)
             {
-                throw new LinterEngineException("Error parsing arguments", exception);
+                throw new EngineException("Error parsing arguments", exception.Message);
             }
 
-            /*if (extra.Any())
+            if (!string.IsNullOrEmpty(runContext.Project))
             {
-                throw new LinterEngineException("Extra arguments: " + string.Join(",", extra));
-            }*/
-            /*
-            Dictionary<string, string> extraArgs = new Dictionary<string, string>();
-            foreach (string arg in extra)
-            {
-                string pattern = @"([a-zA-Z0-9.])+";
-                Regex rgx = new Regex(pattern, RegexOptions.IgnoreCase);
-                MatchCollection matches = rgx.Matches(arg);
-                extraArgs.Add(matches[0].Value, matches[1].Value);
+                var projectConfig = Path.Combine(runContext.Project, "linterhub.json");
+                if (File.Exists(projectConfig))
+                {
+                    runContext.ProjectConfig = projectConfig;
+                }
             }
 
-            runContext.ExtraArgs = extraArgs;
-            */
             runContext.Input = Console.OpenStandardInput();
             runContext.InputAwailable = false; //Console.IsInputRedirected;
             return runContext;

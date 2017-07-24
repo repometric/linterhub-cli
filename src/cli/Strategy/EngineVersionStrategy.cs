@@ -1,0 +1,44 @@
+namespace Linterhub.Cli.Strategy
+{
+    using System.Linq;
+    using Core.Runtime;
+    using Runtime;
+    using Core.Schema;
+    using Core.Factory;
+
+    /// <summary>
+    /// The 'engine version' strategy logic.
+    /// </summary>
+    public class EngineVersionStrategy : IStrategy
+    {
+        /// <summary>
+        /// Run strategy.
+        /// </summary>
+        /// <param name="locator">The service locator.</param>
+        /// <returns>Run results (list of engines versions).</returns>
+        public object Run(ServiceLocator locator)
+        {
+            var ensure = locator.Get<Ensure>();
+            var context = locator.Get<RunContext>();
+            var projectConfig = locator.Get<LinterhubConfigSchema>();
+            var engineFactory = locator.Get<IEngineFactory>();
+            var installer = locator.Get<Installer>();
+
+            // Check
+            ensure.EngineSpecified();
+            ensure.EngineExists(); 
+
+            var engines = context.Engines.Any() ? context.Engines : projectConfig.Engines.Select(x => x.Name);
+
+            return engines.Select(engine => 
+            {
+                var specification = engineFactory.GetSpecification(engine);
+                return installer.IsInstalled(
+                    specification.Schema.Requirements
+                    .Where(x => x.Package == specification.Schema.Name)
+                    .FirstOrDefault()
+                );
+            });
+        }
+    }
+}

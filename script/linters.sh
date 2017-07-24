@@ -1,3 +1,3 @@
 cd bin/dotnet
-dotnet cli.dll --mode=LinterInstall --config=../../script/config/linterhub-all.json
+dotnet cli.dll --mode=engineInstall --config=../../script/config/linterhub-all.json
 cd ../../

@@ -1,11 +1,11 @@
 namespace Linterhub.Cli.Strategy
 {
     using System.Linq;
-    using Linterhub.Cli.Runtime;
-    using Linterhub.Engine.Schema;
+    using Runtime;
+    using Core.Schema;
 
     /// <summary>
-    /// The 'activate linter' strategy logic.
+    /// The 'activate engine' strategy logic.
     /// </summary>
     public class ActivateStrategy : IStrategy
     {
@@ -21,23 +21,25 @@ namespace Linterhub.Cli.Strategy
             var projectConfig = locator.Get<LinterhubConfigSchema>();
 
             // Validate
-            ensure.LinterSpecified();
-            ensure.LinterExists();
+            ensure.EngineSpecified();
+            ensure.EngineExists();
+            ensure.ProjectSpecified();
             ensure.ArgumentSpecified(nameof(context.Activate), context.Activate);
 
-            // Enumerate linters and activate/deactivate
-            foreach (var linter in context.Linters)
+            // Enumerate engines and activate/deactivate
+            foreach (var engine in context.Engines)
             {
-                var projectLinter = projectConfig.Engines.FirstOrDefault(x => x.Name == linter);
-                if (projectLinter != null)
+                var projectEngine = projectConfig.Engines.FirstOrDefault(x => x.Name == engine);
+                if (projectEngine != null)
                 {
-                    projectLinter.Active = context.Activate;
+                    projectEngine.Active = context.Activate;
                 }
                 else
                 {
-                    projectConfig.Engines.Append(new LinterhubConfigSchema.ConfigurationType
-                    {
-                        Name = linter
+                    projectConfig.Engines.Add(new LinterhubConfigSchema.ConfigurationType
+                    { 
+                        Name = engine,
+                        Active = context.Activate
                     });
                 }
             }

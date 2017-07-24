@@ -2,21 +2,21 @@ namespace Linterhub.Cli
 {
     using System;
     using System.Collections.Generic;
-    using System.Diagnostics;
-    using Linterhub.Engine.Schema;
-    using Linterhub.Engine.Runtime;
-    using Linterhub.Engine.Factory;
-    using Linterhub.Engine.Extensions;
-    using Linterhub.Cli.Runtime;
-    using Linterhub.Cli.Strategy;
+    using Core.Schema;
+    using Core.Runtime;
+    using Core.Factory;
+    using Core.Extensions;
+    using Core.Exceptions;
+    using Runtime;
+    using Strategy;
 
     internal class Program
     {
-        internal static void Main(string[] args)
+        internal static int Main(string[] args)
         {
             using (var log = new LogManager())
             {
-                Run(args, log);
+                return Run(args, log);
             }
         }
 
@@ -28,12 +28,12 @@ namespace Linterhub.Cli
             { RunMode.Version, new VersionStrategy() },
             { RunMode.Activate, new ActivateStrategy() },
             { RunMode.Help, new OptionsStrategy() },
-            { RunMode.LinterVersion, new LinterVersionStrategy() },
-            { RunMode.LinterInstall, new LinterInstallStrategy() },
+            { RunMode.EngineVersion, new EngineVersionStrategy() },
+            { RunMode.EngineInstall, new EngineInstallStrategy() },
             { RunMode.Ignore, new IgnoreStrategy() }
         };
         
-        internal static void Run(string[] args, LogManager log)
+        internal static int Run(string[] args, LogManager log)
         {
             try
             {
@@ -52,8 +52,15 @@ namespace Linterhub.Cli
                 var result = Strategies[context.Mode].Run(locator);
                 if (context.SaveConfig)
                 {
+                    if (string.IsNullOrEmpty(context.ProjectConfig))
+                        throw new LinterhubException(
+                            title: "Linterhub config",
+                            description: "Cant save config cause no project path specified",
+                            statusCode: LinterhubException.ErrorCode.linterhubConfig,
+                            innerException: null);
+
                     var content = locator.Get<LinterhubConfigSchema>().SerializeAsJson();
-                    System.IO.File.WriteAllText(string.IsNullOrEmpty(context.ProjectConfig) ? "linterhub.json" : context.ProjectConfig, content);
+                    System.IO.File.WriteAllText(context.ProjectConfig, content);
                 }
 
                 var output = result is string || result == null
@@ -65,10 +72,12 @@ namespace Linterhub.Cli
                     Console.WriteLine(output);
                 }
             }
-            catch (Exception exception)
+            catch (LinterhubException exception)
             {
-                log.Error(exception);
+                Console.WriteLine(exception.Message);
+                return (int)exception.exitCode;
             }
+            return 0;
         }
 
         private static ServiceLocator RegisterServices(RunContext context)
@@ -78,19 +87,19 @@ namespace Linterhub.Cli
             var platformConfig = context.PlatformConfig.DeserializeAsJsonFromFile<PlatformConfig>();
             var projectConfig = context.ProjectConfig.DeserializeAsJsonFromFile<LinterhubConfigSchema>();
             var terminal = new TerminalWrapper(platformConfig.Terminal.Path, platformConfig.Terminal.Command);
-            var linterFactory = new LinterFileSystemFactory(context.Linterhub);
-            var linterContextFactory = new LinterContextFactory(linterFactory);
+            var engineFactory = new EngineFileSystemFactory(context.Linterhub);
+            var engineContextFactory = new EngineContextFactory(engineFactory);
             var commandFactory = new CommandFactory();
             var installer = new Installer(terminal, platformConfig.Command.Installed);
-            var linterRunner = new LinterWrapper(terminal, commandFactory);
+            var engineRunner = new EngineWrapper(terminal, commandFactory);
 
             locator.Register<LinterhubConfigSchema>(projectConfig);
             locator.Register<RunContext>(context);
             locator.Register<PlatformConfig>(platformConfig);
-            locator.Register<ILinterFactory>(linterFactory);
-            locator.Register<LinterContextFactory>(linterContextFactory);
+            locator.Register<IEngineFactory>(engineFactory);
+            locator.Register<EngineContextFactory>(engineContextFactory);
             locator.Register<TerminalWrapper>(terminal);
-            locator.Register<LinterWrapper>(linterRunner);
+            locator.Register<EngineWrapper>(engineRunner);
             locator.Register<Installer>(installer);
 
             var ensure = new Ensure(locator);

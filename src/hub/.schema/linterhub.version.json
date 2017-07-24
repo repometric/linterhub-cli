@@ -1,0 +1,15 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "title": "This document describes the structure of linterhub version output",
+    "description": "Version of linterhub",
+    "type": "object",
+    "properties": {
+        "version": {
+            "type": "string",
+            "description": "Version of linterhub"
+        }
+    },
+    "required": [
+        "version"
+    ]
+}

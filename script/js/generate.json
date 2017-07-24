@@ -1,0 +1,36 @@
+[
+    {
+        "schema": "src/hub/.schema/linterhub.config.json",
+        "cs": "src/core/Schema/LinterhubConfigSchema.cs",
+        "md": "docs/hub/.schema/linterhub.config.md"
+    },
+    {
+        "schema": "src/hub/.schema/engine.output.json",
+        "cs": "src/core/Schema/EngineOutputSchema.cs",
+        "md": "docs/hub/.schema/engine.output.md"
+    },
+    {
+        "schema": "src/hub/.schema/engine.version.json",
+        "cs": "src/core/Schema/EngineVersionSchema.cs",
+        "md": "docs/hub/.schema/engine.version.md"
+    },
+    {
+        "schema": "src/hub/.schema/linterhub.error.json",
+        "cs": "src/core/Schema/LinterhubErrorSchema.cs",
+        "md": "docs/hub/.schema/linterhub.error.md"
+    },
+    {
+        "schema": "src/hub/.schema/linterhub.version.json",
+        "cs": "src/core/Schema/LinterhubVersionSchema.cs",
+        "md": "docs/hub/.schema/linterhub.version.md"
+    },
+    {
+        "schema": "src/hub/.schema/engine.json",
+        "cs": "src/core/Schema/EngineSchema.cs",
+        "md": "docs/hub/.schema/engine.md"
+    },
+    {
+        "schema": "src/hub/.schema/args.json",
+        "md": "docs/hub/.schema/args.md"
+    }
+]
