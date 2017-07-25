@@ -39,7 +39,7 @@ namespace Linterhub.Core.Runtime
                             Name = requirement.Package,
                             Installed = true,
                             Version = Deserialize.RemoveNewline(match.Groups[1].Value),
-                            Message = ""
+                            Message = string.Empty
                         };
                     }
                     break;
@@ -62,7 +62,6 @@ namespace Linterhub.Core.Runtime
             {
                 Name = specification.Schema.Name,
                 Packages = new List<InstallResult>(specification.Schema.Requirements
-                    .Where(x => x.Manager != RequirementType.ManagerType.system && x.Package != specification.Schema.Name)
                     .Select(requirement =>
                 {
                     var installCheck = IsInstalled(requirement);
