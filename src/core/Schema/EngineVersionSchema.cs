@@ -7,7 +7,7 @@ namespace Linterhub.Core.Schema
 	/// <summary>
 	/// Engine version output is an array of objects describing the state of the engines
 	/// </summary>
-	public class EngineVersionSchema
+	public class EngineVersionSchema : List<EngineVersionSchema.ResultType>
 	{
 		
 		/// <summary>

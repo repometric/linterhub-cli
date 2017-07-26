@@ -1,11 +1,13 @@
 ﻿namespace Linterhub.Core.Runtime
 {
+    using Exceptions;
     using Extensions;
     using Schema;
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
     using System.Threading.Tasks;
+    using Result = Schema.LinterhubOutputSchema.ResultType;
 
     public class EngineRunner
     {
@@ -16,14 +18,14 @@
             engineRunner = wrapper;
         }
 
-        public List<EngineOutputSchema.ResultType> RunAnalyze(
+        public LinterhubOutputSchema RunAnalyze(
             List<EngineWrapper.Context> contexts,
             string project,
             string directory,
             string file,
             LinterhubConfigSchema config = null)
         {
-            var results = new List<EngineOutputSchema.ResultType>();
+            var output = new LinterhubOutputSchema();
             var n_contexts = new List<EngineWrapper.Context>();
 
             string stdin = "";
@@ -75,63 +77,97 @@
 
             Parallel.ForEach(n_contexts, context =>
             {
-
-                var res = engineRunner.RunAnalysis(context, stdin);
-                var current = res.DeserializeAsJson<EngineOutputSchema.ResultType[]>();
-                lock (results)
+                var error = new LinterhubOutputSchema.ErrorType()
                 {
-                    foreach (var output in current)
+                    Code = 0
+                };
+                EngineOutputSchema parsedOutput = null;
+                try
+                {
+                    var res = engineRunner.RunAnalysis(context, stdin);
+                    parsedOutput = res.DeserializeAsJson<EngineOutputSchema>();
+                }
+                catch (EngineException e)
+                {
+                    error.Code = (int)e.exitCode;
+                    error.Title = e.Message;
+                }
+                lock (output)
+                {
+                    var result = new EngineOutputSchema();
+                    if (error.Code == 0)
                     {
-                        if (!string.IsNullOrEmpty(directory) && output.Path != string.Empty)
+                        foreach (var current in parsedOutput)
                         {
-                            var directoryPrefix = Path.GetFullPath(directory).Replace(Path.GetFullPath(project), string.Empty)
-                                .TrimStart('/')
-                                .TrimStart('\\')
-                                .Replace("/", "\\");
-
-                            if (!output.Path.Contains(directoryPrefix))
+                            if (!string.IsNullOrEmpty(directory) && current.Path != string.Empty)
                             {
-                                output.Path = Path.Combine(Path.GetFullPath(directory), output.Path);
+                                var directoryPrefix = Path.GetFullPath(directory).Replace(Path.GetFullPath(project), string.Empty)
+                                    .TrimStart('/')
+                                    .TrimStart('\\')
+                                    .Replace("/", "\\");
+
+                                if (!current.Path.Contains(directoryPrefix))
+                                {
+                                    current.Path = Path.Combine(Path.GetFullPath(directory), current.Path);
+                                }
                             }
-                        }
 
-                        output.Path = output
-                             .Path
-                             .Replace(project, string.Empty)
-                             .Replace(Path.GetFullPath(project), string.Empty)
-                             .TrimStart('/')
-                             .TrimStart('\\')
-                             .Replace("/", "\\");
-
-                        var req = results.Where(x => x.Path == output.Path);
-                        if (req.Count() > 0)
-                        {
-                            req.First().Messages.AddRange(output.Messages);
-                            req.First().Messages = req.First().Messages.OrderBy(x => x.Line).ThenBy(x => x.Column).ThenBy(x => x.RuleId).ToList();
+                            current.Path = current
+                                 .Path
+                                 .Replace(project, string.Empty)
+                                 .Replace(Path.GetFullPath(project), string.Empty)
+                                 .TrimStart('/')
+                                 .TrimStart('\\')
+                                 .Replace("/", "\\");
                         }
-                        else if (output.Path != string.Empty)
+                        result.AddRange(parsedOutput.Where(x => x.Path != string.Empty));
+                    }
+
+                    if (result.Count != 0) {
+                        var exists = output.Find(x => x.Engine == context.Specification.Schema.Name);
+                        if (exists != null)
                         {
-                            results.Add(output);
+                            if (exists.Error == null && error.Code == 0)
+                            {
+                                exists.Result.AddRange(result);
+                            }
+                            else if (error.Code != 0)
+                            {
+                                exists.Error = error;
+                            }
+
+                        }
+                        else
+                        {
+                            output.Add(new Result()
+                            {
+                                Result = result,
+                                Engine = context.Specification.Schema.Name,
+                                Error = error.Code == 0 ? null : error
+                            });
                         }
                     }
+
                 }
 
             });
 
             if(config != null)
             {
-                results = results.Select(x =>
-                {
-                    x.Messages = x.Messages.Where(m =>
-                    {
-                        return !(config.Ignore.Find(r => x.Path.Contains(r.Mask)) != null || config.Ignore.Find(r => x.Path.Contains(r.Mask) && m.RuleId == r.RuleId) != null ||
-                            config.Ignore.Find(r => x.Path.Contains(r.Mask) && m.Line == r.Line) != null);
-                    }).ToList();
-                    return x;
-                }).ToList();
+                output.ForEach(x => {
+                    x.Result.ForEach(y => {
+                        y.Messages = y.Messages.Where(m =>
+                        {
+                            return !(config.Ignore.Find(r => y.Path.Contains(r.Mask)) != null || config.Ignore.Find(r => y.Path.Contains(r.Mask) && m.RuleId == r.RuleId) != null ||
+                                config.Ignore.Find(r => y.Path.Contains(r.Mask) && m.Line == r.Line) != null);
+                        }).OrderBy(z => z.Line).ThenBy(z => z.Column).ThenBy(z => z.RuleId).ToList();
+                    });
+                    x.Result.Sort((a,b) => a.Path.CompareTo(b.Path));
+                });
+                output.Sort((a,b) => a.Engine.CompareTo(b.Engine));
             }
 
-            return results.OrderBy((x) => x.Path).ToList();
+            return output;
 
         }
     }
