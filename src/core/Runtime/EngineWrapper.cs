@@ -54,7 +54,7 @@ namespace Linterhub.Core.Runtime
             var command = CommandFactory.GetAnalyzeCommand(context);
 
             var result = Run(context, command, successCode: context.Specification.Schema.SuccessCode ?? 0, stdin: context.Stdin == Context.stdinType.UseWithEngine ? stdin : string.Empty)
-                    .DeserializeAsJson<EngineOutputSchema.ResultType[]>()
+                    .DeserializeAsJson<EngineOutputSchema>()
                     .Select((file) => {
                         var dic = context.RunOptions.Where(x => x.Key == "file://{stdin}");
                         if (dic.Count() != 0)

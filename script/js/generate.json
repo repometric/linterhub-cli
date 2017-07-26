@@ -30,6 +30,11 @@
         "md": "docs/hub/.schema/engine.md"
     },
     {
+        "schema": "src/hub/.schema/linterhub.output.json",
+        "cs": "src/core/Schema/LinterhubOutputSchema.cs",
+        "md": "docs/hub/.schema/linterhub.output.md"
+    },
+    {
         "schema": "src/hub/.schema/args.json",
         "md": "docs/hub/.schema/args.md"
     }

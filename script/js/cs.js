@@ -11,7 +11,10 @@ Object.resolve = (path, obj) => path.replace('#/', '').split('/').reduce((prev, 
 
 const format = {
     undef: (name) => name.replace('#/definitions/', ''),
-    class: (name) => `public class ${format.highCase(format.undef(name))}`,
+    class: (name, type) => {
+        let gname = format.highCase(format.undef(name));
+        return `public class ${gname}` + (type ? ` : List<${gname}.${type}>` : '');
+    },
     highCase: (value) => value.charAt(0).toUpperCase() + value.slice(1),
     enum: (name, value) => {
         name = name.charAt(0).toUpperCase() + name.slice(1);
@@ -39,6 +42,9 @@ const format = {
         }
         if (propname === 'options' && name === 'linterhub.config.json') {
             type = 'EngineOptions';
+        }
+        if (propname === 'result') {
+            type = 'EngineOutputSchema';
         }
         if (type === 'int' || type === 'bool') {
             type += '?';
@@ -162,7 +168,8 @@ const tree = {
             typeName = format.removeExtension(name + 'Schema');
         }
         tree.doc.push(format.documentation(node.description, true));
-        tree.doc.push(format.class(typeName));
+        let elemType = node.type == 'array' ? format.type(node.items.$ref) : false;
+        tree.doc.push(format.class(typeName, elemType));
         tree.doc.push(format.open());
         if (node.properties) {
             Object.keys(node.properties).forEach((name) => {

@@ -7,7 +7,7 @@ namespace Linterhub.Core.Schema
 	/// <summary>
 	/// Engine output is an array of analysis results
 	/// </summary>
-	public class EngineOutputSchema
+	public class EngineOutputSchema : List<EngineOutputSchema.ResultType>
 	{
 		
 		/// <summary>
