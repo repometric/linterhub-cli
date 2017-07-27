@@ -23,7 +23,7 @@ namespace Linterhub.Cli.Strategy
                 { "d=|folder=", "Path to directory", v => runContext.Directory = v },
                 { "f=|file=", "Path to file.", v => runContext.File = v },
                 { "m=|mode=", "Run mode.", v => runContext.Mode = (RunMode)Enum.Parse(typeof(RunMode), v, true) },
-                { "a=|active=", "Activate or not.", v => runContext.Activate = bool.Parse(v) },
+                { "a=|activate=", "Activate or not.", v => runContext.Activate = bool.Parse(v) },
                 { "l=|line=", "Line in a file.", v => runContext.Line = int.Parse(v) },
                 { "r=|ruleid=", "Rule id.", v => runContext.RuleId = v },
                 { "k=|keys=", "Keys to include.", v => runContext.Keys = string.IsNullOrEmpty(v) ? new string[0] : v.Replace("\"", "").Replace("'", "").Split(',') },
@@ -45,10 +45,7 @@ namespace Linterhub.Cli.Strategy
             if (!string.IsNullOrEmpty(runContext.Project))
             {
                 var projectConfig = Path.Combine(runContext.Project, "linterhub.json");
-                if (File.Exists(projectConfig))
-                {
-                    runContext.ProjectConfig = projectConfig;
-                }
+                runContext.ProjectConfig = projectConfig;
             }
 
             runContext.Input = Console.OpenStandardInput();
