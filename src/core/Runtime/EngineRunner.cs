@@ -45,9 +45,11 @@
                     {
                         return Directory.GetFiles(context.WorkingDirectory, x, System.IO.SearchOption.AllDirectories).ToList();
                     }).SelectMany(x => x).ToList()
-                    .ForEach(x => {
+                    .ForEach(x =>
+                    {
                         var lo = new EngineOptions();
-                        context.RunOptions.Select(y => {
+                        context.RunOptions.Select(y =>
+                        {
                             if (y.Key == "{path}")
                             {
                                 return new KeyValuePair<string, string>(y.Key, Path.GetFullPath(x)
@@ -123,7 +125,8 @@
                         result.AddRange(parsedOutput.Where(x => x.Path != string.Empty));
                     }
 
-                    if (result.Count != 0) {
+                    if (result.Count != 0)
+                    {
                         var exists = output.Find(x => x.Engine == context.Specification.Schema.Name);
                         if (exists != null)
                         {
@@ -152,20 +155,19 @@
 
             });
 
-            if(config != null)
+            output.ForEach(x =>
             {
-                output.ForEach(x => {
-                    x.Result.ForEach(y => {
-                        y.Messages = y.Messages.Where(m =>
-                        {
-                            return !(config.Ignore.Find(r => y.Path.Contains(r.Mask)) != null || config.Ignore.Find(r => y.Path.Contains(r.Mask) && m.RuleId == r.RuleId) != null ||
-                                config.Ignore.Find(r => y.Path.Contains(r.Mask) && m.Line == r.Line) != null);
-                        }).OrderBy(z => z.Line).ThenBy(z => z.Column).ThenBy(z => z.RuleId).ToList();
-                    });
-                    x.Result.Sort((a,b) => a.Path.CompareTo(b.Path));
+                x.Result.ForEach(y =>
+                {
+                    y.Messages = y.Messages.Where(m =>
+                    {
+                        return config != null ? !(config.Ignore.Find(r => y.Path.Contains(r.Mask)) != null || config.Ignore.Find(r => y.Path.Contains(r.Mask) && m.RuleId == r.RuleId) != null ||
+                            config.Ignore.Find(r => y.Path.Contains(r.Mask) && m.Line == r.Line) != null) : true;
+                    }).OrderBy(z => z.Line).ThenBy(z => z.Column).ThenBy(z => z.RuleId).ToList();
                 });
-                output.Sort((a,b) => a.Engine.CompareTo(b.Engine));
-            }
+                x.Result.Sort((a, b) => a.Path.CompareTo(b.Path));
+            });
+            output.Sort((a, b) => a.Engine.CompareTo(b.Engine));
 
             return output;
 
