@@ -2,8 +2,10 @@ namespace Linterhub.Cli.Strategy
 {
     using System.Linq;
     using Core.Schema;
+    using Core.Exceptions;
     using Runtime;
     using System.Collections.Generic;
+    using System.IO;
 
     public class IgnoreStrategy : IStrategy
     {
@@ -21,18 +23,37 @@ namespace Linterhub.Cli.Strategy
             // Validate
             ensure.ProjectSpecified();
 
+            var Mask = "";
+
+            if (context.Directory != null)
+            {
+                var relative = context.Directory
+                    .Replace(context.Project, string.Empty)
+                    .Replace(Path.GetFullPath(context.Project), string.Empty)
+                    .TrimStart('/')
+                    .TrimStart('\\')
+                    .Replace("/", "\\");
+                Mask = Path.Combine(relative, (context.File ?? string.Empty));
+            }
+            else
+            {
+                Mask = context.File;
+            }
 
             var rule = new LinterhubConfigSchema.IgnoreType()
             {
-                Mask = context.Path,
+                Mask = Mask,
                 Line = context.Line,
                 RuleId = context.RuleId
             };
 
+            if(config == null)
+            {
+                throw new LinterhubException("Invalid project config", "Catch null while parsing project config", LinterhubException.ErrorCode.linterhubConfig);
+            }
+
             if (context.Engines.Any())
             {
-                // TODO: File could be mask
-                // TODO: Rule for project > for file > for line. Avoid dublicates and improve logic
                 foreach (var engine in context.Engines)
                 {
                     var projectEngine = config.Engines.FirstOrDefault(x => x.Name == engine);

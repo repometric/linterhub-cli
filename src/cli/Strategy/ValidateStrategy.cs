@@ -23,7 +23,6 @@ namespace Linterhub.Cli.Strategy
             context.Project = GetProjectPath(context.Project).NormalizePath();
             context.Linterhub = GetLinterhubPath(context.Linterhub).NormalizePath();
             context.PlatformConfig = GetPlatformConfigPath(context.PlatformConfig).NormalizePath();
-            context.ProjectConfig = GetProjectConfigPath(context.ProjectConfig, context.Project).NormalizePath();
 
             ensure.ProjectExists();
             ensure.LinterhubExists();
@@ -36,10 +35,7 @@ namespace Linterhub.Cli.Strategy
             else
             {
                 var possiblePath = Path.Combine(context.Project, ".linterhub.json");
-                if (File.Exists(possiblePath))
-                {
-                    context.ProjectConfig = possiblePath;
-                }
+                context.ProjectConfig = possiblePath;
             }
 
             if (!string.IsNullOrEmpty(context.Directory))

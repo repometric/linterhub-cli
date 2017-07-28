@@ -9,6 +9,7 @@ namespace Linterhub.Cli
     using Core.Exceptions;
     using Runtime;
     using Strategy;
+    using System.IO;
 
     internal class Program
     {
@@ -53,14 +54,16 @@ namespace Linterhub.Cli
                 if (context.SaveConfig)
                 {
                     if (string.IsNullOrEmpty(context.ProjectConfig))
+                    {
                         throw new LinterhubException(
                             title: "Linterhub config",
                             description: "Cant save config cause no project path specified",
                             statusCode: LinterhubException.ErrorCode.linterhubConfig,
                             innerException: null);
+                    }
 
                     var content = locator.Get<LinterhubConfigSchema>().SerializeAsJson();
-                    System.IO.File.WriteAllText(context.ProjectConfig, content);
+                    File.WriteAllText(context.ProjectConfig, content);
                 }
 
                 var output = result is string || result == null

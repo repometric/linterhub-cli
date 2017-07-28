@@ -161,8 +161,29 @@
                 {
                     y.Messages = y.Messages.Where(m =>
                     {
-                        return config != null ? !(config.Ignore.Find(r => y.Path.Contains(r.Mask)) != null || config.Ignore.Find(r => y.Path.Contains(r.Mask) && m.RuleId == r.RuleId) != null ||
-                            config.Ignore.Find(r => y.Path.Contains(r.Mask) && m.Line == r.Line) != null) : true;
+                        var ignores = new List<LinterhubConfigSchema.IgnoreType>();
+                        if (config != null)
+                        {
+                            if (config.Engines.Count > 0)
+                            {
+                                ignores.AddRange(config.Engines.Find(z => z.Name == x.Engine).Ignore);
+                            }
+                            ignores.AddRange(config.Ignore);
+                            ignores = ignores.Select(r =>
+                            {
+                                return new LinterhubConfigSchema.IgnoreType()
+                                {
+                                    Mask = r.Mask == null ? y.Path : (y.Path.Contains(r.Mask) ? y.Path : r.Mask),
+                                    RuleId = r.RuleId ?? m.RuleId,
+                                    Line = r.Line ?? m.Line
+                                };
+                            }).ToList();
+                        }
+                        return !ignores.Exists(r => 
+                            r.RuleId == m.RuleId &&
+                            r.Line == m.Line &&
+                            r.Mask == y.Path
+                        );
                     }).OrderBy(z => z.Line).ThenBy(z => z.Column).ThenBy(z => z.RuleId).ToList();
                 });
                 x.Result.Sort((a, b) => a.Path.CompareTo(b.Path));
