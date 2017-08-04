@@ -9,6 +9,9 @@
     "extensions": [
         "*.js"
     ],
+    "configFile": [
+        ".jshintrc"
+    ],
     "license": "MIT",
     "areas": [
         "syntax",

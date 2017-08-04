@@ -9,6 +9,10 @@
     "extensions": [
         "*.js"
     ],
+    "configFile": [
+        "jslint.conf",
+        ".jslint.conf"
+    ],
     "license": "MIT",
     "areas": [
         "syntax",

@@ -9,6 +9,9 @@
     "extensions": [
         "*.html"
     ],
+    "configFile": [
+        "htmlhint.conf"
+    ],
     "license": "MIT",
     "areas": [
         "syntax"

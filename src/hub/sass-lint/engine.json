@@ -10,6 +10,9 @@
         "*.sass",
         "*.scss"
     ],
+    "configFile": [
+        ".sass-lint.yml"
+    ],
     "license": "MIT",
     "areas": [
         "syntax",

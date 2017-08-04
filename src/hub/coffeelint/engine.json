@@ -9,6 +9,9 @@
     "extensions": [
         "*.coffee"
     ],
+    "configFile": [
+        "coffeelint.json"
+    ],
     "license": "MIT",
     "areas": [
         "syntax",

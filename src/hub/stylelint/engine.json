@@ -12,6 +12,14 @@
         "*.less",
         "*.sss"
     ],
+    "configFile": [
+        ".stylelintrc",
+        ".stylelintrc.json",
+        ".stylelintrc.yaml",
+        ".stylelintrc.yml",
+        ".stylelintrc.js",
+        "stylelint.config.js"
+    ],
     "license": "MIT",
     "areas": [
         "simplification",

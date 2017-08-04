@@ -9,6 +9,9 @@
     "extensions": [
         "*.css"
     ],
+    "configFile": [
+        ".csslintrc"
+    ],
     "license": "MIT",
     "areas": [
         "syntax",
