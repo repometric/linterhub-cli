@@ -176,7 +176,7 @@ const tree = {
                 const value = node.properties[name];
                 tree.doc.push(format.documentation(value.description, false));
                 if (value.enum || (value.items && value.items.enum)) {
-                    if (name === 'languages' || name === 'manager' || name === 'severity') {
+                    if (name === 'languages' || name === 'manager' || name === 'severity' || name == 'found') {
                         tree.doc.push(format.enum(name, value));
                     } else {
                         value.enum = null;

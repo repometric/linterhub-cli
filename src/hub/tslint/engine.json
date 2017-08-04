@@ -9,6 +9,9 @@
     "extensions": [
         "*.ts"
     ],
+    "configFile": [
+        "tslint.json"
+    ],
     "license": "Apache-2.0",
     "areas": [
         "simplification",

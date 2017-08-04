@@ -10,6 +10,9 @@
     "extensions": [
         "*.js"
     ],
+    "configFile": [
+        ".eslintrc"
+    ],
     "license": "MIT",
     "areas": [
         "syntax"

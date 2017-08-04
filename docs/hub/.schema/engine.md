@@ -7,11 +7,13 @@ The meta information of engine
 |-|:-:|:-:|-|
 |name|string|+|The engine name|
 |customName|string|-|Custom engine name. Use this property when need to change default engine name on execute|
+|runLocally|boolean|-|Way how to run engine. If engine installed locally for current project, than cant execute it with just engine name|
 |description|string|+|The engine description|
 |url|string|-|The engine url or homepage|
 |version|[version](#version)|-|The engine version (expected)|
 |languages|string[]|+|The list of supported languages. Possible values: `coffeescript`, `css`, `html`, `javascript`, `json`, `jsx`, `sass`, `typescript`|
 |extensions|string[]|-|Common file extensions parsed by engine|
+|configFile|string[]|-|Possible names of config file (must be in project's root)|
 |license|string|+|The engine license. Possible values: `Unknown`, `AGPL-3.0`, `Apache-2.0`, `MIT`|
 |requirements|[requirement](#requirement)[]|-|The engine requirements|
 |areas|string[]|+|The engine areas. Possible values: `code simplification`, `commented code`, `complexity`, `documentation`, `duplication`, `formatting`, `grammar`, `memory leak`, `security`, `simplification`, `smell`, `spelling`, `syntax`, `undefined element`, `unreachable code`, `unused code`|
@@ -48,6 +50,7 @@ Support of stdin analyze
 {
     "name": "string",
     "customName": "string",
+    "runLocally": false,
     "description": "string",
     "url": "string",
     "version": {
@@ -56,6 +59,7 @@ Support of stdin analyze
     },
     "languages": [],
     "extensions": [],
+    "configFile": [],
     "license": "Unknown",
     "requirements": [
         {

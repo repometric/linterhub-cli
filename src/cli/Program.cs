@@ -10,6 +10,7 @@ namespace Linterhub.Cli
     using Runtime;
     using Strategy;
     using System.IO;
+    using Core.Managers;
 
     internal class Program
     {
@@ -31,7 +32,8 @@ namespace Linterhub.Cli
             { RunMode.Help, new OptionsStrategy() },
             { RunMode.EngineVersion, new EngineVersionStrategy() },
             { RunMode.EngineInstall, new EngineInstallStrategy() },
-            { RunMode.Ignore, new IgnoreStrategy() }
+            { RunMode.Ignore, new IgnoreStrategy() },
+            { RunMode.FetchEngines, new FetchEnginesStrategy() }
         };
         
         internal static int Run(string[] args, LogManager log)
@@ -93,7 +95,8 @@ namespace Linterhub.Cli
             var engineFactory = new EngineFileSystemFactory(context.Linterhub);
             var engineContextFactory = new EngineContextFactory(engineFactory);
             var commandFactory = new CommandFactory();
-            var installer = new Installer(terminal, platformConfig.Command.Installed);
+            var managerWrapper = new ManagerWrapper(terminal);
+            var installer = new Installer(terminal, managerWrapper);
             var engineRunner = new EngineWrapper(terminal, commandFactory);
 
             locator.Register<LinterhubConfigSchema>(projectConfig);
@@ -104,6 +107,7 @@ namespace Linterhub.Cli
             locator.Register<TerminalWrapper>(terminal);
             locator.Register<EngineWrapper>(engineRunner);
             locator.Register<Installer>(installer);
+            locator.Register<ManagerWrapper>(managerWrapper);
 
             var ensure = new Ensure(locator);
             locator.Register<Ensure>(ensure);

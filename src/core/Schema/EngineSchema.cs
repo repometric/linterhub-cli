@@ -21,6 +21,11 @@ namespace Linterhub.Core.Schema
 		public string CustomName { get; set; }
 		
 		/// <summary>
+		/// Gets or sets way how to run engine. if engine installed locally for current project, than cant execute it with just engine name
+		/// </summary>
+		public bool? RunLocally { get; set; } = false;
+		
+		/// <summary>
 		/// Gets or sets the engine description
 		/// </summary>
 		public string Description { get; set; }
@@ -57,6 +62,11 @@ namespace Linterhub.Core.Schema
 		/// Gets or sets common file extensions parsed by engine
 		/// </summary>
 		public List<string> Extensions = new List<string>();
+		
+		/// <summary>
+		/// Gets or sets possible names of config file (must be in project's root)
+		/// </summary>
+		public List<string> ConfigFile = new List<string>();
 		
 		/// <summary>
 		/// Gets or sets the engine license
