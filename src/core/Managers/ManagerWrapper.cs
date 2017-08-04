@@ -12,6 +12,7 @@
         {
             managers.Add(ManagerType.npm, new NpmManager(terminal));
             managers.Add(ManagerType.pip, new PipManager(terminal));
+            managers.Add(ManagerType.system, new SystemManager(terminal));
         }
 
         public IManager get(ManagerType manager)

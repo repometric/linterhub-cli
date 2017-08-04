@@ -17,21 +17,15 @@ namespace Linterhub.Core.Runtime
             Managers = managerWrapper;
         }
 
-        /*public InstallResult IsInstalled(RequirementType requirement)
+        private InstallResult cantInstall(EngineSchema.RequirementType requirement)
         {
-            var command = "";
-            CmdWrapper.Result checkResult = null;
-
-            command = string.Format("{0} --version", requirement.Package);
-            checkResult = Terminal.RunTerminal(command);
             return new InstallResult
             {
                 Name = requirement.Package,
-                Installed = checkResult.ExitCode == 0,
-                Version = Deserialize.RemoveNewline(checkResult.Output.ToString()),
-                Message = Deserialize.RemoveNewline(checkResult.Error.ToString())
+                Installed = false,
+                Message = $"Automatic installation for '{requirement.Package}' using '{requirement.Manager}' is not supported"
             };
-        }*/
+        }
 
         public InstallResult Install(EngineSpecification specification, string installationPath = null, string version = null)
         {
@@ -47,19 +41,16 @@ namespace Linterhub.Core.Runtime
 
                     if (manager == null)
                     {
-                        return new InstallResult
-                        {
-                            Name = requirement.Package,
-                            Installed = false,
-                            Message = $"Automatic installation for '{requirement.Package}' using '{requirement.Manager}' is not supported"
-                        };
+                        return cantInstall(requirement);
                     }
 
                     var installCheck = manager.CheckInstallation(requirement.Package, installationPath);
 
-                    return installCheck.Installed ?? false ? 
-                            installCheck :
-                            manager.Install(requirement.Package, installationPath, mainPackage.Package == requirement.Package ? version : null);
+                    var insResult = installCheck.Installed ?? false ?
+                                    installCheck :
+                                    manager.Install(requirement.Package, installationPath, mainPackage.Package == requirement.Package ? version : null);
+
+                    return insResult ?? cantInstall(requirement);
                 }))
             };
 
