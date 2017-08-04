@@ -71,6 +71,11 @@
                     "description": "Whether engine is enabled",
                     "default": true
                 },
+                "locally": {
+                    "type": "boolean",
+                    "description": "Whether engine is installed locally or globally",
+                    "default": true
+                },
                 "config": {
                     "description": "The engine specific configuration",
                     "type": "object"
@@ -84,7 +89,9 @@
                 }
             },
             "required": [
-                "name"
+                "name",
+                "locally",
+                "activae"
             ]
         },
         "ignore": {

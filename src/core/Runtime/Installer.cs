@@ -46,7 +46,7 @@ namespace Linterhub.Core.Runtime
 
                     var installCheck = manager.CheckInstallation(requirement.Package, installationPath);
 
-                    var insResult = installCheck.Installed ?? false ?
+                    var insResult = installCheck.Installed ?
                                     installCheck :
                                     manager.Install(requirement.Package, installationPath, mainPackage.Package == requirement.Package ? version : null);
 
@@ -54,7 +54,7 @@ namespace Linterhub.Core.Runtime
                 }))
             };
 
-            result.Installed = result.Packages.All((x) => x.Installed ?? false);
+            result.Installed = result.Packages.All((x) => x.Installed);
 
             var mainResult = result.Packages.Where(x => x.Name == mainPackage.Package).First();
 

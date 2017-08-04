@@ -19,7 +19,7 @@ namespace Linterhub.Core.Schema
 			/// <summary>
 			/// Gets or sets installation status
 			/// </summary>
-			public bool? Installed { get; set; }
+			public bool Installed { get; set; }
 			
 			/// <summary>
 			/// Gets or sets error message if cant install engine

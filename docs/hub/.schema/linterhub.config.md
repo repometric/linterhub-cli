@@ -14,6 +14,7 @@ The engine configuration
 |-|:-:|:-:|-|
 |name|string|+|The engine name|
 |active|boolean|-|Whether engine is enabled. Default is `true`|
+|locally|boolean|+|Whether engine is installed locally or globally. Default is `true`|
 |config|object|-|The engine specific configuration|
 |ignore|[ignore](#ignore)[]|-|The list of rules for ignoring engine results|
 ### ignore
@@ -31,6 +32,7 @@ The configuration for ignoring engine results
         {
             "name": "string",
             "active": false,
+            "locally": false,
             "config": {},
             "ignore": [
                 {

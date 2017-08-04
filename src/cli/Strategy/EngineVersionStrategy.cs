@@ -33,9 +33,13 @@ namespace Linterhub.Cli.Strategy
 
             var engines = context.Engines.Any() ? context.Engines : projectConfig.Engines.Select(x => x.Name);
 
-            var installationPath =
-                context.Project != Directory.GetCurrentDirectory() && Directory.Exists(context.Project) ?
-                context.Project : null;
+            string installationPath = null;
+
+            if (context.Locally)
+            {
+                ensure.ProjectSpecified();
+                installationPath = context.Project;
+            }
 
             return engines.Select(engine => 
             {

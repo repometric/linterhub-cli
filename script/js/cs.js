@@ -47,7 +47,9 @@ const format = {
             type = 'EngineOutputSchema';
         }
         if (type === 'int' || type === 'bool') {
-            type += '?';
+            if (propname !== 'installed' && propname !== 'locally') {
+                type += '?';
+            }
         }
         let postfix = (def != undefined ? (` = ` + (type.includes('string') ? `"${def.toString()}";` : `${def.toString()};`)) : '');
         type = type.replace('EngineOutputType', 'EngineOutputSchema');

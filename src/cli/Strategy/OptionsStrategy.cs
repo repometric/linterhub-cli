@@ -25,6 +25,7 @@ namespace Linterhub.Cli.Strategy
                 { "f=|file=", "Path to file.", v => runContext.File = v },
                 { "m=|mode=", "Run mode.", v => runContext.Mode = (RunMode)Enum.Parse(typeof(RunMode), v, true) },
                 { "a=|activate=", "Activate or not.", v => runContext.Activate = bool.Parse(v) },
+                { "l=|locally=", "Run/Install engine locally or globally (locally by default)", v => runContext.Locally = bool.Parse(v) },
                 { "l=|line=", "Line in a file.", v => runContext.Line = int.Parse(v) },
                 { "r=|ruleid=", "Rule id.", v => runContext.RuleId = v },
                 { "k=|keys=", "Keys to include.", v => runContext.Keys = string.IsNullOrEmpty(v) ? new string[0] : v.Replace("\"", "").Replace("'", "").Split(',') },

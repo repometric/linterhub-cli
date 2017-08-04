@@ -31,9 +31,13 @@ namespace Linterhub.Cli.Strategy
             ensure.EngineSpecified();
             ensure.EngineExists();
 
-            var installationPath =
-                context.Project != Directory.GetCurrentDirectory() && Directory.Exists(context.Project) ?
-                context.Project : null;
+            string installationPath = null;
+
+            if (context.Locally)
+            {
+                ensure.ProjectSpecified();
+                installationPath = context.Project;
+            }
 
             // TODO support multiple versions of engines
 
