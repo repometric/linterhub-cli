@@ -13,10 +13,12 @@
             "type": "object",
             "properties": {
                 "--config": {
+                    "id": "{config}",
                     "type": "string",
                     "description": "The location of the configuration file"
                 },
                 "--exclude": {
+                    "id": "--exclude", 
                     "type": "array",
                     "description": "Exclude globs from path expansion",
                     "anyOf": [
@@ -38,6 +40,7 @@
                     "description": "A filename to output the results to. By default, tslint outputs to stdout."
                 },
                 "--rules-dir": {
+                    "id": "--rules-dir", 
                     "type": "string",
                     "description": "An additional rules directory, for user-created rules."
                 },
@@ -49,18 +52,21 @@
                     "type": "string",
                     "description": "The formatter to use to format the results of the linter."
                 },
-                "--project": {
-                    "type": "string",
-                    "description": "The location of a tsconfig.json file that will be used to determine which files will be linted."
-                },
-                "--type-check": {
-                    "type": "null",
-                    "description": "Enables the type checker when running linting rules. --project must be specified."
-                },
-                "-version": {
-                    "type": "null",
-                    "description": "Show version of linter"
-                },
+                "--project": { 
+                    "id": "--project", 
+                    "type": "string", 
+                    "description": "The location of a tsconfig.json file that will be used to determine which files will be linted." 
+                }, 
+                "--type-check": { 
+                    "id": "--type-check", 
+                    "type": "null", 
+                    "description": "Enables the type checker when running linting rules. --project must be specified." 
+                }, 
+                "-version": { 
+                    "id": "{version}", 
+                    "type": "null", 
+                    "description": "Show version of linter" 
+                }, 
                 "--force": {
                     "type": "null",
                     "description": "Return status code 0 even if there are any lint errors."

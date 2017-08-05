@@ -12,20 +12,24 @@
         "options": {
             "type": "object",
             "properties": {
-                "--config": {
-                    "type": "string",
-                    "description": "Path to a specific configuration file"
-                },
-                "--config-basedir": {
-                    "type": "string",
-                    "description": "An absolute path to the directory that relative paths defining \"extends\" and \"plugins\" are *relative to*"
-                },
-                "--ignore-path": {
-                    "type": "string",
-                    "description": "Path to a file containing patterns that describe files to ignore."
-                },
-                "--syntax": {
-                    "type": "string",
+                "--config": { 
+                    "id": "{config}", 
+                    "type": "string", 
+                    "description": "Path to a specific configuration file" 
+                }, 
+                "--config-basedir": { 
+                    "id": "--config-basedir", 
+                    "type": "string", 
+                    "description": "An absolute path to the directory that relative paths defining \"extends\" and \"plugins\" are *relative to*" 
+                }, 
+                "--ignore-path": { 
+                    "id": "--ignore-path", 
+                    "type": "string", 
+                    "description": "Path to a file containing patterns that describe files to ignore." 
+                }, 
+                "--syntax": { 
+                    "id": "--syntax", 
+                    "type": "string", 
                     "description": "Specify a non-standard syntax",
                     "enum": [
                         "scss",
@@ -34,6 +38,7 @@
                     ]
                 },
                 "--custom-syntax": {
+                    "id": "--custom-syntax",
                     "type": "string",
                     "description": "Module name or path to a JS file exporting a PostCSS-compatible syntax."
                 },
@@ -41,18 +46,21 @@
                     "type": "string",
                     "description": "A filename to assign stdin input."
                 },
-                "--ignore-disables": {
-                    "type": "string",
-                    "description": "Ignore styleline-disable comments."
-                },
-                "--cache": {
-                    "type": "null",
-                    "description": "Store the info about processed files in order to only operate on the changed ones the next time you run stylelint."
-                },
-                "--cache-location": {
-                    "type": "string",
-                    "description": "Path to a file or directory to be used for the cache location."
-                },
+                "--ignore-disables": { 
+                    "id": "--ignore-disables", 
+                    "type": "string", 
+                    "description": "Ignore styleline-disable comments." 
+                }, 
+                "--cache": { 
+                    "id": "--cache", 
+                    "type": "null", 
+                    "description": "Store the info about processed files in order to only operate on the changed ones the next time you run stylelint." 
+                }, 
+                "--cache-location": { 
+                    "id": "--cache-location", 
+                    "type": "string", 
+                    "description": "Path to a file or directory to be used for the cache location." 
+                }, 
                 "--formatter": {
                     "type": "string",
                     "description": "The output formatter",
@@ -63,6 +71,7 @@
                     ]
                 },
                 "--version": {
+                    "id": "{version}",
                     "type": "null",
                     "description": "Show version of linter"
                 },
@@ -70,17 +79,20 @@
                     "type": "string",
                     "description": "Path to a JS file exporting a custom formatting function."
                 },
-                "--quiet": {
-                    "type": "null",
-                    "description": "Only register warnings for rules with an error-level severity (ignore warning-level)"
-                },
-                "--allow-empty-input": {
-                    "type": "null",
-                    "description": "If no files match glob pattern, exits without throwing an error."
-                },
-                "--report-needless-disables": {
-                    "type": "null",
-                    "description": "Report stylelint-disable comments that are not blocking a lint warning."
+                "--quiet": { 
+                    "id": "--quiet", 
+                    "type": "null", 
+                    "description": "Only register warnings for rules with an error-level severity (ignore warning-level)" 
+                }, 
+                "--allow-empty-input": { 
+                    "id": "--allow-empty-input", 
+                    "type": "null", 
+                    "description": "If no files match glob pattern, exits without throwing an error." 
+                }, 
+                "--report-needless-disables": { 
+                    "id": "--report-needless-disables", 
+                    "type": "null", 
+                    "description": "Report stylelint-disable comments that are not blocking a lint warning." 
                 },
                 "": {
                     "id": "{path}",

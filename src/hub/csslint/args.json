@@ -28,26 +28,32 @@
                     "description": "Outputs all of the rules available"
                 },
                 "--quiet": {
+                    "id": "--quiet",
                     "type": "null",
                     "description": "Only output when errors are present"
                 },
                 "--errors": {
+                    "id": "--errors",
                     "type": "string",
                     "description": "Indicate which rules to include as errors"
                 },
                 "--warnings": {
+                    "id": "--warnings",
                     "type": "string",
                     "description": "Indicate which rules to include as warnings"
                 },
                 "--ignore": {
+                    "id": "--ignore",
                     "type": "string",
                     "description": "Indicate which rules to ignore completely"
                 },
                 "--exclude-list": {
+                    "id": "--exclude-list",
                     "type": "string",
                     "description": "Indicate which files/directories to exclude from being linted"
                 },
                 "--config": {
+                    "id": "{config}",
                     "type": "string",
                     "description": "Reads csslint options from specified file"
                 },
@@ -56,6 +62,7 @@
                     "description": "Show help"
                 },
                 "--version": {
+                    "id": "{version}",
                     "type": "string",
                     "description": "Show version"
                 },

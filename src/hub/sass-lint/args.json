@@ -12,6 +12,7 @@
             "type": "object",
             "properties": {
                 "--config": {
+                    "id": "{config}",
                     "type": "string",
                     "description": "Path to the config file that should be used, relative to the directory the the command is being run in"
                 },
@@ -24,10 +25,12 @@
                     "description": "Outputs usage information for the CLI"
                 },
                 "--ignore": {
+                    "id": "--ignore",
                     "type": "string",
                     "description": "A pattern that should be ignored from linting. Multiple can be used by separating each pattern by comma"
                 },
                 "--max-warnings": {
+                    "id": "--max-warnings",
                     "type": "number",
                     "description": "Total warnings to exit"
                 },
@@ -40,6 +43,7 @@
                     "description": "Verbose output (fully formatted output)"
                 },
                 "--version": {
+                    "id": "{version}",
                     "type": "string",
                     "description": "Show version"
                 },

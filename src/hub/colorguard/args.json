@@ -12,14 +12,17 @@
             "type": "object",
             "properties": {
                 "--threshold": {
+                    "id": "--threshold",
                     "type": "string",
                     "description": "Threshold of allowable color difference"
                 },
                 "--allow-equivalent-notation": {
+                    "id": "--allow-equivalent-notation",
                     "type": "null",
                     "description": "Allow equivalent notation of the same color, e.g. #000 and #000000"
                 },
                 "--options": {
+                    "id": "{config}",
                     "type": "string",
                     "description": "An optional JSON file containing all options (Overrides `--threshold`)"
                 },

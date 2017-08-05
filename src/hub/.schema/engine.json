@@ -26,19 +26,9 @@
             "description": "The engine url or homepage",
             "format": "uri"
         },
-        "version": {
-            "description": "The engine version (expected)",
-            "type": "object",
-            "properties": {
-                "package": {
-                    "type": "string",
-                    "description": "Package version"
-                },
-                "local": {
-                    "type": "string",
-                    "description": "Local version"
-                }
-            }
+        "version": { 
+            "type": "string", 
+            "description": "The engine version" 
         },
         "languages": {
             "type": "array",
@@ -64,9 +54,9 @@
                 "type": "string"
             }
         },
-        "configFile": {
+        "configs": {
             "type": "array",
-            "description": "Possible names of config file (must be in project's root)",
+            "description": "List of file names which could be treated as engine config",
             "items": {
                 "type": "string"
             }
@@ -146,7 +136,8 @@
             "properties": {
                 "available": {
                     "type": "boolean",
-                    "description": "Supports stdin or not"
+                    "description": "Supports stdin or not",
+                    "default": false
                 },
                 "arguments": {
                     "type": "object",
@@ -160,8 +151,7 @@
         "description",
         "languages",
         "license",
-        "areas",
-        "stdin"
+        "areas"
     ],
     "definitions": {
         "requirement": {
@@ -183,7 +173,11 @@
                 "package": {
                     "type": "string",
                     "description": "The package name"
-                }
+                },
+                "version": { 
+                    "type": "string", 
+                    "description": "The package version" 
+                } 
             }
         }
     }

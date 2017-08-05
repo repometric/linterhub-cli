@@ -36,9 +36,9 @@ namespace Linterhub.Core.Schema
 		public string Url { get; set; }
 		
 		/// <summary>
-		/// Gets or sets the engine version (expected)
+		/// Gets or sets the engine version
 		/// </summary>
-		public VersionType Version { get; set; }
+		public string Version { get; set; }
 		
 		/// <summary>
 		/// Gets or sets the list of supported languages
@@ -64,9 +64,9 @@ namespace Linterhub.Core.Schema
 		public List<string> Extensions = new List<string>();
 		
 		/// <summary>
-		/// Gets or sets possible names of config file (must be in project's root)
+		/// Gets or sets list of file names which could be treated as engine config
 		/// </summary>
-		public List<string> ConfigFile = new List<string>();
+		public List<string> Configs = new List<string>();
 		
 		/// <summary>
 		/// Gets or sets the engine license
@@ -119,23 +119,6 @@ namespace Linterhub.Core.Schema
 		public StdinType Stdin { get; set; }
 		
 		/// <summary>
-		/// The engine version (expected)
-		/// </summary>
-		public class VersionType
-		{
-			
-			/// <summary>
-			/// Gets or sets package version
-			/// </summary>
-			public string Package { get; set; }
-			
-			/// <summary>
-			/// Gets or sets local version
-			/// </summary>
-			public string Local { get; set; }
-		}
-		
-		/// <summary>
 		/// The engine dependency
 		/// </summary>
 		public class RequirementType
@@ -161,6 +144,11 @@ namespace Linterhub.Core.Schema
 			/// Gets or sets the package name
 			/// </summary>
 			public string Package { get; set; }
+			
+			/// <summary>
+			/// Gets or sets the package version
+			/// </summary>
+			public string Version { get; set; }
 		}
 		
 		/// <summary>
@@ -172,7 +160,7 @@ namespace Linterhub.Core.Schema
 			/// <summary>
 			/// Gets or sets supports stdin or not
 			/// </summary>
-			public bool? Available { get; set; }
+			public bool? Available { get; set; } = false;
 			
 			/// <summary>
 			/// Gets or sets the stdin configuration of engine. this property is specific for each engine

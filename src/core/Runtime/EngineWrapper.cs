@@ -65,7 +65,9 @@ namespace Linterhub.Core.Runtime
                     });
 
             if (File.Exists(tempFile))
+            {
                 File.Delete(tempFile);
+            }
 
             return result.SerializeAsJson();
         }

@@ -16,140 +16,174 @@
                     "type": "null",
                     "description": "Use json as output format"
                 },
-                "-ass": {
-                    "type": "null",
-                    "description": "Tolerate assignment expressions"
-                },
-                "-bitwise": {
-                    "type": "null",
-                    "description": "Tolerate bitwise operators"
-                },
-                "-browser": {
-                    "type": "null",
-                    "description": "Assume a browser"
-                },
-                "-closure": {
-                    "type": "null",
-                    "description": "Tolerate Google Closure idioms"
-                },
-                "-continue": {
-                    "type": "null",
-                    "description": "Tolerate continue"
-                },
-                "-debug": {
-                    "type": "null",
-                    "description": "Tolerate debugger statements"
-                },
-                "-devel": {
-                    "type": "null",
-                    "description": "Assume console,alert, ..."
-                },
-                "-eqeq": {
-                    "type": "null",
-                    "description": "Tolerate == and !="
-                },
-                "-evil": {
-                    "type": "null",
-                    "description": "Tolerate eval"
-                },
-                "-forin": {
-                    "type": "null",
-                    "description": "Tolerate unfiltered for in"
-                },
-                "-indent": {
-                    "type": "number",
-                    "description": "Strict white space indentation"
-                },
-                "-maxerr": {
-                    "type": "number",
-                    "description": "Maximum number of errors"
-                },
-                "-maxlen": {
-                    "type": "number",
-                    "description": "Maximum line length"
-                },
-                "-newcap": {
-                    "type": "null",
-                    "description": "Tolerate uncapitalized constructors"
-                },
-                "-node": {
-                    "type": "null",
-                    "description": "Assume Node.js"
-                },
-                "-nomen": {
-                    "type": "null",
-                    "description": "Tolerate dangling underscore in identifiers"
-                },
-                "-passfail": {
-                    "type": "null",
-                    "description": "Stop on first error"
-                },
-                "-plusplus": {
-                    "type": "null",
-                    "description": "Tolerate ++ and --"
-                },
-                "-predef": {
-                    "type": "array",
-                    "description": "Declare additional predefined globals"
-                },
-                "-properties": {
-                    "type": "null",
-                    "description": "Require all property names to be declared with /properties/"
-                },
-                "-regexp": {
-                    "type": "null",
-                    "description": "Tolerate . and [^...]. in /RegExp/"
-                },
-                "-rhino": {
-                    "type": "null",
-                    "description": "Assume Rhino"
-                },
-                "-sloppy": {
-                    "type": "null",
-                    "description": "Tolerate missing 'use strict' pragma"
-                },
-                "-stupid": {
-                    "type": "null",
-                    "description": "Tolerate stupidity (typically, use of sync functions)"
-                },
-                "-todo": {
-                    "type": "null",
-                    "description": "Tolerate TODO comments"
-                },
-                "-unparam": {
-                    "type": "null",
-                    "description": "Tolerate unused parameters"
-                },
-                "-vars": {
-                    "type": "null",
-                    "description": "Tolerate many var statements per function"
-                },
-                "-white": {
-                    "type": "null",
-                    "description": "Tolerate ++ and --"
-                },
-                "-anon": {
-                    "type": "null",
-                    "description": "Tolerate no space in anonymous function definition"
-                },
-                "-es5": {
-                    "type": "null",
-                    "description": "Tolerate ECMAScript 5 syntax"
-                },
-                "-undef": {
-                    "type": "null",
-                    "description": "Tolerate variables used before declaration"
-                },
-                "-on": {
-                    "type": "null",
-                    "description": "Tolerate HTML event handlers"
-                },
-                "-windows": {
-                    "type": "null",
-                    "description": "Assume existence of Windows globals"
-                },
-                "-version": {
-                    "type": "null",
+                 "-ass": { 
+                    "id": "-ass", 
+                    "type": "null", 
+                    "description": "Tolerate assignment expressions" 
+                }, 
+                "-bitwise": { 
+                    "id": "-bitwise", 
+                    "type": "null", 
+                    "description": "Tolerate bitwise operators" 
+                }, 
+                "-browser": { 
+                    "id": "-browser", 
+                    "type": "null", 
+                    "description": "Assume a browser" 
+                }, 
+                "-closure": { 
+                    "id": "-closure", 
+                    "type": "null", 
+                    "description": "Tolerate Google Closure idioms" 
+                }, 
+                "-continue": { 
+                    "id": "-continue", 
+                    "type": "null", 
+                    "description": "Tolerate continue" 
+                }, 
+                "-debug": { 
+                    "id": "-debug", 
+                    "type": "null", 
+                    "description": "Tolerate debugger statements" 
+                }, 
+                "-devel": { 
+                    "id": "-devel", 
+                    "type": "null", 
+                    "description": "Assume console,alert, ..." 
+                }, 
+                "-eqeq": { 
+                    "id": "-eqeq", 
+                    "type": "null", 
+                    "description": "Tolerate == and !=" 
+                }, 
+                "-evil": { 
+                    "id": "-evil", 
+                    "type": "null", 
+                    "description": "Tolerate eval" 
+                }, 
+                "-forin": { 
+                    "id": "-forin", 
+                    "type": "null", 
+                    "description": "Tolerate unfiltered for in" 
+                }, 
+                "-indent": { 
+                    "id": "-indent", 
+                    "type": "number", 
+                    "description": "Strict white space indentation" 
+                }, 
+                "-maxerr": { 
+                    "id": "-maxerr", 
+                    "type": "number", 
+                    "description": "Maximum number of errors" 
+                }, 
+                "-maxlen": { 
+                    "id": "-maxlen", 
+                    "type": "number", 
+                    "description": "Maximum line length" 
+                }, 
+                "-newcap": { 
+                    "id": "-newcap", 
+                    "type": "null", 
+                    "description": "Tolerate uncapitalized constructors" 
+                }, 
+                "-node": { 
+                    "id": "-node", 
+                    "type": "null", 
+                    "description": "Assume Node.js" 
+                }, 
+                "-nomen": { 
+                    "id": "-nomen", 
+                    "type": "null", 
+                    "description": "Tolerate dangling underscore in identifiers" 
+                }, 
+                "-passfail": { 
+                    "id": "-passfail", 
+                    "type": "null", 
+                    "description": "Stop on first error" 
+                }, 
+                "-plusplus": { 
+                    "id": "-plusplus", 
+                    "type": "null", 
+                    "description": "Tolerate ++ and --" 
+                }, 
+                "-predef": { 
+                    "id": "-predef", 
+                    "type": "array", 
+                    "description": "Declare additional predefined globals" 
+                }, 
+                "-properties": { 
+                    "id": "-properties", 
+                    "type": "null", 
+                    "description": "Require all property names to be declared with /properties/" 
+                }, 
+                "-regexp": { 
+                    "id": "-regexp", 
+                    "type": "null", 
+                    "description": "Tolerate . and [^...]. in /RegExp/" 
+                }, 
+                "-rhino": { 
+                    "id": "-rhino", 
+                    "type": "null", 
+                    "description": "Assume Rhino" 
+                }, 
+                "-sloppy": { 
+                    "id": "-sloppy", 
+                    "type": "null", 
+                    "description": "Tolerate missing 'use strict' pragma" 
+                }, 
+                "-stupid": { 
+                    "id": "-stupid", 
+                    "type": "null", 
+                    "description": "Tolerate stupidity (typically, use of sync functions)" 
+                }, 
+                "-todo": { 
+                    "id": "-todo", 
+                    "type": "null", 
+                    "description": "Tolerate TODO comments" 
+                }, 
+                "-unparam": { 
+                    "id": "-unparam", 
+                    "type": "null", 
+                    "description": "Tolerate unused parameters" 
+                }, 
+                "-vars": { 
+                    "id": "-vars", 
+                    "type": "null", 
+                    "description": "Tolerate many var statements per function" 
+                }, 
+                "-white": { 
+                    "id": "-white", 
+                    "type": "null", 
+                    "description": "Tolerate ++ and --" 
+                }, 
+                "-anon": { 
+                    "id": "-anon", 
+                    "type": "null", 
+                    "description": "Tolerate no space in anonymous function definition" 
+                }, 
+                "-es5": { 
+                    "id": "-es5", 
+                    "type": "null", 
+                    "description": "Tolerate ECMAScript 5 syntax" 
+                }, 
+                "-undef": { 
+                    "id": "-undef", 
+                    "type": "null", 
+                    "description": "Tolerate variables used before declaration" 
+                }, 
+                "-on": { 
+                    "id": "-on", 
+                    "type": "null", 
+                    "description": "Tolerate HTML event handlers" 
+                }, 
+                "-windows": { 
+                    "id": "-windows", 
+                    "type": "null", 
+                    "description": "Assume existence of Windows globals" 
+                }, 
+                "-version": { 
+                    "id": "{version}", 
+                    "type": "null", 
                     "description": "Show version of linter"
                 },
                 "": {

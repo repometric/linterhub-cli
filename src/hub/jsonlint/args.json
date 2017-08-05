@@ -29,10 +29,12 @@
                     "description": "Compact error display"
                 },
                 "--validate": {
+                    "id": "--validate", 
                     "type": "string",
                     "description": "A JSON schema to use for validation"
                 },
                 "--environment": {
+                    "id": "--environment",
                     "type": "string",
                     "description": "Which specification of JSON Schema the validation file uses",
                     "default": "json-schema-draft-03"
@@ -46,6 +48,7 @@
                     "description": "Force pretty printing even if invalid"
                 },
                 "--version": {
+                    "id": "{version}",
                     "type": "null",
                     "description": "Show version of linter"
                 },

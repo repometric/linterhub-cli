@@ -2,6 +2,7 @@
     "$schema": "./../.schema/engine.json",
     "name": "stylelint",
     "description": "A mighty, modern CSS linter that helps you enforce consistent conventions and avoid errors in your stylesheets.",
+    "version": "7.11.1",
     "url": "https://stylelint.io/",
     "languages": [
         "css"
@@ -12,7 +13,7 @@
         "*.less",
         "*.sss"
     ],
-    "configFile": [
+    "configs": [
         ".stylelintrc",
         ".stylelintrc.json",
         ".stylelintrc.yaml",
@@ -33,13 +34,10 @@
         },
         {
             "manager": "npm",
-            "package": "stylelint"
+            "package": "stylelint", 
+            "version": "7.11.1"
         }
     ],
-    "version": {
-        "local": "7.11.1",
-        "package": "7.11.1"
-    },
     "defaults": {
         "": "**/**/*.*",
         "--custom-formatter": "file://{schema}/stylelint/reporter.js",

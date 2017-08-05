@@ -51,7 +51,7 @@ namespace Linterhub.Core.Schema
             {
                 var key = option.Key;
                 string value;
-                if (option.Value.Id != null)
+                if (option.Value.Id == "{path}")
                 {
                     value = option.Value.Id;
                 }

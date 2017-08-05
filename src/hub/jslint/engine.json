@@ -1,7 +1,8 @@
 {
     "$schema": "./../.schema/engine.json",
     "name": "jslint",
-    "description": "The JavaScript Code Quality Tool.",
+    "description": "The JavaScript Code Quality Tool", 
+    "version": "node-jslint version: 0.10.3  JSLint edition 2013-08-26",
     "url": "http://jslint.com",
     "languages": [
         "javascript"
@@ -9,7 +10,7 @@
     "extensions": [
         "*.js"
     ],
-    "configFile": [
+    "configs": [
         "jslint.conf",
         ".jslint.conf"
     ],
@@ -27,20 +28,13 @@
         },
         {
             "manager": "npm",
-            "package": "jslint"
+            "package": "jslint",
+            "version": "0.10.3"
         }
     ],
     "postfix": " | node file://{schema}/jslint/reporter.js",
-    "version": {
-        "local": "node-jslint version: 0.10.3  JSLint edition 2013-08-26",
-        "package": "0.10.3"
-    },
     "defaults": {
         "": "**/**/*.js",
         "--json": ""
-    },
-    "stdin":
-    {
-        "available": false
     }
 }
