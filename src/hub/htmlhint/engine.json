@@ -35,9 +35,6 @@
     },
     "stdin":
     {
-        "available": true,
-        "arguments": {
-            "stdin": null
-        }
+        "stdin": null
     }
 }

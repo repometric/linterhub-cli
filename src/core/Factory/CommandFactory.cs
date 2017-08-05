@@ -17,7 +17,7 @@ namespace Linterhub.Core.Schema
 
             if (context.Stdin == Context.stdinType.UseWithEngine)
             {
-                options.AddRange(context.Specification.Schema.Stdin.Arguments);
+                options.AddRange(context.Specification.Schema.Stdin);
             }
 
             var args = options.Select(x => BuildArg(context.RunOptions, x, valueSeparator, context.Stdin)).Where(x => !string.IsNullOrEmpty(x));

@@ -114,9 +114,9 @@ namespace Linterhub.Core.Schema
 		public EngineOptions Defaults { get; set; }
 		
 		/// <summary>
-		/// Gets or sets support of stdin analyze
+		/// Gets or sets the stdin configuration of engine. this property is specific for each engine. must be an empty object, if engine needs no params, but supports stdin
 		/// </summary>
-		public StdinType Stdin { get; set; }
+		public EngineOptions Stdin { get; set; }
 		
 		/// <summary>
 		/// The engine dependency
@@ -149,23 +149,6 @@ namespace Linterhub.Core.Schema
 			/// Gets or sets the package version
 			/// </summary>
 			public string Version { get; set; }
-		}
-		
-		/// <summary>
-		/// Support of stdin analyze
-		/// </summary>
-		public class StdinType
-		{
-			
-			/// <summary>
-			/// Gets or sets supports stdin or not
-			/// </summary>
-			public bool? Available { get; set; } = false;
-			
-			/// <summary>
-			/// Gets or sets the stdin configuration of engine. this property is specific for each engine
-			/// </summary>
-			public EngineOptions Arguments { get; set; }
 		}
 	}
 }

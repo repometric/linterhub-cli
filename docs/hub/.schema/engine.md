@@ -23,7 +23,7 @@ The meta information of engine
 |successCode|integer|-|Success exit code|
 |active|boolean|-|A value indicating whether engine is active. Default is `true`|
 |defaults|object|-|The default configuration of engine. This property is specific for each engine|
-|stdin|[stdin](#stdin)|-|Support of stdin analyze|
+|stdin|object|-|The stdin configuration of engine. This property is specific for each engine. Must be an empty object, if engine needs no params, but supports stdin|
 ### requirement
 The engine dependency
 
@@ -32,13 +32,6 @@ The engine dependency
 |manager|string|-|The manager for dependency. Possible values: `system`, `url`, `composer`, `gem`, `npm`, `pip`|
 |package|string|-|The package name|
 |version|string|-|The package version|
-### stdin
-Support of stdin analyze
-
-|Key|Type|Required|Description|
-|-|:-:|:-:|-|
-|available|boolean|-|Supports stdin or not|
-|arguments|object|-|The stdin configuration of engine. This property is specific for each engine|
 ## Example
 ```
 {
@@ -66,9 +59,6 @@ Support of stdin analyze
     "successCode": 0,
     "active": false,
     "defaults": {},
-    "stdin": {
-        "available": false,
-        "arguments": {}
-    }
+    "stdin": {}
 }
 ```

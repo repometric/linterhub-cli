@@ -37,7 +37,7 @@ const format = {
         if (propname === 'defaults') {
             type = 'EngineOptions';
         }
-        if (propname === 'arguments') {
+        if (propname === 'stdin') {
             type = 'EngineOptions';
         }
         if (propname === 'options' && name === 'linterhub.config.json') {

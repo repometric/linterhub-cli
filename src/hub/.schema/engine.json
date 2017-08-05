@@ -132,18 +132,7 @@
         },
         "stdin":{
             "type": "object",
-            "description": "Support of stdin analyze",
-            "properties": {
-                "available": {
-                    "type": "boolean",
-                    "description": "Supports stdin or not",
-                    "default": false
-                },
-                "arguments": {
-                    "type": "object",
-                    "description": "The stdin configuration of engine. This property is specific for each engine"
-                }
-            }
+            "description": "The stdin configuration of engine. This property is specific for each engine. Must be an empty object, if engine needs no params, but supports stdin"
         }
     },
     "required": [

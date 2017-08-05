@@ -38,7 +38,7 @@
                     }
                 }
 
-                engine.ConfigFile.ForEach(file =>
+                engine.Configs.ForEach(file =>
                 {
                     if (File.Exists(Path.Combine(context.Project, file)))
                     {

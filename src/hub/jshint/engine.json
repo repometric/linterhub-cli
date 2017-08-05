@@ -37,11 +37,8 @@
     },
     "stdin":
     {
-        "available": true,
-        "arguments": {
-            "--filename": "file://{stdin}",
-            "-": null
-        }
+        "--filename": "file://{stdin}",
+        "-": null
     },
     "optionsDelimiter": "="
 }
