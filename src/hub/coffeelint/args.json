@@ -12,10 +12,12 @@
             "type": "object",
             "properties": {
                 "--file": {
+                    "id": "{config}",
                     "type": "string",
                     "description": "Specify a custom configuration file"
                 },
                 "--rules": {
+                    "id": "--rules",
                     "type": "string",
                     "description": "Specify a custom rule or directory of rules"
                 },
@@ -28,6 +30,7 @@
                     "description": "Compares your config with the default and prints a minimal configuration"
                 },
                 "--noconfig": {
+                    "id": "--noconfig",
                     "type": "null",
                     "description": "Ignores any config file"
                 },
@@ -57,13 +60,15 @@
                         "always",
                         "never",
                         "auto"
-                    ]
+                    ],
+                    "default": "never"
                 },
                 "--stdin": {
                     "type": "null",
                     "description": "Lint the source from stdin"
                 },
                 "--quiet": {
+                    "id": "--quiet",
                     "type": "null",
                     "description": "Only print errors"
                 },
@@ -72,10 +77,12 @@
                     "description": "Used with --stdin to process as Literate CoffeeScript"
                 },
                 "--cache": {
+                    "id": "--cache",
                     "type": "null",
                     "description": "Cache linting results"
                 },
                 "--ext": {
+                    "id": "{--ext}",
                     "type": "string",
                     "description": "Specify an additional file extension, separated by comma"
                 },
@@ -84,6 +91,7 @@
                     "description": "Show help"
                 },
                 "--version": {
+                    "id": "{version}",
                     "type": "string",
                     "description": "Show version"
                 },

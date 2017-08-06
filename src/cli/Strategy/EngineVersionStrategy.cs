@@ -5,6 +5,8 @@ namespace Linterhub.Cli.Strategy
     using Runtime;
     using Core.Schema;
     using Core.Factory;
+    using Core.Managers;
+    using System.IO;
 
     /// <summary>
     /// The 'engine version' strategy logic.
@@ -23,6 +25,7 @@ namespace Linterhub.Cli.Strategy
             var projectConfig = locator.Get<LinterhubConfigSchema>();
             var engineFactory = locator.Get<IEngineFactory>();
             var installer = locator.Get<Installer>();
+            var managerWrapper = locator.Get<ManagerWrapper>();
 
             // Check
             ensure.EngineSpecified();
@@ -30,14 +33,23 @@ namespace Linterhub.Cli.Strategy
 
             var engines = context.Engines.Any() ? context.Engines : projectConfig.Engines.Select(x => x.Name);
 
+            string installationPath = null;
+
+            if (context.Locally)
+            {
+                ensure.ProjectSpecified();
+                installationPath = context.Project;
+            }
+
             return engines.Select(engine => 
             {
                 var specification = engineFactory.GetSpecification(engine);
-                return installer.IsInstalled(
-                    specification.Schema.Requirements
+
+                var manager = managerWrapper.get(specification.Schema.Requirements
                     .Where(x => x.Package == specification.Schema.Name)
-                    .FirstOrDefault()
-                );
+                    .FirstOrDefault().Manager);
+
+                return manager.CheckInstallation(specification.Schema.Name, installationPath);
             });
         }
     }

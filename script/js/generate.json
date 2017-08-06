@@ -35,6 +35,11 @@
         "md": "docs/hub/.schema/linterhub.output.md"
     },
     {
+        "schema": "src/hub/.schema/linterhub.fetch.json",
+        "cs": "src/core/Schema/LinterhubFetchSchema.cs",
+        "md": "docs/hub/.schema/linterhub.fetch.md"
+    },
+    {
         "schema": "src/hub/.schema/args.json",
         "md": "docs/hub/.schema/args.md"
     }

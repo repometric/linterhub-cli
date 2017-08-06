@@ -45,7 +45,7 @@
                     ConfigOptions = (EngineOptions)configOptions,
                     RunOptions = runOptions,
                     WorkingDirectory = workingDirectory,
-                    Stdin = (specification.Schema.Stdin.Available ?? false)
+                    Stdin = specification.Schema.Stdin != null
                             ? EngineWrapper.Context.stdinType.UseWithEngine : EngineWrapper.Context.stdinType.Use
                 };
 

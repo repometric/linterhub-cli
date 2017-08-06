@@ -20,19 +20,14 @@
         },
         {
             "manager": "npm",
-            "package": "colorguard"
+            "package": "colorguard",
+            "version": "1.2.0"
         }
     ],
     "postfix": " | node file://{schema}/colorguard/reporter.js",
     "acceptMask": false,
-    "version": {
-        "package": "1.2.0"
-    },
+    "version": "1.2.0",
     "defaults": {
         "--file": "*"
-    },
-    "stdin":
-    {
-        "available": false
     }
 }

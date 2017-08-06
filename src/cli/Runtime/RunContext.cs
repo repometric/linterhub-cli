@@ -83,6 +83,11 @@ namespace Linterhub.Cli.Runtime
         /// </summary>
         public string RuleId { get; set; }
 
+        /// <summary>
+        /// How to run/install engine
+        /// </summary>
+        public bool Locally { get; set; } = true;
+
         #endregion
 
         /// <summary>

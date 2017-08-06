@@ -1,7 +1,8 @@
 {
     "$schema": "./../.schema/engine.json",
     "name": "jsonlint",
-    "description": "A pure JavaScript version of the service provided at jsonlint.com.",
+    "description": "A pure JavaScript version of the service provided at jsonlint.com", 
+    "version": "1.6.2",
     "url": "https://github.com/zaach/jsonlint",
     "languages": [
         "json"
@@ -21,22 +22,15 @@
         },
         {
             "manager": "npm",
-            "package": "jsonlint"
+            "package": "jsonlint", 
+            "version": "1.6.2"
         }
     ],
     "postfix": " 2>&1 | node file://{schema}/jsonlint/reporter.js",
     "acceptMask": false,
-    "version": {
-        "local": "1.6.2",
-        "package": "1.6.2"
-    },
     "defaults": {
         "": "*",
         "--quiet": null,
         "--compact": null
-    },
-    "stdin":
-    {
-        "available": false
     }
 }

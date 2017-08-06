@@ -37,7 +37,7 @@ const format = {
         if (propname === 'defaults') {
             type = 'EngineOptions';
         }
-        if (propname === 'arguments') {
+        if (propname === 'stdin') {
             type = 'EngineOptions';
         }
         if (propname === 'options' && name === 'linterhub.config.json') {
@@ -47,7 +47,9 @@ const format = {
             type = 'EngineOutputSchema';
         }
         if (type === 'int' || type === 'bool') {
-            type += '?';
+            if (propname !== 'installed' && propname !== 'locally') {
+                type += '?';
+            }
         }
         let postfix = (def != undefined ? (` = ` + (type.includes('string') ? `"${def.toString()}";` : `${def.toString()};`)) : '');
         type = type.replace('EngineOutputType', 'EngineOutputSchema');
@@ -176,7 +178,7 @@ const tree = {
                 const value = node.properties[name];
                 tree.doc.push(format.documentation(value.description, false));
                 if (value.enum || (value.items && value.items.enum)) {
-                    if (name === 'languages' || name === 'manager' || name === 'severity') {
+                    if (name === 'languages' || name === 'manager' || name === 'severity' || name == 'found') {
                         tree.doc.push(format.enum(name, value));
                     } else {
                         value.enum = null;

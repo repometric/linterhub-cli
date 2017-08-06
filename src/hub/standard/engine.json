@@ -2,6 +2,7 @@
     "$schema": "./../.schema/engine.json",
     "name": "standard",
     "description": "JavaScript Standard Style",
+    "version": "10.0.2",
     "url": "http://standardjs.com",
     "languages": [
         "javascript"
@@ -20,20 +21,13 @@
         },
         {
             "manager": "npm",
-            "package": "standard"
+            "package": "standard",
+            "version": "10.0.2"
         }
     ],
-    "version": {
-        "local": "10.0.2",
-        "package": "10.0.2"
-    },
     "postfix": " | node file://{schema}/standard/reporter.js",
     "defaults": {
         "--verbose": null,
         "": "**/**/*.js"
-    },
-    "stdin":
-    {
-        "available": false
     }
 }

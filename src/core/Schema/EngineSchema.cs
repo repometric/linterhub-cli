@@ -21,6 +21,11 @@ namespace Linterhub.Core.Schema
 		public string CustomName { get; set; }
 		
 		/// <summary>
+		/// Gets or sets way how to run engine. if engine installed locally for current project, than cant execute it with just engine name
+		/// </summary>
+		public bool? RunLocally { get; set; } = false;
+		
+		/// <summary>
 		/// Gets or sets the engine description
 		/// </summary>
 		public string Description { get; set; }
@@ -31,9 +36,9 @@ namespace Linterhub.Core.Schema
 		public string Url { get; set; }
 		
 		/// <summary>
-		/// Gets or sets the engine version (expected)
+		/// Gets or sets the engine version
 		/// </summary>
-		public VersionType Version { get; set; }
+		public string Version { get; set; }
 		
 		/// <summary>
 		/// Gets or sets the list of supported languages
@@ -57,6 +62,11 @@ namespace Linterhub.Core.Schema
 		/// Gets or sets common file extensions parsed by engine
 		/// </summary>
 		public List<string> Extensions = new List<string>();
+		
+		/// <summary>
+		/// Gets or sets list of file names which could be treated as engine config
+		/// </summary>
+		public List<string> Configs = new List<string>();
 		
 		/// <summary>
 		/// Gets or sets the engine license
@@ -104,26 +114,9 @@ namespace Linterhub.Core.Schema
 		public EngineOptions Defaults { get; set; }
 		
 		/// <summary>
-		/// Gets or sets support of stdin analyze
+		/// Gets or sets the stdin configuration of engine. this property is specific for each engine. must be an empty object, if engine needs no params, but supports stdin
 		/// </summary>
-		public StdinType Stdin { get; set; }
-		
-		/// <summary>
-		/// The engine version (expected)
-		/// </summary>
-		public class VersionType
-		{
-			
-			/// <summary>
-			/// Gets or sets package version
-			/// </summary>
-			public string Package { get; set; }
-			
-			/// <summary>
-			/// Gets or sets local version
-			/// </summary>
-			public string Local { get; set; }
-		}
+		public EngineOptions Stdin { get; set; }
 		
 		/// <summary>
 		/// The engine dependency
@@ -151,23 +144,11 @@ namespace Linterhub.Core.Schema
 			/// Gets or sets the package name
 			/// </summary>
 			public string Package { get; set; }
-		}
-		
-		/// <summary>
-		/// Support of stdin analyze
-		/// </summary>
-		public class StdinType
-		{
 			
 			/// <summary>
-			/// Gets or sets supports stdin or not
+			/// Gets or sets the package version
 			/// </summary>
-			public bool? Available { get; set; }
-			
-			/// <summary>
-			/// Gets or sets the stdin configuration of engine. this property is specific for each engine
-			/// </summary>
-			public EngineOptions Arguments { get; set; }
+			public string Version { get; set; }
 		}
 	}
 }

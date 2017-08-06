@@ -17,7 +17,7 @@ namespace Linterhub.Core.Schema
 
             if (context.Stdin == Context.stdinType.UseWithEngine)
             {
-                options.AddRange(context.Specification.Schema.Stdin.Arguments);
+                options.AddRange(context.Specification.Schema.Stdin);
             }
 
             var args = options.Select(x => BuildArg(context.RunOptions, x, valueSeparator, context.Stdin)).Where(x => !string.IsNullOrEmpty(x));
@@ -51,7 +51,7 @@ namespace Linterhub.Core.Schema
             {
                 var key = option.Key;
                 string value;
-                if (option.Value.Id != null)
+                if (option.Value.Id == "{path}")
                 {
                     value = option.Value.Id;
                 }

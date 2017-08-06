@@ -5,7 +5,7 @@
             "name": ".NET Core Launch (console)",
             "type": "coreclr",
             "request": "launch",
-            "preLaunchTask": "build-engine",
+            "preLaunchTask": "build",
             "program": "${workspaceRoot}/src/cli/bin/Debug/netcoreapp1.1/cli.dll",
             "args": [],
             "cwd": "${workspaceRoot}/src/cli",
@@ -14,6 +14,18 @@
             "internalConsoleOptions": "openOnSessionStart"
         },
         {
+            "name": ".NET Core Launch (coffelint)", 
+            "type": "coreclr", 
+            "request": "launch", 
+            "preLaunchTask": "build", 
+            "program": "${workspaceRoot}/src/cli/bin/Debug/netcoreapp1.1/cli.dll", 
+            "args": ["--mode=Analyze", "--project=../../test/linterhub-tests/marp", "--file=coffee/classes/mds_main_menu.coffee", "--engine=coffeelint"], 
+            "cwd": "${workspaceRoot}/src/cli", 
+            "externalConsole": false, 
+            "stopAtEntry": false, 
+            "internalConsoleOptions": "openOnSessionStart" 
+        }, 
+        { 
             "name": ".NET Core Attach",
             "type": "coreclr",
             "request": "attach",

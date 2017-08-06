@@ -2,12 +2,16 @@
     "$schema": "./../.schema/engine.json",
     "name": "coffeelint",
     "description": "CoffeeLint is a style checker that helps keep CoffeeScript code clean and consistent",
+    "version": "1.16.0",
     "url": "http://www.coffeelint.org",
     "languages": [
         "coffeescript"
     ],
     "extensions": [
         "*.coffee"
+    ],
+    "configs": [
+        "coffeelint.json"
     ],
     "license": "MIT",
     "areas": [
@@ -24,22 +28,16 @@
         },
         {
             "manager": "npm",
-            "package": "coffeelint"
+            "package": "coffeelint", 
+            "version": "1.16.0"
         }
     ],
-    "version": {
-        "local": "1.16.0",
-        "package": "1.16.0"
-    },
     "defaults": {
         "--reporter": "file://{schema}/coffeelint/reporter.coffee",
         "": "./"
     },
     "stdin":
     {
-        "available": true,
-        "arguments": {
-            "--stdin": null
-        }
+        "--stdin": null
     }
 }

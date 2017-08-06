@@ -13,6 +13,7 @@
             "type": "object",
             "properties": {
                 "stdin": {
+                    "id": "{stdin}", 
                     "type": "null",
                     "description": "Read the source from stdin"
                 },
@@ -21,6 +22,7 @@
                     "description": "Disable color"
                 },
                 "--ignore": {
+                    "id": "--ignore", 
                     "type": "string",
                     "description": "Add pattern to exclude matches"
                 },
@@ -37,14 +39,17 @@
                     ]
                 },
                 "--rulesdir": {
+                    "id": "--rulesdir",
                     "type": "string",
                     "description": "Load custom rules from file or folder"
                 },
                 "--rules": {
+                    "id": "--rules",
                     "type": "string",
                     "description": "Set all of the rules available"
                 },
                 "--config": {
+                    "id": "{config}",
                     "type": "string",
                     "description": "Custom configuration file"
                 },
@@ -57,6 +62,7 @@
                     "description": "Show help"
                 },
                 "--version": {
+                    "id": "{version}",
                     "type": "string",
                     "description": "Show version"
                 },

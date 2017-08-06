@@ -5,6 +5,7 @@ namespace Linterhub.Cli.Strategy
     using Core.Runtime;
     using Core.Factory;
     using System.Linq;
+    using System.IO;
 
     /// <summary>
     /// The 'install engines' strategy logic.
@@ -30,10 +31,20 @@ namespace Linterhub.Cli.Strategy
             ensure.EngineSpecified();
             ensure.EngineExists();
 
+            string installationPath = null;
+
+            if (context.Locally)
+            {
+                ensure.ProjectSpecified();
+                installationPath = context.Project;
+            }
+
+            // TODO support multiple versions of engines
+
             var result = context.Engines.Select(engine => 
             {
                 var specification = engineFactory.GetSpecification(engine);
-                return installer.Install(specification);
+                return installer.Install(specification, installationPath);
             }).ToList();
 
             return result;

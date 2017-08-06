@@ -3,106 +3,69 @@ namespace Linterhub.Core.Runtime
     using System.Collections.Generic;
     using System.Linq;
     using Schema;
-    using static Schema.EngineSchema;
-    using System.Text.RegularExpressions;
-    using Extensions;
+    using Managers;
     using InstallResult = Schema.EngineVersionSchema.ResultType;
 
     public class Installer
     {
         protected TerminalWrapper Terminal { get; }
-        protected string IsInstalledCommand { get; }
+        protected ManagerWrapper Managers { get; }
 
-        public Installer(TerminalWrapper terminal, string isInstalledCommand)
+        public Installer(TerminalWrapper terminal, ManagerWrapper managerWrapper)
         {
             Terminal = terminal;
-            IsInstalledCommand = isInstalledCommand;
+            Managers = managerWrapper;
         }
 
-        public InstallResult IsInstalled(RequirementType requirement)
+        private InstallResult cantInstall(EngineSchema.RequirementType requirement)
         {
-            // var command = string.Format(IsInstalledCommand, package);
-            // hot fix
-            var command = "";
-            CmdWrapper.Result checkResult = null;
-            switch (requirement.Manager)
-            {
-                case RequirementType.ManagerType.npm:
-                    command = string.Format("npm list -g --depth=0");
-                    checkResult = Terminal.RunTerminal(command);
-                    var regex = new Regex($"\\s{requirement.Package}\\@(.*)", RegexOptions.IgnoreCase);
-                    var match = regex.Match(checkResult.Output.ToString());
-                    if(match.Success)
-                    {
-                        return new InstallResult
-                        {
-                            Name = requirement.Package,
-                            Installed = true,
-                            Version = Deserialize.RemoveNewline(match.Groups[1].Value),
-                            Message = string.Empty
-                        };
-                    }
-                    break;
-            }
-
-            command = string.Format("{0} --version", requirement.Package);
-            checkResult = Terminal.RunTerminal(command);
             return new InstallResult
             {
                 Name = requirement.Package,
-                Installed = checkResult.ExitCode == 0,
-                Version = Deserialize.RemoveNewline(checkResult.Output.ToString()),
-                Message = Deserialize.RemoveNewline(checkResult.Error.ToString())
+                Installed = false,
+                Message = $"Automatic installation for '{requirement.Package}' using '{requirement.Manager}' is not supported"
             };
         }
 
-        public InstallResult Install(EngineSpecification specification)
+        public InstallResult Install(EngineSpecification specification, string installationPath = null, string version = null)
         {
+            var mainPackage = specification.Schema.Requirements.First(x => x.Package == specification.Schema.Name);
+
             var result = new InstallResult()
             {
                 Name = specification.Schema.Name,
                 Packages = new List<InstallResult>(specification.Schema.Requirements
                     .Select(requirement =>
                 {
-                    var installCheck = IsInstalled(requirement);
-                    return installCheck.Installed ?? false ? installCheck : Install(requirement, specification.Schema.Name, specification.Schema.Version.Package);
+                    var manager = Managers.get(requirement.Manager);
+
+                    if (manager == null)
+                    {
+                        return cantInstall(requirement);
+                    }
+
+                    var installCheck = manager.CheckInstallation(requirement.Package, installationPath);
+
+                    var insResult = installCheck.Installed ?
+                                    installCheck :
+                                    manager.Install(requirement.Package, installationPath, mainPackage.Package == requirement.Package ? version : null);
+
+                    return insResult ?? cantInstall(requirement);
                 }))
             };
 
-            result.Installed = result.Packages.All((x) => x.Installed ?? false);
-            
-            var mainPackage = IsInstalled(specification.Schema.Requirements.First(x => x.Package == specification.Schema.Name));
-            result.Version = mainPackage.Version;
-            result.Message = mainPackage.Message;
+            result.Installed = result.Packages.All((x) => x.Installed);
+
+            var mainResult = result.Packages.Where(x => x.Name == mainPackage.Package).First();
+
+            result.Version = mainResult.Version;
+            result.Message = mainResult.Message;
+
+            result.Packages.Remove(mainResult);
 
             return result;
         }
 
-        private InstallResult Install(RequirementType requirement, string Engine, string Version)
-        {
-            var command = "";
-            switch (requirement.Manager)
-            {
-                case RequirementType.ManagerType.npm:
-                    command = $"npm install -g {requirement.Package}";
-                    if (Engine == requirement.Package)
-                        command += "@" + Version;
-                    break;
-                case RequirementType.ManagerType.pip:
-                    command = $"pip install {requirement.Package}";
-                    break;
-                default:
-                    return new InstallResult
-                    {
-                        Name = requirement.Package,
-                        Installed = false,
-                        Message = $"Automatic installation for '{requirement.Package}' using '{requirement.Manager}' is not supported"
-                    };
-            }
-
-            var result = Terminal.RunTerminal(command);
-            return IsInstalled(requirement);
-        }
     }
 
 }

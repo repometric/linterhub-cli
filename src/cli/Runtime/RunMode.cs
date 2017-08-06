@@ -40,6 +40,10 @@ namespace Linterhub.Cli.Runtime
         /// <summary>
         /// Exclude objects from the analysis.
         /// </summary>
-        Ignore
+        Ignore,
+        /// <summary>
+        /// Fetche some useful engines
+        /// </summary>
+        FetchEngines
     }
 }

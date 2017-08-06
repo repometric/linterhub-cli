@@ -37,6 +37,11 @@ namespace Linterhub.Core.Schema
 			public bool? Active { get; set; } = true;
 			
 			/// <summary>
+			/// Gets or sets whether engine is installed locally or globally
+			/// </summary>
+			public bool Locally { get; set; } = true;
+			
+			/// <summary>
 			/// Gets or sets the engine specific configuration
 			/// </summary>
 			public object Config { get; set; }

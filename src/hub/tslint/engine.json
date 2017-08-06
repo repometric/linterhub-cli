@@ -2,12 +2,16 @@
     "$schema": "./../.schema/engine.json",
     "name": "tslint",
     "description": "An extensible linter for the TypeScript language.",
+    "version": "5.4.3",
     "url": "https://palantir.github.io/tslint/",
     "languages": [
         "typescript"
     ],
     "extensions": [
         "*.ts"
+    ],
+    "configs": [
+        "tslint.json"
     ],
     "license": "Apache-2.0",
     "areas": [
@@ -28,21 +32,14 @@
         },
         {
             "manager": "npm",
-            "package": "tslint"
+            "package": "tslint", 
+            "version": "5.4.3"
         }
     ],
     "postfix": " | node file://{schema}/tslint/reporter.js",
-    "version": {
-        "local": "5.4.3",
-        "package": "5.4.3"
-    },
     "defaults": {
         "": "**/**/*.ts",
         "--format": "verbose",
         "--config": "file://{schema}/tslint/tslint.json"
-    },
-    "stdin":
-    {
-        "available": false
     }
 }

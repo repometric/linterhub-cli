@@ -12,6 +12,11 @@
             "type": "string",
             "description": "Custom engine name. Use this property when need to change default engine name on execute"
         },
+        "runLocally": {
+            "type": "boolean",
+            "description": "Way how to run engine. If engine installed locally for current project, than cant execute it with just engine name",
+            "default": false
+        },
         "description": {
             "type": "string",
             "description": "The engine description"
@@ -21,19 +26,9 @@
             "description": "The engine url or homepage",
             "format": "uri"
         },
-        "version": {
-            "description": "The engine version (expected)",
-            "type": "object",
-            "properties": {
-                "package": {
-                    "type": "string",
-                    "description": "Package version"
-                },
-                "local": {
-                    "type": "string",
-                    "description": "Local version"
-                }
-            }
+        "version": { 
+            "type": "string", 
+            "description": "The engine version" 
         },
         "languages": {
             "type": "array",
@@ -55,6 +50,13 @@
         "extensions": {
             "type": "array",
             "description": "Common file extensions parsed by engine",
+            "items": {
+                "type": "string"
+            }
+        },
+        "configs": {
+            "type": "array",
+            "description": "List of file names which could be treated as engine config",
             "items": {
                 "type": "string"
             }
@@ -130,17 +132,7 @@
         },
         "stdin":{
             "type": "object",
-            "description": "Support of stdin analyze",
-            "properties": {
-                "available": {
-                    "type": "boolean",
-                    "description": "Supports stdin or not"
-                },
-                "arguments": {
-                    "type": "object",
-                    "description": "The stdin configuration of engine. This property is specific for each engine"
-                }
-            }
+            "description": "The stdin configuration of engine. This property is specific for each engine. Must be an empty object, if engine needs no params, but supports stdin"
         }
     },
     "required": [
@@ -148,8 +140,7 @@
         "description",
         "languages",
         "license",
-        "areas",
-        "stdin"
+        "areas"
     ],
     "definitions": {
         "requirement": {
@@ -171,7 +162,11 @@
                 "package": {
                     "type": "string",
                     "description": "The package name"
-                }
+                },
+                "version": { 
+                    "type": "string", 
+                    "description": "The package version" 
+                } 
             }
         }
     }

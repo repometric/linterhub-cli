@@ -1,7 +1,8 @@
 {
     "$schema": "./../.schema/engine.json",
     "name": "sass-lint",
-    "description": "A Node-only Sass linter for both sass and scss syntax!",
+    "description": "A Node-only Sass linter for both sass and scss syntax", 
+    "version": "1.10.2",
     "url": "https://github.com/sasstools/sass-lint",
     "languages": [
         "sass"
@@ -9,6 +10,9 @@
     "extensions": [
         "*.sass",
         "*.scss"
+    ],
+    "configs": [
+        ".sass-lint.yml"
     ],
     "license": "MIT",
     "areas": [
@@ -22,13 +26,10 @@
         },
         {
             "manager": "npm",
-            "package": "sass-lint"
+            "package": "sass-lint", 
+            "version": "1.10.2"
         }
     ],
-    "version": {
-        "local": "1.10.2",
-        "package": "1.10.2"
-    },
     "postfix": " | node file://{schema}/sass-lint/reporter.js",
     "defaults": {
         "": "*",

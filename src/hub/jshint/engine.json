@@ -2,12 +2,16 @@
     "$schema": "./../.schema/engine.json",
     "name": "jshint",
     "description": "JSHint is a tool that helps to detect errors and potential problems in your JavaScript code",
+    "version": "jshint v2.9.5",
     "url": "http://jshint.com",
     "languages": [
         "javascript"
     ],
     "extensions": [
         "*.js"
+    ],
+    "configs": [
+        ".jshintrc"
     ],
     "license": "MIT",
     "areas": [
@@ -23,24 +27,18 @@
         },
         {
             "manager": "npm",
-            "package": "jshint"
+            "package": "jshint", 
+            "version": "2.9.5"
         }
     ],
-    "version": {
-        "local": "jshint v2.9.5",
-        "package": "2.9.5"
-    },
     "defaults": {
         "": "./",
         "--reporter": "file://{schema}/jshint/reporter.js"
     },
     "stdin":
     {
-        "available": true,
-        "arguments": {
-            "--filename": "file://{stdin}",
-            "-": null
-        }
+        "--filename": "file://{stdin}",
+        "-": null
     },
     "optionsDelimiter": "="
 }
