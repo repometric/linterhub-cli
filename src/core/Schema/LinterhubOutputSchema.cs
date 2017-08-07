@@ -24,34 +24,12 @@ namespace Linterhub.Core.Schema
 			/// <summary>
 			/// Gets or sets the analysis result
 			/// </summary>
-			public EngineOutputSchema Result { get; set; }
+			public EngineOutputSchema Result = new EngineOutputSchema();
 			
 			/// <summary>
 			/// Gets or sets the problem definition if analysis is not possible
 			/// </summary>
-			public ErrorType Error { get; set; }
-		}
-		
-		/// <summary>
-		/// The problem definition if analysis is not possible
-		/// </summary>
-		public class ErrorType
-		{
-			
-			/// <summary>
-			/// Gets or sets the error code
-			/// </summary>
-			public int? Code { get; set; }
-			
-			/// <summary>
-			/// Gets or sets the error title
-			/// </summary>
-			public string Title { get; set; }
-			
-			/// <summary>
-			/// Gets or sets the error decription
-			/// </summary>
-			public string Description { get; set; }
+			public LinterhubErrorSchema Error { get; set; }
 		}
 	}
 }

@@ -53,6 +53,12 @@ const describe = {
     if (type === 'object' && value.properties) {
       type = format.table.type(name);
     }
+    if (value.$ref && value.$ref.indexOf('http') !== 0) {
+      const typeName = format.type(value.$ref);
+      const name = format.capitalize(format.title(typeName));
+      const file = value.$ref.replace('.json', '.md');
+      type = `[${name}](${file})`;
+    }
     return type;
   },
   property: (name, value, required) => {
@@ -136,7 +142,7 @@ const tree = {
         node.enum ? `"${node.enum[0]}"` :
           node.type === 'null' ? 'null' :
             node.type === 'boolean' ? false :
-              node.type === 'object' ? '{}' : `"${node.type}"`;
+              node.type === 'object' || node.$ref ? '{}' : `"${node.type}"`;
     }
     if (node.properties) {
       const properties = Object.keys(node.properties).map((name) => tree.example(name, node.properties[name])).join(',');

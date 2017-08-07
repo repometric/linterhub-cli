@@ -46,6 +46,9 @@ const format = {
         if (propname === 'result') {
             type = 'EngineOutputSchema';
         }
+        if (propname === 'error') {
+            type = 'LinterhubErrorSchema';
+        }
         if (type === 'int' || type === 'bool') {
             if (propname !== 'installed' && propname !== 'locally') {
                 type += '?';

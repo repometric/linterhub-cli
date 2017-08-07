@@ -5,7 +5,7 @@ namespace Linterhub.Core.Schema
 	using Newtonsoft.Json.Converters;
 	
 	/// <summary>
-	/// The problem definition if catch some errors
+	/// The problem definition including code and explandatory text
 	/// </summary>
 	public class LinterhubErrorSchema
 	{

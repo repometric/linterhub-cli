@@ -16,30 +16,15 @@
                     "description": "The engine name that performed analysis"
                 },
                 "result": {
-                    "type": "object",
-                    "description": "The analysis result"
+                    "type": "array",
+                    "description": "The analysis result",
+                    "items": {
+                        "$ref": "engine.output.json"
+                    }
                 },
                 "error": {
-                    "type": "object",
                     "description": "The problem definition if analysis is not possible",
-                    "properties": {
-                        "code": {
-                            "type": "integer",
-                            "description": "The error code"
-                        },
-                        "title": {
-                            "type": "string",
-                            "description": "The error title"
-                        },
-                        "description": {
-                            "type": "string",
-                            "description": "The error decription"
-                        }
-                    },
-                    "required": [
-                        "code",
-                        "title"
-                    ]
+                    "$ref": "engine.error.json"
                 }
             },
             "required": [

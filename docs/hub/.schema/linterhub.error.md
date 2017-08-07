@@ -1,7 +1,7 @@
 # Linterhub Error
-This document describes the structure of linterhub error output
+This document describes the structure of linterhub error
 ## Structure
-The problem definition if catch some errors
+The problem definition including code and explandatory text
 
 |Key|Type|Required|Description|
 |-|:-:|:-:|-|

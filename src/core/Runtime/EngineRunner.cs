@@ -79,7 +79,7 @@
 
             Parallel.ForEach(n_contexts, context =>
             {
-                var error = new LinterhubOutputSchema.ErrorType()
+                var error = new LinterhubErrorSchema()
                 {
                     Code = 0
                 };

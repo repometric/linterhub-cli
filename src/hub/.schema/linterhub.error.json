@@ -1,7 +1,7 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema",
-    "title": "This document describes the structure of linterhub error output",
-    "description": "The problem definition if catch some errors",
+    "title": "This document describes the structure of linterhub error",
+    "description": "The problem definition including code and explandatory text",
     "type": "object",
     "properties": {
         "code": {
