@@ -24,7 +24,7 @@
         },
         {
             "manager": "npm",
-            "package": "htmlhint", 
+            "package": "htmlhint",
             "version": "0.9.13"
         }
     ],
@@ -33,8 +33,7 @@
         "": "**/**/*.html",
         "--format": "json"
     },
-    "stdin":
-    {
+    "stdin": {
         "stdin": null
     }
 }

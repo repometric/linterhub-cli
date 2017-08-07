@@ -13,7 +13,7 @@
             "type": "object",
             "properties": {
                 "stdin": {
-                    "id": "{stdin}", 
+                    "id": "{stdin}",
                     "type": "null",
                     "description": "Read the source from stdin"
                 },
@@ -22,7 +22,7 @@
                     "description": "Disable color"
                 },
                 "--ignore": {
-                    "id": "--ignore", 
+                    "id": "--ignore",
                     "type": "string",
                     "description": "Add pattern to exclude matches"
                 },

@@ -17,17 +17,17 @@
                     "description": "Use configuration from this file or shareable config"
                 },
                 "--no-eslintrc": {
-                    "id": "{--no-eslintrc}", 
+                    "id": "{--no-eslintrc}",
                     "type": "null",
                     "description": "Disable use of configuration from .eslintrc"
                 },
                 "--env": {
-                    "id": "{--env}", 
+                    "id": "{--env}",
                     "type": "string",
                     "description": "Specify environments"
                 },
                 "--ext": {
-                    "id": "{--ext}", 
+                    "id": "{--ext}",
                     "type": "string",
                     "description": "Specify JavaScript file extensions"
                 },
@@ -47,47 +47,47 @@
                     "description": "Specify parser options"
                 },
                 "--cache": {
-                    "id": "{--cache}", 
+                    "id": "{--cache}",
                     "type": "null",
                     "description": "Only check changed files"
                 },
                 "--cache-location": {
-                    "id": "{--cache-location}", 
+                    "id": "{--cache-location}",
                     "type": "string",
                     "description": "Path to the cache file or directory"
                 },
                 "--rulesdir": {
-                    "id": "{--rulesdir}", 
+                    "id": "{--rulesdir}",
                     "type": "string",
                     "description": "Use additional rules from this directory"
                 },
                 "--plugin": {
-                    "id": "{--plugin}", 
+                    "id": "{--plugin}",
                     "type": "string",
                     "description": "Specify plugins"
                 },
                 "--rule": {
-                    "id": "{--rule}", 
+                    "id": "{--rule}",
                     "type": "string",
                     "description": "Specify rules"
                 },
                 "--ignore-path": {
-                    "id": "{--ignore-path}", 
+                    "id": "{--ignore-path}",
                     "type": "string",
                     "description": "Specify path of ignore file"
                 },
                 "--no-ignore": {
-                    "id": "{--no-ignore}", 
+                    "id": "{--no-ignore}",
                     "type": "null",
                     "description": "Disable use of ignore files and patterns"
                 },
                 "--ignore-pattern": {
-                    "id": "{--ignore-pattern}", 
+                    "id": "{--ignore-pattern}",
                     "type": "string",
                     "description": "Pattern of files to ignore (in addition to those in .eslintignore)"
                 },
                 "--stdin": {
-                    "id": "{stdin}", 
+                    "id": "{stdin}",
                     "type": "null",
                     "description": "Lint code provided on stdin"
                 },
@@ -96,7 +96,7 @@
                     "description": "Specify filename to process stdin as"
                 },
                 "--quiet": {
-                    "id": "{--quiet}", 
+                    "id": "{--quiet}",
                     "type": "null",
                     "description": "Report errors only"
                 },
@@ -159,7 +159,7 @@
                     "description": "Output debugging information"
                 },
                 "--no-inline-config": {
-                    "id": "{--no-inline-config}", 
+                    "id": "{--no-inline-config}",
                     "type": "null",
                     "description": "Prevent comments from changing config or rules"
                 },
@@ -172,7 +172,7 @@
                     "description": "Show help"
                 },
                 "--version": {
-                    "id": "{version}", 
+                    "id": "{version}",
                     "type": "null",
                     "description": "Show version"
                 },

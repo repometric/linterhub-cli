@@ -1,7 +1,7 @@
 {
     "$schema": "./../.schema/engine.json",
     "name": "jsonlint",
-    "description": "A pure JavaScript version of the service provided at jsonlint.com", 
+    "description": "A pure JavaScript version of the service provided at jsonlint.com",
     "version": "1.6.2",
     "url": "https://github.com/zaach/jsonlint",
     "languages": [
@@ -22,7 +22,7 @@
         },
         {
             "manager": "npm",
-            "package": "jsonlint", 
+            "package": "jsonlint",
             "version": "1.6.2"
         }
     ],

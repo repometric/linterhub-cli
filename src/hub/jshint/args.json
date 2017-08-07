@@ -46,7 +46,7 @@
                     "description": "Exclude files matching the given filename pattern"
                 },
                 "--exclude-path": {
-                    "id": "--exclude-path", 
+                    "id": "--exclude-path",
                     "type": "string",
                     "description": "Pass in a custom jshintignore file path"
                 },

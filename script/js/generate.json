@@ -20,11 +20,6 @@
         "md": "docs/hub/.schema/linterhub.error.md"
     },
     {
-        "schema": "src/hub/.schema/linterhub.version.json",
-        "cs": "src/core/Schema/LinterhubVersionSchema.cs",
-        "md": "docs/hub/.schema/linterhub.version.md"
-    },
-    {
         "schema": "src/hub/.schema/engine.json",
         "cs": "src/core/Schema/EngineSchema.cs",
         "md": "docs/hub/.schema/engine.md"

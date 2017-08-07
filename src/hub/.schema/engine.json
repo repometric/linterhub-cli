@@ -26,9 +26,9 @@
             "description": "The engine url or homepage",
             "format": "uri"
         },
-        "version": { 
-            "type": "string", 
-            "description": "The engine version" 
+        "version": {
+            "type": "string",
+            "description": "The engine version"
         },
         "languages": {
             "type": "array",
@@ -130,7 +130,7 @@
             "type": "object",
             "description": "The default configuration of engine. This property is specific for each engine"
         },
-        "stdin":{
+        "stdin": {
             "type": "object",
             "description": "The stdin configuration of engine. This property is specific for each engine. Must be an empty object, if engine needs no params, but supports stdin"
         }
@@ -163,10 +163,10 @@
                     "type": "string",
                     "description": "The package name"
                 },
-                "version": { 
-                    "type": "string", 
-                    "description": "The package version" 
-                } 
+                "version": {
+                    "type": "string",
+                    "description": "The package version"
+                }
             }
         }
     }

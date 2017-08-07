@@ -1,7 +1,7 @@
 {
     "$schema": "./../.schema/engine.json",
     "name": "sass-lint",
-    "description": "A Node-only Sass linter for both sass and scss syntax", 
+    "description": "A Node-only Sass linter for both sass and scss syntax",
     "version": "1.10.2",
     "url": "https://github.com/sasstools/sass-lint",
     "languages": [
@@ -26,7 +26,7 @@
         },
         {
             "manager": "npm",
-            "package": "sass-lint", 
+            "package": "sass-lint",
             "version": "1.10.2"
         }
     ],
@@ -37,8 +37,7 @@
         "--format": "json"
     },
     "acceptMask": false,
-    "stdin":
-    {
+    "stdin": {
         "available": false
     }
 }

@@ -87,8 +87,7 @@
             "required": [
                 "message",
                 "severity",
-                "line",
-                "column"
+                "line"
             ]
         }
     }

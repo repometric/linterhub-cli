@@ -19,7 +19,7 @@ Represents analysis message
 |severity|string|+|The severity of the message. Possible values: `verbose`, `hint`, `information`, `warning`, `error`|
 |line|integer|+|The line where the message is located|
 |lineEnd|integer|-|The end line where the message is located (the same as line by default)|
-|column|integer|+|The column where the message is located|
+|column|integer|-|The column where the message is located|
 |columnEnd|integer|-|The end column where the message is located|
 |ruleId|string|-|The id of the rule that produced the message|
 |ruleName|string|-|The name of the rule that produced the message|

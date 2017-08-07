@@ -29,7 +29,7 @@
                     "description": "Compact error display"
                 },
                 "--validate": {
-                    "id": "--validate", 
+                    "id": "--validate",
                     "type": "string",
                     "description": "A JSON schema to use for validation"
                 },

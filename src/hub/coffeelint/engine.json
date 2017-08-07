@@ -28,7 +28,7 @@
         },
         {
             "manager": "npm",
-            "package": "coffeelint", 
+            "package": "coffeelint",
             "version": "1.16.0"
         }
     ],
@@ -36,8 +36,7 @@
         "--reporter": "file://{schema}/coffeelint/reporter.coffee",
         "": "./"
     },
-    "stdin":
-    {
+    "stdin": {
         "--stdin": null
     }
 }

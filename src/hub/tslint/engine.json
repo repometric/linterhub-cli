@@ -32,7 +32,7 @@
         },
         {
             "manager": "npm",
-            "package": "tslint", 
+            "package": "tslint",
             "version": "5.4.3"
         }
     ],

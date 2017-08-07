@@ -34,7 +34,7 @@
         },
         {
             "manager": "npm",
-            "package": "stylelint", 
+            "package": "stylelint",
             "version": "7.11.1"
         }
     ],
@@ -43,9 +43,8 @@
         "--custom-formatter": "file://{schema}/stylelint/reporter.js",
         "--config": "file://{schema}/stylelint/.stylelintrc"
     },
-    "stdin":
-    {
+    "stdin": {
         "--stdin-filename": "file://{stdin}"
     },
-     "optionsDelimiter": "="
+    "optionsDelimiter": "="
 }

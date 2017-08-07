@@ -1,7 +1,7 @@
 {
     "$schema": "./../.schema/engine.json",
     "name": "jslint",
-    "description": "The JavaScript Code Quality Tool", 
+    "description": "The JavaScript Code Quality Tool",
     "version": "node-jslint version: 0.10.3  JSLint edition 2013-08-26",
     "url": "http://jslint.com",
     "languages": [

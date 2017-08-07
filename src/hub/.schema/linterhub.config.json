@@ -89,9 +89,7 @@
                 }
             },
             "required": [
-                "name",
-                "locally",
-                "activae"
+                "name"
             ]
         },
         "ignore": {

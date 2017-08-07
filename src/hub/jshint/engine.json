@@ -27,7 +27,7 @@
         },
         {
             "manager": "npm",
-            "package": "jshint", 
+            "package": "jshint",
             "version": "2.9.5"
         }
     ],
@@ -35,8 +35,7 @@
         "": "./",
         "--reporter": "file://{schema}/jshint/reporter.js"
     },
-    "stdin":
-    {
+    "stdin": {
         "--filename": "file://{stdin}",
         "-": null
     },

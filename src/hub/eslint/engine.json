@@ -29,7 +29,7 @@
         },
         {
             "manager": "npm",
-            "package": "eslint", 
+            "package": "eslint",
             "version": "4.0.0"
         },
         {
@@ -42,8 +42,7 @@
         "--config": "file://{schema}/eslint/.eslintrc.js",
         "": "**/**/*.js"
     },
-    "stdin":
-    {
+    "stdin": {
         "--stdin": null,
         "--stdin-filename": "file://{stdin}"
     },
