@@ -8,9 +8,9 @@
             "type": "string",
             "description": "The engine name"
         },
-        "customName": {
+        "executable": {
             "type": "string",
-            "description": "Custom engine name. Use this property when need to change default engine name on execute"
+            "description": "The engine executable name; by default it's equal to engine name"
         },
         "runLocally": {
             "type": "boolean",
@@ -107,6 +107,15 @@
             "type": "boolean",
             "description": "Can use masks for multiple files analyze",
             "default": true
+        },
+        "output": {
+            "type": "string",
+            "description": "The engine output format",
+            "enum": [
+                "json",
+                "xml"
+            ],
+            "default": "json"
         },
         "postfix": {
             "type": "string",

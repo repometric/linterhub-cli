@@ -16,9 +16,9 @@ namespace Linterhub.Core.Schema
 		public string Name { get; set; }
 		
 		/// <summary>
-		/// Gets or sets custom engine name. use this property when need to change default engine name on execute
+		/// Gets or sets the engine executable name; by default it's equal to engine name
 		/// </summary>
-		public string CustomName { get; set; }
+		public string Executable { get; set; }
 		
 		/// <summary>
 		/// Gets or sets way how to run engine. if engine installed locally for current project, than cant execute it with just engine name
@@ -87,6 +87,11 @@ namespace Linterhub.Core.Schema
 		/// Gets or sets can use masks for multiple files analyze
 		/// </summary>
 		public bool? AcceptMask { get; set; } = true;
+		
+		/// <summary>
+		/// Gets or sets the engine output format
+		/// </summary>
+		public string Output { get; set; } = "json";
 		
 		/// <summary>
 		/// Gets or sets posstfix in terminal (normaly post processor)

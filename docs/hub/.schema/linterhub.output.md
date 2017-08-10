@@ -9,7 +9,7 @@ The engine result
 |-|:-:|:-:|-|
 |engine|string|+|The engine name that performed analysis|
 |result|[Engine Output](engine.output.md)[]|-|The analysis result|
-|error|[Engine Error](engine.error.md)|-|The problem definition if analysis is not possible|
+|error|[Linterhub Error](linterhub.error.md)|-|The problem definition if analysis is not possible|
 ## Example
 ```
 [

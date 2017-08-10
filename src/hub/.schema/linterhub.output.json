@@ -24,7 +24,7 @@
                 },
                 "error": {
                     "description": "The problem definition if analysis is not possible",
-                    "$ref": "engine.error.json"
+                    "$ref": "linterhub.error.json"
                 }
             },
             "required": [

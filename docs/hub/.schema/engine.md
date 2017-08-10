@@ -6,7 +6,7 @@ The meta information of engine
 |Key|Type|Required|Description|
 |-|:-:|:-:|-|
 |name|string|+|The engine name|
-|customName|string|-|Custom engine name. Use this property when need to change default engine name on execute|
+|executable|string|-|The engine executable name; by default it's equal to engine name|
 |runLocally|boolean|-|Way how to run engine. If engine installed locally for current project, than cant execute it with just engine name|
 |description|string|+|The engine description|
 |url|string|-|The engine url or homepage|
@@ -18,6 +18,7 @@ The meta information of engine
 |requirements|[requirement](#requirement)[]|-|The engine requirements|
 |areas|string[]|+|The engine areas. Possible values: `code simplification`, `commented code`, `complexity`, `documentation`, `duplication`, `formatting`, `grammar`, `memory leak`, `security`, `simplification`, `smell`, `spelling`, `syntax`, `undefined element`, `unreachable code`, `unused code`|
 |acceptMask|boolean|-|Can use masks for multiple files analyze. Default is `true`|
+|output|string|-|The engine output format. Possible values: `json`, `xml`. Default is `json`|
 |postfix|string|-|Posstfix in terminal (normaly post processor)|
 |optionsDelimiter|string|-|Delimiter for options (space by default). Default is ` `|
 |successCode|integer|-|Success exit code|
@@ -36,7 +37,7 @@ The engine dependency
 ```
 {
     "name": "string",
-    "customName": "string",
+    "executable": "string",
     "runLocally": false,
     "description": "string",
     "url": "string",
@@ -54,6 +55,7 @@ The engine dependency
     ],
     "areas": [],
     "acceptMask": false,
+    "output": "json",
     "postfix": "string",
     "optionsDelimiter": "string",
     "successCode": 0,
