@@ -14,7 +14,6 @@ This is template only for issues.
 [What actually happens]
 
 ### Steps to Reproduce
-
 1. [First Step]
 2. [Second Step]
 3. [and so on...]
@@ -25,6 +24,5 @@ This is template only for issues.
 ```
 
 ### Environment
-
 - Version: [CLI version]
 - Platform: [OS version]
