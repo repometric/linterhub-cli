@@ -12,7 +12,7 @@ const format = {
   table: {
     row: (name, type, required, description) => `|${name}|${type}|${required}|${description}|`,
     header: () => `|Name|Description|Languages|Details|`,
-    columns: () => `|-|:-:|:-:|-|`,
+    columns: () => `|-|-|:-:|-|`,
     array: (type) => {
       if (format.isDefaultType(type)) {
         return `${type}[]`;
@@ -42,7 +42,7 @@ _process.exec('dotnet cli.dll --mode=catalog', {
     }, function(error, stdout, stderr) {
         var data = JSON.parse(stdout);
         data.forEach(function(element) {
-            doc.push(`|[${element.name}](${element.url})|${element.description}|${element.languages.join(', ')}|[Options](/${element.name})|`)
+            doc.push(`|[${element.name}](${element.url})|${element.description}|${element.languages.join(', ')}|[Options](${element.name})|`)
         }, this);
         console.log(doc.join('\n'));
     }
