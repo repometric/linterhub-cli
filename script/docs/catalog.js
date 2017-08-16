@@ -31,7 +31,7 @@ const format = {
   isDefaultType: (name) => name === 'string'
 };
 
-doc.push(format.h1("Available Engines"));
+doc.push(format.h1("Engines Catalog"));
 doc.push("The document describes all supported engines");
 doc.push("");
 doc.push(format.table.header());
