@@ -52,8 +52,8 @@ namespace Linterhub.Core.Utils
                 Keys.Any() && !Keys.Contains(name) ? instance => false : nullPredicate,
                 isDefaultValueIgnored && isCollection ? instance =>
                 {
-                    var collection = property.ValueProvider.GetValue(instance) as IEnumerable<object>;
-                    return collection != null && collection.Any();
+                    var collection = property.ValueProvider.GetValue(instance) as IEnumerable;
+                    return collection != null && collection.GetEnumerator().MoveNext();
                 } : nullPredicate
             };
 
@@ -78,6 +78,11 @@ namespace Linterhub.Core.Utils
         /// <returns>The camel case string value.</returns>
         private string ToCamelCase(string value)
         {
+            if (string.IsNullOrEmpty(value))
+            {
+                return value;
+            }
+
             return value.Substring(0, 1).ToLower() +
                    value.Substring(1);
         }
