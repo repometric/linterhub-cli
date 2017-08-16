@@ -1,7 +1,7 @@
 {
     "$schema": "./../.schema/engine.json",
     "name": "tslint",
-    "description": "An extensible linter for the TypeScript language.",
+    "description": "An extensible linter for the TypeScript language",
     "version": "5.4.3",
     "url": "https://palantir.github.io/tslint/",
     "languages": [

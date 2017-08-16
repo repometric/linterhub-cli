@@ -1,7 +1,7 @@
 {
     "$schema": "./../.schema/engine.json",
     "name": "stylelint",
-    "description": "A mighty, modern CSS linter that helps you enforce consistent conventions and avoid errors in your stylesheets.",
+    "description": "A mighty, modern CSS linter that helps you enforce consistent conventions and avoid errors in your stylesheets",
     "version": "7.11.1",
     "url": "https://stylelint.io/",
     "languages": [

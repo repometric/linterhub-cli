@@ -1,7 +1,7 @@
 {
     "$schema": "./../.schema/engine.json",
     "name": "colorguard",
-    "description": "CSS Colorguard helps you maintain the color set that you want, and warns you when colors you've added are too similar to ones that already exist.",
+    "description": "CSS Colorguard helps you maintain the color set that you want, and warns you when colors you've added are too similar to ones that already exist",
     "url": "https://github.com/SlexAxton/css-colorguard",
     "languages": [
         "css"
