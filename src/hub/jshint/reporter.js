@@ -26,7 +26,7 @@ module.exports = {
             files[record.file].push({
                 message: error.reason,
                 severity: severity,
-                source: error.evidence.trim(),
+                source: error.evidence,
                 line: error.line,
                 lineEnd: error.line,
                 column: error.character,

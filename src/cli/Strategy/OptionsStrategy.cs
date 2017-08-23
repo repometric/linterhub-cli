@@ -4,9 +4,8 @@ namespace Linterhub.Cli.Strategy
     using System.Collections.Generic;
     using Mono.Options;
     using Runtime;
+    using ServiceLocator = Runtime.ServiceLocator;
     using Core.Exceptions;
-    using System.IO;
-    using Core.Extensions;
 
     public class OptionsStrategy : IStrategy
     {
@@ -24,10 +23,10 @@ namespace Linterhub.Cli.Strategy
                 { "d=|folder=", "Path to directory", v => runContext.Directory = v },
                 { "f=|file=", "Path to file.", v => runContext.File = v },
                 { "m=|mode=", "Run mode.", v => runContext.Mode = (RunMode)Enum.Parse(typeof(RunMode), v, true) },
-                { "a=|activate=", "Activate or not.", v => runContext.Activate = bool.Parse(v) },
-                { "lo=|locally=", "Run/Install engine locally or globally (locally by default)", v => runContext.Locally = bool.Parse(v) },
+                { "locally=", "Run/Install engine locally or globally (locally by default)", v => runContext.Locally = bool.Parse(v) },
                 { "l=|line=", "Line in a file.", v => runContext.Line = int.Parse(v) },
                 { "r=|ruleid=", "Rule id.", v => runContext.RuleId = v },
+                { "stdin", "Use stdin for analyze.", v => runContext.InputAwailable = true },
                 { "k=|keys=", "Keys to include.", v => runContext.Keys = string.IsNullOrEmpty(v) ? new string[0] : v.Replace("\"", "").Replace("'", "").Split(',') },
                 { "filters=", "Filters to apply", v => runContext.Filters = string.IsNullOrEmpty(v) ? new string[0] : v.Replace("\"", "").Replace("'", "").Split(',') },
                 { "linterhub=", "Path to linterhub.", v => runContext.Linterhub = v },
@@ -45,7 +44,6 @@ namespace Linterhub.Cli.Strategy
             }
 
             runContext.Input = Console.OpenStandardInput();
-            runContext.InputAwailable = false; //Console.IsInputRedirected;
             return runContext;
         }
 

@@ -42,9 +42,14 @@ namespace Linterhub.Cli.Runtime
             }
         }
 
+        public bool ProjectSpecifiedCheck()
+        {
+            return Context.Project != Directory.GetCurrentDirectory();
+        }
+
         public void ProjectSpecified()
         {
-            if(Context.Project == Directory.GetCurrentDirectory())
+            if(!ProjectSpecifiedCheck())
             {
                 throw new LinterhubException("Project path is missing", "Enter the project path for this task", LinterhubException.ErrorCode.missngParams);
             }

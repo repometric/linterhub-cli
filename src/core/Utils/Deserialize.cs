@@ -1,12 +1,11 @@
-﻿namespace Linterhub.Core.Extensions
+﻿namespace Linterhub.Core.Utils
 {
     using System.IO;
     using Newtonsoft.Json;
     using System.Collections.Generic;
-    using Core.Utils;
     using System.Linq;
     using System.Reflection;
-    using Core.Schema;
+    using Schema;
 
     public static class Deserialize
     {

@@ -10,7 +10,7 @@
     },
     "coffeelint-file": {
       "commandName": "Project",
-      "commandLineArgs": "--mode=Analyze --project=../../test/linterhub-tests/marp --file=coffee/classes/mds_main_menu.coffee --engine=coffeelint"
+      "commandLineArgs": "--mode=analyze --project=../../test/linterhub-tests/bootstrap --folder=js/dist --file=dropdown.js --engine=eslint"
     },
     "coffeelint-folder": {
       "commandName": "Project",

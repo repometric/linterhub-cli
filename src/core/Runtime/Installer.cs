@@ -8,12 +8,10 @@ namespace Linterhub.Core.Runtime
 
     public class Installer
     {
-        protected TerminalWrapper Terminal { get; }
         protected ManagerWrapper Managers { get; }
 
-        public Installer(TerminalWrapper terminal, ManagerWrapper managerWrapper)
+        public Installer(ManagerWrapper managerWrapper)
         {
-            Terminal = terminal;
             Managers = managerWrapper;
         }
 
@@ -27,7 +25,7 @@ namespace Linterhub.Core.Runtime
             };
         }
 
-        public InstallResult Install(EngineSpecification specification, string installationPath = null, string version = null)
+        public InstallResult Install(EngineSpecification specification, string installationPath = null)
         {
             var mainPackage = specification.Schema.Requirements.First(x => x.Package == specification.Schema.Name);
 
@@ -48,7 +46,7 @@ namespace Linterhub.Core.Runtime
 
                     var insResult = installCheck.Installed ?
                                     installCheck :
-                                    manager.Install(requirement.Package, installationPath, mainPackage.Package == requirement.Package ? version : null);
+                                    manager.Install(requirement.Package, installationPath, requirement.Version);
 
                     return insResult ?? cantInstall(requirement);
                 }))

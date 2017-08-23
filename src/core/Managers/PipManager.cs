@@ -1,5 +1,6 @@
 ﻿namespace Linterhub.Core.Managers
 {
+    using System;
     using Runtime;
     using static Schema.EngineSchema;
     using InstallResult = Schema.EngineVersionSchema.ResultType;
@@ -23,6 +24,11 @@
         {
             // TODO add support
             return null;
+        }
+
+        public string LocallyExecution(string packageName)
+        {
+            throw new NotImplementedException();
         }
 
         public PipManager(TerminalWrapper terminal)

@@ -4,7 +4,7 @@
     using Runtime;
     using Core.Schema;
     using Core.Factory;
-    using Core.Extensions;
+    using Core.Utils;
     using System.IO;
 
     public class FetchEnginesStrategy : IStrategy

@@ -1,10 +1,12 @@
 namespace Linterhub.Cli.Strategy
 {
     using System.Linq;
-    using Runtime;
     using Core.Schema;
     using Core.Managers;
     using Core.Factory;
+    using Runtime;
+    using Core.Runtime;
+    using System.Collections.Generic;
 
     /// <summary>
     /// The 'activate engine' strategy logic.
@@ -23,48 +25,52 @@ namespace Linterhub.Cli.Strategy
             var projectConfig = locator.Get<LinterhubConfigSchema>();
             var managerWrapper = locator.Get<ManagerWrapper>();
             var engineFactory = locator.Get<IEngineFactory>();
+            var installer = locator.Get<Installer>();
+
+            context.Engines = context.Engines.Any() ? context.Engines : projectConfig.Engines.Select(x => x.Name).ToArray();
+            string installationPath = null;
+            var activate = context.Mode == RunMode.Activate;
+            var result = new List<EngineVersionSchema.ResultType>();
 
             // Validate
             ensure.EngineSpecified();
             ensure.EngineExists();
-            ensure.ProjectSpecified();
-            ensure.ArgumentSpecified(nameof(context.Activate), context.Activate);
 
-            var activate = context.Activate ?? true;
+            if(context.Locally || ensure.ProjectSpecifiedCheck())
+            {
+                ensure.ProjectSpecified();
+                installationPath = context.Project;
+            }
 
             // Enumerate engines and activate/deactivate
             foreach (var engine in context.Engines)
             {
-                var manager = managerWrapper.get(engineFactory.GetSpecification(engine).Schema.Requirements.First().Manager);
-                var installationPath = context.Locally ? context.Project : null;
-
-                if (activate || !manager.CheckInstallation(engine, installationPath).Installed)
+                if(activate)
                 {
-                    var installResult = manager.Install(engine, installationPath);
-
-                    if(!installResult.Installed)
-                    {
-                        return installResult;
-                    }
+                    var specification = engineFactory.GetSpecification(engine);
+                    result.Add(installer.Install(specification, installationPath));
                 }
 
                 var projectEngine = projectConfig.Engines.FirstOrDefault(x => x.Name == engine);
                 if (projectEngine != null)
                 {
                     projectEngine.Active = activate;
+                    projectEngine.Locally = installationPath != null;
                 }
                 else
                 {
                     projectConfig.Engines.Add(new LinterhubConfigSchema.ConfigurationType
-                    { 
+                    {
                         Name = engine,
-                        Active = activate
+                        Active = activate,
+                        Locally = installationPath != null
                     });
                 }
+
             }
 
             context.SaveConfig = true;
-            return null;
+            return result;
         }
     }
 }
