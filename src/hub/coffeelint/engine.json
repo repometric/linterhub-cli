@@ -38,5 +38,6 @@
     },
     "stdin": {
         "--stdin": null
-    }
+    },
+    "successCode": 1
 }

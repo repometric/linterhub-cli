@@ -13,5 +13,7 @@
         InstallResult Install(string packageName, string installationPath = null, string version = null);
 
         InstallResult CheckInstallation(string packageName, string installationPath = null);
+
+        string LocallyExecution(string packageName);
     }
 }

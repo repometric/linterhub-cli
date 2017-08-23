@@ -3,6 +3,7 @@ namespace Linterhub.Cli.Strategy
     using System.Linq;
     using Core.Factory;
     using Core.Schema;
+    using Runtime;
 
     /// <summary>
     /// The 'catalog engine' strategy logic.

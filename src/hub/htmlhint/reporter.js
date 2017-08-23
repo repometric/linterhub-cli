@@ -9,7 +9,6 @@ template.run(function(lines) {
         }
 
         let data = JSON.parse(line);
-
         results = data.map(function(current) {
             return {
                 path: current.file,

@@ -10,6 +10,10 @@ namespace Linterhub.Cli.Runtime
         /// </summary>
         Activate,
         /// <summary>
+        /// Deactivate engine for project.
+        /// </summary>
+        Deactivate,
+        /// <summary>
         /// Analyze project.
         /// </summary>
         Analyze,
@@ -30,20 +34,12 @@ namespace Linterhub.Cli.Runtime
         /// </summary>
         Help,
         /// <summary>
-        /// Get engine version.
-        /// </summary>
-        EngineVersion,
-        /// <summary>
-        /// Install linter.
-        /// </summary>
-        EngineInstall,
-        /// <summary>
         /// Exclude objects from the analysis.
         /// </summary>
         Ignore,
         /// <summary>
-        /// Fetche some useful engines
+        /// Fetche some useful engines for project
         /// </summary>
-        FetchEngines
+        Fetch
     }
 }

@@ -1,15 +1,18 @@
-namespace Linterhub.Core.Schema
+namespace Linterhub.Core.Factory
 {
     using System.Collections.Generic;
     using System.Linq;
-    using Extensions;
+    using Utils;
     using Option = System.Collections.Generic.KeyValuePair<string, string>;
     using static Runtime.EngineWrapper;
+    using Schema;
+    using System.IO;
 
     public class CommandFactory
     {
         public string GetAnalyzeCommand(
             Context context,
+            string executePath = null,
             string argSeparator = " ")
         {
             var valueSeparator = context.Specification.Schema.OptionsDelimiter ?? " ";
@@ -21,25 +24,24 @@ namespace Linterhub.Core.Schema
             }
 
             var args = options.Select(x => BuildArg(context.RunOptions, x, valueSeparator, context.Stdin)).Where(x => !string.IsNullOrEmpty(x));
-            var command = context.Specification.Schema.Executable ?? context.Specification.Schema.Name + " " + string.Join(argSeparator, args);
 
+            if (executePath != null)
+            {
+                executePath = Path.GetFullPath(Path.Combine(context.Project, executePath).NormalizePath());
+            }
+
+            var command = (executePath ?? 
+                          context.Specification.Schema.Executable ?? 
+                          context.Specification.Schema.Name) + " " + string.Join(argSeparator, args);
 
             if (context.Specification.Schema.Postfix != null)
             {
                 var postfix = context.Specification.Schema.Postfix ?? "";
-                foreach (var runtimeOption in context.RunOptions)
-                {
-                    postfix = postfix?.Replace(runtimeOption.Key, runtimeOption.Value);
-                }
+                postfix = BuildArgValue(context.RunOptions, postfix);
                 command = string.Join(" ", command, postfix);
             }
 
             return command;
-        }
-
-        public string GetVersionCommand(EngineSpecification specification)
-        {
-            return "--version";
         }
 
         private List<Option> MergeOptions(

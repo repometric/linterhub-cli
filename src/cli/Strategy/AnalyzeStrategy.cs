@@ -5,7 +5,7 @@ namespace Linterhub.Cli.Strategy
     using Core.Schema;
     using Core.Runtime;
     using Core.Factory;
-    using Core.Extensions;
+    using Core.Utils;
 
     public class AnalyzeStrategy : IStrategy
     {
@@ -15,8 +15,12 @@ namespace Linterhub.Cli.Strategy
             var config = locator.Get<LinterhubConfigSchema>();
             var engineRunner = locator.Get<EngineWrapper>();
             var engineFactory = locator.Get<IEngineFactory>();
-            var engines = AnalyzeStdinStrategy.MergeEngines(context.Engines, config.Engines);
+            var engines = context.Engines.Count() == 0 ?
+                config.Engines.Where(x => x.Active != false)
+                .Select(x => x.Name) : context.Engines;
             var ensure = locator.Get<Ensure>();
+
+
 
             ensure.ProjectSpecified();
 
@@ -37,10 +41,18 @@ namespace Linterhub.Cli.Strategy
                     ConfigOptions = (EngineOptions)configOptions,
                     RunOptions = runOptions,
                     WorkingDirectory = workingDirectory,
-                    Stdin = EngineWrapper.Context.stdinType.NotUse
+                    Stdin = EngineWrapper.Context.stdinType.NotUse,
+                    Locally = context.Locally,
+                    Project = context.Project
                 };
 
-            return new EngineRunner(engineRunner).RunAnalyze(contexts.ToList(), context.Project, context.Directory, context.File, config);
+            return engineRunner.RunAnalyze(contexts.ToList(), new EngineWrapper.RunContext
+            {
+                File = context.File,
+                Directory = context.Directory,
+                InputStream = context.Input,
+                Project = context.Project
+            }, config);
         }
     }
 }

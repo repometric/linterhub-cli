@@ -39,5 +39,6 @@
         "--filename": "file://{stdin}",
         "-": null
     },
-    "optionsDelimiter": "="
+    "optionsDelimiter": "=",
+    "successCode": 2
 }

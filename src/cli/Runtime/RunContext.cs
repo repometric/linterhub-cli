@@ -1,4 +1,4 @@
-namespace Linterhub.Cli.Runtime
+﻿namespace Linterhub.Cli.Runtime
 {
     using System.IO;
 
@@ -54,11 +54,6 @@ namespace Linterhub.Cli.Runtime
         #region More specific arguments
 
         /// <summary>
-        /// Gets or sets the value indicationg whether to activate engine.
-        /// </summary>
-        public bool? Activate { get; set; }
-
-        /// <summary>
         /// Gets or sets the stdin.
         /// </summary>
         public Stream Input { get; set; }
@@ -67,11 +62,6 @@ namespace Linterhub.Cli.Runtime
         /// Gets or sets the value indicating whether stdin is available.
         /// </summary>
         public bool InputAwailable { get; set; }
-
-        /// <summary>
-        /// Gets or sets the path to ignore. 
-        /// </summary>
-        public string Path { get; set; }
 
         /// <summary>
         /// Gets or sets the line to ignore.
@@ -94,7 +84,7 @@ namespace Linterhub.Cli.Runtime
         /// Gets or sets the list of key filters for stdout.
         /// </summary>
         public string[] Keys { get; set; }
-        
+
         /// <summary>
         /// Gets or sets the list of value filters for stdout.
         /// </summary>
@@ -111,10 +101,10 @@ namespace Linterhub.Cli.Runtime
         /// <param name="mode">The run mode.</param>
         public RunContext(RunMode mode = RunMode.Help)
         {
-            Mode = mode;
             Engines = new string[0];
             Keys = new string[0];
             Filters = new string[0];
+            Mode = mode;
         }
     }
 }

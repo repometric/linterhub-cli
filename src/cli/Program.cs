@@ -5,10 +5,10 @@ namespace Linterhub.Cli
     using Core.Schema;
     using Core.Runtime;
     using Core.Factory;
-    using Core.Extensions;
+    using Core.Utils;
     using Core.Exceptions;
-    using Runtime;
     using Strategy;
+    using Runtime;
     using System.IO;
     using Core.Managers;
 
@@ -29,11 +29,10 @@ namespace Linterhub.Cli
             { RunMode.AnalyzeStdin, new AnalyzeStdinStrategy() },
             { RunMode.Version, new VersionStrategy() },
             { RunMode.Activate, new ActivateStrategy() },
+            { RunMode.Deactivate, new ActivateStrategy() },
             { RunMode.Help, new OptionsStrategy() },
-            { RunMode.EngineVersion, new EngineVersionStrategy() },
-            { RunMode.EngineInstall, new EngineInstallStrategy() },
             { RunMode.Ignore, new IgnoreStrategy() },
-            { RunMode.FetchEngines, new FetchEnginesStrategy() }
+            { RunMode.Fetch, new FetchEnginesStrategy() }
         };
         
         internal static int Run(string[] args, LogManager log)
@@ -93,17 +92,15 @@ namespace Linterhub.Cli
             var projectConfig = context.ProjectConfig.DeserializeAsJsonFromFile<LinterhubConfigSchema>();
             var terminal = new TerminalWrapper(platformConfig.Terminal.Path, platformConfig.Terminal.Command);
             var engineFactory = new EngineFileSystemFactory(context.Linterhub);
-            var engineContextFactory = new EngineContextFactory(engineFactory);
             var commandFactory = new CommandFactory();
-            var managerWrapper = new ManagerWrapper(terminal);
-            var installer = new Installer(terminal, managerWrapper);
-            var engineRunner = new EngineWrapper(terminal, commandFactory);
+            var managerWrapper = new ManagerWrapper(terminal, engineFactory);
+            var installer = new Installer(managerWrapper);
+            var engineRunner = new EngineWrapper(terminal, commandFactory, managerWrapper);
 
             locator.Register<LinterhubConfigSchema>(projectConfig);
-            locator.Register<RunContext>(context);
+            locator.Register<Runtime.RunContext>(context);
             locator.Register<PlatformConfig>(platformConfig);
             locator.Register<IEngineFactory>(engineFactory);
-            locator.Register<EngineContextFactory>(engineContextFactory);
             locator.Register<TerminalWrapper>(terminal);
             locator.Register<EngineWrapper>(engineRunner);
             locator.Register<Installer>(installer);

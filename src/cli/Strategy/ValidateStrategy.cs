@@ -3,7 +3,7 @@ namespace Linterhub.Cli.Strategy
     using System.IO;
     using System.Reflection;
     using System.Runtime.InteropServices;
-    using Core.Extensions;
+    using Core.Utils;
     using Runtime;
 
     /// <summary>

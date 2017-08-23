@@ -3,7 +3,7 @@ namespace Linterhub.Core.Factory
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
-    using Extensions;
+    using Utils;
     using Exceptions;
     using Schema;
     using Newtonsoft.Json.Schema;

@@ -1,8 +1,8 @@
 namespace Linterhub.Core.Exceptions
 {
     using System;
-    using Core.Schema;
-    using Core.Extensions;
+    using Schema;
+    using Utils;
 
     /// <summary>
     /// Represents basic linterhub exception.
@@ -12,6 +12,7 @@ namespace Linterhub.Core.Exceptions
 
         public ErrorCode exitCode { get; }
 
+        public string Title { get; }
         public enum ErrorCode
         {
             noError,
@@ -33,6 +34,7 @@ namespace Linterhub.Core.Exceptions
         public LinterhubException(string title, string description, ErrorCode statusCode, Exception innerException = null)
             : base(convertMessage(title, description, statusCode), innerException)
         {
+            Title = title;
             exitCode = statusCode;
         }
 

@@ -3,7 +3,7 @@
     "name": "eslint",
     "description": "A fully pluggable tool for identifying and reporting on patterns in JavaScript",
     "url": "http://eslint.org",
-    "version": "v4.0.0",
+    "version": "v4.5.0",
     "languages": [
         "javascript",
         "jsx"
@@ -30,11 +30,15 @@
         {
             "manager": "npm",
             "package": "eslint",
-            "version": "4.0.0"
+            "version": "4.5.0"
         },
         {
             "manager": "npm",
             "package": "eslint-config-google"
+        },
+        {
+            "manager": "npm",
+            "package": "babel-eslint"
         }
     ],
     "defaults": {
@@ -46,5 +50,6 @@
         "--stdin": null,
         "--stdin-filename": "file://{stdin}"
     },
-    "optionsDelimiter": "="
+    "optionsDelimiter": "=",
+    "successCode": 1
 }

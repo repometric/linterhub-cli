@@ -1,4 +1,4 @@
-namespace Linterhub.Cli.Runtime
+namespace Linterhub.Core.Runtime
 {
     using System;
     using System.IO;

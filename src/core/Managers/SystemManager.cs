@@ -1,10 +1,10 @@
 ﻿namespace Linterhub.Core.Managers
 {
-    using Extensions;
+    using Utils;
     using Runtime;
-    using System.Text.RegularExpressions;
     using static Schema.EngineSchema;
     using InstallResult = Schema.EngineVersionSchema.ResultType;
+    using System;
 
     public class SystemManager : IManager
     {
@@ -33,6 +33,11 @@
                 Version = Deserialize.RemoveNewline(checkResult.Output.ToString()),
                 Message = Deserialize.RemoveNewline(checkResult.Error.ToString())
             };
+        }
+
+        public string LocallyExecution(string packageName)
+        {
+            return null;
         }
 
         public SystemManager(TerminalWrapper terminal)
