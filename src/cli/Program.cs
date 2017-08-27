@@ -98,7 +98,7 @@ namespace Linterhub.Cli
             var engineRunner = new EngineWrapper(terminal, commandFactory, managerWrapper);
 
             locator.Register<LinterhubConfigSchema>(projectConfig);
-            locator.Register<Runtime.RunContext>(context);
+            locator.Register<RunContext>(context);
             locator.Register<PlatformConfig>(platformConfig);
             locator.Register<IEngineFactory>(engineFactory);
             locator.Register<TerminalWrapper>(terminal);

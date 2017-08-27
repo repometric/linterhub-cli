@@ -25,32 +25,27 @@
             engines.ForEach(engine => {
                 if (engine.Extensions.Select(x =>
                 {
-                    return Directory.GetFiles(context.Project, x, SearchOption.AllDirectories).ToList();
+                    return Directory.GetFiles(context.Project, x, SearchOption.AllDirectories)
+                        .Where(y => !config.Ignore.Exists(z => y.Contains(z.Mask))).ToList();
                 }).Where(x => x.Any()).Any())
                 {
-                    if (!config.Engines.Exists( x => x.Name == engine.Name))
+                    result.Add(new LinterhubFetchSchema.ResultType()
                     {
-                        result.Add(new LinterhubFetchSchema.ResultType()
-                        {
-                            Name = engine.Name,
-                            Found = LinterhubFetchSchema.ResultType.FoundType.sourceExtension
-                        });
-                    }
+                        Name = engine.Name,
+                        Found = LinterhubFetchSchema.ResultType.FoundType.sourceExtension
+                    });
                 }
 
                 engine.Configs.ForEach(file =>
                 {
                     if (File.Exists(Path.Combine(context.Project, file)))
                     {
-                        if (!config.Engines.Exists(x => x.Name == engine.Name))
+                        result.Remove(result.Find(x => x.Name == engine.Name));
+                        result.Add(new LinterhubFetchSchema.ResultType()
                         {
-                            result.Remove(result.Find(x => x.Name == engine.Name));
-                            result.Add(new LinterhubFetchSchema.ResultType()
-                            {
-                                Name = engine.Name,
-                                Found = LinterhubFetchSchema.ResultType.FoundType.engineConfig
-                            });
-                        }
+                            Name = engine.Name,
+                            Found = LinterhubFetchSchema.ResultType.FoundType.engineConfig
+                        });
                     }
                 });
             });
@@ -75,7 +70,7 @@
                 });
             }
 
-            return result;
+            return result.Where(y => !config.Engines.Exists(x => x.Name == y.Name && (x.Active ?? false)));
         }
     }
 }
