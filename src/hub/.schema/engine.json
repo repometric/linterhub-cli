@@ -39,11 +39,27 @@
                     "coffeescript",
                     "css",
                     "html",
+                    "xml",
                     "javascript",
                     "json",
                     "jsx",
                     "sass",
-                    "typescript"
+                    "typescript",
+                    "c",
+                    "cpp",
+                    "csharp",
+                    "groovy",
+                    "php",
+                    "ruby",
+                    "fortran",
+                    "plsql",
+                    "scala",
+                    "objectivec",
+                    "perl",
+                    "swift",
+                    "python",
+                    "java",
+                    "pug"
                 ]
             }
         },
@@ -68,7 +84,8 @@
                 "Unknown",
                 "AGPL-3.0",
                 "Apache-2.0",
-                "MIT"
+                "MIT",
+                "ISC"
             ]
         },
         "requirements": {
