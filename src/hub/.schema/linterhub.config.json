@@ -45,6 +45,9 @@
                     },
                     {
                         "$ref": "./../tslint/args.json#/definitions/section"
+                    },
+                    {
+                        "$ref": "./../pug/args.json#/definitions/section"
                     }
                 ]
             }

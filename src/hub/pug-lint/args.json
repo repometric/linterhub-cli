@@ -1,0 +1,54 @@
+{
+    "$schema": "./../.schema/args.json",
+    "title": "pug-lint args schema",
+    "description": "pug-lint configuration",
+    "allOf": [
+        {
+            "$ref": "#/definitions/options"
+        }
+    ],
+    "definitions": {
+        "options": {
+            "type": "object",
+            "properties": {
+                "--config": {
+                    "id": "{config}",
+                    "type": "string",
+                    "description": "Configuration file path"
+                },
+                "--reporter": {
+                    "type": "string",
+                    "description": "Error reporter; console - default, inline"
+                },
+                "--version": {
+                    "id": "{version}",
+                    "type": "string",
+                    "description": "Show version"
+                },
+                "": {
+                    "id": "{path}",
+                    "type": "string",
+                    "description": "Path for analysis"
+                }
+            }
+        },
+        "section": {
+            "type": "object",
+            "description": "The engine configuration section",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "The engine name",
+                    "enum": [
+                        "pug-lint"
+                    ]
+                },
+                "options": {
+                    "type": "object",
+                    "description": "The engine configuration",
+                    "$ref": "#/definitions/options"
+                }
+            }
+        }
+    }
+}

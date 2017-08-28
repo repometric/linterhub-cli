@@ -1,0 +1,39 @@
+{
+    "$schema": "./../.schema/engine.json",
+    "name": "pug-lint",
+    "description": "An unopinionated and configurable linter and style checker for Pug (formerly Jade)",
+    "version": "2.4.0",
+    "url": "https://github.com/pugjs/pug-lint",
+    "languages": [
+        "pug"
+    ],
+    "extensions": [
+        "*.pug"
+    ],
+    "configs": [
+        ".pug-lintrc",
+        ".pug-lintrc.js",
+        ".pug-lintrc.json"
+    ],
+    "license": "ISC",
+    "areas": [
+        "syntax",
+        "formatting"
+    ],
+    "requirements": [
+        {
+            "manager": "system",
+            "package": "npm"
+        },
+        {
+            "manager": "npm",
+            "package": "pug-lint",
+            "version": "2.4.0"
+        }
+    ],
+    "postfix": " 2>&1 | node file://{schema}/pug-lint/reporter.js",
+    "defaults": {
+        "": "./",
+        "--reporter": "inline"
+    }
+}

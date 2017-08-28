@@ -11,10 +11,10 @@ The meta information of engine
 |description|string|+|The engine description|
 |url|string|-|The engine url or homepage|
 |version|string|-|The engine version|
-|languages|string[]|+|The list of supported languages. Possible values: `coffeescript`, `css`, `html`, `javascript`, `json`, `jsx`, `sass`, `typescript`|
+|languages|string[]|+|The list of supported languages. Possible values: `coffeescript`, `css`, `html`, `xml`, `javascript`, `json`, `jsx`, `sass`, `typescript`, `c`, `cpp`, `csharp`, `groovy`, `php`, `ruby`, `fortran`, `plsql`, `scala`, `objectivec`, `perl`, `swift`, `python`, `java`, `pug`|
 |extensions|string[]|-|Common file extensions parsed by engine|
 |configs|string[]|-|List of file names which could be treated as engine config|
-|license|string|+|The engine license. Possible values: `Unknown`, `AGPL-3.0`, `Apache-2.0`, `MIT`|
+|license|string|+|The engine license. Possible values: `Unknown`, `AGPL-3.0`, `Apache-2.0`, `MIT`, `ISC`|
 |requirements|[requirement](#requirement)[]|-|The engine requirements|
 |areas|string[]|+|The engine areas. Possible values: `code simplification`, `commented code`, `complexity`, `documentation`, `duplication`, `formatting`, `grammar`, `memory leak`, `security`, `simplification`, `smell`, `spelling`, `syntax`, `undefined element`, `unreachable code`, `unused code`|
 |acceptMask|boolean|-|Can use masks for multiple files analyze. Default is `true`|

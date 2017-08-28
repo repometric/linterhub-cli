@@ -49,11 +49,27 @@ namespace Linterhub.Core.Schema
 			coffeescript,
 			css,
 			html,
+			xml,
 			javascript,
 			json,
 			jsx,
 			sass,
-			typescript
+			typescript,
+			c,
+			cpp,
+			csharp,
+			groovy,
+			php,
+			ruby,
+			fortran,
+			plsql,
+			scala,
+			objectivec,
+			perl,
+			swift,
+			python,
+			java,
+			pug
 		}
 		
 		public List<LanguagesType> Languages = new List<LanguagesType>();
