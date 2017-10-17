@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <VersionPrefix>0.6.0</VersionPrefix>
+    <TargetFrameworks>netcoreapp2.0;netstandard2.0</TargetFrameworks>
+    <DebugType>portable</DebugType>
+    <AssemblyName>cli</AssemblyName>
+    <OutputType>Exe</OutputType>
+    <PackageId>cli</PackageId>
+    <RuntimeIdentifiers>win10-x64;win10-x86;win8-x64;osx.10.10-x64;osx.10.11-x64;osx.10.12-x64;debian.8-x64;ubuntu.14.04-x64;ubuntu.16.04-x64</RuntimeIdentifiers>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+    <StartupObject>Linterhub.Cli.Program</StartupObject>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|AnyCPU'">
+    <DefineConstants>TRACE;DEBUG;NETSTANDARD2_0</DefineConstants>
+    <OutputPath>bin\Debug\netstandard2.0\</OutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="..\config\**\*" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\core\core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NETCore.Runtime.CoreCLR" Version="2.0.0" />
+    <PackageReference Include="Microsoft.NETCore.DotNetHostPolicy" Version="2.0.0" />
+    <PackageReference Include="Mono.Options" Version="5.3.0.1" />
+    <PackageReference Include="System.Diagnostics.Process" Version="4.3.0" />
+    <PackageReference Include="Newtonsoft.Json.Schema" Version="3.0.4" />
+  </ItemGroup>
+
+</Project>
