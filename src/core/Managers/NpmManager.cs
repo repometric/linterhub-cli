@@ -5,7 +5,6 @@
     using System.Text.RegularExpressions;
     using static Schema.EngineSchema;
     using InstallResult = Schema.EngineVersionSchema.ResultType;
-    using System;
 
     public class NpmManager : IManager
     {

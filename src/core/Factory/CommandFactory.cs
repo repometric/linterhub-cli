@@ -11,14 +11,14 @@ namespace Linterhub.Core.Factory
     public class CommandFactory
     {
         public string GetAnalyzeCommand(
-            Context context,
+            EngineContext context,
             string executePath = null,
             string argSeparator = " ")
         {
             var valueSeparator = context.Specification.Schema.OptionsDelimiter ?? " ";
             var options = MergeOptions(context.ConfigOptions, context.Specification);
 
-            if (context.Stdin == Context.stdinType.UseWithEngine)
+            if (context.Stdin == EngineContext.stdinType.UseWithEngine)
             {
                 options.AddRange(context.Specification.Schema.Stdin);
             }
@@ -75,9 +75,9 @@ namespace Linterhub.Core.Factory
         private string BuildArg(
             EngineOptions runtimeOptions,
             Option option,
-            string valueSeparator = " ", Context.stdinType stdin = Context.stdinType.NotUse)
+            string valueSeparator = " ", EngineContext.stdinType stdin = EngineContext.stdinType.NotUse)
         {
-            if(stdin == Context.stdinType.UseWithEngine && (option.Value ?? "").Contains("{path}"))
+            if(stdin == EngineContext.stdinType.UseWithEngine && (option.Value ?? "").Contains("{path}"))
             {
                 return "";
             }

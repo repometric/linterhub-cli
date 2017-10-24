@@ -1,16 +1,15 @@
 namespace Linterhub.Core.Runtime
 {
-    using System.IO;
     using Exceptions;
+    using Factory;
+    using Managers;
     using Schema;
     using System.Collections.Generic;
+    using System.IO;
     using System.Linq;
-    using Utils;
-    using Factory;
-    using Result = Schema.LinterhubOutputSchema.ResultType;
     using System.Threading.Tasks;
-    using Managers;
-    using System;
+    using Utils;
+    using Result = Schema.LinterhubOutputSchema.ResultType;
 
     /// <summary>
     /// The engine wrapper.
@@ -41,11 +40,11 @@ namespace Linterhub.Core.Runtime
             Managers = managerWrapper;
         }
 
-        protected List<Context> getRealContexts(List<Context> contexts, RunContext runContext)
+        protected List<EngineContext> getRealContexts(List<EngineContext> contexts, RunContext runContext)
         {
             return contexts.Select(context =>
             {
-                if (context.Stdin == Context.stdinType.NotUse &&
+                if (context.Stdin == EngineContext.stdinType.NotUse &&
                     string.IsNullOrEmpty(runContext.File) &&
                     context.Specification.Schema.AcceptMask == false)
                 {
@@ -68,7 +67,7 @@ namespace Linterhub.Core.Runtime
                             return y;
                         }).ToList().ForEach(z => lo.Add(z.Key, z.Value));
 
-                        return new Context()
+                        return new EngineContext()
                         {
                             ConfigOptions = context.ConfigOptions,
                             Stdin = context.Stdin,
@@ -82,7 +81,7 @@ namespace Linterhub.Core.Runtime
                 }
                 else
                 {
-                    return new List<Context>()
+                    return new List<EngineContext>()
                     {
                         context
                     };
@@ -91,7 +90,7 @@ namespace Linterhub.Core.Runtime
         } 
 
         public LinterhubOutputSchema RunAnalyze(
-            List<Context> contexts,
+            List<EngineContext> contexts,
             RunContext runContext,
             LinterhubConfigSchema config = null)
         {
@@ -99,7 +98,7 @@ namespace Linterhub.Core.Runtime
 
             string stdin = null;
 
-            if (contexts.Any(x => x.Stdin != Context.stdinType.NotUse))
+            if (contexts.Any(x => x.Stdin != EngineContext.stdinType.NotUse))
             {
                 stdin = new StreamReader(runContext.InputStream).ReadToEnd();
             }
@@ -223,14 +222,14 @@ namespace Linterhub.Core.Runtime
         /// </summary>
         /// <param name="context">The engine context.</param>
         /// <returns>The result.</returns>
-        public EngineOutputSchema RunSingleEngine(Context context, string stdin = "")
+        public EngineOutputSchema RunSingleEngine(EngineContext context, string stdin = "")
         {
             var engineName = context.Specification.Schema.Name;
             var tempFile = "#tempfile";
 
             var workingDirectoryCached = context.WorkingDirectory;
 
-            if (context.Stdin == Context.stdinType.Use)
+            if (context.Stdin == EngineContext.stdinType.Use)
             {
                 tempFile = Path.GetTempFileName();
                 File.WriteAllText(tempFile, stdin);
@@ -241,11 +240,11 @@ namespace Linterhub.Core.Runtime
 
             var command = CommandFactory.GetAnalyzeCommand(context, context.Locally ? Managers.get(engineName).LocallyExecution(engineName) : null);
 
-            var result = RunEngine(context, command, successCode: context.Specification.Schema.SuccessCode ?? 0, stdin: context.Stdin == Context.stdinType.UseWithEngine ? stdin : string.Empty)
+            var result = RunEngine(context, command, successCode: context.Specification.Schema.SuccessCode ?? 0, stdin: context.Stdin == EngineContext.stdinType.UseWithEngine ? stdin : string.Empty)
                     .DeserializeAsJson<EngineOutputSchema>();
 
             result.ForEach((file) => {
-                if (context.Stdin != Context.stdinType.NotUse)
+                if (context.Stdin != EngineContext.stdinType.NotUse)
                 {
                     file.Path = context.RunOptions.Where(x => x.Key == "file://{stdin}").First().Value;
                 }
@@ -269,7 +268,7 @@ namespace Linterhub.Core.Runtime
         /// <param name="commandSeparator">The command separator.</param>
         /// <param name="successCode">The expected success code.</param>
         /// <returns>The result.</returns>
-        protected string RunEngine(Context context, string command, string commandSeparator = " ", int successCode = 0, string stdin = "")
+        protected string RunEngine(EngineContext context, string command, string commandSeparator = " ", int successCode = 0, string stdin = "")
         {
             var result = Terminal.RunTerminal(command, Path.GetFullPath(context.WorkingDirectory), stdin: stdin);
 
@@ -305,7 +304,7 @@ namespace Linterhub.Core.Runtime
         /// <summary>
         /// The engine context.
         /// </summary>
-        public class Context
+        public class EngineContext
         {
             /// <summary>
             /// Gets or sets the engine specification.
