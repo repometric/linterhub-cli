@@ -1,41 +1,41 @@
 [
     {
-        "schema": "src/hub/.schema/linterhub.config.json",
+        "schema": "src/config/hub/.schema/linterhub.config.json",
         "cs": "src/core/Schema/LinterhubConfigSchema.cs",
         "md": "docs/hub/.schema/linterhub.config.md"
     },
     {
-        "schema": "src/hub/.schema/engine.output.json",
+        "schema": "src/config/hub/.schema/engine.output.json",
         "cs": "src/core/Schema/EngineOutputSchema.cs",
         "md": "docs/hub/.schema/engine.output.md"
     },
     {
-        "schema": "src/hub/.schema/engine.version.json",
+        "schema": "src/config/hub/.schema/engine.version.json",
         "cs": "src/core/Schema/EngineVersionSchema.cs",
         "md": "docs/hub/.schema/engine.version.md"
     },
     {
-        "schema": "src/hub/.schema/linterhub.error.json",
+        "schema": "src/config/hub/.schema/linterhub.error.json",
         "cs": "src/core/Schema/LinterhubErrorSchema.cs",
         "md": "docs/hub/.schema/linterhub.error.md"
     },
     {
-        "schema": "src/hub/.schema/engine.json",
+        "schema": "src/config/hub/.schema/engine.json",
         "cs": "src/core/Schema/EngineSchema.cs",
         "md": "docs/hub/.schema/engine.md"
     },
     {
-        "schema": "src/hub/.schema/linterhub.output.json",
+        "schema": "src/config/hub/.schema/linterhub.output.json",
         "cs": "src/core/Schema/LinterhubOutputSchema.cs",
         "md": "docs/hub/.schema/linterhub.output.md"
     },
     {
-        "schema": "src/hub/.schema/linterhub.fetch.json",
+        "schema": "src/config/hub/.schema/linterhub.fetch.json",
         "cs": "src/core/Schema/LinterhubFetchSchema.cs",
         "md": "docs/hub/.schema/linterhub.fetch.md"
     },
     {
-        "schema": "src/hub/.schema/args.json",
+        "schema": "src/config/hub/.schema/args.json",
         "md": "docs/hub/.schema/args.md"
     }
 ]
