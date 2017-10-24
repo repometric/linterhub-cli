@@ -2,7 +2,7 @@ language: csharp
 dist: trusty
 sudo: required
 mono: none
-dotnet: 1.0.0-preview2.1-003177
+dotnet: 2.0.0
 mono:
   - latest
 os:
@@ -15,7 +15,6 @@ before_install:
   - cd test && npm install && cd ../
   - npm install -g z-schema
 install:
-  - sh script/setup.sh
   - sh script/cibuild.sh
 script:
   - node test/integration.js
