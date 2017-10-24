@@ -41,14 +41,14 @@
                     { "file://{stdin}", fileName },
                 }
                 let workingDirectory = context.Directory ?? context.Project
-                select new EngineWrapper.Context
+                select new EngineWrapper.EngineContext
                 {
                     Specification = specification,
                     ConfigOptions = (EngineOptions)configOptions,
                     RunOptions = runOptions,
                     WorkingDirectory = workingDirectory,
                     Stdin = specification.Schema.Stdin != null
-                            ? EngineWrapper.Context.stdinType.UseWithEngine : EngineWrapper.Context.stdinType.Use,
+                            ? EngineWrapper.EngineContext.stdinType.UseWithEngine : EngineWrapper.EngineContext.stdinType.Use,
                     Locally = context.Locally,
                     Project = context.Project
                 };

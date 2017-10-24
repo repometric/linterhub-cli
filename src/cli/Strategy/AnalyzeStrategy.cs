@@ -35,13 +35,13 @@ namespace Linterhub.Cli.Strategy
                     { "file://{schema}", context.Linterhub }
                 }
                 let workingDirectory = context.Directory ?? context.Project
-                select new EngineWrapper.Context
+                select new EngineWrapper.EngineContext
                 {
                     Specification = specification,
                     ConfigOptions = (EngineOptions)configOptions,
                     RunOptions = runOptions,
                     WorkingDirectory = workingDirectory,
-                    Stdin = EngineWrapper.Context.stdinType.NotUse,
+                    Stdin = EngineWrapper.EngineContext.stdinType.NotUse,
                     Locally = context.Locally,
                     Project = context.Project
                 };
