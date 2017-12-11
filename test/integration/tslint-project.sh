@@ -1,0 +1,1 @@
+dotnet cli.dll --mode=Analyze --project=../../test/linterhub-tests/angular/integration/hello_world__closure --linter=tslint

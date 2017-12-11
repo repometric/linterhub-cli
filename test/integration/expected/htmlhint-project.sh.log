@@ -1,0 +1,197 @@
+[
+  {
+    "filePath": "cleanScript.html",
+    "messages": [
+      {
+        "message": "Doctype must be declared first.",
+        "source": "<script>",
+        "severity": 5,
+        "column": "0",
+        "columnEnd": "1000",
+        "line": "0",
+        "lineEnd": "0",
+        "ruleId": "htmlhint:doctype-first"
+      }
+    ]
+  },
+  {
+    "filePath": "iframe.html",
+    "messages": [
+      {
+        "message": "Doctype must be declared first.",
+        "source": "<html>",
+        "severity": 5,
+        "column": "0",
+        "columnEnd": "1000",
+        "line": "0",
+        "lineEnd": "0",
+        "ruleId": "htmlhint:doctype-first"
+      }
+    ]
+  },
+  {
+    "filePath": "name.html",
+    "messages": [
+      {
+        "message": "Doctype must be declared first.",
+        "source": "ERROR <script type=\"text/javascript\">ok( true, \"name.html retrieved\" );</script>",
+        "severity": 5,
+        "column": "0",
+        "columnEnd": "1000",
+        "line": "0",
+        "lineEnd": "0",
+        "ruleId": "htmlhint:doctype-first"
+      }
+    ]
+  },
+  {
+    "filePath": "test.html",
+    "messages": [
+      {
+        "message": "Doctype must be declared first.",
+        "source": "html text<br/>",
+        "severity": 5,
+        "column": "0",
+        "columnEnd": "1000",
+        "line": "0",
+        "lineEnd": "0",
+        "ruleId": "htmlhint:doctype-first"
+      }
+    ]
+  },
+  {
+    "filePath": "test2.html",
+    "messages": [
+      {
+        "message": "Doctype must be declared first.",
+        "source": "<script type=\"text/javascript\">",
+        "severity": 5,
+        "column": "0",
+        "columnEnd": "1000",
+        "line": "0",
+        "lineEnd": "0",
+        "ruleId": "htmlhint:doctype-first"
+      }
+    ]
+  },
+  {
+    "filePath": "test3.html",
+    "messages": [
+      {
+        "message": "Doctype must be declared first.",
+        "source": "<div class=\"user\">This is a user</div>",
+        "severity": 5,
+        "column": "0",
+        "columnEnd": "1000",
+        "line": "0",
+        "lineEnd": "0",
+        "ruleId": "htmlhint:doctype-first"
+      }
+    ]
+  },
+  {
+    "filePath": "core\\cc_on.html",
+    "messages": [
+      {
+        "message": "<title> must be present in <head> tag.",
+        "source": "</head>",
+        "severity": 5,
+        "column": "0",
+        "columnEnd": "1000",
+        "line": "16",
+        "lineEnd": "16",
+        "ruleId": "htmlhint:title-require"
+      }
+    ]
+  },
+  {
+    "filePath": "core\\dynamic_ready.html",
+    "messages": [
+      {
+        "message": "<title> must be present in <head> tag.",
+        "source": "</head>",
+        "severity": 5,
+        "column": "0",
+        "columnEnd": "1000",
+        "line": "7",
+        "lineEnd": "7",
+        "ruleId": "htmlhint:title-require"
+      }
+    ]
+  },
+  {
+    "filePath": "css\\cssWidthBeforeDocReady.html",
+    "messages": [
+      {
+        "message": "<title> must be present in <head> tag.",
+        "source": "</head>",
+        "severity": 5,
+        "column": "0",
+        "columnEnd": "1000",
+        "line": "12",
+        "lineEnd": "12",
+        "ruleId": "htmlhint:title-require"
+      }
+    ]
+  },
+  {
+    "filePath": "dimensions\\documentLarge.html",
+    "messages": [
+      {
+        "message": "<title> must be present in <head> tag.",
+        "source": "</head>",
+        "severity": 5,
+        "column": "0",
+        "columnEnd": "1000",
+        "line": "11",
+        "lineEnd": "11",
+        "ruleId": "htmlhint:title-require"
+      }
+    ]
+  },
+  {
+    "filePath": "manipulation\\iframe-denied.html",
+    "messages": [
+      {
+        "message": "The value of attribute [ charset ] must be in double quotes.",
+        "source": "<meta charset=utf-8 />",
+        "severity": 5,
+        "column": "7",
+        "columnEnd": "1000",
+        "line": "3",
+        "lineEnd": "3",
+        "ruleId": "htmlhint:attr-value-double-quotes"
+      }
+    ]
+  },
+  {
+    "filePath": "manipulation\\scripts-context.html",
+    "messages": [
+      {
+        "message": "The value of attribute [ charset ] must be in double quotes.",
+        "source": "<meta charset=utf-8 />",
+        "severity": 5,
+        "column": "7",
+        "columnEnd": "1000",
+        "line": "3",
+        "lineEnd": "3",
+        "ruleId": "htmlhint:attr-value-double-quotes"
+      }
+    ]
+  },
+  {
+    "filePath": "support\\bodyBackground.html",
+    "messages": [
+      {
+        "message": "<title> must be present in <head> tag.",
+        "source": "</head>",
+        "severity": 5,
+        "column": "0",
+        "columnEnd": "1000",
+        "line": "16",
+        "lineEnd": "16",
+        "ruleId": "htmlhint:title-require"
+      }
+    ]
+  }
+]

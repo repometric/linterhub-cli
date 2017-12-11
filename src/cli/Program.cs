@@ -1,24 +1,22 @@
-namespace Linterhub.Cli
+﻿namespace Linterhub.Cli
 {
     using System;
     using System.Collections.Generic;
-    using Core.Schema;
-    using Core.Runtime;
-    using Core.Factory;
-    using Core.Utils;
-    using Core.Exceptions;
-    using Strategy;
-    using Runtime;
-    using System.IO;
-    using Core.Managers;
+    using System.Diagnostics;
+    using Linterhub.Engine.Schema;
+    using Linterhub.Engine.Runtime;
+    using Linterhub.Engine.Factory;
+    using Linterhub.Engine.Extensions;
+    using Linterhub.Cli.Runtime;
+    using Linterhub.Cli.Strategy;
 
     internal class Program
     {
-        internal static int Main(string[] args)
+        internal static void Main(string[] args)
         {
             using (var log = new LogManager())
             {
-                return Run(args, log);
+                Run(args, log);
             }
         }
 
@@ -26,16 +24,15 @@ namespace Linterhub.Cli
         {
             { RunMode.Catalog, new CatalogStrategy() },
             { RunMode.Analyze, new AnalyzeStrategy() },
-            { RunMode.AnalyzeStdin, new AnalyzeStdinStrategy() },
             { RunMode.Version, new VersionStrategy() },
             { RunMode.Activate, new ActivateStrategy() },
-            { RunMode.Deactivate, new ActivateStrategy() },
             { RunMode.Help, new OptionsStrategy() },
-            { RunMode.Ignore, new IgnoreStrategy() },
-            { RunMode.Fetch, new FetchEnginesStrategy() }
+            { RunMode.LinterVersion, new LinterVersionStrategy() },
+            { RunMode.LinterInstall, new LinterInstallStrategy() },
+            { RunMode.Ignore, new IgnoreStrategy() }
         };
         
-        internal static int Run(string[] args, LogManager log)
+        internal static void Run(string[] args, LogManager log)
         {
             try
             {
@@ -54,17 +51,8 @@ namespace Linterhub.Cli
                 var result = Strategies[context.Mode].Run(locator);
                 if (context.SaveConfig)
                 {
-                    if (string.IsNullOrEmpty(context.ProjectConfig))
-                    {
-                        throw new LinterhubException(
-                            title: "Linterhub config",
-                            description: "Cant save config cause no project path specified",
-                            statusCode: LinterhubException.ErrorCode.linterhubConfig,
-                            innerException: null);
-                    }
-
-                    var content = locator.Get<LinterhubConfigSchema>().SerializeAsJson();
-                    File.WriteAllText(context.ProjectConfig, content);
+                    var content = locator.Get<LinterhubSchema>().SerializeAsJson();
+                    System.IO.File.WriteAllText(string.IsNullOrEmpty(context.ProjectConfig) ? "linterhub.json" : context.ProjectConfig, content);
                 }
 
                 var output = result is string || result == null
@@ -76,12 +64,10 @@ namespace Linterhub.Cli
                     Console.WriteLine(output);
                 }
             }
-            catch (LinterhubException exception)
+            catch (Exception exception)
             {
-                Console.WriteLine(exception.Message);
-                return (int)exception.exitCode;
+                log.Error(exception);
             }
-            return 0;
         }
 
         private static ServiceLocator RegisterServices(RunContext context)
@@ -89,25 +75,23 @@ namespace Linterhub.Cli
             var locator = new ServiceLocator();
             
             var platformConfig = context.PlatformConfig.DeserializeAsJsonFromFile<PlatformConfig>();
-            var projectConfig = context.ProjectConfig.DeserializeAsJsonFromFile<LinterhubConfigSchema>();
-            var terminal = new TerminalWrapper(platformConfig.Terminal.Path, platformConfig.Terminal.Command);
-            var engineFactory = new EngineFileSystemFactory(context.Linterhub);
-            var commandFactory = new CommandFactory();
-            var managerWrapper = new ManagerWrapper(terminal, engineFactory);
-            var installer = new Installer(managerWrapper);
-            var engineRunner = new EngineWrapper(terminal, commandFactory, managerWrapper);
+            var projectConfig = context.ProjectConfig.DeserializeAsJsonFromFile<LinterhubSchema>();
 
-            locator.Register<LinterhubConfigSchema>(projectConfig);
+            var terminal = new TerminalWrapper(platformConfig.Terminal.Path, platformConfig.Terminal.Command);
+            var linterFactory = new LinterFileSystemFactory(context.Linterhub);
+            var linterContextFactory = new LinterContextFactory(linterFactory);
+            var commandFactory = new CommandFactory();
+            var installer = new Installer(terminal, platformConfig.Command.Installed);
+            var linterRunner = new LinterWrapper(terminal, commandFactory);
+
+            locator.Register<LinterhubSchema>(new LinterhubSchema());
             locator.Register<RunContext>(context);
             locator.Register<PlatformConfig>(platformConfig);
-            locator.Register<IEngineFactory>(engineFactory);
+            locator.Register<ILinterFactory>(linterFactory);
+            locator.Register<LinterContextFactory>(linterContextFactory);
             locator.Register<TerminalWrapper>(terminal);
-            locator.Register<EngineWrapper>(engineRunner);
+            locator.Register<LinterWrapper>(linterRunner);
             locator.Register<Installer>(installer);
-            locator.Register<ManagerWrapper>(managerWrapper);
-
-            var ensure = new Ensure(locator);
-            locator.Register<Ensure>(ensure);
 
             return locator;
         }

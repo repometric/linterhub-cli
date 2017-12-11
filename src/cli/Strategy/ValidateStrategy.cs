@@ -1,10 +1,10 @@
 namespace Linterhub.Cli.Strategy
 {
     using System.IO;
-    using System.Reflection;
     using System.Runtime.InteropServices;
-    using Core.Utils;
-    using Runtime;
+    using Linterhub.Engine.Exceptions;
+    using Linterhub.Engine.Extensions;
+    using Linterhub.Cli.Runtime;
 
     /// <summary>
     /// The 'validate input' strategy logic.
@@ -23,6 +23,7 @@ namespace Linterhub.Cli.Strategy
             context.Project = GetProjectPath(context.Project).NormalizePath();
             context.Linterhub = GetLinterhubPath(context.Linterhub).NormalizePath();
             context.PlatformConfig = GetPlatformConfigPath(context.PlatformConfig).NormalizePath();
+            context.ProjectConfig = GetProjectConfigPath(context.ProjectConfig, context.Project).NormalizePath();
 
             ensure.ProjectExists();
             ensure.LinterhubExists();
@@ -35,7 +36,10 @@ namespace Linterhub.Cli.Strategy
             else
             {
                 var possiblePath = Path.Combine(context.Project, ".linterhub.json");
-                context.ProjectConfig = possiblePath;
+                if (File.Exists(possiblePath))
+                {
+                    context.ProjectConfig = possiblePath;
+                }
             }
 
             if (!string.IsNullOrEmpty(context.Directory))
@@ -78,50 +82,28 @@ namespace Linterhub.Cli.Strategy
                 file = "default.json";
             }
 
-            file = Path.Combine(GetResourcePath("platform"), file);
+            file = Path.Combine(Directory.GetCurrentDirectory(), "platform", file);
             return file;
         }
 
         private string GetLinterhubPath(string path)
         {
-            return !string.IsNullOrEmpty(path) ? path : GetResourcePath("hub");
+            if (!string.IsNullOrEmpty(path))
+            {
+                return path;
+            }
+
+            return Path.Combine(Directory.GetCurrentDirectory(), "linterhub");
         }
 
         private string GetProjectPath(string path)
         {
-            return !string.IsNullOrEmpty(path) ? path : GetCurrentDirectory();
+            return string.IsNullOrEmpty(path) ? Directory.GetCurrentDirectory() : path;
         }
 
         private string GetProjectConfigPath(string path, string projectPath)
         {
             return !string.IsNullOrEmpty(path) ? path : string.Empty;
-        }
-
-        private string GetCliDirectory()
-        {
-            return Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
-        }
-
-        private string GetCurrentDirectory()
-        {
-            return Directory.GetCurrentDirectory();
-        }
-
-        private string GetResourcePath(string name)
-        {
-            var path = Path.Combine(GetCurrentDirectory(), name);
-            if (Directory.Exists(path))
-            {
-                return path;
-            }
-            
-            path = Path.Combine(GetCliDirectory(), name);
-            if (Directory.Exists(path))
-            {
-                return path;
-            }
-
-            return name;
         }
     }
 }

@@ -1,6 +1,5 @@
 namespace Linterhub.Cli.Strategy
 {
-    using Runtime;
     /// <summary>
     /// The strategy interface.
     /// </summary>

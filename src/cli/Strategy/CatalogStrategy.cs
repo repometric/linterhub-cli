@@ -1,12 +1,11 @@
 namespace Linterhub.Cli.Strategy
 {
     using System.Linq;
-    using Core.Factory;
-    using Core.Schema;
-    using Runtime;
+    using Linterhub.Engine.Factory;
+    using Linterhub.Engine.Schema;
 
     /// <summary>
-    /// The 'catalog engine' strategy logic.
+    /// The 'catalog linter' strategy logic.
     /// </summary>
     public class CatalogStrategy : IStrategy
     {
@@ -14,31 +13,21 @@ namespace Linterhub.Cli.Strategy
         /// Run strategy.
         /// </summary>
         /// <param name="locator">The service locator.</param>
-        /// <returns>Run results (list of engines).</returns>
+        /// <returns>Run results (list of linters).</returns>
         public object Run(ServiceLocator locator)
         {
-            var factory = locator.Get<IEngineFactory>();
-            var projectConfig = locator.Get<LinterhubConfigSchema>();
+            var factory = locator.Get<ILinterFactory>();
+            var projectConfig = locator.Get<LinterhubSchema>();
             
-            // List all engines and detect active engines (active for the project)
-            var engines = factory.GetSpecifications().Select(x => x.Schema).OrderBy(x => x.Name);
-            var result = engines.Select(engine => 
+            // List all linters and detect active linters (active for the project)
+            var linters = factory.GetSpecifications().Select(x => x.Schema).OrderBy(x => x.Name);
+            var result = linters.Select(linter => 
             {
-                engine.Active = projectConfig.Engines.Any(projectEngine => projectEngine.Name == engine.Name && (projectEngine.Active ?? false));
-                return engine;
+                linter.Active = projectConfig.Linters.Any(projectLinter => projectLinter.Name == linter.Name && projectLinter.Active != false);
+                return linter;
             });
 
-            return result.OrderBy(x => x.Name).Select((x) => {
-                if(x.Active == false)
-                {
-                    x.Active = null;
-                }
-                if(x.SuccessCode == 0)
-                {
-                    x.SuccessCode = null;
-                }
-                return x;
-            });
+            return result.OrderBy(x => x.Name);
         }
     }
 }

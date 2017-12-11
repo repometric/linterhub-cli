@@ -1,0 +1,47 @@
+[
+  {
+    "filePath": "xmlstyle.html",
+    "messages": [
+      {
+        "message": "Doctype must be declared first.",
+        "source": "<style type=\"text/css\">",
+        "severity": 5,
+        "column": "0",
+        "columnEnd": "1000",
+        "line": "0",
+        "lineEnd": "0",
+        "ruleId": "htmlhint:doctype-first"
+      },
+      {
+        "message": "Tag must be paired, no start tag: [ </head> ]",
+        "source": "</head>",
+        "severity": 5,
+        "column": "0",
+        "columnEnd": "1000",
+        "line": "344",
+        "lineEnd": "344",
+        "ruleId": "htmlhint:tag-pair"
+      },
+      {
+        "message": "<title> must be present in <head> tag.",
+        "source": "</head>",
+        "severity": 5,
+        "column": "0",
+        "columnEnd": "1000",
+        "line": "344",
+        "lineEnd": "344",
+        "ruleId": "htmlhint:title-require"
+      },
+      {
+        "message": "Tag must be paired, missing: [ </body> ], open tag match failed [ <body> ] on line 346.",
+        "source": "",
+        "severity": 5,
+        "column": "0",
+        "columnEnd": "1000",
+        "line": "681",
+        "lineEnd": "681",
+        "ruleId": "htmlhint:tag-pair"
+      }
+    ]
+  }
+]

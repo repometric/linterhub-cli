@@ -2,7 +2,7 @@
   "profiles": {
     "cli": {
       "commandName": "Project",
-      "commandLineArgs": "--mode=Analyze --project=../../test/linterhub-tests/angular/aio/content/examples --folder=toh-pt5/src/app --engine=colorguard"
+      "commandLineArgs": "--mode=Analyze --project=../../test/linterhub-tests/marp --folder=coffee/classes --linter=coffeelint"
     },
     "catalog": {
       "commandName": "Project",
@@ -10,111 +10,111 @@
     },
     "coffeelint-file": {
       "commandName": "Project",
-      "commandLineArgs": "--mode=analyze --project=../../test/linterhub-tests/bootstrap --folder=js/dist --file=dropdown.js --engine=eslint"
+      "commandLineArgs": "--mode=Analyze --project=../../test/linterhub-tests/marp --file=coffee/classes/mds_main_menu.coffee --linter=coffeelint"
     },
     "coffeelint-folder": {
       "commandName": "Project",
-      "commandLineArgs": "--mode=Analyze --project=../../test/linterhub-tests/marp --folder=coffee/classes --engine=coffeelint"
+      "commandLineArgs": "--mode=Analyze --project=../../test/linterhub-tests/marp --folder=coffee/classes --linter=coffeelint"
     },
     "coffeelint-project": {
       "commandName": "Project",
-      "commandLineArgs": "--mode=Analyze --project=../../test/linterhub-tests/marp --engine=coffeelint"
+      "commandLineArgs": "--mode=Analyze --project=../../test/linterhub-tests/marp --linter=coffeelint"
     },
     "csslint-file": {
       "commandName": "Project",
-      "commandLineArgs": "--mode=Analyze --project=../../test/linterhub-tests/jquery-ui/themes/base --file=all.css --engine=csslint"
+      "commandLineArgs": "--mode=Analyze --project=../../test/linterhub-tests/jquery-ui/themes/base --file=all.css --linter=csslint"
     },
     "csslint-folder": {
       "commandName": "Project",
-      "commandLineArgs": "--mode=Analyze --project=../../test/linterhub-tests/Font-Awesome --folder=css --engine=csslint"
+      "commandLineArgs": "--mode=Analyze --project=../../test/linterhub-tests/Font-Awesome --folder=css --linter=csslint"
     },
     "csslint-project": {
       "commandName": "Project",
-      "commandLineArgs": "--mode=Analyze --project=../../test/linterhub-tests/Font-Awesome --engine=csslint"
+      "commandLineArgs": "--mode=Analyze --project=../../test/linterhub-tests/Font-Awesome --linter=csslint"
     },
     "eslint-file": {
       "commandName": "Project",
-      "commandLineArgs": "--mode=Analyze --project=../../test/linterhub-tests/styleguide --file=include/styleguide.js --engine=eslint"
+      "commandLineArgs": "--mode=Analyze --project=../../test/linterhub-tests/styleguide --file=include/styleguide.js --linter=eslint"
     },
     "eslint-folder": {
       "commandName": "Project",
-      "commandLineArgs": "--mode=Analyze --project=../../test/linterhub-tests/styleguide --folder=include --engine=eslint"
+      "commandLineArgs": "--mode=Analyze --project=../../test/linterhub-tests/styleguide --folder=include --linter=eslint"
     },
     "eslint-project": {
       "commandName": "Project",
-      "commandLineArgs": "--mode=Analyze --project=../../test/linterhub-tests/styleguide --engine=eslint"
+      "commandLineArgs": "--mode=Analyze --project=../../test/linterhub-tests/styleguide --linter=eslint"
     },
     "htmlhint-file": {
       "commandName": "Project",
-      "commandLineArgs": "--mode=Analyze --project=../../test/linterhub-tests/styleguide --file=xmlstyle.html --engine=htmlhint"
+      "commandLineArgs": "--mode=Analyze --project=../../test/linterhub-tests/styleguide --file=xmlstyle.html --linter=htmlhint"
     },
     "htmlhint-folder": {
       "commandName": "Project",
-      "commandLineArgs": "--mode=Analyze --project=../../test/linterhub-tests/jquery --folder=test/data/core --engine=htmlhint"
+      "commandLineArgs": "--mode=Analyze --project=../../test/linterhub-tests/jquery --folder=test/data/core --linter=htmlhint"
     },
     "htmlhint-project": {
       "commandName": "Project",
-      "commandLineArgs": "--mode=Analyze --project=../../test/linterhub-tests/jquery/test/data --engine=htmlhint"
+      "commandLineArgs": "--mode=Analyze --project=../../test/linterhub-tests/jquery/test/data --linter=htmlhint"
     },
     "jshint-file": {
       "commandName": "Project",
-      "commandLineArgs": "--mode=Analyze --project=../../test/linterhub-tests/styleguide --file=include/styleguide.js --engine=jshint"
+      "commandLineArgs": "--mode=Analyze --project=../../test/linterhub-tests/styleguide --file=include/styleguide.js --linter=jshint"
     },
     "jshint-folder": {
       "commandName": "Project",
-      "commandLineArgs": "--mode=Analyze --project=../../test/linterhub-tests/styleguide --folder=include --engine=jshint"
+      "commandLineArgs": "--mode=Analyze --project=../../test/linterhub-tests/styleguide --folder=include --linter=jshint"
     },
     "jshint-project": {
       "commandName": "Project",
-      "commandLineArgs": "--mode=Analyze --project=../../test/linterhub-tests/styleguide --engine=jshint"
+      "commandLineArgs": "--mode=Analyze --project=../../test/linterhub-tests/styleguide --linter=jshint"
     },
     "jslint-file": {
       "commandName": "Project",
-      "commandLineArgs": "--mode=Analyze --project=../../test/linterhub-tests/styleguide --file=include/styleguide.js --engine=jslint"
+      "commandLineArgs": "--mode=Analyze --project=../../test/linterhub-tests/styleguide --file=include/styleguide.js --linter=jslint"
     },
     "jslint-folder": {
       "commandName": "Project",
-      "commandLineArgs": "--mode=Analyze --project=../../test/linterhub-tests/jquery --folder=src/core/var --engine=jslint"
+      "commandLineArgs": "--mode=Analyze --project=../../test/linterhub-tests/jquery --folder=src/core/var --linter=jslint"
     },
     "jslint-project": {
       "commandName": "Project",
-      "commandLineArgs": "--mode=Analyze --project=../../test/linterhub-tests/jquery/src/core/var --engine=jslint"
+      "commandLineArgs": "--mode=Analyze --project=../../test/linterhub-tests/jquery/src/core/var --linter=jslint"
     },
     "standard-file": {
       "commandName": "Project",
-      "commandLineArgs": "--mode=Analyze --project=../../test/linterhub-tests/styleguide --file=include/styleguide.js --engine=standard"
+      "commandLineArgs": "--mode=Analyze --project=../../test/linterhub-tests/styleguide --file=include/styleguide.js --linter=standard"
     },
     "standard-folder": {
       "commandName": "Project",
-      "commandLineArgs": "--mode=Analyze --project=../../test/linterhub-tests/styleguide --folder=include --engine=standard"
+      "commandLineArgs": "--mode=Analyze --project=../../test/linterhub-tests/styleguide --folder=include --linter=standard"
     },
     "standard-project": {
       "commandName": "Project",
-      "commandLineArgs": "--mode=Analyze --project=../../test/linterhub-tests/styleguide --engine=standard"
+      "commandLineArgs": "--mode=Analyze --project=../../test/linterhub-tests/styleguide --linter=standard"
     },
     "stylelint-file": {
       "commandName": "Project",
-      "commandLineArgs": "--mode=Analyze --project=../../test/linterhub-tests/Font-Awesome --folder=less --file=core.less --engine=stylelint"
+      "commandLineArgs": "--mode=Analyze --project=../../test/linterhub-tests/Font-Awesome --folder=less --file=core.less --linter=stylelint"
     },
     "stylelint-folder": {
       "commandName": "Project",
-      "commandLineArgs": "--mode=Analyze --project=../../test/linterhub-tests/bulma --folder=sass/base --engine=stylelint"
+      "commandLineArgs": "--mode=Analyze --project=../../test/linterhub-tests/bulma --folder=sass/base --linter=stylelint"
     },
     "stylelint-project": {
       "commandName": "Project",
-      "commandLineArgs": "--mode=Analyze --project=../../test/linterhub-tests/bulma/sass/grid --engine=stylelint"
+      "commandLineArgs": "--mode=Analyze --project=../../test/linterhub-tests/bulma/sass/grid --linter=stylelint"
     },
     "tslint-file": {
       "commandName": "Project",
-      "commandLineArgs": "--mode=Analyze --project=../../test/linterhub-tests/angular --folder=integration/hello_world__closure/src --file=main.ts --engine=tslint"
+      "commandLineArgs": "--mode=Analyze --project=../../test/linterhub-tests/angular --folder=integration/hello_world__closure/src --file=main.ts --linter=tslint"
     },
     "tslint-folder": {
       "commandName": "Project",
-      "commandLineArgs": "--mode=Analyze --project=../../test/linterhub-tests/angular --folder=integration/hello_world__closure/src --engine=tslint"
+      "commandLineArgs": "--mode=Analyze --project=../../test/linterhub-tests/angular --folder=integration/hello_world__closure/src --linter=tslint"
     },
     "tslint-project": {
       "commandName": "Project",
-      "commandLineArgs": "--mode=Analyze --project=../../test/linterhub-tests/angular/integration/hello_world__closure --engine=tslint"
+      "commandLineArgs": "--mode=Analyze --project=../../test/linterhub-tests/angular/integration/hello_world__closure --linter=tslint"
     }
   }
 }

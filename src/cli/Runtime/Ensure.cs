@@ -2,9 +2,8 @@ namespace Linterhub.Cli.Runtime
 {
     using System.IO;
     using System.Linq;
-    using Core.Exceptions;
-    using Core.Factory;
-    using Core.Schema;
+    using Linterhub.Engine.Exceptions;
+    using Linterhub.Engine.Schema;
 
     public class Ensure
     {
@@ -12,7 +11,7 @@ namespace Linterhub.Cli.Runtime
 
         protected RunContext Context { get; }
 
-        protected LinterhubConfigSchema Schema { get; }
+        protected LinterhubSchema Schema { get; }
 
         public Ensure(ServiceLocator locator)
         {
@@ -21,37 +20,22 @@ namespace Linterhub.Cli.Runtime
             //Schema = locator.Get<LinterhubSchema>();
         }
 
-        public void EngineSpecified()
+        public void LinterSpecified()
         {
-            if (!Context.Engines.Any())
+            if (!Context.Linters.Any())
             {
-                throw new EngineException("Engine is not specified");
+                throw new LinterEngineException("Linter is not specified");
             }
         }
 
-        public void EngineExists()
+        public void LinterExists()
         {
-            var factory = Locator.Get<IEngineFactory>();
-            
-            foreach(var engine in Context.Engines)
+            foreach (var linter in Context.Linters)
             {
-                if(factory.GetSpecifications().Select(x => x.Schema).Where(x => x.Name == engine).Count() == 0)
+                if (!Locator.Get<LinterhubSchema>().Linters.Any(x => x.Name == linter))
                 {
-                    throw new EngineException("Engine is not exist: " + engine);
+                    //throw new LinterEngineException("Linter is not exist: " + linter);
                 }
-            }
-        }
-
-        public bool ProjectSpecifiedCheck()
-        {
-            return Context.Project != Directory.GetCurrentDirectory();
-        }
-
-        public void ProjectSpecified()
-        {
-            if(!ProjectSpecifiedCheck())
-            {
-                throw new LinterhubException("Project path is missing", "Enter the project path for this task", LinterhubException.ErrorCode.missngParams);
             }
         }
 
@@ -59,7 +43,7 @@ namespace Linterhub.Cli.Runtime
         {
             if (value == null)
             {
-                throw new LinterhubException($"{name} is missing", $"Argument is not specified: {name.ToLower()}", LinterhubException.ErrorCode.missngParams);
+                throw new LinterEngineException($"Argument is not specified: {name.ToLower()}");
             }
         }
 
@@ -67,7 +51,7 @@ namespace Linterhub.Cli.Runtime
         {
             if (!Directory.Exists(Context.Project))
             {
-                throw new LinterhubFileSystemException(nameof(Context.Project), Context.Project);
+                throw new LinterFileSystemException(nameof(Context.Project), Context.Project);
             }
         }
 
@@ -75,7 +59,7 @@ namespace Linterhub.Cli.Runtime
         {
             if (!Directory.Exists(Context.Linterhub))
             {
-                throw new LinterhubFileSystemException(nameof(Context.Linterhub), Context.Linterhub);
+                throw new LinterFileSystemException(nameof(Context.Linterhub), Context.Linterhub);
             }
         }
 
@@ -83,7 +67,7 @@ namespace Linterhub.Cli.Runtime
         {
             if (!File.Exists(Context.PlatformConfig))
             {
-                throw new LinterhubFileSystemException(nameof(Context.PlatformConfig), Context.PlatformConfig);
+                throw new LinterFileSystemException(nameof(Context.PlatformConfig), Context.PlatformConfig);
             }
         }
 
@@ -91,7 +75,7 @@ namespace Linterhub.Cli.Runtime
         {
             if (!Directory.Exists(Context.Directory))
             {
-                throw new LinterhubFileSystemException(nameof(Context.Directory), Context.Directory);
+                throw new LinterFileSystemException(nameof(Context.Directory), Context.Directory);
             }
         }
 
@@ -99,7 +83,7 @@ namespace Linterhub.Cli.Runtime
         {
             if (!File.Exists(Context.File))
             {
-                throw new LinterhubFileSystemException(nameof(Context.File), Context.File);
+                throw new LinterFileSystemException(nameof(Context.File), Context.File);
             }
         }
 
@@ -107,7 +91,7 @@ namespace Linterhub.Cli.Runtime
         {
             if (!File.Exists(Context.ProjectConfig))
             {
-                throw new LinterhubFileSystemException(nameof(Context.ProjectConfig), Context.ProjectConfig);
+                throw new LinterFileSystemException(nameof(Context.ProjectConfig), Context.ProjectConfig);
             }
         }
     }

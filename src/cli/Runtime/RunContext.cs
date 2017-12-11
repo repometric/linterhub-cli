@@ -1,4 +1,4 @@
-﻿namespace Linterhub.Cli.Runtime
+namespace Linterhub.Cli.Runtime
 {
     using System.IO;
 
@@ -45,13 +45,18 @@
         public string PlatformConfig { get; set; }
 
         /// <summary>
-        /// Gets or sets the list of engines for the analysis.
+        /// Gets or sets the list of linters for the analysis.
         /// </summary>
-        public string[] Engines { get; set; }
+        public string[] Linters { get; set; }
 
         #endregion
 
-        #region More specific arguments
+        #region Mode specific arguments
+
+        /// <summary>
+        /// Gets or sets the value indicationg whether to activate linter.
+        /// </summary>
+        public bool? Activate { get; set; }
 
         /// <summary>
         /// Gets or sets the stdin.
@@ -64,6 +69,11 @@
         public bool InputAwailable { get; set; }
 
         /// <summary>
+        /// Gets or sets the path to ignore. 
+        /// </summary>
+        public string Path { get; set; }
+
+        /// <summary>
         /// Gets or sets the line to ignore.
         /// </summary>
         public int? Line { get; set; }
@@ -73,18 +83,13 @@
         /// </summary>
         public string RuleId { get; set; }
 
-        /// <summary>
-        /// How to run/install engine
-        /// </summary>
-        public bool Locally { get; set; } = true;
-
         #endregion
 
         /// <summary>
         /// Gets or sets the list of key filters for stdout.
         /// </summary>
         public string[] Keys { get; set; }
-
+        
         /// <summary>
         /// Gets or sets the list of value filters for stdout.
         /// </summary>
@@ -101,9 +106,6 @@
         /// <param name="mode">The run mode.</param>
         public RunContext(RunMode mode = RunMode.Help)
         {
-            Engines = new string[0];
-            Keys = new string[0];
-            Filters = new string[0];
             Mode = mode;
         }
     }

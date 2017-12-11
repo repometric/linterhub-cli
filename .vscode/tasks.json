@@ -6,7 +6,7 @@
     "echoCommand": true,
     "tasks": [
         {
-            "taskName": "build",
+            "taskName": "build-engine",
             "args": [
                 "build",  "${workspaceRoot}/src/cli/project.json"
             ],

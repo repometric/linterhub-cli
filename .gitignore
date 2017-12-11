@@ -6,4 +6,5 @@ obj
 /.vs
 _/
 __/
-node_modules
+Linters/
+test/integration/actual/*.log

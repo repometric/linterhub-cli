@@ -1,0 +1,38 @@
+[
+  {
+    "name": "coffeelint",
+    "url": "http://www.coffeelint.org"
+  },
+  {
+    "name": "csslint",
+    "url": "http://csslint.net"
+  },
+  {
+    "name": "eslint",
+    "url": "http://eslint.org"
+  },
+  {
+    "name": "htmlhint",
+    "url": "http://htmlhint.com"
+  },
+  {
+    "name": "jshint",
+    "url": "http://jshint.com"
+  },
+  {
+    "name": "jslint",
+    "url": "http://jslint.com"
+  },
+  {
+    "name": "standard",
+    "url": "http://standardjs.com"
+  },
+  {
+    "name": "stylelint",
+    "url": "https://stylelint.io/"
+  },
+  {
+    "name": "tslint",
+    "url": "https://palantir.github.io/tslint/"
+  }
+]
